@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX // Universal Financial Solutions</title>
+    <title>ONYX // SANCTUARY OS</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,17 +13,21 @@
             --champagne: #D4B996;
             --champagne-light: #F2E2C9;
             --champagne-deep: #B89458;
-            --champagne-glow: rgba(212, 185, 150, 0.12);
-            --rose-coral: #E27D60;
-            --rose-glow: rgba(226, 125, 96, 0.08);
+            --champagne-glow: rgba(212, 185, 143, 0.12);
+            --coral-accent: #E27D60;
+            --coral-glow: rgba(226, 125, 96, 0.08);
             --velvet-indigo: #4F46E5;
             --velvet-glow: rgba(79, 70, 229, 0.06);
             --text-ivory: #F8F5F0;
             --text-soft: #A8A29E;
-            --border-frost: rgba(212, 185, 150, 0.16);
-            --border-frost-strong: rgba(212, 185, 150, 0.32);
+            --border-frost: rgba(212, 185, 143, 0.16);
+            --border-frost-strong: rgba(212, 185, 143, 0.32);
             --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
             --shadow-luxury: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            --state-positive: #58D68D;
+            --state-neutral: #FBBF24;
+            --state-notice: #F87171;
+            --state-growth: #FCD34D;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,7 +41,7 @@
             position: relative;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 8% 5%, rgba(212, 185, 150, 0.07) 0%, transparent 50%),
+                radial-gradient(circle at 8% 5%, rgba(212, 185, 143, 0.07) 0%, transparent 50%),
                 radial-gradient(circle at 92% 90%, rgba(79, 70, 229, 0.05) 0%, transparent 55%),
                 radial-gradient(ellipse at center top, var(--midnight-layer) 0%, var(--midnight-deep) 65%);
             background-attachment: fixed;
@@ -54,7 +58,7 @@
             animation: driftLuxury 35s infinite ease-in-out alternate;
             opacity: 0.55;
         }
-        .ambient-glow:nth-child(2) { width: 500px; height: 500px; top: 10%; right: -50px; background: radial-gradient(circle, var(--rose-glow) 0%, transparent 70%); animation-delay: -12s; }
+        .ambient-glow:nth-child(2) { width: 500px; height: 500px; top: 10%; right: -50px; background: radial-gradient(circle, var(--coral-glow) 0%, transparent 70%); animation-delay: -12s; }
         .ambient-glow:nth-child(3) { width: 550px; height: 550px; bottom: 0; left: -80px; background: radial-gradient(circle, var(--velvet-glow) 0%, transparent 70%); animation-delay: -24s; }
 
         @keyframes driftLuxury {
@@ -91,7 +95,7 @@
             box-shadow: 
                 0 60px 120px rgba(0,0,0,0.6),
                 inset 0 1px 0 rgba(255,255,255,0.06),
-                0 0 90px rgba(212, 185, 150, 0.04);
+                0 0 90px rgba(212, 185, 143, 0.04);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -100,7 +104,7 @@
         }
 
         .hero-banner {
-            border-bottom: 1px solid rgba(212, 185, 150, 0.15);
+            border-bottom: 1px solid rgba(212, 185, 143, 0.15);
             padding-bottom: 28px;
             margin-bottom: 32px;
         }
@@ -166,7 +170,7 @@
 
         .option-btn {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(212, 185, 150, 0.14);
+            border: 1px solid rgba(212, 185, 143, 0.14);
             color: var(--text-ivory);
             padding: 22px 28px;
             border-radius: 20px;
@@ -178,16 +182,16 @@
 
         .option-btn:hover {
             border-color: var(--border-frost-strong);
-            background: rgba(212, 185, 150, 0.06);
+            background: rgba(212, 185, 143, 0.06);
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 35px rgba(212, 185, 150, 0.07);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 35px rgba(212, 185, 143, 0.07);
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(212, 185, 150, 0.14);
+            border-bottom: 1px solid rgba(212, 185, 143, 0.14);
             padding-bottom: 36px;
             margin-bottom: 40px;
             flex-wrap: wrap;
@@ -217,11 +221,11 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: var(--champagne);
-            background: rgba(212, 185, 150, 0.08);
+            color: var(--state-positive);
+            background: rgba(88, 214, 141, 0.08);
             padding: 11px 22px;
             border-radius: 30px;
-            border: 1px solid rgba(212, 185, 150, 0.22);
+            border: 1px solid rgba(88, 214, 141, 0.22);
         }
 
         .grid {
@@ -248,7 +252,7 @@
             border-color: var(--border-frost-strong);
             box-shadow: 
                 0 45px 75px rgba(0, 0, 0, 0.6),
-                0 0 55px rgba(212, 185, 150, 0.06),
+                0 0 55px rgba(212, 185, 143, 0.06),
                 inset 0 1px 0 rgba(255, 255, 255, 0.08);
             transform: translateY(-6px);
         }
@@ -272,7 +276,7 @@
         .search-input {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(212, 185, 150, 0.2);
+            border: 1px solid rgba(212, 185, 143, 0.2);
             border-radius: 12px;
             padding: 12px 16px;
             color: var(--text-ivory);
@@ -284,8 +288,8 @@
 
         .search-input:focus {
             border-color: var(--champagne);
-            background: rgba(212, 185, 150, 0.04);
-            box-shadow: 0 0 15px rgba(212, 185, 150, 0.1);
+            background: rgba(212, 185, 143, 0.04);
+            box-shadow: 0 0 15px rgba(212, 185, 143, 0.1);
         }
 
         .search-input::placeholder {
@@ -295,20 +299,20 @@
         .plain-toggle {
             font-size: 10px;
             color: var(--champagne);
-            background: rgba(212, 185, 150, 0.08);
+            background: rgba(212, 185, 143, 0.08);
             padding: 6px 14px;
             border-radius: 8px;
             cursor: pointer;
-            border: 1px solid rgba(212, 185, 150, 0.18);
+            border: 1px solid rgba(212, 185, 143, 0.18);
             transition: all 0.25s ease;
             white-space: nowrap;
         }
-        .plain-toggle:hover { background: rgba(212, 185, 150, 0.15); }
+        .plain-toggle:hover { background: rgba(212, 185, 143, 0.15); }
 
         .plain-desc {
             font-size: 12px;
             color: var(--champagne-light);
-            background: rgba(212, 185, 150, 0.05);
+            background: rgba(212, 185, 143, 0.05);
             border-left: 2px solid var(--champagne);
             padding: 14px 18px;
             margin-bottom: 20px;
@@ -352,9 +356,12 @@
             gap: 8px;
         }
         .action-row:hover { background: rgba(255, 255, 255, 0.025); border-left-width: 4px; }
-        .action-row.glow-rose { border-left-color: var(--rose-coral); }
+        .action-row.glow-rose { border-left-color: var(--coral-accent); }
         .action-row.glow-velvet { border-left-color: var(--velvet-indigo); }
-        .action-row.glow-amethyst { border-left-color: #8B5CF6; }
+        .action-row.glow-secure { border-left-color: var(--state-positive); background: var(--secure-glow); }
+        .action-row.glow-rise { border-left-color: var(--state-growth); background: rgba(252, 211, 77, 0.06); }
+        .action-row.glow-shift { border-left-color: var(--state-neutral); background: rgba(251, 191, 36, 0.06); }
+        .action-row.glow-drop { border-left-color: var(--state-notice); background: rgba(248, 113, 113, 0.06); }
 
         .quick-btn {
             background: linear-gradient(135deg, var(--champagne-light), var(--champagne) 50%, var(--champagne-deep));
@@ -368,12 +375,12 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 18px rgba(212, 185, 150, 0.25);
+            box-shadow: 0 4px 18px rgba(212, 185, 143, 0.25);
             white-space: nowrap;
         }
         .quick-btn:hover { 
             transform: scale(1.05);
-            box-shadow: 0 6px 24px rgba(212, 185, 150, 0.35);
+            box-shadow: 0 6px 24px rgba(212, 185, 143, 0.35);
         }
 
         .template-list {
@@ -387,7 +394,7 @@
         }
         .template-btn {
             background: rgba(255,255,255,0.015);
-            border: 1px solid rgba(212, 185, 150, 0.12);
+            border: 1px solid rgba(212, 185, 143, 0.12);
             color: var(--text-ivory);
             text-align: left;
             padding: 12px 16px;
@@ -396,99 +403,154 @@
             cursor: pointer;
             transition: all 0.25s ease;
         }
-        .template-btn:hover { border-color: var(--champagne); background: rgba(212, 185, 150, 0.05); }
+        .template-btn:hover { border-color: var(--champagne); background: rgba(212, 185, 143, 0.05); }
 
-        @media(max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        textarea {
+            width: 100%;
+            min-height: 140px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-frost);
+            border-radius: 14px;
+            padding: 16px 18px;
+            color: var(--text-ivory);
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            transition: border 0.3s ease;
+            margin-bottom: 12px;
+        }
+        textarea:focus { border-color: var(--champagne); }
+
+        .notes-output {
+            background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(212, 185, 143, 0.1);
+            border-radius: 14px;
+            padding: 20px 22px;
+            margin-top: 16px;
+            display: none;
+        }
+        .notes-output.show { display: block; animation: fadeInLuxury 0.4s ease forwards; }
+        .notes-section { margin-bottom: 16px; }
+        .notes-section h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: var(--champagne);
+        }
+        .notes-section ul { padding-left: 20px; font-size: 13px; line-height: 1.7; color: var(--text-ivory); }
+        .notes-section li { margin-bottom: 4px; }
+        .done-li { color: var(--state-positive); }
+        .follow-li { color: var(--state-neutral); }
+        .ques-li { color: var(--info-blue); }
+
+        .asset-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.01);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .asset-badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-rise { background: rgba(252, 211, 77, 0.15); color: var(--state-growth); }
+        .badge-shift { background: rgba(251, 191, 36, 0.15); color: var(--state-neutral); }
+        .badge-drop { background: rgba(248, 113, 113, 0.15); color: var(--state-notice); }
+
+        .invoice-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .invoice-form input, .invoice-form select, .invoice-form textarea {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-frost);
+            border-radius: 10px;
+            padding: 10px 12px;
+            color: var(--text-ivory);
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+        .invoice-form input:focus, .invoice-form select:focus, .invoice-form textarea:focus { border-color: var(--champagne); }
+        .invoice-form textarea { grid-column: 1 / -1; min-height: 80px; }
+        .invoice-full { grid-column: 1 / -1; }
+
+        .partner-listing {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(212,185,143,0.1);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            transition: border 0.25s ease;
+        }
+        .partner-listing:hover { border-color: var(--champagne); }
+        .partner-tag { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--coral-accent); margin-bottom: 6px; }
+        .partner-status { font-size: 11px; margin: 4px 0; }
+        .status-price { color: var(--state-neutral); }
+        .status-stock { color: var(--state-notice); }
+        .status-ok { color: var(--state-positive); }
+        .partner-alternative { font-size: 12px; margin-top: 8px; padding-left: 12px; border-left: 2px solid var(--velvet-indigo); }
+        .partner-link { color: var(--champagne); text-decoration: none; font-size: 13px; display: inline-block; margin-top: 4px; }
+        .partner-link:hover { text-decoration: underline; }
+
+        .sales-letter-box {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid rgba(212,185,143,0.1);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-top: 12px;
+            white-space: pre-wrap;
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--text-ivory);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .lead-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+            padding: 8px 10px;
+            font-size: 12px;
+            border-bottom: 1px solid rgba(212,185,143,0.08);
+            align-items: center;
+        }
+        .lead-status {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+        .status-new { background: rgba(96, 165, 250, 0.15); color: #93C5FD; }
+        .status-chase { background: rgba(251, 191, 36, 0.15); color: #FCD34D; }
+        .status-won { background: rgba(88, 214, 141, 0.15); color: #86EFAC; }
+
+        .disclaimer-block {
+            max-width: 920px;
+            margin: 50px auto 20px;
+            padding: 24px 28px;
+            border: 1px solid rgba(212, 185, 143, 0.12);
+            border-radius: 20px;
+            background: rgba(212, 185, 143, 0.03);
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--text-soft);
+        }
+
+        @media(max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } .invoice-form { grid-template-columns: 1fr; } }
         @media(max-width: 640px) {
             .grid { grid-template-columns: 1fr; }
             body { padding: 18px 14px; }
             .quiz-card { padding: 35px 20px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow"></div>
-
-    <div id="quizView" class="view active">
-        <div class="quiz-card">
-            
-            <div class="hero-banner">
-                <div class="brand-title">ONYX</div>
-                <div class="brand-subtitle-title">Universal Financial Solutions</div>
-                <p class="hero-definition">
-                    What is Onyx? It is your complete, all-in-one business sanctuary. No more jumping between different apps, separate bank logins, Stripe dashboards, or PayPal tabs. Onyx links all your accounts together into one single screen, tracks money due out over the coming days, and lets you manage everything instantly without fine-toothed combs or complicated searches.
-                </p>
-            </div>
-
-            <div class="step-indicator">Step 1 of 3 // Personalizing Your Sanctuary</div>
-            
-            <h2>What drains your energy the fastest in your day‑to‑day business?</h2>
-            
-            <div class="options-grid">
-                <button class="option-btn" onclick="nextQuizStep()">Chasing money & wondering where customers went</button>
-                <button class="option-btn" onclick="nextQuizStep()">Hidden costs, guessing trends & not knowing where to focus</button>
-                <button class="option-btn" onclick="nextQuizStep()">Endless admin, travel plans & keeping track of everything</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="terminalView" class="view">
-        <header>
-            <div class="logo">ONYX <span>Universal Financial Solutions</span></div>
-            <div class="terminal-status">All Accounts Linked (Banks, Stripe, PayPal)</div>
-        </header>
-
-        <div class="grid">
-
-            <div class="card">
-                <h3>
-                    <span>Unified Cash & Upcoming Outflow</span>
-                    <span class="plain-toggle" onclick="togglePlain('plain1')">Plain English?</span>
-                </h3>
-                <div id="plain1" class="plain-desc">All your linked bank accounts, Stripe earnings, and PayPal balances combined into one true total. Shows exactly what money is due out over the next few days so you always know what is safe to spend.</div>
-                <div class="metric-value">£14,850.00</div>
-                <p class="metric-sub">Due out next 3 days: £1,240.00 (Bills & Subscriptions)</p>
-                <div class="action-box">
-                    <div class="action-row"><span>Linked: Monzo + Barclays + Stripe + PayPal</span><span style="color:var(--champagne);">Synced Live</span></div>
-                    <div class="action-row"><span>Upcoming Outflow Alert</span><button class="quick-btn" onclick="alert('Viewing upcoming payments due out this week')">Review Outflows</button></div>
-                    <div class="action-row glow-rose"><span>Leakage Shield Active</span><button class="quick-btn" onclick="alert('£42/mo unused recurring subscriptions detected')">View Waste</button></div>
-                    <div class="action-row glow-velvet"><span>Supplier Price-Rise Warning</span><button class="quick-btn" onclick="alert('Noticed utility cost increase scheduled next Monday')">Check Details</button></div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>
-                    <span>Invoice Hound & Instant Match</span>
-                    <span class="plain-toggle" onclick="togglePlain('plain2')">Plain English?</span>
-                </h3>
-                <div id="plain2" class="plain-desc">Instead of digging through endless spreadsheets or using a fine-tooth comb, simply type to search instantly. Plus, pre-written professional messages for gentle reminders, follow-ups, and final notices.</div>
-                
-                <div class="search-bar-container">
-                    <input type="text" class="search-input" placeholder="Instant search client, invoice #, or amount..." oninput="filterTemplates(this.value)">
-                </div>
-
-                <div class="action-box" style="margin-top:0;">
-                    <div class="action-row"><span>2 Overdue / 3 Due Soon</span><span style="color:var(--champagne);">Auto-nudges ready</span></div>
-                </div>
-                
-                <div class="template-list" id="templateList">
-                    <button class="template-btn" onclick="alert('Ready: Gentle reminder — polite nudge')">Gentle Reminder (Client Sarah)</button>
-                    <button class="template-btn" onclick="alert('Ready: Firm follow‑up — clear and fair')">Firm Follow‑Up (Invoice #402)</button>
-                    <button class="template-btn" onclick="alert('Ready: Final notice — strong but respectful')">Final Notice (Invoice #388)</button>
-                    <button class="template-btn" onclick="alert('Ready: New business enquiry — warm genuine outreach')">New Enquiry Template</button>
-                    <button class="template-btn" onclick="alert('Ready: Quote follow‑up — check in and open doors')">Quote Follow‑Up</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>
-                    <span>Trend & Territory Analyser</span>
-                    <span class="plain-toggle" onclick="togglePlain('plain3')">Plain English?</span>
-                </h3>
-                <div id="plain3" class="plain-desc">Sees exactly where people buy, when things rise or fall, and works out why — seasons, local changes, costs, events. Then shows you exactly what else to try instead to keep steady or grow.</div>
-                <div class="action-box">
-                    <div class="action-row"><span>Bradford +22% / Leeds +27% — rising</span><button class="quick-btn" onclick="alert('Focus effort here first')">Target</button></div>
-                    <div class="action-row glow-rose"><span>Huddersfield -18% — slowing</span><button class="quick-btn" onclick="alert('Reason: local shifts + holiday period. Action: shift focus nearby or offer flexible terms')">Adjust</button><
+            .lead-row { grid-template-columns
