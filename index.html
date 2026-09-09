@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYX // Universal Financial Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight-deep: #020612;
+            --midnight-layer: #080E20;
+            --midnight-soft: #0F172A;
+            --champagne: #D4B996;
+            --champagne-light: #F2E2C9;
+            --champagne-deep: #B89458;
+            --champagne-glow: rgba(212, 185, 150, 0.12);
+            --rose-coral: #E27D60;
+            --rose-glow: rgba(226, 125, 96, 0.08);
+            --velvet-indigo: #4F46E5;
+            --velvet-glow: rgba(79, 70, 229, 0.06);
+            --text-ivory: #F8F5F0;
+            --text-soft: #A8A29E;
+            --border-frost: rgba(212, 185, 150, 0.16);
+            --border-frost-strong: rgba(212, 185, 150, 0.32);
+            --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+            --shadow-luxury: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--midnight-deep);
+            color: var(--text-ivory);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            padding: 32px 20px;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 8% 5%, rgba(212, 185, 150, 0.07) 0%, transparent 50%),
+                radial-gradient(circle at 92% 90%, rgba(79, 70, 229, 0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at center top, var(--midnight-layer) 0%, var(--midnight-deep) 65%);
+            background-attachment: fixed;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            width: 700px; height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--champagne-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+            animation: driftLuxury 35s infinite ease-in-out alternate;
+            opacity: 0.55;
+        }
+        .ambient-glow:nth-child(2) { width: 500px; height: 500px; top: 10%; right: -50px; background: radial-gradient(circle, var(--rose-glow) 0%, transparent 70%); animation-delay: -12s; }
+        .ambient-glow:nth-child(3) { width: 550px; height: 550px; bottom: 0; left: -80px; background: radial-gradient(circle, var(--velvet-glow) 0%, transparent 70%); animation-delay: -24s; }
+
+        @keyframes driftLuxury {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, -50px) scale(1.25); }
+        }
+
+        .view {
+            width: 100%;
+            max-width: 1260px;
+            margin: 0 auto;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .view.active {
+            display: block;
+            animation: fadeInLuxury 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInLuxury {
+            from { opacity: 0; transform: translateY(28px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .quiz-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(45px);
+            -webkit-backdrop-filter: blur(45px);
+            border: 1px solid var(--border-frost);
+            border-radius: 36px;
+            padding: 60px 52px;
+            box-shadow: 
+                0 60px 120px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.06),
+                0 0 90px rgba(212, 185, 150, 0.04);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 920px;
+            margin: 40px auto;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 8px;
+            color: var(--champagne);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 0 0 24px rgba(212, 185, 150, 0.18);
+        }
+
+        .brand-subtitle-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--text-ivory);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .step-indicator {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+
+        .cinematic-intro {
+            font-size: 14px;
+            color: var(--champagne-light);
+            line-height: 1.8;
+            max-width: 760px;
+            margin: 0 auto 36px auto;
+            opacity: 0.95;
+            border-bottom: 1px solid rgba(212, 185, 150, 0.1);
+            padding-bottom: 24px;
+        }
+
+        .quiz-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 36px;
+            line-height: 1.5;
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-ivory);
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 24px;
+            text-align: left;
+            max-width: 740px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .option-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 185, 150, 0.14);
+            color: var(--text-ivory);
+            padding: 24px 32px;
+            border-radius: 20px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .option-btn:hover {
+            border-color: var(--border-frost-strong);
+            background: rgba(212, 185, 150, 0.06);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 35px rgba(212, 185, 150, 0.07);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 185, 150, 0.14);
+            padding-bottom: 36px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 5px;
+            color: var(--text-ivory);
+            font-weight: 700;
+        }
+
+        .logo span { 
+            background: linear-gradient(135deg, var(--champagne-light), var(--champagne) 60%, var(--champagne-deep));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: normal;
+            font-size: 16px;
+            letter-spacing: 3px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .terminal-status {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            background: rgba(212, 185, 150, 0.08);
+            padding: 11px 22px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 185, 150, 0.22);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid var(--border-frost);
+            border-radius: 26px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-luxury);
+            height: fit-content;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--border-frost-strong);
+            box-shadow: 
+                0 45px 75px rgba(0, 0, 0, 0.6),
+                0 0 55px rgba(212, 185, 150, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transform: translateY(-6px);
+        }
+
+        .card h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-soft);
+            margin-bottom: 18px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-bar-container {
+            margin-bottom: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 185, 150, 0.2);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--text-ivory);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--champagne);
+            background: rgba(212, 185, 150, 0.04);
+            box-shadow: 0 0 15px rgba(212, 185, 150, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-soft);
+        }
+
+        .plain-toggle {
+            font-size: 10px;
+            color: var(--champagne);
+            background: rgba(212, 185, 150, 0.08);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid rgba(212, 185, 150, 0.18);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .plain-toggle:hover { background: rgba(212, 185, 150, 0.15); }
+
+        .plain-desc {
+            font-size: 12px;
+            color: var(--champagne-light);
+            background: rgba(212, 185, 150, 0.05);
+            border-left: 2px solid var(--champagne);
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            border-radius: 0 12px 12px 0;
+            display: none;
+            line-height: 1.75;
+        }
+        .plain-desc.show { display: block; animation: fadeInLuxury 0.4s ease forwards; }
+
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            background: linear-gradient(135deg, #FFFFFF 10%, var(--champagne) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            font-weight: 600;
+            line-height: 1.1;
+        }
+        .metric-sub { font-size: 12px; color: var(--text-soft); margin-bottom: 12px; }
+
+        .action-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .action-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.015);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--champagne);
+            font-size: 13px;
+            transition: all 0.25s ease;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .action-row:hover { background: rgba(255, 255, 255, 0.025); border-left-width: 4px; }
+        .action-row.glow-rose { border-left-color: var(--rose-coral); }
+        .action-row.glow-velvet { border-left-color: var(--velvet-indigo); }
+        .action-row.glow-amethyst { border-left-color: #8B5CF6; }
+
+        .quick-btn {
+            background: linear-gradient(135deg, var(--champagne-light), var(--champagne) 50%, var(--champagne-deep));
+            color: var(--midnight-deep);
+            border: none;
+            padding: 9px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 18px rgba(212, 185, 150, 0.25);
+            white-space: nowrap;
+        }
+        .quick-btn:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 6px 24px rgba(212, 185, 150, 0.35);
+        }
+
+        .template-list {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .template-btn {
+            background: rgba(255,255,255,0.015);
+            border: 1px solid rgba(212, 185, 150, 0.12);
+            color: var(--text-ivory);
+            text-align: left;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .template-btn:hover { border-color: var(--champagne); background: rgba(212, 185, 150, 0.05); }
+
+        @media(max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 640px) {
+            .grid { grid-template-columns: 1fr; }
+            body { padding: 18px 14px; }
+            .quiz-card { padding: 40px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow"></div>
+
+    <div id="quizView" class="view active">
+        <div class="quiz-card">
+            <div class="brand-title">ONYX</div>
+            <div class="brand-subtitle-title">Universal Financial Solutions</div>
+            <div class="step-indicator">Step 1 of 3 // Welcome to Your Sanctuary</div>
+            
+            <p class="cinematic-intro">
+                We bring everything together in one place. No more jumping between different apps, bank logins, Stripe dashboards, or PayPal tabs. Onyx links all your accounts, shows your exact balances, maps money due out over the coming days, and lets you manage everything instantly without fine‑toothed combs or complicated searches. Answer a few simple questions so we can personalize your unified dashboard.
+            </p>
+
+            <h2>What drains your energy the fastest in your day‑to‑day business?</h2>
+            
+            <div class="options-grid">
+                <button class="option-btn" onclick="nextQuizStep()">Chasing money & wondering where customers went</button>
+                <button class="option-btn" onclick="nextQuizStep()">Hidden costs, guessing trends & not knowing where to focus</button>
+                <button class="option-btn" onclick="nextQuizStep()">Endless admin, travel plans & keeping track of everything</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="terminalView" class="view">
+        <header>
+            <div class="logo">ONYX <span>Universal Financial Solutions</span></div>
+            <div class="terminal-status">● All Accounts Linked (Banks, Stripe, PayPal)</div>
+        </header>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>
+                    <span>Unified Cash & Upcoming Outflow</span>
+                    <span class="plain-toggle" onclick="togglePlain('plain1')">Plain English?</span>
+                </h3>
+                <div id="plain1" class="plain-desc">All your linked bank accounts, Stripe earnings, and PayPal balances combined into one true total. Shows exactly what money is due out over the next few days so you always know what is safe to spend.</div>
+                <div class="metric-value">£14,850.00</div>
+                <p class="metric-sub">Due out next 3 days: £1,240.00 (Bills & Subscriptions)</p>
+                <div class="action-box">
+                    <div class="action-row"><span>Linked: Monzo + Barclays + Stripe + PayPal</span><span style="color:var(--champagne);">Synced Live</span></div>
+                    <div class="action-row"><span>Upcoming Outflow Alert</span><button class="quick-btn" onclick="alert('Viewing upcoming payments due out this week')">Review Outflows</button></div>
+                    <div class="action-row glow-rose"><span>Leakage Shield Active</span><button class="quick-btn" onclick="alert('£42/mo unused recurring subscriptions detected')">View Waste</button></div>
+                    <div class="action-row glow-velvet"><span>Supplier Price‑Rise Warning</span><button class="quick-btn" onclick="alert('Noticed utility cost increase scheduled next Monday')">Check Details</button></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <span>Invoice Hound & Instant Match</span>
+                    <span class="plain-toggle" onclick="togglePlain('plain2')">Plain English?</span>
+                </h3>
+                <div id="plain2" class="plain-desc">Instead of digging through endless spreadsheets or using a fine‑tooth comb, simply click any recent payment or search instantly. Plus, pre‑written professional messages for gentle reminders, follow‑ups, and final notices.</div>
+                
+                <div class="search-bar-container">
+                    <input type="text" class="search-input" placeholder="Instant search client, invoice #, or amount..." oninput="filterTemplates(this.value)">
+                </div>
+
+                <div class="action-box" style="margin-top:0;">
+                    <div class="action-row"><span>2 Overdue / 3 Due Soon</span><span style="color:var(--champagne);">Auto‑nudges ready</span></div>
+                </div>
+                
+                <div class="template-list" id="templateList">
+                    <button class="template-btn" onclick="alert('Ready: Gentle reminder — polite nudge')">Gentle Reminder (Client Sarah)</button>
+                    <button class="template-btn" onclick="alert('Ready: Firm follow‑up — clear and fair')">Firm Follow‑Up (Invoice #402)</button>
+                    <button class="template-btn" onclick="alert('Ready: Final notice — strong but respectful')">Final Notice (Invoice #388)</button>
+                    <button class="template-btn" onclick="alert('Ready: New business enquiry — warm genuine outreach')">New Enquiry Template</button>
+                    <button class="template-btn" onclick="alert('Ready: Quote follow‑up — check in and open doors')">Quote Follow‑Up</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <span>Trend & Territory Analyser</span>
+                    <span class="plain-toggle" onclick="togglePlain('plain3')">Plain English?</span>
+                </h3>
+                <div id="plain3" class="plain-desc">Sees exactly where people buy, when things rise or fall, and works out why — seasons, local changes, costs, events. Then shows you exactly what else to try instead to keep steady or grow.</div>
+                <div class="action-box">
+                    <div class="action-row"><span>Bradford +22% / Leeds +27% — rising</span><button class="quick-btn" onclick="alert('Focus effort here first')">Target</button></div>
+                    <div class="action-row glow-rose"><span>Huddersfield -18% — slowing</span><button class="quick-btn" onclick="alert('Reas
