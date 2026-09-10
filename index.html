@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX // Universal Financial Solutions</title>
+    <title>ONYX™ // Universal Financial Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -98,10 +98,9 @@
             letter-spacing: 10px;
             color: var(--text-ivory);
             margin-bottom: 4px;
-            text-transform: uppercase;
             font-weight: 700;
         }
-        .brand-subtitle-title {
+        .brand-subtitle {
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 6px;
@@ -116,6 +115,13 @@
             max-width: 780px;
             margin: 0 auto;
             opacity: 0.95;
+        }
+        .privacy-pledge {
+            font-size: 12px;
+            color: var(--rose-coral);
+            margin-top: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         .step-indicator {
             font-size: 11px;
@@ -356,11 +362,12 @@
     <div id="quizView" class="view active">
         <div class="quiz-card">
             <div class="hero-banner">
-                <div class="brand-title">ONYX</div>
-                <div class="brand-subtitle-title">Universal Financial Solutions</div>
+                <div class="brand-title">ONYX™</div>
+                <div class="brand-subtitle">Universal Financial Solutions</div>
                 <p class="hero-definition">
-                    What is ONYX? It is your complete, all‑in‑one business sanctuary — built from MY life, MY battles, MY scars, and MY promise: NO ONE should struggle alone, get ripped off, or be lost in paperwork ever again. I built this because I was left fighting everything on my own — and I decided to build a place where YOU never have to.
+                    What is ONYX™? It is your complete, all‑in‑one business sanctuary — built from MY life, MY battles, MY scars, and MY promise: NO ONE should struggle alone, get ripped off, or be lost in paperwork ever again. I built this because I was left fighting everything on my own — and I decided to build a place where YOU never have to.
                 </p>
+                <p class="privacy-pledge">🔒 ONYX™ — WE NEVER SELL, RENT, OR SHARE YOUR PERSONAL DATA. EVER.</p>
             </div>
             <div class="step-indicator">Step 1 of 3 — Personalising Your Sanctuary</div>
             <h2>What drains your energy the fastest right now?</h2>
@@ -376,8 +383,8 @@
     <!-- MAIN DASHBOARD SCREEN -->
     <div id="terminalView" class="view">
         <header>
-            <div class="logo">ONYX <span>Universal Financial Solutions</span></div>
-            <div class="terminal-status">All Accounts Linked • Secure • Private • Built to Last</div>
+            <div class="logo">ONYX™ <span>Universal Financial Solutions</span></div>
+            <div class="terminal-status">🔒 YOUR DATA STAYS YOURS — ALWAYS</div>
         </header>
 
         <span class="back-btn" onclick="goBack()">&larr; Change what you need help with</span>
@@ -389,19 +396,19 @@
             <h2 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--champagne); margin-bottom:1.5rem;">Your Business Spaces</h2>
             <div class="folder-grid">
                 <div class="folder-card" onclick="openSpaceDetail('Business Main')">
-                    <h3>Business Main</h3>
+                    <h3>Business Main™</h3>
                     <p>Budgets, costs, suppliers, pricing, plans — your core control centre</p>
                 </div>
                 <div class="folder-card" onclick="openSpaceDetail('Digital Creator')">
-                    <h3>Digital Creator</h3>
+                    <h3>Digital Creator™</h3>
                     <p>Channels, affiliate links, income tracking, media costs — your growth engine</p>
                 </div>
                 <div class="folder-card" onclick="openSpaceDetail('Legal & Rights')">
-                    <h3>Legal & Rights</h3>
+                    <h3>Legal & Rights™</h3>
                     <p>Contracts, evidence logs, claims, disputes, compliance — your shield & voice</p>
                 </div>
                 <div class="folder-card" onclick="openSpaceDetail('New Project')">
-                    <h3>+ Add New Space</h3>
+                    <h3>+ Add New Space™</h3>
                     <p>Side‑income, campaigns, new ventures — anything you build belongs here</p>
                 </div>
             </div>
@@ -414,11 +421,13 @@
             </div>
         </div>
 
-        <!-- DISCLAIMER -- YOUR WORDS EXACTLY -->
+        <!-- DISCLAIMER — YOUR WORDS EXACTLY + DATA PROMISE -->
         <div class="disclaimer-box">
-            <strong>Important Guidance:</strong> Everything here comes from MY lived experience, years of fighting, learning, researching, and surviving — shared freely so you never walk alone. This is guidance, support, and tools — NOT regulated professional advice. Always verify with qualified experts for legal, financial, or medical matters. ONYX is built on truth, courage, and the belief that when we lift each other up — we ALL rise.
+            <strong>Important Guidance:</strong> Everything here comes from MY lived experience, years of fighting, learning, researching, and surviving — shared freely so you never walk alone. This is guidance, support, and tools — NOT regulated professional advice. Always verify with qualified experts for legal, financial, or medical matters.
             <br><br>
             <em>“I built this because I crawled out of the abyss — so you never have to go through what I did. If I can do this after everything I lost and everything I survived — YOU CAN DO ANYTHING.” — Kassie, Founder & Visionary</em>
+            <br><br>
+            <strong>🔒 DATA PROMISE:</strong> ONYX™ stores nothing on outside servers. Everything you type or save stays ONLY on your own device. <strong>WE NEVER SELL, TRADE, RENT, OR SHARE YOUR INFORMATION — NOT EVER, NOT FOR ANY PRICE.</strong>
         </div>
     </div>
 
@@ -482,93 +491,95 @@
                     <div class="metric-value">£14,850.00</div>
                     <p class="metric-sub">Due out next 3 days: £1,240.00 (Bills & Subscriptions)</p>
                     <div class="action-box">
-                        <div class="action-row"><span>Linked: Monzo + Barclays + Stripe + PayPal</span><span style="color:var(--champagne);">Synced Live</span></div>
+                        <div class="action-row"><span>Linked: Monzo + Barclays + Stripe + PayPal</span><span style="color:var(--champagne);">Secure</span></div>
                         <div class="action-row"><span>Upcoming Payments Due</span><button class="quick-btn" onclick="copyToClipboard('Here is your full list of upcoming payments…','Outflow List')">Copy List</button></div>
                     </div>
                 </div>
                 <div class="card">
-                    <h3><span>Invoice Hound & Instant Match</span><span class="plain-toggle" onclick="togglePlain('p2')">Plain English?</span></h3>
-                    <div id="p2" class="plain-desc">Instead of digging through endless spreadsheets — search instantly. Gentle, firm, or final — every message written fair, respectful, and professional. CLICK → COPIES → PASTE & SEND.</div>
+                    <h3><span>Invoice Hound™</span><span class="plain-toggle" onclick="togglePlain('p2')">Plain English?</span></h3>
+                    <div id="p2" class="plain-desc">Search instantly. Gentle, firm, or final — every message written fair, respectful, professional. CLICK → COPIES → PASTE & SEND.</div>
                     <div class="search-bar-container">
-                        <input type="text" class="search-input" placeholder="Search client, invoice #, or amount..." oninput="filterTemplates(this.value)">
+                        <input type="text" class="search-input" placeholder="Search client, invoice #, amount…" oninput="filterTemplates(this.value)">
                     </div>
                     <div class="action-box">
-                        <div class="action-row"><span>2 Overdue / 3 Due Soon</span><span style="color:var(--champagne);">Templates Ready</span></div>
+                        <div class="action-row"><span>2 Overdue / 3 Due Soon</span><span style="color:var(--champagne);">Ready</span></div>
                     </div>
                     <div class="template-list" id="tpls">
                         <button class="template-btn" onclick="copyToClipboard('Hi [Name], just a gentle reminder that invoice #[XXX] is due soon. No rush — just wanted to keep things clear and friendly. All best, Kassie','Gentle Reminder')">Gentle Reminder</button>
                         <button class="template-btn" onclick="copyToClipboard('Hi [Name], checking in — invoice #[XXX] is now overdue. Please let me know when to expect payment or if you need to chat about it. Fairness goes both ways. Best, Kassie','Firm Follow‑Up')">Firm Follow‑Up</button>
                         <button class="template-btn" onclick="copyToClipboard('Dear [Name], invoice #[XXX] is now significantly overdue. This is my final reminder before taking further steps. Please settle this immediately. Respectfully, Kassie','Final Notice')">Final Notice</button>
                         <button class="template-btn" onclick="copyToClipboard('Hi there! Thank you for your interest in working with me. Here’s everything we discussed…','New Enquiry')">New Enquiry</button>
+                        <button class="template-btn" onclick="copyToClipboard('Here’s your clear, fair price quote — no hidden extras, no surprises.','Quote')">New Price Quote</button>
+                        <button class="template-btn" onclick="copyToClipboard('Just checking in — did you receive the quote? Happy to answer anything.','Quote Follow‑Up')">Quote Follow‑Up</button>
+                        <button class="template-btn" onclick="copyToClipboard('Clear payment terms — fair, simple, respectful to both sides.','Payment Terms')">Payment Terms</button>
+                        <button class="template-btn" onclick="copyToClipboard('Evidence request: Please provide proof of this claim, dates, and facts. I have my own ready too.','Evidence Request')">Evidence Request</button>
+                        <button class="template-btn" onclick="copyToClipboard('Formal complaint — facts, dates, issues, and what needs fixing.','Complaint')">Formal Complaint</button>
                     </div>
                 </div>
                 <div class="card">
-                    <h3><span>Trend Watch & Territory Analyser</span><span class="plain-toggle" onclick="togglePlain('p3')">Plain English?</span></h3>
-                    <div id="p3" class="plain-desc">See exactly where you’re winning, where it’s slowing, WHY it’s happening — and exactly what to try instead. Built for Bradford, Leeds, YOUR local world — not some big city guesswork.</div>
+                    <h3><span>Trend Watch™</span><span class="plain-toggle" onclick="togglePlain('p3')">Plain English?</span></h3>
+                    <div id="p3" class="plain-desc">See exactly where you’re winning, slowing, WHY — and exactly what to try instead. Built for YOUR local world, not guesswork.</div>
                     <div class="action-box">
                         <div class="action-row"><span>Income this month</span><span style="color:var(--champagne);">+18%</span></div>
                         <div class="action-row glow-rose"><span>3 invoices overdue = £1,420</span><button class="quick-btn" onclick="copyToClipboard('Here’s your list of overdue amounts…','Chase List')">Copy & Chase</button></div>
-                        <div class="action-row glow-velvet"><span>Bradford +22% / Leeds +27% — rising</span><button class="quick-btn" onclick="copyToClipboard('Focus here first — strongest growth right now.','Focus Area')">Copy Plan</button></div>
                     </div>
                 </div>`;
             } else if(type === 'costs') {
                 cards = `
                 <div class="card">
-                    <h3><span>Leakage Shield — FULL SCAN</span><span class="plain-toggle" onclick="togglePlain('p4')">Plain English?</span></h3>
-                    <div id="p4" class="plain-desc">FINDS EVERY PENNY LEAKING OUT. Unused subscriptions, hidden price rises, wasted bills, things you forgot you were paying for — ALL LISTED. Stop the bleed, save the money, take back control.</div>
+                    <h3><span>Leakage Shield™</span><span class="plain-toggle" onclick="togglePlain('p4')">Plain English?</span></h3>
+                    <div id="p4" class="plain-desc">FINDS EVERY PENNY LEAKING OUT. Unused subscriptions, hidden rises, forgotten bills — ALL LISTED. Stop the bleed, save the money, take back control.</div>
                     <div class="metric-value">£42.00/mo</div>
-                    <p class="metric-sub">FOUND: 3 unused recurring payments + 1 price rise coming</p>
+                    <p class="metric-sub">FOUND: 3 unused + 1 price rise coming</p>
                     <div class="action-box">
                         <div class="action-row glow-rose"><span>• Premium App — £14/mo unused since Jan</span><button class="quick-btn" onclick="copyToClipboard('Cancel request: Premium App — account #XXX. No longer using.','Cancel Letter')">Copy Cancel</button></div>
-                        <div class="action-row glow-rose"><span>• Cloud Storage — £18/mo double‑paid</span><button class="quick-btn" onclick="copyToClipboard('Refund request: double payment on Cloud Storage. Please refund £18.','Refund Letter')">Copy Refund</button></div>
-                        <div class="action-row glow-velvet"><span>• Utility — +£10/mo rise next week</span><button class="quick-btn" onclick="copyToClipboard('Budget adjusted: +£10/mo starting next week. Plan: switch supplier or reduce usage.','Budget Note')">Copy Plan</button></div>
-                        <div class="action-row"><span>• More hidden leaks…</span><button class="quick-btn" onclick="copyToClipboard('Full Leakage Report — review all costs line‑by‑line.','Full Report')">Copy Full List</button></div>
+                        <div class="action-row glow-rose"><span>• Cloud Storage — £18/mo double‑paid</span><button class="quick-btn" onclick="copyToClipboard('Refund request: double payment. Please refund £18.','Refund Letter')">Copy Refund</button></div>
+                        <div class="action-row glow-velvet"><span>• Utility — +£10/mo rise next week</span><button class="quick-btn" onclick="copyToClipboard('Budget adjusted: +£10/mo starting next week. Plan: switch or reduce.','Budget Note')">Copy Plan</button></div>
                     </div>
                 </div>
                 <div class="card">
-                    <h3><span>Cost Tracker & Supplier Watch</span><span class="plain-toggle" onclick="togglePlain('p5')">Plain English?</span></h3>
-                    <div id="p5" class="plain-desc">See exactly where every penny goes. Spot trends BEFORE they hurt. Know when to lock prices, switch, or negotiate — no more getting caught out.</div>
+                    <h3><span>Cost Tracker™</span><span class="plain-toggle" onclick="togglePlain('p5')">Plain English?</span></h3>
+                    <div id="p5" class="plain-desc">See exactly where every penny goes. Spot trends BEFORE they hurt. Know when to lock prices, switch, or negotiate.</div>
                     <div class="action-box">
                         <div class="action-row"><span>Materials — up 12% this quarter</span><span style="color:var(--rose-coral);">WATCH</span></div>
                         <div class="action-row"><span>Local suppliers — fairer prices found</span><button class="quick-btn" onclick="copyToClipboard('Local fair‑price alternatives list saved.','Suppliers')">Copy List</button></div>
                     </div>
                 </div>
                 <div class="card">
-                    <h3><span>Alternative Finder</span><span class="plain-toggle" onclick="togglePlain('p6')">Plain English?</span></h3>
-                    <div id="p6" class="plain-desc">Price too high? Being ripped off? Find equal or better options at fairer cost — especially LOCAL, where your money stays in YOUR community.</div>
+                    <h3><span>Alternative Finder™</span><span class="plain-toggle" onclick="togglePlain('p6')">Plain English?</span></h3>
+                    <div id="p6" class="plain-desc">Price too high? Being ripped off? Find equal or better — especially LOCAL, where your money stays with YOUR people.</div>
                     <div class="action-box">
-                        <div class="action-row"><span>Search fairer suppliers</span><button class="quick-btn" onclick="copyToClipboard('Search criteria: local, ethical, fair pricing, UK‑based.','Search Plan')">Copy Search</button></div>
+                        <div class="action-row"><span>Search fairer suppliers</span><button class="quick-btn" onclick="copyToClipboard('Search: local, ethical, fair pricing, UK‑based.','Search Plan')">Copy Search</button></div>
                     </div>
                 </div>`;
             } else if(type === 'admin') {
                 cards = `
                 <div class="card">
-                    <h3><span>Letter & Form Studio — FULL LIBRARY</span><span class="plain-toggle" onclick="togglePlain('p7')">Plain English?</span></h3>
-                    <div id="p7" class="plain-desc">Professional letters, quotes, emails, notices, disputes, evidence requests — ALL pre‑written, fair, strong, and YOUR voice. CLICK → COPY → PASTE → SEND. No writer’s block ever again.</div>
+                    <h3><span>Letter Studio™</span><span class="plain-toggle" onclick="togglePlain('p7')">Plain English?</span></h3>
+                    <div id="p7" class="plain-desc">Everything you need — quotes, complaints, evidence, disputes — written fair, strong, YOUR voice. CLICK → COPY → PASTE → SEND.</div>
                     <div class="search-bar-container">
-                        <input type="text" class="search-input" placeholder="Search letter type..." oninput="filterTemplates(this.value)">
+                        <input type="text" class="search-input" placeholder="Search letter type…" oninput="filterTemplates(this.value)">
                     </div>
                     <div class="template-list" id="tpls">
                         <button class="template-btn" onclick="copyToClipboard('Here’s your clear, fair price quote — no hidden extras, no surprises.','Quote')">New Price Quote</button>
                         <button class="template-btn" onclick="copyToClipboard('Just checking in — did you receive the quote? Happy to answer anything.','Quote Follow‑Up')">Quote Follow‑Up</button>
-                        <button class="template-btn" onclick="copyToClipboard('Clear payment terms — fair, simple, and respectful to both sides.','Payment Terms')">Payment Terms</button>
+                        <button class="template-btn" onclick="copyToClipboard('Clear payment terms — fair, simple, respectful to both sides.','Payment Terms')">Payment Terms</button>
                         <button class="template-btn" onclick="copyToClipboard('Evidence request: Please provide proof of this claim, dates, and facts. I have my own ready too.','Evidence Request')">Evidence Request</button>
                         <button class="template-btn" onclick="copyToClipboard('Formal complaint — facts, dates, issues, and what needs fixing.','Complaint')">Formal Complaint</button>
                     </div>
                 </div>
                 <div class="card">
-                    <h3><span>Evidence & Logs — YOUR PROTECTION</span><span class="plain-toggle" onclick="togglePlain('p8')">Plain English?</span></h3>
-                    <div id="p8" class="plain-desc">Keep records, dates, photos, messages, emails — ALL organised, ALL searchable, ALL ready should you ever need proof. I learned this the hard way — now YOU have the system I WISHED I had.</div>
+                    <h3><span>Evidence Log™</span><span class="plain-toggle" onclick="togglePlain('p8')">Plain English?</span></h3>
+                    <div id="p8" class="plain-desc">Dates, photos, messages, emails — ALL organised. I learned this the hard way — now YOU have the system I WISHED I had.</div>
                     <div class="action-box">
-                        <div class="action-row"><span>Upload receipt / photo / note</span><button class="quick-btn" onclick="copyToClipboard('Log entry — Date: [today], Item: [name], Notes: [details]. Save this safely.','Log Template')">Copy Log</button></div>
-                        <div class="action-row"><span>Search all records</span><button class="quick-btn" onclick="copyToClipboard('Search keywords: date, name, amount, reference.','Search Guide')">Copy Guide</button></div>
+                        <div class="action-row"><span>Log entry template</span><button class="quick-btn" onclick="copyToClipboard('LOG: Date — Time — Who — What — Where — Proof — Notes. Save safely.','Log Template')">Copy Log</button></div>
                     </div>
                 </div>
                 <div class="card">
-                    <h3><span>Travel & Appointments</span><span class="plain-toggle" onclick="togglePlain('p9')">Plain English?</span></h3>
-                    <div id="p9" class="plain-desc">Bookings, meetings, travel costs, mileage, times — tracked, scheduled, and ready to claim. No more lost expenses or missed dates.</div>
+                    <h3><span>Planner™</span><span class="plain-toggle" onclick="togglePlain('p9')">Plain English?</span></h3>
+                    <div id="p9" class="plain-desc">Bookings, travel, costs, times — tracked, scheduled, ready to claim. No more lost expenses or missed dates.</div>
                     <div class="action-box">
-                        <div class="action-row"><span>Schedule & Costs</span><button class="quick-btn" onclick="copyToClipboard('Plan: Date — Time — Place — Cost — Purpose. Save & claim.','Plan Template')">Copy Planner</button></div>
+                        <div class="action-row"><span>Plan template</span><button class="quick-btn" onclick="copyToClipboard('PLAN: Date — Time — Place — Cost — Purpose. Save & claim.','Plan Template')">Copy Planner</button></div>
                     </div>
                 </div>`;
             }
@@ -599,34 +610,29 @@
             document.getElementById('spaceTitle').textContent = name;
             const content = document.getElementById('spaceContent');
 
-            if(name === 'Business Main') {
+            if(name === 'Business Main™') {
                 content.innerHTML = `
                 <p style="margin-bottom:1.5rem; color:var(--champagne-light);">Your central command — everything to run, price, plan, and grow your core business.</p>
                 <div class="action-box">
-                    <div class="action-row"><span>Budget Builder — track every category</span><button class="quick-btn" onclick="copyToClipboard('Budget: Income — Fixed Costs — Variable — Profit. Update monthly.','Budget')">Copy Tool</button></div>
-                    <div class="action-row"><span>Pricing Calculator — know your TRUE cost before quoting</span><button class="quick-btn" onclick="copyToClipboard('Price = Materials + Labour + Overheads + Profit Margin + Tax. Never undercharge again.','Price Formula')">Copy Formula</button></div>
-                    <div class="action-row"><span>Supplier List — compare & track</span><button class="quick-btn" onclick="copyToClipboard('Supplier: Name — Contact — Product — Price — Lead Time — Rating.','Supplier Log')">Copy Log</button></div>
+                    <div class="action-row"><span>Budget Builder — track every category</span><button class="quick-btn" onclick="copyToClipboard('BUDGET: Income — Fixed Costs — Variable — Profit. Update monthly.','Budget')">Copy Tool</button></div>
+                    <div class="action-row"><span>Pricing Formula — never undercharge again</span><button class="quick-btn" onclick="copyToClipboard('PRICE = Materials + Labour + Overheads + Profit Margin + Tax.','Price Formula')">Copy Formula</button></div>
                 </div>`;
-            } else if(name === 'Digital Creator') {
+            } else if(name === 'Digital Creator™') {
                 content.innerHTML = `
-                <p style="margin-bottom:1.5rem; color:var(--champagne-light);">Your online empire — track what earns, what grows, what pays, and what links where.</p>
+                <p style="margin-bottom:1.5rem; color:var(--champagne-light);">Your growth engine — track what earns, what grows, what links where.</p>
                 <div class="action-box">
-                    <div class="action-row"><span>Affiliate Tracker — code, link, product, earnings</span><button class="quick-btn" onclick="copyToClipboard('Affiliate: Program — Link — Product — Commission — Paid? — Notes.','Affiliate Log')">Copy Log</button></div>
-                    <div class="action-row"><span>Content Planner — what, when, where, goal</span><button class="quick-btn" onclick="copyToClipboard('Plan: Date — Platform — Topic — Format — Goal — Status.','Content Plan')">Copy Plan</button></div>
-                    <div class="action-row"><span>Media Costs — tools, subscriptions, ads</span><button class="quick-btn" onclick="copyToClipboard('Media Cost: Item — Amount — Purpose — Worth it? — Next Review.','Media Log')">Copy Log</button></div>
+                    <div class="action-row"><span>Affiliate Log — code, link, product, earnings</span><button class="quick-btn" onclick="copyToClipboard('AFFILIATE: Program — Link — Product — Commission — Paid? — Notes.','Affiliate Log')">Copy Log</button></div>
                 </div>`;
-            } else if(name === 'Legal & Rights') {
+            } else if(name === 'Legal & Rights™') {
                 content.innerHTML = `
-                <p style="margin-bottom:1.5rem; color:var(--champagne-light);">YOUR SHIELD. Built from my own fights — evictions, injuries, unfair treatment, lies, and what actually works. This is NOT legal advice — THIS IS WHAT I LEARNED THE HARD WAY.</p>
+                <p style="margin-bottom:1.5rem; color:var(--champagne-light);">YOUR SHIELD. Built from my own fights — evictions, injuries, unfair treatment. NOT legal advice — THIS IS WHAT I LEARNED THE HARD WAY.</p>
                 <div class="action-box">
-                    <div class="action-row"><span>Evidence Log — DATE, TIME, WHO, WHAT, WHERE, PHOTO</span><button class="quick-btn" onclick="copyToClipboard('EVIDENCE LOG — Date: — Time: — Location: — Person: — What happened: — Witnesses: — Photos/Files: — Notes:','Evidence Log')">Copy Log</button></div>
-                    <div class="action-row"><span>Contract Check — simple fair terms</span><button class="quick-btn" onclick="copyToClipboard('Fair terms: What is agreed — Price — Payment dates — What happens if late — How to end it.','Contract Basics')">Copy Guide</button></div>
-                    <div class="action-row"><span>Dispute Letter — calm, factual, powerful</span><button class="quick-btn" onclick="copyToClipboard('I am writing regarding… Facts: … What I want: … Deadline: … Next steps if not resolved: …','Dispute Template')">Copy Letter</button></div>
-                    <div class="action-row"><span>Local Help — Citizens Advice / Shelter / Law Centres</span><button class="quick-btn" onclick="copyToClipboard('Find: Citizens Advice, Law Centres, Shelter, local council housing/environmental health.','Where to go')">Copy List</button></div>
+                    <div class="action-row"><span>EVIDENCE LOG — DATE, TIME, WHO, WHAT, WHERE, PROOF</span><button class="quick-btn" onclick="copyToClipboard('EVIDENCE LOG — Date: — Time: — Location: — Person: — What happened: — Witnesses: — Files: — Notes:','Evidence Log')">Copy Log</button></div>
+                    <div class="action-row"><span>Where to go — free UK help</span><button class="quick-btn" onclick="copyToClipboard('Find: Citizens Advice, Law Centres, Shelter, Local Council — all FREE.','Help List')">Copy List</button></div>
                 </div>`;
-            } else if(name === 'New Project') {
+            } else if(name === '+ Add New Space™') {
                 content.innerHTML = `
-                <p style="margin-bottom:1.5rem; color:var(--champagne-light);">Anything new you build — side‑income, ideas, dreams, ventures — give it its own home here.</p>
+                <p style="margin-bottom:1.5rem; color:var(--champagne-light);">Anything new you build — side‑income, ideas, dreams — give it its own home here.</p>
                 <div class="action-box">
                     <div class="action-row"><span>Project Start — name, goal, budget, timeline</span><button class="quick-btn" onclick="copyToClipboard('PROJECT: Name — Why — Goal — Budget — Deadline — First Step.','Project Plan')">Copy Plan</button></div>
                 </div>`;
