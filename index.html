@@ -3,125 +3,550 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX Universal Financial Solutions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <title>ONYX // Universal Financial Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-obsidian: #050714;
-            --card-surface: rgba(18, 22, 40, 0.85);
-            --champagne: #E5C594;
-            --champagne-glow: rgba(229, 197, 148, 0.25);
-            --coral-accent: #E87566;
-            --text-soft: #D4D8E8;
-            --text-bright: #F8F9FC;
-            --border-subtle: rgba(229, 197, 148, 0.18);
+            --midnight-deep: #020612;
+            --midnight-layer: #080E20;
+            --midnight-soft: #0F172A;
+            --champagne: #D4B996;
+            --champagne-light: #F2E2C9;
+            --champagne-deep: #B89458;
+            --champagne-glow: rgba(212, 185, 150, 0.12);
+            --rose-coral: #E27D60;
+            --rose-glow: rgba(226, 125, 96, 0.08);
+            --velvet-indigo: #4F46E5;
+            --velvet-glow: rgba(79, 70, 229, 0.06);
+            --text-ivory: #F8F5F0;
+            --text-soft: #A8A29E;
+            --border-frost: rgba(212, 185, 150, 0.16);
+            --border-frost-strong: rgba(212, 185, 150, 0.32);
+            --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+            --shadow-luxury: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
         }
-        * { margin:0; padding:0; box-sizing:border-box; font-weight:400; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
+            background-color: var(--midnight-deep);
+            color: var(--text-ivory);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at top, #0F1429 0%, var(--bg-obsidian) 65%);
-            color: var(--text-soft);
             min-height: 100vh;
-            line-height: 1.6;
+            padding: 32px 20px;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 8% 5%, rgba(212, 185, 150, 0.07) 0%, transparent 50%),
+                radial-gradient(circle at 92% 90%, rgba(79, 70, 229, 0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at center top, var(--midnight-layer) 0%, var(--midnight-deep) 65%);
+            background-attachment: fixed;
         }
-        .brand-mark { font-family: 'Playfair Display', serif; color: var(--champagne); }
+        .ambient-glow {
+            position: fixed;
+            width: 700px; height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--champagne-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+            animation: driftLuxury 35s infinite ease-in-out alternate;
+            opacity: 0.55;
+        }
+        .ambient-glow:nth-child(2) { width: 500px; height: 500px; top: 10%; right: -50px; background: radial-gradient(circle, var(--rose-glow) 0%, transparent 70%); animation-delay: -12s; }
+        .ambient-glow:nth-child(3) { width: 550px; height: 550px; bottom: 0; left: -80px; background: radial-gradient(circle, var(--velvet-glow) 0%, transparent 70%); animation-delay: -24s; }
+        @keyframes driftLuxury {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, -50px) scale(1.25); }
+        }
+        .view {
+            width: 100%;
+            max-width: 1260px;
+            margin: 0 auto;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+        .view.active {
+            display: block;
+            animation: fadeInLuxury 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInLuxury {
+            from { opacity: 0; transform: translateY(28px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .quiz-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(45px);
+            -webkit-backdrop-filter: blur(45px);
+            border: 1px solid var(--border-frost);
+            border-radius: 36px;
+            padding: 50px 52px;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 90px rgba(212, 185, 150, 0.04);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 920px;
+            margin: 40px auto;
+        }
+        .hero-banner {
+            border-bottom: 1px solid rgba(212, 185, 150, 0.15);
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            letter-spacing: 10px;
+            color: var(--text-ivory);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .brand-subtitle-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--champagne);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .hero-definition {
+            font-size: 14px;
+            color: var(--champagne-light);
+            line-height: 1.8;
+            max-width: 780px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        .step-indicator {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+        .quiz-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 28px;
+            line-height: 1.4;
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-ivory);
+        }
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 20px;
+            text-align: left;
+            max-width: 740px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .option-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 185, 150, 0.14);
+            color: var(--text-ivory);
+            padding: 22px 28px;
+            border-radius: 20px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .option-btn:hover {
+            border-color: var(--border-frost-strong);
+            background: rgba(212, 185, 150, 0.06);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 35px rgba(212, 185, 150, 0.07);
+        }
         header {
-            padding: 1.2rem 2rem;
-            border-bottom: 1px solid var(--border-subtle);
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(5, 7, 20, 0.7); backdrop-filter: blur(12px); position: sticky; top:0; z-index:100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 185, 150, 0.14);
+            padding-bottom: 36px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
         }
-        .logo-text { font-size: 1.4rem; letter-spacing: 0.12em; font-weight:600; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 5px;
+            color: var(--text-ivory);
+            font-weight: 700;
+        }
+        .logo span { 
+            background: linear-gradient(135deg, var(--champagne-light), var(--champagne) 60%, var(--champagne-deep));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: normal;
+            font-size: 14px;
+            letter-spacing: 3px;
+            display: block;
+            margin-top: 4px;
+        }
+        .terminal-status {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--champagne);
+            background: rgba(212, 185, 150, 0.08);
+            padding: 11px 22px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 185, 150, 0.22);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
         .card {
-            background: var(--card-surface); border: 1px solid var(--border-subtle);
-            border-radius: 14px; padding: 1.8rem; margin-bottom: 1.6rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            background: var(--glass-bg);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid var(--border-frost);
+            border-radius: 26px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--shadow-luxury);
+            height: fit-content;
+            overflow: hidden;
         }
-        .card:hover { border-color: var(--champagne-glow); transform: translateY(-2px); }
-        h1, h2, h3 { color: var(--text-bright); margin-bottom: 0.8rem; }
-        .btn {
-            display: inline-block; padding: 0.8rem 2rem; border-radius: 10px;
-            background: linear-gradient(135deg, var(--champagne) 0%, #D4B07C 100%);
-            color: #050714; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
-            transition: box-shadow 0.3s ease;
+        .card:hover {
+            border-color: var(--border-frost-strong);
+            box-shadow: 0 45px 75px rgba(0, 0, 0, 0.6), 0 0 55px rgba(212, 185, 150, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transform: translateY(-6px);
         }
-        .btn:hover { box-shadow: 0 0 18px var(--champagne-glow); }
-        .btn-soft { background: transparent; border: 1px solid var(--champagne); color: var(--champagne); margin-left: 0.8rem; }
-        .btn-soft:hover { background: var(--champagne-glow); color: var(--text-bright); }
-        .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; margin-top: 1rem; }
-        .folder-card { text-align: center; padding: 1.6rem; cursor: pointer; }
+        .card h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-soft);
+            margin-bottom: 18px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-bar-container { margin-bottom: 16px; }
+        .search-input {
+            width: 100%; background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 185, 150, 0.2);
+            border-radius: 12px; padding: 12px 16px;
+            color: var(--text-ivory); font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px; outline: none; transition: all 0.3s ease;
+        }
+        .search-input:focus {
+            border-color: var(--champagne); background: rgba(212, 185, 150, 0.04);
+            box-shadow: 0 0 15px rgba(212, 185, 150, 0.1);
+        }
+        .search-input::placeholder { color: var(--text-soft); }
+        .plain-toggle {
+            font-size: 10px; color: var(--champagne);
+            background: rgba(212, 185, 150, 0.08);
+            padding: 6px 14px; border-radius: 8px;
+            cursor: pointer; border: 1px solid rgba(212, 185, 150, 0.18);
+            transition: all 0.25s ease; white-space: nowrap;
+        }
+        .plain-toggle:hover { background: rgba(212, 185, 150, 0.15); }
+        .plain-desc {
+            font-size: 12px; color: var(--champagne-light);
+            background: rgba(212, 185, 150, 0.05);
+            border-left: 2px solid var(--champagne);
+            padding: 14px 18px; margin-bottom: 20px;
+            border-radius: 0 12px 12px 0; display: none; line-height: 1.75;
+        }
+        .plain-desc.show { display: block; animation: fadeInLuxury 0.4s ease forwards; }
+        .metric-value {
+            font-family: 'Playfair Display', serif; font-size: 42px;
+            background: linear-gradient(135deg, #FFFFFF 10%, var(--champagne) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 6px; font-weight: 600; line-height: 1.1;
+        }
+        .metric-sub { font-size: 12px; color: var(--text-soft); margin-bottom: 12px; }
+        .action-box { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+        .action-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; background: rgba(255, 255, 255, 0.015);
+            border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--champagne); font-size: 13px;
+            transition: all 0.25s ease; flex-wrap: wrap; gap: 8px;
+        }
+        .action-row:hover { background: rgba(255, 255, 255, 0.025); border-left-width: 4px; }
+        .action-row.glow-rose { border-left-color: var(--rose-coral); }
+        .action-row.glow-velvet { border-left-color: var(--velvet-indigo); }
+        .action-row.glow-amethyst { border-left-color: #8B5CF6; }
+        .quick-btn {
+            background: linear-gradient(135deg, var(--champagne-light), var(--champagne) 50%, var(--champagne-deep));
+            color: var(--midnight-deep); border: none; padding: 9px 18px;
+            border-radius: 12px; font-weight: 600; font-size: 10px;
+            text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 4px 18px rgba(212, 185, 150, 0.25);
+            white-space: nowrap;
+        }
+        .quick-btn:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(212, 185, 150, 0.35); }
+        .template-list {
+            margin-top: 12px; display: flex; flex-direction: column; gap: 8px;
+            max-height: 220px; overflow-y: auto; padding-right: 4px;
+        }
+        .template-btn {
+            background: rgba(255,255,255,0.015); border: 1px solid rgba(212, 185, 150, 0.12);
+            color: var(--text-ivory); text-align: left; padding: 12px 16px;
+            border-radius: 12px; font-size: 13px; cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .template-btn:hover { border-color: var(--champagne); background: rgba(212, 185, 150, 0.05); }
+        .folder-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem; margin-top: 2rem;
+        }
+        .folder-card {
+            background: var(--glass-bg); backdrop-filter: blur(32px);
+            border: 1px solid var(--border-frost); border-radius: 20px;
+            padding: 2rem; text-align: center; cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .folder-card:hover {
+            border-color: var(--champagne); transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 24px var(--champagne-glow);
+        }
         .disclaimer-box {
-            background: rgba(232, 117, 102, 0.08); border-left: 3px solid var(--coral-accent);
-            font-size: 0.9rem; line-height: 1.7; margin-top: 2rem;
+            background: rgba(232, 117, 102, 0.06); border-left: 3px solid var(--rose-coral);
+            padding: 1.5rem; border-radius: 0 16px 16px 0; margin-top: 3rem;
+            font-size: 0.9rem; line-height: 1.7; color: var(--champagne-light);
         }
         .hidden { display: none !important; }
+        .back-btn {
+            display: inline-block; margin-bottom: 1.5rem; color: var(--champagne);
+            text-decoration: none; font-size: 0.9rem; cursor: pointer;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        @media(max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        @media(max-width: 640px) {
+            .grid { grid-template-columns: 1fr; }
+            body { padding: 18px 14px; }
+            .quiz-card { padding: 35px 20px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1 class="brand-mark logo-text">ONYX</h1>
-        <span style="font-size:0.9rem; color:var(--champagne)">Universal Financial Solutions</span>
-    </header>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow"></div>
 
-    <main class="container">
-        <section id="loginScreen" class="card" style="max-width:480px; margin:4rem auto; text-align:center;">
-            <h2 class="brand-mark">Welcome to ONYX</h2>
-            <p style="margin-bottom:1.5rem;">Your independent financial toolkit — built from real life, for real people.</p>
-            <input type="email" id="userEmail" placeholder="Your email address" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid var(--border-subtle); background:rgba(0,0,0,0.25); color:var(--text-bright); margin-bottom:1rem;">
-            <button class="btn" onclick="enterOnyx()">Sign In / Enter</button>
-        </section>
+    <!-- WELCOME QUIZ SCREEN -->
+    <div id="quizView" class="view active">
+        <div class="quiz-card">
+            <div class="hero-banner">
+                <div class="brand-title">ONYX</div>
+                <div class="brand-subtitle-title">Universal Financial Solutions</div>
+                <p class="hero-definition">
+                    What is ONYX? It is your complete, all‑in‑one business sanctuary. No more jumping between apps, separate bank logins, or endless spreadsheets. ONYX links everything together, tracks money, costs, invoices, and trends — all in one place, built from real life, for real business people.
+                </p>
+            </div>
+            <div class="step-indicator">Step 1 of 3 — Personalising Your Sanctuary</div>
+            <h2>What drains your energy the fastest right now?</h2>
+            <div class="options-grid">
+                <button class="option-btn" onclick="buildDashboard('cashflow')">Chasing money & wondering where payments are</button>
+                <button class="option-btn" onclick="buildDashboard('costs')">Hidden costs, leaks & not knowing where to save</button>
+                <button class="option-btn" onclick="buildDashboard('admin')">Endless admin, quotes, letters & keeping track of everything</button>
+                <button class="option-btn" onclick="showSpaces()">I know what I need — show me all my spaces</button>
+            </div>
+        </div>
+    </div>
 
-        <section id="mainDashboard" class="hidden">
-            <h2 class="brand-mark">Your Spaces</h2>
-            <p>One login — every business, channel or project kept perfectly separate & secure.</p>
+    <!-- MAIN DASHBOARD SCREEN -->
+    <div id="terminalView" class="view">
+        <header>
+            <div class="logo">ONYX <span>Universal Financial Solutions</span></div>
+            <div class="terminal-status">All Accounts Linked • Secure • Private</div>
+        </header>
 
+        <span class="back-btn" onclick="goBack()">&larr; Change what you need help with</span>
+
+        <div class="grid" id="dashboardCards">
+            <!-- CARDS LOAD AUTOMATICALLY BASED ON SELECTION -->
+        </div>
+
+        <!-- ALL BUSINESS SPACES -->
+        <div style="margin-top: 3rem;">
+            <h2 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--champagne); margin-bottom:1.5rem;">Your Business Spaces</h2>
             <div class="folder-grid">
-                <div class="card folder-card" onclick="openFolder('Business Main')">
+                <div class="folder-card" onclick="openSpace('Business Main')">
                     <h3>Business Main</h3>
-                    <p>Overall budgets, plans & templates</p>
+                    <p>Budgets, costs, suppliers, pricing, plans</p>
                 </div>
-                <div class="card folder-card" onclick="openFolder('YouTube Channel 1')">
-                    <h3>YouTube Channel 1</h3>
-                    <p>Income, costs, reports — separate</p>
+                <div class="folder-card" onclick="openSpace('Digital Creator')">
+                    <h3>Digital Creator</h3>
+                    <p>Channels, affiliate links, income tracking, media costs</p>
                 </div>
-                <div class="card folder-card" onclick="openFolder('YouTube Channel 2')">
-                    <h3>YouTube Channel 2</h3>
-                    <p>Completely independent records</p>
+                <div class="folder-card" onclick="openSpace('Legal & Rights')">
+                    <h3>Legal & Rights</h3>
+                    <p>Contracts, evidence logs, claims, disputes, compliance</p>
                 </div>
-                <div class="card folder-card" onclick="openFolder('New Project')">
+                <div class="folder-card" onclick="openSpace('New Project')">
                     <h3>+ Add New Space</h3>
-                    <p>Start fresh for anything new</p>
+                    <p>Side‑income, campaigns, new ventures — anything separate</p>
                 </div>
             </div>
+        </div>
 
-            <div class="card" style="margin-top:2rem;">
-                <h3>Tools inside every Space</h3>
-                <p>Budget Builder • Expense Tracker • Ready-Made Letters & Forms • Benefit & Rights Guides • Affiliate Links Manager • Invoice Templates • Secure File Area</p>
-            </div>
-
-            <div class="card disclaimer-box">
-                <strong>Important Guidance:</strong> Everything here comes from lived experience, research and general guidance only — <em>this is NOT regulated financial or legal advice</em>. Always verify with qualified professionals for your exact situation. ONYX is independent, educational, and built to help you help yourself — nothing more, nothing less.
-            </div>
-        </section>
-    </main>
+        <!-- DISCLAIMER -->
+        <div class="disclaimer-box">
+            <strong>Important Guidance:</strong> Everything here comes from lived experience, research and general guidance only — <em>this is NOT regulated financial or legal advice</em>. Always verify with qualified professionals for your exact situation. ONYX is independent, educational, and built to help you help yourself — nothing more, nothing less.
+        </div>
+    </div>
 
     <script>
-        function enterOnyx() {
-            const email = document.getElementById('userEmail').value;
-            if(email.length > 4) {
-                document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('mainDashboard').classList.remove('hidden');
+        // ANIMATE TRANSITION BETWEEN SCREENS
+        function transitionTo(nextId) {
+            document.querySelector('.view.active').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+                document.getElementById(nextId).classList.add('active');
                 window.scrollTo(0,0);
-            } else {
-                alert('Just enter your email to continue — this is your private preview.');
+            }, 400);
+        }
+
+        // GO BACK TO QUIZ
+        function goBack() {
+            transitionTo('quizView');
+        }
+
+        // SHOW ALL SPACES DIRECTLY
+        function showSpaces() {
+            document.getElementById('dashboardCards').innerHTML = '';
+            transitionTo('terminalView');
+        }
+
+        // BUILD PERSONALISED DASHBOARD
+        function buildDashboard(type) {
+            const container = document.getElementById('dashboardCards');
+            let cards = '';
+
+            if(type === 'cashflow') {
+                cards = `
+                <div class="card">
+                    <h3><span>Unified Cash & Upcoming Outflow</span><span class="plain-toggle" onclick="togglePlain('p1')">Plain English?</span></h3>
+                    <div id="p1" class="plain-desc">All your accounts combined into one true total. Shows exactly what must leave so you know what is safe to spend.</div>
+                    <div class="metric-value">£14,850.00</div>
+                    <p class="metric-sub">Due out next 3 days: £1,240.00</p>
+                    <div class="action-box">
+                        <div class="action-row"><span>Linked: Monzo + Barclays + Stripe + PayPal</span><span style="color:var(--champagne);">Synced Live</span></div>
+                        <div class="action-row"><span>Upcoming Payments</span><button class="quick-btn" onclick="alert('Reviewing upcoming bills...')">View Outflows</button></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span>Invoice Hound</span><span class="plain-toggle" onclick="togglePlain('p2')">Plain English?</span></h3>
+                    <div id="p2" class="plain-desc">Chases money for you. Polite, firm, or final — ready to send.</div>
+                    <div class="search-bar-container">
+                        <input type="text" class="search-input" placeholder="Search client, invoice, amount..." oninput="filterTemplates(this.value)">
+                    </div>
+                    <div class="action-box">
+                        <div class="action-row"><span>2 Overdue / 3 Due Soon</span><span style="color:var(--champagne);">Templates Ready</span></div>
+                    </div>
+                    <div class="template-list" id="tpls">
+                        <button class="template-btn" onclick="alert('Gentle Reminder — ready to send')">Gentle Reminder</button>
+                        <button class="template-btn" onclick="alert('Firm Follow-Up — ready to send')">Firm Follow-Up</button>
+                        <button class="template-btn" onclick="alert('Final Notice — ready to send')">Final Notice</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span>Trend Watch</span><span class="plain-toggle" onclick="togglePlain('p3')">Plain English?</span></h3>
+                    <div id="p3" class="plain-desc">See what's rising, what's slowing, and what to do about it.</div>
+                    <div class="action-box">
+                        <div class="action-row"><span>Income this month</span><span style="color:var(--champagne);">+18%</span></div>
+                        <div class="action-row glow-rose"><span>3 invoices overdue = £1,420</span><button class="quick-btn" onclick="alert('Send reminders now')">Chase</button></div>
+                    </div>
+                </div>`;
+            } else if(type === 'costs') {
+                cards = `
+                <div class="card">
+                    <h3><span>Leakage Shield</span><span class="plain-toggle" onclick="togglePlain('p4')">Plain English?</span></h3>
+                    <div id="p4" class="plain-desc">Finds money leaking out that you forgot about. Unused subscriptions, hidden rises, wasted costs.</div>
+                    <div class="metric-value">£42.00/mo</div>
+                    <p class="metric-sub">Found: unused recurring payments</p>
+                    <div class="action-box">
+                        <div class="action-row glow-rose"><span>Subscription Leak</span><button class="quick-btn" onclick="alert('Cancelling unused services...')">Cancel</button></div>
+                        <div class="action-row glow-velvet"><span>Supplier Price Rise</span><button class="quick-btn" onclick="alert('Finding cheaper alternatives...')">Find Alternative</button></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span>Cost Tracker</span><span class="plain-toggle" onclick="togglePlain('p5')">Plain English?</span></h3>
+                    <div id="p5" class="plain-desc">See exactly where every penny goes. Spot trends before they hurt.</div>
+                    <div class="action-box">
+                        <div class="action-row"><span>Materials — up 12%</span><span style="color:var(--rose-coral);">Watch</span></div>
+                        <div class="action-row"><span>Utilities — due rise next week</span><button class="quick-btn" onclick="alert('Budget adjusted...')">Adjust</button></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span>Alternative Finder</span><span class="plain-toggle" onclick="togglePlain('p6')">Plain English?</span></h3>
+                    <div id="p6" class="plain-desc">Price too high? Find equal or better options at fairer cost.</div>
+                    <div class="action-box">
+                        <div class="action-row"><span>Search fairer suppliers</span><button class="quick-btn" onclick="alert('Searching local alternatives...')">Search</button></div>
+                    </div>
+                </div>`;
+            } else if(type === 'admin') {
+                cards = `
+                <div class="card">
+                    <h3><span>Letter & Form Studio</span><span class="plain-toggle" onclick="togglePlain('p7')">Plain English?</span></h3>
+                    <div id="p7" class="plain-desc">Professional letters, quotes, emails, notices — pre‑written, ready to adapt & send.</div>
+                    <div class="search-bar-container">
+                        <input type="text" class="search-input" placeholder="Search letter type..." oninput="filterTemplates(this.value)">
+                    </div>
+                    <div class="template-list" id="tpls">
+                        <button class="template-btn" onclick="alert('Quote template — ready to adapt')">New Price Quote</button>
+                        <button class="template-btn" onclick="alert('Follow-up template — ready to send')">Quote Follow-Up</button>
+                        <button class="template-btn" onclick="alert('Payment terms — ready to send')">Payment Terms</button>
+                        <button class="template-btn" onclick="alert('Supplier enquiry — ready to send')">Supplier Enquiry</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span>Evidence & Logs</span><span class="plain-toggle" onclick="togglePlain('p8')">Plain English?</span></h3>
+                    <div id="p8" class="plain-desc">Keep records, dates, photos, messages — all organised should you ever need proof.</div>
+                    <div class="action-box">
+                        <div class="action-row"><span>Upload receipt / photo / note</span><button class="quick-btn" onclick="alert('Secure upload area...')">Upload</button></div>
+                        <div class="action-row"><span>Search all records</span><button class="quick-btn" onclick="alert('Searching secure files...')">Find</button></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><span>Travel & Appointments</span><span class="plain-toggle" onclick="togglePlain('p9')">Plain English?</span></h3>
+                    <div id="p9" class="plain-desc">Bookings, meetings, travel, costs — all tracked & scheduled.</div>
+                    <div class="action-box">
+                        <div class="action-row"><span>Schedule & Costs</span><button class="quick-btn" onclick="alert('Opening planner...')">Plan</button></div>
+                    </div>
+                </div>`;
+            }
+
+            container.innerHTML = cards;
+            transitionTo('terminalView');
+        }
+
+        // TOGGLE PLAIN ENGLISH
+        function togglePlain(id) {
+            document.getElementById(id).classList.toggle('show');
+        }
+
+        // FILTER TEMPLATES
+        function filterTemplates(query) {
+            const list = document.getElementById('tpls');
+            if(!list) return;
+            const btns = list.getElementsByClassName('template-btn');
+            const q = query.toLowerCase();
+            for(let i=0; i<btns.length; i++) {
+                btns[i].style.display = btns[i].textContent.toLowerCase().indexOf(q) > -1 ? '' : 'none';
             }
         }
-        function openFolder(name) {
-            alert('Opening: ' + name + '\n\n✅ Fully separate data, private to this space only.\n\nThis is where your dedicated tools load — ready to build live features next.');
+
+        // OPEN BUSINESS SPACE
+        function openSpace(name) {
+            alert('Opening: ' + name + '\n\n✅ Fully separate, private, secure.\n\nAll tools ready here.');
         }
     </script>
 </body>
