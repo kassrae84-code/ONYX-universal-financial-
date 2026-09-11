@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX // Universal Financial Solutions</title>
+    <title>ONYX™ // Universal Financial Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,6 +16,7 @@
             --coral-glow: rgba(232, 139, 124, 0.12);
             --text-soft: #CBD5E1;
             --text-bright: #F8FAFC;
+            --locked: rgba(148, 163, 184, 0.35);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -26,6 +27,8 @@
             min-height: 100vh;
         }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--champagne); }
+
+        /* — YOUR EXISTING MAIN STYLES — KEEP EVERYTHING YOU BUILT — */
         .onyx-plans {
             max-width: 1200px;
             margin: 6rem auto;
@@ -55,6 +58,7 @@
             transition: transform 0.35s ease, box-shadow 0.35s ease;
             position: relative;
             overflow: hidden;
+            text-align: left;
         }
         .plan-card:hover {
             transform: translateY(-6px);
@@ -67,18 +71,40 @@
         .plan-card h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
         .price {
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-bright);
-            margin-bottom: 1rem;
+            margin-bottom: 0.25rem;
+            text-align: center;
         }
-        price span { font-size: 1rem; font-weight: 300; opacity: 0.7; }
+        .price span { font-size: 1rem; font-weight: 300; opacity: 0.7; }
+        .sub-price {
+            color: var(--champagne);
+            opacity: 0.85;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
         .plan-desc {
             color: var(--text-soft);
-            margin-bottom: 2rem;
-            min-height: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .plan-card ul {
+            list-style: none;
+            margin: 0 0 2rem 0;
+            padding: 0;
+        }
+        .plan-card ul li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid rgba(229,197,148,0.06);
+        }
+        .plan-card ul li.locked {
+            color: var(--locked);
+            position: relative;
         }
         .subscribe-btn {
             background: linear-gradient(135deg, var(--champagne), #D4A76A);
@@ -97,6 +123,7 @@
             margin-top: 3rem;
             color: #94A3B8;
             font-size: 0.95rem;
+            text-align: center;
         }
         .family-note strong { color: var(--coral-accent); }
         footer {
@@ -111,48 +138,101 @@
 </head>
 <body>
 
-    <!-- YOUR EXISTING ONYX CONTENT KEEPS GOING HERE — ALL YOUR PAGES, TOOLS, EVERYTHING — NOT TOUCHED -->
+    <!-- ==============================================
+         YOUR FULL ONYX CONTENT — KEEP ALL YOUR EXISTING PAGES, TOOLS, MENUS HERE — NOT TOUCHED
+         ============================================== -->
 
     <!-- ==============================================
-         NEW PRICING SECTION — ALREADY IN PLACE
+         ✅ FINAL PRICING — EXACTLY YOUR SPECS
          ============================================== -->
     <section class="onyx-plans">
         <h2>Choose Your Path</h2>
-        <p>Secure, encrypted access — cancel anytime, no fine print. We never sell or share your data.</p>
+        <p>Secure • Encrypted • Cancel anytime in one click — no fine print. We never sell or share your data.</p>
 
         <div class="plans-grid">
-            <!-- FOUNDER -->
+
+            <!-- ✅ FOUNDER — £19.99 → £29.99 | 2‑Day Trial — PAYMENT FIRST | NO REMINDERS -->
             <div class="plan-card">
                 <h3>FOUNDER</h3>
-                <div class="price">£19.99 <span>/month</span></div>
-                <p class="plan-desc">Essential tools, templates & tracking — start building your business strong.</p>
-                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_WITH_YOUR_LINK_FOUNDER','_blank')">Subscribe Now</button>
+                <div class="price">£19.99 <span>first month</span></div>
+                <div class="sub-price">then £29.99 / month</div>
+                <p class="plan-desc">Start building strong — core tools for every business owner.</p>
+                <ul>
+                    <li>✅ Cash flow & <strong>Core Leak Finder</strong> — spot unused subs, basic waste & overpayments</li>
+                    <li>✅ Standard invoices, quotes & estimates</li>
+                    <li>✅ Essential email & sales templates</li>
+                    <li>✅ World Sales Map — key regions view</li>
+                    <li>✅ Starter marketing templates</li>
+                    <li>✅ Drag‑and‑drop designer — 5 active projects</li>
+                    <li>✅ Basic audience insights</li>
+                    <li>✅ <strong>2 Encrypted Meeting Rooms</strong></li>
+                    <li>✅ Smart Notes — manual + basic extract</li>
+                    <li>✅ Business Profile — adapts to your work</li>
+                    <li>✅ <strong>Evidence Vault — 5 uploads max</strong> — images / video / reports / files</li>
+                    <li class="locked">🔒 Advanced Leak Detection — upgrade to unlock</li>
+                    <li class="locked">🔒 Unlimited templates & projects — upgrade to unlock</li>
+                </ul>
+                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_FOUNDER_LINK','_blank')">
+                    Start 2‑Day Full Access<br><small>Add payment to activate — NO charge today</small>
+                </button>
             </div>
 
-            <!-- GROWTH — FEATURED -->
+            <!-- ✅ GROWTH — £39.99 → £49.99 | MOST CHOSEN | 2‑Day Trial — PAYMENT FIRST | NO REMINDERS -->
             <div class="plan-card featured">
-                <h3>GROWTH</h3>
-                <div class="price">£39.99 <span>/month</span></div>
-                <p class="plan-desc">Everything in FOUNDER + advanced analytics, priority support & extra resources.</p>
-                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_WITH_YOUR_LINK_GROWTH','_blank')">Subscribe Now</button>
+                <h3>GROWTH — MOST CHOSEN</h3>
+                <div class="price">£39.99 <span>first month</span></div>
+                <div class="sub-price">then £49.99 / month</div>
+                <p class="plan-desc">Everything you need to scale — deeper insights & unlimited power.</p>
+                <ul>
+                    <li>✅ <strong>EVERYTHING in FOUNDER +</strong></li>
+                    <li>✅ <strong>Advanced Leak Detection</strong> — deep audit, supplier checks, cheaper alternatives found</li>
+                    <li>✅ Unlimited documents — invoices, quotes, contracts</li>
+                    <li>✅ <strong>FULL Template Library — every style</strong></li>
+                    <li>✅ Full World Sales Map — every location</li>
+                    <li>✅ Unlimited marketing templates</li>
+                    <li>✅ Unlimited drag‑and‑drop projects</li>
+                    <li>✅ Demand heatmaps + trend forecasts</li>
+                    <li>✅ <strong>Evidence Vault — UNLIMITED uploads</strong></li>
+                    <li>✅ Smart Profile — fully tailored workflows</li>
+                    <li class="locked">🔒 Multi‑Business Dashboard — upgrade to unlock</li>
+                    <li class="locked">🔒 Private Strategy Reports — upgrade to unlock</li>
+                </ul>
+                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_GROWTH_LINK','_blank')">
+                    Start 2‑Day Full Access<br><small>Add payment to activate — NO charge today</small>
+                </button>
             </div>
 
-            <!-- MASTER -->
+            <!-- ✅ MASTER — £79.99 → £89.99 | ULTIMATE | 2‑Day Trial — PAYMENT FIRST | NO REMINDERS -->
             <div class="plan-card">
-                <h3>MASTER</h3>
-                <div class="price">£79.99 <span>/month</span></div>
-                <p class="plan-desc">All‑access everything — full suite, custom tools, VIP help & lifetime updates.</p>
-                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_WITH_YOUR_LINK_MASTER','_blank')">Subscribe Now</button>
+                <h3>MASTER — ULTIMATE POWER</h3>
+                <div class="price">£79.99 <span>first month</span></div>
+                <div class="sub-price">then £89.99 / month</div>
+                <p class="plan-desc">All‑access everything — built for leaders who mean business.</p>
+                <ul>
+                    <li>✅ <strong>EVERYTHING in GROWTH +</strong></li>
+                    <li>✅ Multi‑Business Dashboard — unlimited entities</li>
+                    <li>✅ Global Market Intelligence — deep reports</li>
+                    <li>✅ Full Custom Branding — save & apply everywhere</li>
+                    <li>✅ Advanced Forecasting — 12‑month views</li>
+                    <li>✅ Private Strategy Reports — bespoke plans</li>
+                    <li>✅ Priority help — always first in line</li>
+                    <li>✅ <strong>EVERY future feature — unlocked forever</strong></li>
+                </ul>
+                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_MASTER_LINK','_blank')">
+                    Start 2‑Day Full Access<br><small>Add payment to activate — NO charge today</small>
+                </button>
             </div>
+
         </div>
 
-        <p class="family-note">💎 Special invite code: use <strong>FAMILY2026</strong> at checkout for 100% off — forever.</p>
+        <p class="family-note">💎 Features above your plan level show as locked — simply click to upgrade anytime.<br>
+        Special invite code: use <strong>FAMILY2026</strong> at checkout for 100% off — forever.</p>
     </section>
 
-    <!-- LEGAL DISCLAIMER -->
+    <!-- ✅ LEGAL — CLEAN, SAFE, COMPLIANT -->
     <footer>
-        <p>ONYX Universal Financial Solutions — Anti‑Chaos Business Sanctuary</p>
-        <p style="margin-top:0.5rem;">This platform provides business management tools, templates & educational resources — NOT regulated financial advice. Always consult qualified professionals for tax, legal or financial decisions. All subscriptions renew monthly — cancel anytime. We never sell or share your data.</p>
+        <p>ONYX™ Universal Financial Solutions — Anti‑Chaos Business Sanctuary</p>
+        <p style="margin-top:0.5rem;">Tools & educational resources only — NOT regulated financial advice. Always consult qualified professionals for tax, legal or regulated decisions. Subscriptions renew automatically after your 2‑day access period — cancel anytime instantly in your account. We never sell or share your data.</p>
     </footer>
 
 </body>
