@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX // Universal Financial Solutions™</title>
+    <title>ONYX ONE // Financial Solutions™</title>
     <meta name="description" content="The Anti‑Chaos Business Sanctuary — streamline finances, find leaks, grow profit, all in one luxury workspace.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,104 +11,134 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --midnight-deep: #020612;
-            --midnight-layer: #080E20;
-            --midnight-soft: #0F172A;
-            --champagne: #E5C594;
-            --champagne-soft: rgba(229, 197, 148, 0.15);
-            --coral-glow: #FF7A60;
-            --ivory: #F8F6F0;
-            --glass: rgba(15, 23, 42, 0.7);
-            --border-glow: rgba(229, 197, 148, 0.25);
-            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.45);
-            --shadow-luxury: 0 12px 48px rgba(229, 197, 148, 0.08);
+            --obsidian-deep: #050506;
+            --obsidian-mid: #101014;
+            --obsidian-layer: #1A1A20;
+            --obsidian-soft: #24242C;
+            --gold-metallic: #C8AE7D;
+            --gold-glow: #E5C594;
+            --gold-dim: rgba(200, 174, 125, 0.35);
+            --gold-border: rgba(200, 174, 125, 0.22);
+            --ivory-soft: #E2E2E6;
+            --coral-accent: #FF7A60;
+            --glass-onyx: rgba(16, 16, 20, 0.78);
+            --shadow-deep: 0 10px 40px rgba(0, 0, 0, 0.65);
+            --shadow-luxury: 0 12px 48px rgba(200, 174, 125, 0.06);
+            --glow-soft: 0 0 18px rgba(200, 174, 125, 0.08);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(160deg, var(--midnight-deep) 0%, var(--midnight-layer) 50%, var(--midnight-soft) 100%);
-            color: var(--ivory);
+            background:
+                radial-gradient(circle at 20% 20%, rgba(36, 36, 44, 0.25) 0%, transparent 55%),
+                radial-gradient(circle at 80% 75%, rgba(26, 26, 32, 0.3) 0%, transparent 50%),
+                linear-gradient(180deg, var(--obsidian-deep) 0%, var(--obsidian-mid) 45%, var(--obsidian-layer) 100%);
+            color: var(--ivory-soft);
             min-height: 100vh;
             line-height: 1.6;
         }
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 600; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-            background: rgba(2, 6, 18, 0.85); backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glow);
-            padding: 0.75rem 0;
+            background: rgba(5, 5, 6, 0.88); backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--gold-border);
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
         .nav-wrap { display: flex; justify-content: center; align-items: center; }
-        .brand {
-            font-size: 3rem; /* ✅ ONYX — BIGGEST */
-            letter-spacing: 0.25em;
-            color: var(--champagne);
-            text-decoration: none;
-            font-weight: 700;
+        .brand-logo {
+            height: 78px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 10px rgba(200,174,125,0.07));
+        }
+        @media (max-width: 640px) {
+            .brand-logo { height: 58px; }
         }
         section { padding: 7rem 0 4rem; }
-        .hero { text-align: center; padding-top: 9rem; }
+        .hero { text-align: center; padding-top: 8.5rem; }
         .hero h1 {
-            font-size: 1.8rem; /* ✅ Universal — SMALLER, neat tagline */
-            color: var(--champagne);
+            font-size: 1.8rem;
+            color: var(--gold-glow);
             margin-bottom: 1.5rem;
-            opacity: 0.9;
+            opacity: 0.92;
+            letter-spacing: 0.08em;
         }
-        .hero p { font-size: 1.15rem; max-width: 750px; margin: 0 auto 2.5rem; opacity: 0.88; }
+        .hero p { font-size: 1.15rem; max-width: 750px; margin: 0 auto 2.5rem; opacity: 0.85; }
         .glass-card {
-            background: var(--glass); backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glow); border-radius: 1rem;
-            padding: 2rem; box-shadow: var(--shadow-soft);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: var(--glass-onyx); backdrop-filter: blur(18px);
+            border: 1px solid var(--gold-border); border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(200,174,125,0.04);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
-        .glass-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-luxury); }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(200, 174, 125, 0.35);
+            box-shadow: var(--shadow-luxury), var(--glow-soft);
+        }
         .btn {
             display: inline-block; padding: 0.85rem 2.25rem; border-radius: 0.5rem;
             font-weight: 600; text-decoration: none; border: none; cursor: pointer;
-            transition: all 0.3s ease; font-size: 1rem;
+            transition: all 0.35s ease; font-size: 1rem;
+            letter-spacing: 0.03em;
         }
-        .btn-primary { background: linear-gradient(135deg, var(--champagne), #D4AA70); color: var(--midnight-deep); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(229, 197, 148, 0.25); }
-        .btn-secondary { border: 1px solid var(--champagne); color: var(--champagne); background: transparent; }
-        .btn-secondary:hover { background: var(--champagne-soft); }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-metallic), var(--gold-glow));
+            color: var(--obsidian-deep);
+            box-shadow: 0 4px 14px rgba(200,174,125,0.15);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(200,174,125,0.25);
+        }
+        .btn-secondary {
+            border: 1px solid var(--gold-metallic);
+            color: var(--gold-glow);
+            background: transparent;
+        }
+        .btn-secondary:hover {
+            background: rgba(200, 174, 125, 0.08);
+        }
         .tiers-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;
         }
         .tier { position: relative; overflow: hidden; }
-        .tier.featured { border-color: var(--coral-glow); transform: scale(1.03); }
+        .tier.featured { border-color: var(--coral-accent); transform: scale(1.03); }
         .tier.featured::before {
             content: 'Recommended'; position: absolute; top: 1rem; right: -2rem;
-            background: var(--coral-glow); color: white; font-size: 0.75rem; padding: 0.25rem 2.5rem;
+            background: var(--coral-accent); color: white; font-size: 0.75rem; padding: 0.25rem 2.5rem;
             transform: rotate(45deg); letter-spacing: 0.08em;
         }
-        .tier h3 { color: var(--champagne); font-size: 1.4rem; margin-bottom: 0.5rem; }
-        .price { font-size: 2rem; font-weight: 700; margin: 0.75rem 0; }
-        .price span { font-size: 0.9rem; opacity: 0.7; }
+        .tier h3 { color: var(--gold-glow); font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .price { font-size: 2rem; font-weight: 700; margin: 0.75rem 0; color: var(--gold-glow); }
+        .price span { font-size: 0.9rem; opacity: 0.6; color: var(--ivory-soft); }
         .tier ul { list-style: none; margin: 1.5rem 0; }
-        .tier li { padding: 0.5rem 0; border-bottom: 1px solid rgba(229, 197, 148, 0.1); }
+        .tier li { padding: 0.5rem 0; border-bottom: 1px solid rgba(200, 174, 125, 0.08); }
         .disclaimer-box {
             margin-top: 4rem; padding: 1.75rem; border-radius: 0.75rem;
-            background: rgba(255, 122, 96, 0.08); border: 1px solid rgba(255, 122, 96, 0.25);
-            font-size: 0.9rem; line-height: 1.7; opacity: 0.92;
+            background: rgba(255, 122, 96, 0.06); border: 1px solid rgba(255, 122, 96, 0.18);
+            font-size: 0.9rem; line-height: 1.7; opacity: 0.9;
         }
-        .disclaimer-box strong { color: var(--coral-glow); }
+        .disclaimer-box strong { color: var(--coral-accent); }
         .family-note {
             margin-top: 1.5rem; padding: 1rem; border-radius: 0.5rem;
-            background: var(--champagne-soft); border: 1px solid var(--border-glow);
+            background: rgba(200, 174, 125, 0.06); border: 1px solid var(--gold-border);
             font-size: 0.9rem;
         }
         footer {
-            text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border-glow);
-            font-size: 0.85rem; opacity: 0.65; margin-top: 4rem;
+            text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--gold-border);
+            font-size: 0.85rem; opacity: 0.55; margin-top: 4rem;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container nav-wrap">
-            <a href="#" class="brand">ONYX™</a>
+            <a href="#"><img src="https://i.imgur.com/6ZxQw8L.png" alt="ONYX ONE — Financial Solutions" class="brand-logo"></a>
         </div>
     </header>
 
@@ -116,14 +146,14 @@
         <div class="container">
             <h1>Universal Financial Solutions</h1>
             <p>Your Anti‑Chaos Business Sanctuary — built to uncover leaks, streamline every task, protect your data, and grow profit without the noise. Designed for those who demand luxury, clarity, and results.</p>
-            <p style="font-style:italic; color:var(--champagne); margin-bottom:2rem;">We never sell, rent, or share your data — ever. Everything stays yours, encrypted and secure.</p>
+            <p style="font-style:italic; color:var(--gold-glow); margin-bottom:2rem; opacity:0.85;">We never sell, rent, or share your data — ever. Everything stays yours, encrypted and secure.</p>
             <a href="#pricing" class="btn btn-primary">Start Your Journey</a>
         </div>
     </section>
 
     <section id="features">
         <div class="container">
-            <h2 style="text-align:center; color:var(--champagne); margin-bottom:3rem;">Everything You Need — One Place</h2>
+            <h2 style="text-align:center; color:var(--gold-glow); margin-bottom:3rem;">Everything You Need — One Place</h2>
             <div class="tiers-grid">
                 <div class="glass-card">
                     <h3>Financial Clarity</h3>
@@ -151,7 +181,7 @@
                         <li>Bank‑level encryption throughout</li>
                         <li>Full privacy — we never sell your data</li>
                         <li>Role‑based access control</li>
-                        <li>Two‑day full trial — no payment pressure</li>
+                        <li>Two‑day full access trial — no payment pressure</li>
                         <li>Cancel anytime — no lock‑in</li>
                     </ul>
                 </div>
@@ -161,12 +191,12 @@
 
     <section id="pricing">
         <div class="container">
-            <h2 style="text-align:center; color:var(--champagne); margin-bottom:3rem;">Choose Your Sanctuary</h2>
+            <h2 style="text-align:center; color:var(--gold-glow); margin-bottom:3rem;">Choose Your Sanctuary</h2>
             <div class="tiers-grid">
                 <div class="glass-card tier">
                     <h3>Founder</h3>
                     <div class="price">£19.99 <span>/ first month</span></div>
-                    <p style="opacity:0.7; margin-bottom:1rem;">Then £29.99/month</p>
+                    <p style="opacity:0.6; margin-bottom:1rem;">Then £29.99/month</p>
                     <ul>
                         <li>Core finance tracking</li>
                         <li>Basic templates & invoicing</li>
@@ -180,7 +210,7 @@
                 <div class="glass-card tier featured">
                     <h3>Growth</h3>
                     <div class="price">£39.99 <span>/ first month</span></div>
-                    <p style="opacity:0.7; margin-bottom:1rem;">Then £49.99/month</p>
+                    <p style="opacity:0.6; margin-bottom:1rem;">Then £49.99/month</p>
                     <ul>
                         <li>Everything in Founder</li>
                         <li>Full email & marketing suite</li>
@@ -194,7 +224,7 @@
                 <div class="glass-card tier">
                     <h3>Master</h3>
                     <div class="price">£79.99 <span>/ first month</span></div>
-                    <p style="opacity:0.7; margin-bottom:1rem;">Then £89.99/month</p>
+                    <p style="opacity:0.6; margin-bottom:1rem;">Then £89.99/month</p>
                     <ul>
                         <li>Everything in Growth</li>
                         <li>Multi‑business / multi‑account</li>
@@ -214,24 +244,24 @@
 
     <section id="contact">
         <div class="container">
-            <h2 style="text-align:center; color:var(--champagne); margin-bottom:2rem;">Ready to take control?</h2>
+            <h2 style="text-align:center; color:var(--gold-glow); margin-bottom:2rem;">Ready to take control?</h2>
             <p style="text-align:center; max-width:600px; margin:0 auto;">Build your empire from one elegant, secure hub — exactly as you imagined it.</p>
         </div>
     </section>
 
     <div class="container disclaimer-box">
-        <strong>Disclaimer & Legal Notice:</strong> ONYX™ provides tools, guidance and templates — not personalised regulated financial or legal advice. Always verify figures, terms and compliance for your own location and business type. All information is for organisational and educational use; consult qualified professionals for tax, legal or high‑value decisions. Your data is never sold, shared or traded — built, hosted and secured with privacy first at every step.
+        <strong>Disclaimer & Legal Notice:</strong> ONYX ONE™ provides tools, guidance and templates — not personalised regulated financial or legal advice. Always verify figures, terms and compliance for your own location and business type. Consult qualified professionals for tax, legal or high‑value decisions. Your data is never sold, shared or traded — built, hosted and secured with privacy first at every step.
     </div>
 
     <footer>
-        <p>© 2026 ONYX™ — Universal Financial Solutions. All Rights Reserved. Built with purpose, privacy and pride.</p>
+        <p>© 2026 ONYX ONE™ — Financial Solutions. All Rights Reserved. Built with purpose, privacy and pride.</p>
     </footer>
 
     <script>
         const SUPABASE_URL = "https://sbquvooqlzgxehobprke.supabase.co";
         const SUPABASE_KEY = "sb_publishable_SDxlZoPy9bnCr0m-SLhGwA_QwgR7ATj";
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        console.log("ONYX loaded — Supabase connected ✅");
+        console.log("ONYX ONE loaded — Supabase connected ✅");
     </script>
 </body>
 </html>
