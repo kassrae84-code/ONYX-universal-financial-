@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX // Universal Financial Solutions</title>
+    <title>ONYX™ // Universal Financial Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -28,7 +28,23 @@
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--champagne); }
         .container { max-width:1200px; margin:0 auto; padding:2rem 1.2rem; }
         header { text-align:center; padding:4rem 1rem 3rem; }
-        header h1 { font-size:clamp(2.2rem,5vw,3.5rem); margin-bottom:0.8rem; letter-spacing:1px; }
+        header h1 {
+            font-size:clamp(2.2rem,5vw,3.5rem);
+            margin-bottom:0.8rem;
+            letter-spacing:1px;
+            font-weight:700;
+            color: var(--champagne);
+            position: relative;
+            display: inline-block;
+        }
+        .trademark-sup {
+            font-size: 0.35em;
+            position: absolute;
+            top: 0.2em;
+            right: -0.6em;
+            color: var(--champagne);
+            font-weight: 400;
+        }
         header p { font-size:1.15rem; color:var(--text-dim); max-width:700px; margin:0 auto; }
 
         .features-grid {
@@ -99,7 +115,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>ONYX</h1>
+            <h1>ONYX<span class="trademark-sup">™</span></h1>
             <p>Universal Financial Solutions — Your Anti‑Chaos Business Sanctuary<br>Everything you need to run, grow & protect your business — built for YOU</p>
         </header>
 
@@ -179,22 +195,19 @@
         </section>
 
         <div class="disclaimer-block">
-            <h3>How It Works — Clear & Honest</h3>
-            <p>✅ Subscription = recurring monthly billing<br>
-            ✅ Secure payments by Stripe — update your checkout name in Stripe → Settings → Business details → Public name: ONYX // Universal Financial Solutions<br>
+            <h3>Legal & Trademark Notice</h3>
+            <p>✅ <strong>ONYX™</strong> is a trademarked brand — all design, content, system & concept are fully protected.<br>
+            ✅ Unauthorised copying, cloning, re‑branding or redistribution is illegal — we actively enforce our rights.<br>
+            ✅ Subscription = recurring monthly billing<br>
+            ✅ Secure payments by Stripe — update your checkout name in Stripe → Settings → Business details → Public name: ONYX™ // Universal Financial Solutions<br>
             ✅ We never sell or share your data — ever<br>
             ✅ Instant access instructions sent after payment — full member dashboard coming soon<br>
             <br>
-            <strong>&copy; ONYX — Universal Financial Solutions. All rights reserved.</strong></p>
+            <strong>&copy; ONYX™ — Universal Financial Solutions. All rights reserved.</strong></p>
         </div>
     </div>
 
     <script>
-        const stripePriceMap = {
-            'price_founder_live': 'price_1UEBZIH3sLPEFFcy1G7YqPC',
-            'price_growth_live': 'price_1UEBZIH3sLPEFFcy3NxzzrY',
-            'price_master_live': 'price_1UEBZIH3sLPEFFcyyaROCYno'
-        };
         const stripeLinks = {
             'price_founder_live': 'https://buy.stripe.com/fZufZhfHx9tteRj1Y21sQ00',
             'price_growth_live': 'https://buy.stripe.com/28E6oH52T211fVnauy1sQ01',
