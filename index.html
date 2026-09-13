@@ -376,14 +376,15 @@ const stripePriceMap = {
     'price_growth_live': 'price_1UEbZIH3sLPEFFcy3NxzzrY',
     'price_master_live': 'price_1UEbZIH3sLPEFFcyyaROCYno'
 };
-
 function startCheckout(priceKey) {
-    const priceId = stripePriceMap[priceKey];
-    if (!priceId || priceId.includes('placeholder')) {
-        alert('✨ Updating — please wait a few minutes then hard refresh.');
-        return;
-    }
-    alert('🔐 Secure checkout opening — connect your Stripe link here when ready!');
+    const stripeLinks = {
+        'price_founder_live': 'https://buy.stripe.com/fZufZhfHx9tteRj1Y21sQ00',
+        'price_growth_live': 'https://buy.stripe.com/28E6oH52T211fVnauy1sQ01',
+        'price_master_live': 'https://buy.stripe.com/4gM28r9j95dd7oRfOS1sQ02'
+    };
+    const goTo = stripeLinks[priceKey];
+    if (goTo) { window.open(goTo, '_blank'); }
+    else { alert('🔐 Updating — please try again shortly!'); }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
