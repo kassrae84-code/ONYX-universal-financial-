@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX™ // Universal Financial Solutions</title>
+    <title>ONYX // Universal Financial Solutions™</title>
+    <meta name="description" content="The Anti‑Chaos Business Sanctuary — streamline finances, find leaks, grow profit, all in one luxury workspace.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --midnight-deep: #020612;
@@ -12,216 +16,222 @@
             --midnight-soft: #0F172A;
             --champagne: #E5C594;
             --champagne-soft: rgba(229, 197, 148, 0.15);
-            --coral-accent: #FF7B7B;
-            --text-light: #F8F9FA;
-            --text-dim: #B0B8C4;
+            --coral-glow: #FF7A60;
+            --ivory: #F8F6F0;
+            --glass: rgba(15, 23, 42, 0.7);
             --border-glow: rgba(229, 197, 148, 0.25);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.45);
+            --shadow-luxury: 0 12px 48px rgba(229, 197, 148, 0.08);
         }
-        * { margin:0; padding:0; box-sizing:border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            background: linear-gradient(160deg, var(--midnight-deep) 0%, var(--midnight-layer) 50%, var(--midnight-soft) 100%);
-            color: var(--text-light);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height:1.7;
-            min-height:100vh;
+            background: linear-gradient(160deg, var(--midnight-deep) 0%, var(--midnight-layer) 50%, var(--midnight-soft) 100%);
+            color: var(--ivory);
+            min-height: 100vh;
+            line-height: 1.6;
         }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--champagne); }
-        .container { max-width:1200px; margin:0 auto; padding:2rem 1.2rem; }
-        header { text-align:center; padding:4rem 1rem 3rem; }
-        header h1 {
-            font-size:clamp(2.8rem,6vw,4.2rem);
-            margin-bottom:0.8rem;
-            letter-spacing:2px;
-            font-weight:700;
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 600; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+            background: rgba(2, 6, 18, 0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 0.75rem 0;
+        }
+        .nav-wrap { display: flex; justify-content: center; align-items: center; }
+        .brand {
+            font-size: 3rem; /* ✅ ONYX — BIGGEST */
+            letter-spacing: 0.25em;
             color: var(--champagne);
-            position: relative;
-            display: inline-block;
-            line-height:1;
+            text-decoration: none;
+            font-weight: 700;
         }
-        .trademark-sup {
-            font-size: 0.3em;
-            position: absolute;
-            top: 0.15em;
-            right: -0.55em;
+        section { padding: 7rem 0 4rem; }
+        .hero { text-align: center; padding-top: 9rem; }
+        .hero h1 {
+            font-size: 1.8rem; /* ✅ Universal — SMALLER, neat tagline */
             color: var(--champagne);
-            font-weight: 400;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
         }
-        header p { font-size:1.15rem; color:var(--text-dim); max-width:700px; margin:0 auto; }
-
-        .features-grid {
-            display:grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap:1.5rem;
-            margin:3rem 0;
+        .hero p { font-size: 1.15rem; max-width: 750px; margin: 0 auto 2.5rem; opacity: 0.88; }
+        .glass-card {
+            background: var(--glass); backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow); border-radius: 1rem;
+            padding: 2rem; box-shadow: var(--shadow-soft);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .feature-card {
-            background: var(--champagne-soft);
-            border:1px solid var(--border-glow);
-            border-radius:14px;
-            padding:1.8rem;
-            transition:transform 0.3s ease, box-shadow 0.3s ease;
+        .glass-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-luxury); }
+        .btn {
+            display: inline-block; padding: 0.85rem 2.25rem; border-radius: 0.5rem;
+            font-weight: 600; text-decoration: none; border: none; cursor: pointer;
+            transition: all 0.3s ease; font-size: 1rem;
         }
-        .feature-card:hover {
-            transform:translateY(-4px);
-            box-shadow:0 8px 25px rgba(229,197,148,0.08);
-        }
-        .feature-card h3 { font-size:1.2rem; margin-bottom:0.7rem; }
-
-        .tiers-section { margin:5rem 0; }
+        .btn-primary { background: linear-gradient(135deg, var(--champagne), #D4AA70); color: var(--midnight-deep); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(229, 197, 148, 0.25); }
+        .btn-secondary { border: 1px solid var(--champagne); color: var(--champagne); background: transparent; }
+        .btn-secondary:hover { background: var(--champagne-soft); }
         .tiers-grid {
-            display:grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-            gap:2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;
         }
-        .tier-card {
-            background: rgba(15,23,42,0.6);
-            border:1px solid var(--border-glow);
-            border-radius:16px;
-            padding:2.2rem 1.8rem;
-            position:relative;
+        .tier { position: relative; overflow: hidden; }
+        .tier.featured { border-color: var(--coral-glow); transform: scale(1.03); }
+        .tier.featured::before {
+            content: 'Recommended'; position: absolute; top: 1rem; right: -2rem;
+            background: var(--coral-glow); color: white; font-size: 0.75rem; padding: 0.25rem 2.5rem;
+            transform: rotate(45deg); letter-spacing: 0.08em;
         }
-        .tier-card h3 { font-size:1.4rem; margin-bottom:0.5rem; }
-        .price { font-size:2rem; font-weight:700; color:var(--champagne); margin:0.3rem 0 1rem; }
-        .price small { font-size:0.9rem; color:var(--text-dim); font-weight:400; }
-        .tier-card ul { list-style:none; margin:1.5rem 0; }
-        .tier-card li { padding:0.4rem 0; border-bottom:1px dashed rgba(229,197,148,0.1); }
-        .tier-card li::before { content:"• "; color:var(--champagne); font-weight:bold; font-size:1.2em; }
-
-        .pay-btn {
-            width:100%;
-            padding:1rem;
-            font-size:1rem;
-            font-weight:600;
-            border-radius:10px;
-            border:none;
-            background: linear-gradient(90deg, #C8A668, var(--champagne));
-            color:var(--midnight-deep);
-            cursor:pointer;
-            margin-top:1rem;
-            transition:all 0.3s ease;
+        .tier h3 { color: var(--champagne); font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .price { font-size: 2rem; font-weight: 700; margin: 0.75rem 0; }
+        .price span { font-size: 0.9rem; opacity: 0.7; }
+        .tier ul { list-style: none; margin: 1.5rem 0; }
+        .tier li { padding: 0.5rem 0; border-bottom: 1px solid rgba(229, 197, 148, 0.1); }
+        .disclaimer-box {
+            margin-top: 4rem; padding: 1.75rem; border-radius: 0.75rem;
+            background: rgba(255, 122, 96, 0.08); border: 1px solid rgba(255, 122, 96, 0.25);
+            font-size: 0.9rem; line-height: 1.7; opacity: 0.92;
         }
-        .pay-btn:hover { transform:scale(1.02); }
-
-        .disclaimer-block {
-            background: rgba(8,14,32,0.7);
-            border:1px solid var(--border-glow);
-            border-radius:12px;
-            padding:2rem;
-            margin:3rem 0 4rem;
+        .disclaimer-box strong { color: var(--coral-glow); }
+        .family-note {
+            margin-top: 1.5rem; padding: 1rem; border-radius: 0.5rem;
+            background: var(--champagne-soft); border: 1px solid var(--border-glow);
+            font-size: 0.9rem;
         }
-        .disclaimer-block h3 { font-size:1.2rem; margin-bottom:1rem; }
-        .disclaimer-block p { color:var(--text-dim); font-size:0.95rem; line-height:1.7; }
+        footer {
+            text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border-glow);
+            font-size: 0.85rem; opacity: 0.65; margin-top: 4rem;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ONYX<span class="trademark-sup">™</span></h1>
-            <p>Universal Financial Solutions — Your Anti‑Chaos Business Sanctuary<br>Everything you need to run, grow & protect your business — built for YOU</p>
-        </header>
-
-        <h2 style="text-align:center; margin-bottom:1rem;">What’s Inside</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Hidden Cost & Leak Detector</h3>
-                <p>Spot unused subscriptions, waste, price rises & exactly where money slips away — instantly see what to cut, swap or fix.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Automated Invoicing & Quotes</h3>
-                <p>Professional templates, auto‑calculate totals, send, chase & track — looks expensive, takes seconds.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Ready‑to‑Send Templates</h3>
-                <p>Sales letters, follow‑ups, emails — luxury designed, brand‑ready — just fill & send.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Supplier Price Watch</h3>
-                <p>Track rises, stock issues & find alternatives — never overpay or run out unexpectedly.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Expense & Cashflow</h3>
-                <p>See exactly where every penny goes — trends, best‑performing areas & what’s coming next.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Encrypted Private Space</h3>
-                <p>Secure vault, password‑locked, fully encrypted — your data stays YOURS — never sold, never shared.</p>
-            </div>
+    <header>
+        <div class="container nav-wrap">
+            <a href="#" class="brand">ONYX™</a>
         </div>
+    </header>
 
-        <section class="tiers-section">
-            <h2 style="text-align:center; margin-bottom:2.5rem;">Choose Your Sanctuary</h2>
+    <section class="hero">
+        <div class="container">
+            <h1>Universal Financial Solutions</h1>
+            <p>Your Anti‑Chaos Business Sanctuary — built to uncover leaks, streamline every task, protect your data, and grow profit without the noise. Designed for those who demand luxury, clarity, and results.</p>
+            <p style="font-style:italic; color:var(--champagne); margin-bottom:2rem;">We never sell, rent, or share your data — ever. Everything stays yours, encrypted and secure.</p>
+            <a href="#pricing" class="btn btn-primary">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align:center; color:var(--champagne); margin-bottom:3rem;">Everything You Need — One Place</h2>
             <div class="tiers-grid">
-                <div class="tier-card">
-                    <h3>Founder</h3>
-                    <p style="color:var(--text-dim); font-size:0.9rem;">Solo builders & start‑ups</p>
-                    <div class="price">£19.99 <small>first month<br>then £29.99/mo</small></div>
+                <div class="glass-card">
+                    <h3>Financial Clarity</h3>
                     <ul>
-                        <li>Leak Detector</li>
-                        <li>Invoicing & Quotes</li>
-                        <li>Email Templates</li>
-                        <li>Basic Vault</li>
+                        <li>Track income, expenses & subscriptions</li>
+                        <li>Spot hidden leaks & unused costs</li>
+                        <li>Connect banks, crypto & investment accounts</li>
+                        <li>Trend alerts — know when to pivot early</li>
+                        <li>Auto‑generate professional invoices</li>
                     </ul>
-                    <button class="pay-btn" onclick="startCheckout('price_founder_live')">Subscribe — £19.99/mo</button>
                 </div>
-
-                <div class="tier-card" style="border-color:var(--champagne); transform:scale(1.03);">
-                    <h3>Growth</h3>
-                    <p style="color:var(--text-dim); font-size:0.9rem;">Expanding businesses & creators</p>
-                    <div class="price">£39.99 <small>first month<br>then £49.99/mo</small></div>
+                <div class="glass-card">
+                    <h3>Business Workflow</h3>
                     <ul>
-                        <li>Everything in Founder +</li>
-                        <li>Supplier Watch + Alternatives</li>
-                        <li>Regional Sales & Trends</li>
-                        <li>Smart Meetings + Notes</li>
-                        <li>Branded Documents</li>
+                        <li>Ready‑made luxury email templates — sales, follow‑ups, chasing & closing</li>
+                        <li>Meeting notes, summaries & action points</li>
+                        <li>Encrypted secure calls & messaging</li>
+                        <li>Supplier tracking — find alternatives fast</li>
+                        <li>Product performance & global demand map</li>
                     </ul>
-                    <button class="pay-btn" onclick="startCheckout('price_growth_live')">Subscribe — £39.99/mo</button>
                 </div>
-
-                <div class="tier-card">
-                    <h3>Master</h3>
-                    <p style="color:var(--text-dim); font-size:0.9rem;">Full power — everything included</p>
-                    <div class="price">£79.99 <small>first month<br>then £89.99/mo</small></div>
+                <div class="glass-card">
+                    <h3>Built‑In Protection</h3>
                     <ul>
-                        <li>Everything in Growth +</li>
-                        <li>Priority Concierge</li>
-                        <li>Advanced Analytics</li>
-                        <li>Extra Security Layers</li>
-                        <li>Early Access + Custom Tools</li>
+                        <li>Bank‑level encryption throughout</li>
+                        <li>Full privacy — we never sell your data</li>
+                        <li>Role‑based access control</li>
+                        <li>Two‑day full trial — no payment pressure</li>
+                        <li>Cancel anytime — no lock‑in</li>
                     </ul>
-                    <button class="pay-btn" onclick="startCheckout('price_master_live')">Subscribe — £79.99/mo</button>
                 </div>
             </div>
-        </section>
-
-        <div class="disclaimer-block">
-            <h3>Legal & Trademark Notice</h3>
-            <p>✅ <strong>ONYX™</strong> is a trademarked brand — all design, content, system & concept are fully protected.<br>
-            ✅ Unauthorised copying, cloning, re‑branding or redistribution is illegal — we actively enforce our rights.<br>
-            ✅ Subscription = recurring monthly billing<br>
-            ✅ Secure payments by Stripe — update your checkout name in Stripe → Settings → Business details → Public name: ONYX™ // Universal Financial Solutions<br>
-            ✅ We never sell or share your data — ever<br>
-            ✅ Support is via email only — I answer personally as fast as I can<br>
-            ✅ Instant access instructions sent after payment — full member dashboard coming soon<br>
-            <br>
-            <strong>&copy; ONYX™ — Universal Financial Solutions. All rights reserved.</strong></p>
         </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2 style="text-align:center; color:var(--champagne); margin-bottom:3rem;">Choose Your Sanctuary</h2>
+            <div class="tiers-grid">
+                <div class="glass-card tier">
+                    <h3>Founder</h3>
+                    <div class="price">£19.99 <span>/ first month</span></div>
+                    <p style="opacity:0.7; margin-bottom:1rem;">Then £29.99/month</p>
+                    <ul>
+                        <li>Core finance tracking</li>
+                        <li>Basic templates & invoicing</li>
+                        <li>Cost‑leak detection</li>
+                        <li>2‑day full access trial included</li>
+                        <li>Email support</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="alert('Add your Stripe link here when ready');">Subscribe</button>
+                </div>
+
+                <div class="glass-card tier featured">
+                    <h3>Growth</h3>
+                    <div class="price">£39.99 <span>/ first month</span></div>
+                    <p style="opacity:0.7; margin-bottom:1rem;">Then £49.99/month</p>
+                    <ul>
+                        <li>Everything in Founder</li>
+                        <li>Full email & marketing suite</li>
+                        <li>Encrypted meetings & notes</li>
+                        <li>Supplier & product intelligence</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="alert('Add your Stripe link here when ready');">Subscribe</button>
+                </div>
+
+                <div class="glass-card tier">
+                    <h3>Master</h3>
+                    <div class="price">£79.99 <span>/ first month</span></div>
+                    <p style="opacity:0.7; margin-bottom:1rem;">Then £89.99/month</p>
+                    <ul>
+                        <li>Everything in Growth</li>
+                        <li>Multi‑business / multi‑account</li>
+                        <li>Global sales & demand mapping</li>
+                        <li>Advanced analytics & reports</li>
+                        <li>Direct access — dedicated care</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="alert('Add your Stripe link here when ready');">Subscribe</button>
+                </div>
+            </div>
+
+            <div class="family-note">
+                <strong>💛 Family & Team Access:</strong> Special private codes available for your loved ones — never published here. Just ask me for yours.
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 style="text-align:center; color:var(--champagne); margin-bottom:2rem;">Ready to take control?</h2>
+            <p style="text-align:center; max-width:600px; margin:0 auto;">Build your empire from one elegant, secure hub — exactly as you imagined it.</p>
+        </div>
+    </section>
+
+    <div class="container disclaimer-box">
+        <strong>Disclaimer & Legal Notice:</strong> ONYX™ provides tools, guidance and templates — not personalised regulated financial or legal advice. Always verify figures, terms and compliance for your own location and business type. All information is for organisational and educational use; consult qualified professionals for tax, legal or high‑value decisions. Your data is never sold, shared or traded — built, hosted and secured with privacy first at every step.
     </div>
 
+    <footer>
+        <p>© 2026 ONYX™ — Universal Financial Solutions. All Rights Reserved. Built with purpose, privacy and pride.</p>
+    </footer>
+
     <script>
-        const stripeLinks = {
-            'price_founder_live': 'https://buy.stripe.com/fZufZhfHx9tteRj1Y21sQ00',
-            'price_growth_live': 'https://buy.stripe.com/28E6oH52T211fVnauy1sQ01',
-            'price_master_live': 'https://buy.stripe.com/4gM28r9j95dd7oRfOS1sQ02'
-        };
-        function startCheckout(priceKey) {
-            const goTo = stripeLinks[priceKey];
-            if (goTo) {
-                window.open(goTo, '_blank');
-            } else {
-                alert('🔐 Updating — please try again shortly!');
-            }
-        }
+        const SUPABASE_URL = "https://sbquvooqlzgxehobprke.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_SDxlZoPy9bnCr0m-SLhGwA_QwgR7ATj";
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        console.log("ONYX loaded — Supabase connected ✅");
     </script>
 </body>
 </html>
