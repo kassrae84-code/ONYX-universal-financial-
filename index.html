@@ -3,269 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX™ — Universal Financial Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>ONYX™ — The Anti‑Chaos Business Sanctuary™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --midnight-deep: #020612;
-            --midnight-layer: #080E20;
-            --midnight-soft: #0F172A;
+            --obsidian: #020409;
+            --midnight-deep: #060A17;
+            --midnight-layer: #0C1224;
+            --midnight-soft: #111A33;
             --champagne: #E5C594;
-            --champagne-glow: rgba(229, 197, 148, 0.18);
-            --coral-accent: #E88B7C;
-            --coral-glow: rgba(232, 139, 124, 0.12);
-            --text-soft: #CBD5E1;
-            --text-bright: #F8FAFC;
-            --locked: rgba(148, 163, 184, 0.35);
+            --champagne-glow: rgba(229, 197, 148, 0.25);
+            --champagne-dim: rgba(229, 197, 148, 0.12);
+            --coral: #FF7A5C;
+            --coral-glow: rgba(255, 122, 92, 0.18);
+            --text-light: #F1F5F9;
+            --text-muted: #94A3B8;
+            --border-soft: rgba(229, 197, 148, 0.15);
+            --shadow-cinematic: 0 20px 50px rgba(2, 4, 9, 0.85);
+            --shadow-glow: 0 0 40px rgba(229, 197, 148, 0.12);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
         body {
-            background: linear-gradient(180deg, var(--midnight-deep) 0%, var(--midnight-layer) 60%, var(--midnight-soft) 100%);
-            color: var(--text-soft);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.7;
+            background: radial-gradient(circle at 50% 0%, var(--midnight-layer) 0%, var(--obsidian) 75%);
+            color: var(--text-light);
             min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--champagne); }
-
-        /* — HERO — LUXURY, EXCLUSIVE, SPECIAL — */
-        .hero {
-            max-width: 900px;
-            margin: 5rem auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
+        h1, h2, h3, h4 {font-family: 'Playfair Display', serif; color: var(--champagne); font-weight: 600;}
+        .container {max-width: 1160px; margin: 0 auto; padding: 0 24px;}
+        header {
+            padding: 35px 0;
+            border-bottom: 1px solid var(--border-soft);
+            background: rgba(2, 4, 9, 0.6);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 0.3rem;
+        .header-flex {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;}
+        .logo {font-size: 26px; font-weight: 700; letter-spacing: 4px; color: var(--champagne); text-decoration: none;}
+        .secure-badge {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid var(--border-soft);
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--champagne-dim);
+        }
+        .hero {padding: 110px 0 80px; text-align: center; position: relative;}
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--champagne-glow) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .hero h1 {font-size: 68px; font-weight: 700; letter-spacing: 6px; margin-bottom: 12px; line-height: 1.1;}
+        .hero .sub-sanctuary {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--coral);
+            margin-bottom: 30px;
+            text-transform: uppercase;
             letter-spacing: 4px;
+        }
+        .hero p {font-size: 19px; max-width: 760px; margin: 0 auto 40px; color: var(--text-muted); font-weight: 300;}
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--champagne) 0%, #D4AA6E 100%);
+            color: var(--obsidian);
             font-weight: 700;
-        }
-        .hero .subhead {
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            color: var(--coral-accent);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-soft);
-            line-height: 1.8;
-        }
-        .hero p em {
-            color: var(--champagne);
-            font-style: italic;
-        }
-
-        /* — PLANS — */
-        .onyx-plans {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-        .onyx-plans h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            padding: 16px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
             letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(229, 197, 148, 0.2);
         }
-        .onyx-plans > p {
-            color: var(--text-soft);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            font-size: 1.1rem;
+        .btn:hover {
+            box-shadow: 0 0 35px var(--champagne-glow);
+            transform: translateY(-2px);
         }
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .plan-card {
-            background: linear-gradient(135deg, rgba(18, 18, 42, 0.9), rgba(8, 14, 32, 0.95));
-            border: 1px solid var(--champagne-glow);
-            border-radius: 14px;
-            padding: 2.5rem 2rem;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        .sanctuary-promise {
+            background: var(--midnight-deep);
+            border: 1px solid var(--border-soft);
+            border-radius: 24px;
+            padding: 60px 50px;
+            margin: 60px 0;
+            box-shadow: var(--shadow-cinematic);
             position: relative;
             overflow: hidden;
+        }
+        .sanctuary-promise h2 {font-size: 34px; margin-bottom: 20px; text-align: center;}
+        .sanctuary-promise p {font-size: 17px; color: var(--text-muted); text-align: center; max-width: 800px; margin: 0 auto 40px; line-height: 1.8;}
+        .promise-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px;}
+        .promise-card {
+            background: var(--midnight-layer);
+            border: 1px solid var(--border-soft);
+            padding: 30px 24px;
+            border-radius: 16px;
             text-align: left;
         }
-        .plan-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 0 30px var(--champagne-glow);
+        .promise-card h4 {color: var(--champagne); font-size: 18px; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
+        .promise-card p {font-size: 14px; color: var(--text-muted); margin: 0; text-align: left;}
+        .pricing-section {padding: 40px 0 80px;}
+        .section-title {text-align: center; font-size: 42px; margin-bottom: 12px;}
+        .section-subtitle {text-align: center; color: var(--text-muted); margin-bottom: 50px; font-size: 16px;}
+        .tier-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;}
+        .tier-card {
+            background: var(--midnight-layer);
+            border: 1px solid var(--border-soft);
+            border-radius: 24px;
+            padding: 45px 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: var(--shadow-cinematic);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .plan-card.featured {
-            border: 2px solid var(--champagne);
-            transform: scale(1.03);
+        .tier-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--champagne);
+            box-shadow: var(--shadow-cinematic), var(--shadow-glow);
         }
-        .plan-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            letter-spacing: 1px;
+        .tier-card.featured {
+            border-color: var(--coral);
+            background: linear-gradient(180deg, var(--midnight-soft) 0%, var(--midnight-layer) 100%);
+            box-shadow: var(--shadow-cinematic), 0 0 40px var(--coral-glow);
         }
-        .price {
-            font-size: 2.2rem;
+        .featured-badge {
+            position: absolute;
+            top: -14px;
+            right: 35px;
+            background: var(--coral);
+            color: var(--obsidian);
+            font-size: 11px;
             font-weight: 700;
-            color: var(--text-bright);
-            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+        .tier-card h3 {font-size: 28px; margin-bottom: 12px;}
+        .price {font-size: 38px; font-weight: 700; margin: 20px 0 25px; color: var(--champagne); font-family: 'Playfair Display', serif;}
+        .price span {font-size: 14px; color: var(--text-muted); font-weight: 400; font-family: 'Plus Jakarta Sans', sans-serif;}
+        .tier-features {list-style: none; margin: 0 0 35px 0; color: var(--text-muted);}
+        .tier-features li {margin-bottom: 14px; font-size: 15px; display: flex; align-items: flex-start; gap: 10px;}
+        .tier-features li::before {content: '✦'; color: var(--champagne); font-size: 12px; margin-top: 3px;}
+        .tier-card .btn {width: 100%; text-align: center;}
+        .viral-sanctuary {
+            background: var(--midnight-deep);
+            border: 1px solid var(--border-soft);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin: 60px 0;
+            text-align: center;
+            box-shadow: var(--shadow-cinematic);
+        }
+        .viral-sanctuary h3 {font-size: 32px; margin-bottom: 12px;}
+        .viral-sanctuary p {color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; font-size: 16px;}
+        .qr-box {
+            background: #FFFFFF;
+            padding: 20px;
+            width: fit-content;
+            margin: 0 auto 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .qr-box img {display: block; width: 170px; height: 170px;}
+        .share-url {font-size: 14px; color: var(--champagne); letter-spacing: 1px; word-break: break-all;}
+        .trademark-notice {
+            background: rgba(229, 197, 148, 0.02);
+            border: 1px solid rgba(229, 197, 148, 0.12);
+            border-radius: 18px;
+            padding: 35px;
+            margin: 50px 0;
             text-align: center;
         }
-        .price span { font-size: 1rem; font-weight: 300; opacity: 0.7; }
-        .sub-price {
-            color: var(--champagne);
-            opacity: 0.85;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-        .plan-desc {
-            color: var(--text-soft);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-style: italic;
-        }
-        .plan-card ul {
-            list-style: none;
-            margin: 0 0 2rem 0;
-            padding: 0;
-        }
-        .plan-card ul li {
-            padding: 0.4rem 0;
-            border-bottom: 1px solid rgba(229,197,148,0.06);
-        }
-        .plan-card ul li.locked { color: var(--locked); }
-        .subscribe-btn {
-            background: linear-gradient(135deg, var(--champagne), #D4A76A);
-            color: var(--midnight-deep);
-            font-weight: 600;
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            transition: box-shadow 0.25s ease;
-            letter-spacing: 0.5px;
-        }
-        .subscribe-btn:hover { box-shadow: 0 0 15px var(--champagne-glow); }
+        .trademark-notice h4 {font-size: 20px; margin-bottom: 12px; letter-spacing: 1px;}
+        .trademark-notice p {font-size: 13px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.6;}
         footer {
+            font-size: 13px;
+            color: var(--text-muted);
             text-align: center;
-            padding: 2rem 1.5rem 3rem;
-            font-size: 0.9rem;
-            color: #64748B;
-            border-top: 1px solid rgba(229,197,148,0.08);
-            margin-top: 2rem;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-soft);
+        }
+        @media (max-width: 768px) {
+            .hero h1 {font-size: 44px;}
+            .hero .sub-sanctuary {font-size: 16px; letter-spacing: 2px;}
+            .sanctuary-promise {padding: 35px 20px;}
+            .header-flex {justify-content: center;}
         }
     </style>
 </head>
 <body>
-
-    <!-- ==============================================
-         ✅ HERO — EXCLUSIVE · LUXURY · SANCTUARY
-         ============================================== -->
-    <section class="hero">
-        <h1>ONYX™</h1>
-        <p class="subhead">UNIVERSAL FINANCIAL SOLUTIONS — THE ANTI‑CHAOS SANCTUARY</p>
-        <p>
-            <em>Exclusive. Refined. Reserved for those who lead, create, and accept nothing less than excellence.</em><br><br>
-            More than a platform — this is your private command centre. Your armoury. Your quiet power.<br><br>
-            Born from the truth that true luxury is <strong>clarity, control, and freedom</strong> — no noise, no clutter, no compromise. Every tool, every insight, every protection is crafted for the visionaries, the builders, the dreamers who refuse to settle for “good enough”.<br><br>
-            You shape the world. We protect, perfect, and power your every step.<br><br>
-            <em>Welcome to your sanctuary — the greatest gift you will ever give your vision.</em>
-        </p>
-    </section>
-
-    <!-- ==============================================
-         ✅ PLANS — UNTOUCHED PRICES & RULES
-         ============================================== -->
-    <section class="onyx-plans">
-        <h2>Choose Your Path</h2>
-        <p>Secure • Encrypted • Cancel anytime in one click — no fine print. We never sell or share your data.</p>
-
-        <div class="plans-grid">
-
-            <!-- ✅ FOUNDER — £19.99 → £29.99 -->
-            <div class="plan-card">
-                <h3>FOUNDER</h3>
-                <div class="price">£19.99 <span>first month</span></div>
-                <div class="sub-price">then £29.99 / month</div>
-                <p class="plan-desc">Lay your foundation — essential power for every visionary.</p>
-                <ul>
-                    <li>Cash flow & Core Leak Finder — reveal hidden waste</li>
-                    <li>Professional invoices, quotes & estimates</li>
-                    <li>Curated email & sales templates</li>
-                    <li>World Sales Map — key regions insight</li>
-                    <li>Premium marketing templates</li>
-                    <li>Drag‑and‑drop designer — 5 active projects</li>
-                    <li>Strategic audience insights</li>
-                    <li>2 Encrypted Meeting Rooms</li>
-                    <li>Smart Notes — capture & refine your ideas</li>
-                    <li>Business Profile — adapts to your vision</li>
-                    <li>Evidence Vault — 5 uploads max</li>
-                    <li class="locked">🔒 Advanced Leak Detection — upgrade to unlock</li>
-                    <li class="locked">🔒 Unlimited templates — upgrade to unlock</li>
-                </ul>
-                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_FOUNDER_LINK','_blank')">
-                    Start 2‑Day Full Access<br><small>Register Your Trial — Add payment to activate</small>
-                </button>
-            </div>
-
-            <!-- ✅ GROWTH — £39.99 → £49.99 | MOST CHOSEN -->
-            <div class="plan-card featured">
-                <h3>GROWTH — MOST CHOSEN</h3>
-                <div class="price">£39.99 <span>first month</span></div>
-                <div class="sub-price">then £49.99 / month</div>
-                <p class="plan-desc">Scale with strength — everything you need to expand without limits.</p>
-                <ul>
-                    <li>EVERYTHING in FOUNDER +</li>
-                    <li>Advanced Leak Detection — deep audit & smarter alternatives</li>
-                    <li>Unlimited documents — invoices, quotes, contracts</li>
-                    <li>Complete Template Library — every style you will ever need</li>
-                    <li>Full World Sales Map — global intelligence</li>
-                    <li>Unlimited marketing assets</li>
-                    <li>Unlimited creative projects</li>
-                    <li>Demand heatmaps & trend forecasting</li>
-                    <li>Evidence Vault — UNLIMITED uploads</li>
-                    <li>Smart Profile — fully tailored workflows</li>
-                    <li class="locked">🔒 Multi‑Business Dashboard — upgrade to unlock</li>
-                    <li class="locked">🔒 Private Strategy Reports — upgrade to unlock</li>
-                </ul>
-                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_GROWTH_LINK','_blank')">
-                    Start 2‑Day Full Access<br><small>Register Your Trial — Add payment to activate</small>
-                </button>
-            </div>
-
-            <!-- ✅ MASTER — £79.99 → £89.99 | ULTIMATE -->
-            <div class="plan-card">
-                <h3>MASTER — ULTIMATE POWER</h3>
-                <div class="price">£79.99 <span>first month</span></div>
-                <div class="sub-price">then £89.99 / month</div>
-                <p class="plan-desc">Total command — everything, forever, reserved for the few.</p>
-                <ul>
-                    <li>EVERYTHING in GROWTH +</li>
-                    <li>Multi‑Business Dashboard — unlimited empires</li>
-                    <li>Global Market Intelligence — deep strategic reports</li>
-                    <li>Full Custom Branding — your signature everywhere</li>
-                    <li>Advanced Forecasting — 12‑month clarity</li>
-                    <li>Private Strategy Reports — bespoke guidance</li>
-                    <li>Priority access — always first in line</li>
-                    <li>EVERY future feature — yours forever</li>
-                </ul>
-                <button class="subscribe-btn" onclick="window.open('https://buy.stripe.com/REPLACE_MASTER_LINK','_blank')">
-                    Start 2‑Day Full Access<br><small>Register Your Trial — Add payment to activate</small>
-                </button>
-            </div>
-
+    <header>
+        <div class="container header-flex">
+            <a href="#" class="logo">ONYX™</a>
+            <div class="secure-badge">🔒 256-Bit Encrypted Sanctuary</div>
         </div>
-    </section>
-
-    <!-- ✅ FOOTER — CLEAN & ELEGANT -->
+    </header>
+    <main class="container">
+        <section class="hero">
+            <h1>ONYX™</h1>
+            <div class="sub-sanctuary">THE ANTI‑CHAOS BUSINESS SANCTUARY™</div>
+            <p>You have carried enough weight. Step into an immaculate, ultra-secure digital sanctuary where your business runs on autopilot, your numbers make sense, and your peace is protected.</p>
+            <a href="#pricing" class="btn">Enter Sanctuary — 2‑Day Full Access Trial</a>
+        </section>
+        <section class="sanctuary-promise">
+            <h2>Built Because We Know Your Worth</h2>
+            <p>Juggling software, leaking subscriptions, chasing invoices, and feeling exposed while trying to build a beautiful life is exhausting. ONYX™ was engineered from the ground up to give you absolute control without the noise. Here, you are safe, you are heard, and your business is bulletproof.</p>
+            <div class="promise-grid">
+                <div class="promise-card">
+                    <h4>Total Privacy</h4>
+                    <p>Your numbers, vaults, and notes are strictly shielded. Zero data selling, zero corporate tracking.</p>
+                </div>
+                <div class="promise-card">
+                    <h4>Zero Chaos</h4>
+                    <p>Every tool is curated to cut hours of admin down to minutes so you can focus on your vision.</p>
+                </div>
+                <div class="promise-card">
+                    <h4>Built for Growth</h4>
+                    <p>Designed for founders and creators who demand high-end aesthetics matched with elite functionality.</p>
+                </div>
+            </div>
+        </section>
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-title">Select Your Level of Control</h2>
+            <p class="section-subtitle">Experience full, uncompromised access free for 2 days. Secure your subscription today.</p>
+            <div class="tier-grid">
+                <div class="tier-card">
+                    <div>
+                        <h3>Founder</h3>
+                        <div class="price">£19.99<span> / first month</span><br><span style="font-size:14px;">£29.99/mo after</span></div>
+                        <ul class="tier-features">
+                            <li>Subscription Leak Detector</li>
+                            <li>Automated Invoicing & Quotes</li>
+                            <li>Ready‑to‑Send Client Templates</li>
+                            <li>Secure Private Vault Access</li>
+                        </ul>
+                    </div>
+                    <button onclick="startCheckout('price_founder_live')" class="btn">Start Founder Trial</button>
+                </div>
+                <div class="tier-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div>
+                        <h3>Growth</h3>
+                        <div class="price">£39.99<span> / first month</span><br><span style="font-size:14px;">£49.99/mo after</span></div>
+                        <ul class="tier-features">
+                            <li>Everything in Founder Tier</li>
+                            <li>Supplier Price Watch + Alternatives</li>
+                            <li>Advanced Expense & Cashflow Tracking</li>
+                            <li>Branded Luxury Document Suite</li>
+                            <li>Priority Concierge Support</li>
+                        </ul>
+                    </div>
+                    <button onclick="startCheckout('price_growth_live')" class="btn">Start Growth Trial</button>
+                </div>
+                <div class="tier-card">
+                    <div>
+                        <h3>Master</h3>
+                        <div class="price">£79.99<span> / first month</span><br><span style="font-size:14px;">£89.99/mo after</span></div>
+                        <ul class="tier-features">
+                            <li>Everything in Growth Tier</li>
+                            <li>Encrypted Private Meeting Spaces</li>
+                            <li>Smart AI Meeting Notes & Task Sync</li>
+                            <li>Global Financial & Asset Overview</li>
+                            <li>Automatic Feature Upgrades for Life</li>
+                        </ul>
+                    </div>
+                    <button onclick="startCheckout('price_master_live')" class="btn">Start Master Trial</button>
+                </div>
+            </div>
+        </section>
+        <section class="viral-sanctuary">
+            <h3>Tell Your Mates — Share the Sanctuary</h3>
+            <p>Scan this QR code or share your link with fellow founders, business partners, or friends who need to escape the chaos.</p>
+            <div class="qr-box">
+                <img id="dynamic-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://getonyx.app&color=020409&bgcolor=FFFFFF" alt="ONYX QR Code">
+            </div>
+            <div class="share-url" id="share-link-text">https://getonyx.app/?ref=ONYX-VIP</div>
+        </section>
+        <div class="trademark-notice">
+            <h4>⚠️ TRADEMARK & INTELLECTUAL PROPERTY NOTICE</h4>
+            <p>The name ONYX™, the ONYX logo, visual branding identity, slogan “The Anti‑Chaos Business Sanctuary™”, concept architecture, and feature sets are legally protected intellectual property.</p>
+            <p>Unauthorised reproduction, imitation, or commercial exploitation will face strict copyright enforcement and legal damages.</p>
+        </div>
+    </main>
     <footer>
-        <p>ONYX™ Universal Financial Solutions — The Anti‑Chaos Sanctuary</p>
-        <p style="margin-top:0.5rem;">Tools & educational resources only — NOT regulated financial advice. Always consult qualified professionals for tax, legal or regulated decisions. Cancel anytime instantly. We never sell or share your data.</p>
+        <div class="container">
+            <p>© 2026 ONYX™ — Universal Financial Solutions. All Rights Reserved.</p>
+            <p style="margin-top: 6px; color: var(--text-muted);">We NEVER sell, rent, or distribute your private data. Designed for guidance and total operational clarity.</p>
+        </div>
     </footer>
-
+    <script>
+        const stripePriceMap = {
+            'price_founder_live': 'price_1Nx_founder_placeholder',
+            'price_growth_live': 'price_1Nx_growth_placeholder',
+            'price_master_live': 'price_1Nx_master_placeholder'
+        };
+        function startCheckout(priceKey) {
+            const priceId = stripePriceMap[priceKey];
+            if (priceId && priceId.includes('placeholder')) {
+                alert('✨ Stripe ready — add your Price IDs to enable live payments!');
+                return;
+            }
+            alert('🔒 Secure checkout would open here — add your Stripe Price IDs to activate.');
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            const randomCode = 'ONYX-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            const shareUrl = `https://getonyx.app/?ref=${randomCode}`;
+            document.getElementById('share-link-text').innerText = shareUrl;
+            document.getElementById('dynamic-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(shareUrl)}&color=020409&bgcolor=FFFFFF`;
+        });
+    </script>
 </body>
 </html>
