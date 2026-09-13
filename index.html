@@ -3,336 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX™ — The Anti‑Chaos Business Sanctuary™</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ONYX™ — Universal Financial Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --obsidian: #020409;
-            --midnight-deep: #060A17;
-            --midnight-layer: #0C1224;
-            --midnight-soft: #111A33;
+            --midnight-deep: #020612;
+            --midnight-layer: #080E20;
+            --midnight-soft: #0F172A;
             --champagne: #E5C594;
-            --champagne-glow: rgba(229, 197, 148, 0.25);
-            --champagne-dim: rgba(229, 197, 148, 0.12);
-            --coral: #FF7A5C;
-            --coral-glow: rgba(255, 122, 92, 0.18);
-            --text-light: #F1F5F9;
-            --text-muted: #94A3B8;
-            --border-soft: rgba(229, 197, 148, 0.15);
-            --shadow-cinematic: 0 20px 50px rgba(2, 4, 9, 0.85);
-            --shadow-glow: 0 0 40px rgba(229, 197, 148, 0.12);
+            --champagne-soft: rgba(229, 197, 148, 0.15);
+            --coral-glow: #FF7B7B;
+            --coral-soft: rgba(255, 123, 123, 0.12);
+            --text-ivory: #F8F4E9;
+            --text-muted: #B4AFA0;
+            --border-soft: rgba(229, 197, 148, 0.12);
+            --shadow-luxury: 0 8px 40px rgba(0,0,0,0.45);
         }
-        * {margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at 50% 0%, var(--midnight-layer) 0%, var(--obsidian) 75%);
-            color: var(--text-light);
-            min-height: 100vh;
-            line-height: 1.7;
-            overflow-x: hidden;
+            background: radial-gradient(1400px 800px at top center, var(--midnight-layer) 0%, var(--midnight-deep) 65%, #010308 100%);
+            color: var(--text-ivory);
+            min-height:100vh;
+            line-height:1.6;
         }
-        h1, h2, h3, h4 {font-family: 'Playfair Display', serif; color: var(--champagne); font-weight: 600;}
-        .container {max-width: 1160px; margin: 0 auto; padding: 0 24px;}
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight:600; }
+        a { text-decoration:none; color:inherit; }
+
+        /* HEADER */
         header {
-            padding: 35px 0;
-            border-bottom: 1px solid var(--border-soft);
-            background: rgba(2, 4, 9, 0.6);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding:1.5rem 2rem;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom:1px solid var(--border-soft);
+            background:rgba(2,6,18,0.65);
+            backdrop-filter:blur(12px);
+            position:sticky; top:0; z-index:99;
         }
-        .header-flex {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;}
-        .logo {font-size: 26px; font-weight: 700; letter-spacing: 4px; color: var(--champagne); text-decoration: none;}
-        .secure-badge {
-            font-size: 12px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            border: 1px solid var(--border-soft);
-            padding: 6px 14px;
-            border-radius: 20px;
-            background: var(--champagne-dim);
+        .brand {
+            font-size:1.8rem;
+            color:var(--champagne);
+            letter-spacing:0.2em;
         }
-        .hero {padding: 110px 0 80px; text-align: center; position: relative;}
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 500px;
-            height: 300px;
-            background: radial-gradient(ellipse, var(--champagne-glow) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
+        .brand .tm-small {
+            font-size:0.4em;
+            vertical-align:super;
+            opacity:0.75;
         }
-        .hero h1 {font-size: 68px; font-weight: 700; letter-spacing: 6px; margin-bottom: 12px; line-height: 1.1;}
-        .hero .sub-sanctuary {
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--coral);
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
+        .nav-links { display:flex; gap:2rem; font-size:0.9rem; color:var(--text-muted); }
+        .nav-links a:hover { color:var(--champagne); transition:0.3s; }
+
+        /* HERO — PERFECT LOCKUP */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .hero p {font-size: 19px; max-width: 760px; margin: 0 auto 40px; color: var(--text-muted); font-weight: 300;}
-        .btn {
+        .hero-brand-lockup {
+            margin-bottom: 1.5rem;
+        }
+        .hero-main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.2rem, 7.5vw, 5.5rem);
+            font-weight: 700;
+            color: var(--champagne);
+            letter-spacing: 0.25em;
+            position: relative;
             display: inline-block;
-            background: linear-gradient(135deg, var(--champagne) 0%, #D4AA6E 100%);
-            color: var(--obsidian);
-            font-weight: 700;
-            padding: 16px 36px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 20px rgba(229, 197, 148, 0.2);
+            margin: 0;
         }
-        .btn:hover {
-            box-shadow: 0 0 35px var(--champagne-glow);
-            transform: translateY(-2px);
-        }
-        .sanctuary-promise {
-            background: var(--midnight-deep);
-            border: 1px solid var(--border-soft);
-            border-radius: 24px;
-            padding: 60px 50px;
-            margin: 60px 0;
-            box-shadow: var(--shadow-cinematic);
-            position: relative;
-            overflow: hidden;
-        }
-        .sanctuary-promise h2 {font-size: 34px; margin-bottom: 20px; text-align: center;}
-        .sanctuary-promise p {font-size: 17px; color: var(--text-muted); text-align: center; max-width: 800px; margin: 0 auto 40px; line-height: 1.8;}
-        .promise-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px;}
-        .promise-card {
-            background: var(--midnight-layer);
-            border: 1px solid var(--border-soft);
-            padding: 30px 24px;
-            border-radius: 16px;
-            text-align: left;
-        }
-        .promise-card h4 {color: var(--champagne); font-size: 18px; margin-bottom: 10px; font-family: 'Playfair Display', serif;}
-        .promise-card p {font-size: 14px; color: var(--text-muted); margin: 0; text-align: left;}
-        .pricing-section {padding: 40px 0 80px;}
-        .section-title {text-align: center; font-size: 42px; margin-bottom: 12px;}
-        .section-subtitle {text-align: center; color: var(--text-muted); margin-bottom: 50px; font-size: 16px;}
-        .tier-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;}
-        .tier-card {
-            background: var(--midnight-layer);
-            border: 1px solid var(--border-soft);
-            border-radius: 24px;
-            padding: 45px 35px;
-            transition: all 0.4s ease;
-            position: relative;
-            box-shadow: var(--shadow-cinematic);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .tier-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--champagne);
-            box-shadow: var(--shadow-cinematic), var(--shadow-glow);
-        }
-        .tier-card.featured {
-            border-color: var(--coral);
-            background: linear-gradient(180deg, var(--midnight-soft) 0%, var(--midnight-layer) 100%);
-            box-shadow: var(--shadow-cinematic), 0 0 40px var(--coral-glow);
-        }
-        .featured-badge {
+        .hero-main-title .tm-small {
+            font-size: 0.32em;
+            vertical-align: super;
+            opacity: 0.75;
+            letter-spacing: 0.1em;
             position: absolute;
-            top: -14px;
-            right: 35px;
-            background: var(--coral);
-            color: var(--obsidian);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 6px 16px;
-            border-radius: 20px;
+            top: 0.25em;
+            right: -0.6em;
         }
-        .tier-card h3 {font-size: 28px; margin-bottom: 12px;}
-        .price {font-size: 38px; font-weight: 700; margin: 20px 0 25px; color: var(--champagne); font-family: 'Playfair Display', serif;}
-        .price span {font-size: 14px; color: var(--text-muted); font-weight: 400; font-family: 'Plus Jakarta Sans', sans-serif;}
-        .tier-features {list-style: none; margin: 0 0 35px 0; color: var(--text-muted);}
-        .tier-features li {margin-bottom: 14px; font-size: 15px; display: flex; align-items: flex-start; gap: 10px;}
-        .tier-features li::before {content: '✦'; color: var(--champagne); font-size: 12px; margin-top: 3px;}
-        .tier-card .btn {width: 100%; text-align: center;}
-        .viral-sanctuary {
-            background: var(--midnight-deep);
-            border: 1px solid var(--border-soft);
-            border-radius: 24px;
-            padding: 60px 40px;
-            margin: 60px 0;
-            text-align: center;
-            box-shadow: var(--shadow-cinematic);
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+            font-style: italic;
+            color: var(--champagne);
+            opacity: 0.85;
+            margin-top: 0.75rem;
+            letter-spacing: 0.15em;
         }
-        .viral-sanctuary h3 {font-size: 32px; margin-bottom: 12px;}
-        .viral-sanctuary p {color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; font-size: 16px;}
-        .qr-box {
-            background: #FFFFFF;
-            padding: 20px;
-            width: fit-content;
-            margin: 0 auto 20px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .qr-box img {display: block; width: 170px; height: 170px;}
-        .share-url {font-size: 14px; color: var(--champagne); letter-spacing: 1px; word-break: break-all;}
-        .trademark-notice {
-            background: rgba(229, 197, 148, 0.02);
-            border: 1px solid rgba(229, 197, 148, 0.12);
-            border-radius: 18px;
-            padding: 35px;
-            margin: 50px 0;
-            text-align: center;
-        }
-        .trademark-notice h4 {font-size: 20px; margin-bottom: 12px; letter-spacing: 1px;}
-        .trademark-notice p {font-size: 13px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.6;}
-        footer {
-            font-size: 13px;
+        .hero-body {
+            font-size: 1.15rem;
             color: var(--text-muted);
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-soft);
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.7;
         }
-        @media (max-width: 768px) {
-            .hero h1 {font-size: 44px;}
-            .hero .sub-sanctuary {font-size: 16px; letter-spacing: 2px;}
-            .sanctuary-promise {padding: 35px 20px;}
-            .header-flex {justify-content: center;}
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--champagne);
+            opacity: 0.8;
+            font-style: italic;
         }
+
+        /* FEATURES GRID */
+        .features-section {
+            max-width:1200px; margin:0 auto 5rem;
+            padding:0 2rem;
+        }
+        .features-section h2 {
+            text-align:center;
+            color:var(--champagne);
+            font-size:2rem; margin-bottom:3rem;
+        }
+        .features-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+            gap:1.5rem;
+        }
+        .feature-card {
+            background:linear-gradient(135deg, rgba(15,23,42,0.7) 0%, rgba(8,14,32,0.5) 100%);
+            border:1px solid var(--border-soft);
+            border-radius:14px;
+            padding:1.75rem;
+            transition:0.35s ease;
+            box-shadow:var(--shadow-luxury);
+        }
+        .feature-card:hover {
+            transform:translateY(-4px);
+            border-color:var(--champagne);
+            background:linear-gradient(135deg, rgba(229,197,148,0.08) 0%, rgba(15,23,42,0.7) 100%);
+        }
+        .feature-card h3 {
+            color:var(--champagne);
+            margin-bottom:0.75rem;
+            font-size:1.1rem;
+        }
+        .feature-card p {
+            font-size:0.9rem;
+            color:var(--text-muted);
+            line-height:1.55;
+        }
+
+        /* PRICING */
+        .pricing-section {
+            max-width:1200px; margin:0 auto 6rem;
+            padding:0 2rem;
+        }
+        .pricing-section h2 {
+            text-align:center;
+            color:var(--champagne);
+            font-size:2rem; margin-bottom:0.5rem;
+        }
+        .pricing-sub {
+            text-align:center;
+            color:var(--text-muted);
+            margin-bottom:3rem;
+        }
+        .pricing-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+            gap:1.5rem;
+        }
+        .price-card {
+            background:linear-gradient(160deg, rgba(15,23,42,0.75) 0%, rgba(2,6,18,0.9) 100%);
+            border:1px solid var(--border-soft);
+            border-radius:16px;
+            padding:2rem;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+            box-shadow:var(--shadow-luxury);
+        }
+        .price-card.featured {
+            border-color:var(--champagne);
+            transform:scale(1.03);
+        }
+        .price-card h3 {
+            color:var(--champagne);
+            font-size:1.3rem; margin-bottom:0.5rem;
+        }
+        .price-intro { font-size:0.85rem; color:var(--coral-glow); margin-bottom:1rem; }
+        .price-amount {
+            font-size:2.2rem; font-weight:700;
+            color:var(--text-ivory); margin-bottom:0.25rem;
+        }
+        .price-note { font-size:0.8rem; color:var(--text-muted); margin-bottom:1.5rem; }
+        .price-list {
+            text-align:left; margin:1.5rem 0;
+            font-size:0.9rem; line-height:1.8;
+            color:var(--text-muted);
+        }
+        .price-list span { color:var(--champagne); }
+        .btn-luxury {
+            width:100%; padding:0.9rem;
+            border-radius:10px; border:none;
+            font-weight:600; font-size:0.95rem;
+            background:linear-gradient(90deg, #C8A870 0%, #E5C594 50%, #C8A870 100%);
+            color:var(--midnight-deep);
+            cursor:pointer; transition:0.3s;
+            letter-spacing:0.05em;
+        }
+        .btn-luxury:hover {
+            transform:scale(1.03);
+            box-shadow:0 0 22px rgba(229,197,148,0.35);
+        }
+
+        /* SHARE / QR */
+        .share-section {
+            max-width:700px; margin:0 auto 5rem;
+            text-align:center; padding:0 2rem;
+        }
+        .share-section h3 { color:var(--champagne); margin-bottom:1rem; }
+        .share-box {
+            background:var(--midnight-layer);
+            border:1px solid var(--border-soft);
+            border-radius:12px;
+            padding:1.5rem;
+            display:flex; align-items:center; justify-content:center; gap:2rem;
+            flex-wrap:wrap;
+        }
+        #share-link-text {
+            font-family:monospace; font-size:0.85rem;
+            color:var(--champagne);
+            background:rgba(229,197,148,0.08);
+            padding:0.5rem 0.75rem; border-radius:6px;
+            word-break:break-all;
+        }
+        #dynamic-qr { width:120px; height:120px; border-radius:8px; }
+
+        /* FOOTER */
+        footer {
+            border-top:1px solid var(--border-soft);
+            padding:2rem; text-align:center;
+            font-size:0.85rem; color:var(--text-muted);
+        }
+        .legal-line { margin-top:0.5rem; font-size:0.78rem; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container header-flex">
-            <a href="#" class="logo">ONYX™</a>
-            <div class="secure-badge">🔒 256-Bit Encrypted Sanctuary</div>
+
+<header>
+    <div class="brand">ONYX<span class="tm-small">TM</span></div>
+    <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#share">Share</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-brand-lockup">
+        <h1 class="hero-main-title">ONYX<span class="tm-small">TM</span></h1>
+        <p class="hero-tagline">The Anti‑Chaos Business Sanctuary</p>
+    </div>
+    <p class="hero-body">Everything you need to run, grow, protect and profit — all in one luxury, secure, beautifully simple place. Built for founders, creators and dreamers who mean business.</p>
+    <p class="hero-sub">Save time. Save money. Save your peace of mind.</p>
+</section>
+
+<section class="features-section" id="features">
+    <h2>What’s Inside</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Subscription Leak Detector</h3>
+            <p>Finds every hidden cost, unused service and money leak — instantly shows exactly what to cut or swap.</p>
         </div>
-    </header>
-    <main class="container">
-        <section class="hero">
-            <h1>ONYX™</h1>
-            <div class="sub-sanctuary">THE ANTI‑CHAOS BUSINESS SANCTUARY™</div>
-            <p>You have carried enough weight. Step into an immaculate, ultra-secure digital sanctuary where your business runs on autopilot, your numbers make sense, and your peace is protected.</p>
-            <a href="#pricing" class="btn">Enter Sanctuary — 2‑Day Full Access Trial</a>
-        </section>
-        <section class="sanctuary-promise">
-            <h2>Built Because We Know Your Worth</h2>
-            <p>Juggling software, leaking subscriptions, chasing invoices, and feeling exposed while trying to build a beautiful life is exhausting. ONYX™ was engineered from the ground up to give you absolute control without the noise. Here, you are safe, you are heard, and your business is bulletproof.</p>
-            <div class="promise-grid">
-                <div class="promise-card">
-                    <h4>Total Privacy</h4>
-                    <p>Your numbers, vaults, and notes are strictly shielded. Zero data selling, zero corporate tracking.</p>
-                </div>
-                <div class="promise-card">
-                    <h4>Zero Chaos</h4>
-                    <p>Every tool is curated to cut hours of admin down to minutes so you can focus on your vision.</p>
-                </div>
-                <div class="promise-card">
-                    <h4>Built for Growth</h4>
-                    <p>Designed for founders and creators who demand high-end aesthetics matched with elite functionality.</p>
-                </div>
-            </div>
-        </section>
-        <section id="pricing" class="pricing-section">
-            <h2 class="section-title">Select Your Level of Control</h2>
-            <p class="section-subtitle">Experience full, uncompromised access free for 2 days. Secure your subscription today.</p>
-            <div class="tier-grid">
-                <div class="tier-card">
-                    <div>
-                        <h3>Founder</h3>
-                        <div class="price">£19.99<span> / first month</span><br><span style="font-size:14px;">£29.99/mo after</span></div>
-                        <ul class="tier-features">
-                            <li>Subscription Leak Detector</li>
-                            <li>Automated Invoicing & Quotes</li>
-                            <li>Ready‑to‑Send Client Templates</li>
-                            <li>Secure Private Vault Access</li>
-                        </ul>
-                    </div>
-                    <button onclick="startCheckout('price_founder_live')" class="btn">Start Founder Trial</button>
-                </div>
-                <div class="tier-card featured">
-                    <div class="featured-badge">Most Popular</div>
-                    <div>
-                        <h3>Growth</h3>
-                        <div class="price">£39.99<span> / first month</span><br><span style="font-size:14px;">£49.99/mo after</span></div>
-                        <ul class="tier-features">
-                            <li>Everything in Founder Tier</li>
-                            <li>Supplier Price Watch + Alternatives</li>
-                            <li>Advanced Expense & Cashflow Tracking</li>
-                            <li>Branded Luxury Document Suite</li>
-                            <li>Priority Concierge Support</li>
-                        </ul>
-                    </div>
-                    <button onclick="startCheckout('price_growth_live')" class="btn">Start Growth Trial</button>
-                </div>
-                <div class="tier-card">
-                    <div>
-                        <h3>Master</h3>
-                        <div class="price">£79.99<span> / first month</span><br><span style="font-size:14px;">£89.99/mo after</span></div>
-                        <ul class="tier-features">
-                            <li>Everything in Growth Tier</li>
-                            <li>Encrypted Private Meeting Spaces</li>
-                            <li>Smart AI Meeting Notes & Task Sync</li>
-                            <li>Global Financial & Asset Overview</li>
-                            <li>Automatic Feature Upgrades for Life</li>
-                        </ul>
-                    </div>
-                    <button onclick="startCheckout('price_master_live')" class="btn">Start Master Trial</button>
-                </div>
-            </div>
-        </section>
-        <section class="viral-sanctuary">
-            <h3>Tell Your Mates — Share the Sanctuary</h3>
-            <p>Scan this QR code or share your link with fellow founders, business partners, or friends who need to escape the chaos.</p>
-            <div class="qr-box">
-                <img id="dynamic-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://getonyx.app&color=020409&bgcolor=FFFFFF" alt="ONYX QR Code">
-            </div>
-            <div class="share-url" id="share-link-text">https://getonyx.app/?ref=ONYX-VIP</div>
-        </section>
-        <div class="trademark-notice">
-            <h4>⚠️ TRADEMARK & INTELLECTUAL PROPERTY NOTICE</h4>
-            <p>The name ONYX™, the ONYX logo, visual branding identity, slogan “The Anti‑Chaos Business Sanctuary™”, concept architecture, and feature sets are legally protected intellectual property.</p>
-            <p>Unauthorised reproduction, imitation, or commercial exploitation will face strict copyright enforcement and legal damages.</p>
+        <div class="feature-card">
+            <h3>Automated Invoicing & Quotes</h3>
+            <p>Professional templates, auto‑calculate, send, chase and track — looks expensive, takes seconds.</p>
         </div>
-    </main>
-    <footer>
-        <div class="container">
-            <p>© 2026 ONYX™ — Universal Financial Solutions. All Rights Reserved.</p>
-            <p style="margin-top: 6px; color: var(--text-muted);">We NEVER sell, rent, or distribute your private data. Designed for guidance and total operational clarity.</p>
+        <div class="feature-card">
+            <h3>Ready‑to‑Send Templates</h3>
+            <p>Sales letters, follow‑ups, proposals, emails — luxury‑designed, ready to brand and send.</p>
         </div>
-    </footer>
-    <script>
-        const stripePriceMap = {
+        <div class="feature-card">
+            <h3>Supplier Price Watch</h3>
+            <p>Track rises, stock issues, compare alternatives — never overpay or run out unexpectedly.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Expense & Cashflow</h3>
+            <p>See exactly where your money goes, trends by region, best‑performing areas and forecasts.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Encrypted Private Space</h3>
+            <p>Secure vault, protected notes, password‑locked files — fully encrypted. We NEVER sell or share your data — ever.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Smart Meetings & Notes</h3>
+            <p>Encrypted calls, auto‑summaries, action‑point extraction — turns conversations into progress.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Branded Document Suite</h3>
+            <p>Proposals, reports, contracts — all matching your luxury look instantly.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Priority Concierge Support</h3>
+            <p>Direct help, faster updates, custom tweaks — you matter most.</p>
+        </div>
+    </div>
+</section>
+
+<section class="pricing-section" id="pricing">
+    <h2>Choose Your Tier</h2>
+    <p class="pricing-sub">Start strong — upgrade anytime. First‑month pricing as a thank‑you for early joiners.</p>
+    <div class="pricing-grid">
+        <div class="price-card">
+            <h3>Founder</h3>
+            <p class="price-intro">Perfect for solo builders & start‑ups</p>
+            <div class="price-amount">£19.99</div>
+            <p class="price-note">First month — then £29.99 / month</p>
+            <div class="price-list">
+                <p><span>✓</span> Leak Detector</p>
+                <p><span>✓</span> Invoicing & Templates</p>
+                <p><span>✓</span> Basic Cashflow</p>
+                <p><span>✓</span> Secure Vault</p>
+                <p><span>✓</span> Standard Support</p>
+            </div>
+            <button class="btn-luxury" onclick="startCheckout('price_founder_live')">Start Founder Trial</button>
+        </div>
+
+        <div class="price-card featured">
+            <h3>Growth</h3>
+            <p class="price-intro">For expanding businesses & creators</p>
+            <div class="price-amount">£39.99</div>
+            <p class="price-note">First month — then £49.99 / month</p>
+            <div class="price-list">
+                <p><span>✓</span> Everything in Founder +</p>
+                <p><span>✓</span> Supplier Watch + Alternatives</p>
+                <p><span>✓</span> Regional Sales & Trends</p>
+                <p><span>✓</span> Smart Meetings + Notes</p>
+                <p><span>✓</span> Branded Documents</p>
+            </div>
+            <button class="btn-luxury" onclick="startCheckout('price_growth_live')">Start Growth Trial</button>
+        </div>
+
+        <div class="price-card">
+            <h3>Master</h3>
+            <p class="price-intro">Full power — everything included</p>
+            <div class="price-amount">£79.99</div>
+            <p class="price-note">First month — then £89.99 / month</p>
+            <div class="price-list">
+                <p><span>✓</span> Everything in Growth +</p>
+                <p><span>✓</span> Priority Concierge</p>
+                <p><span>✓</span> Advanced Analytics</p>
+                <p><span>✓</span> Extra Security Layers</p>
+                <p><span>✓</span> Early Access & Custom Tools</p>
+            </div>
+            <button class="btn-luxury" onclick="startCheckout('price_master_live')">Start Master Trial</button>
+        </div>
+    </div>
+</section>
+
+<section class="share-section" id="share">
+    <h3>Share ONYX — Earn & Grow Together</h3>
+    <div class="share-box">
+        <div>
+            <p>Your unique link:</p>
+            <p id="share-link-text">Generating…</p>
+        </div>
+        <img id="dynamic-qr" src="" alt="QR Code">
+    </div>
+</section>
+
+<footer>
+    <p>ONYX<span class="tm-small">TM</span> — Universal Financial Solutions. All rights reserved.</p>
+    <p class="legal-line">🔒 Your data is never sold, shared or traded. Fully encrypted & yours alone. This site uses Stripe for secure payments — we never see your full card details.</p>
+</footer>
+
+<script>
+const stripePriceMap = {
     'price_founder_live': 'price_1UEbZIH3sLPEFFcyiG7YqPCO',
     'price_growth_live': 'price_1UEbZIH3sLPEFFcy3NxzzrY',
     'price_master_live': 'price_1UEbZIH3sLPEFFcyyaROCYno'
-        
-        function startCheckout(priceKey) {
-            const priceId = stripePriceMap[priceKey];
-            if (priceId && priceId.includes('placeholder')) {
-                alert('✨ Stripe ready — add your Price IDs to enable live payments!');
-                return;
-            }
-            alert('🔒 Secure checkout would open here — add your Stripe Price IDs to activate.');
-        }
-        window.addEventListener('DOMContentLoaded', () => {
-            const randomCode = 'ONYX-' + Math.random().toString(36).substring(2, 8).toUpperCase();
-            const shareUrl = `https://getonyx.app/?ref=${randomCode}`;
-            document.getElementById('share-link-text').innerText = shareUrl;
-            document.getElementById('dynamic-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(shareUrl)}&color=020409&bgcolor=FFFFFF`;
-        });
-    </script>
+};
+
+function startCheckout(priceKey) {
+    const priceId = stripePriceMap[priceKey];
+    if (!priceId || priceId.includes('placeholder')) {
+        alert('✨ Updating — please wait a few minutes then hard refresh.');
+        return;
+    }
+    alert('🔐 Secure checkout opening — connect your Stripe link here when ready!');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const randomCode = 'ONYX-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+    const shareUrl = 'https://getonyx.app/?ref=' + randomCode;
+    const shareEl = document.getElementById('share-link-text');
+    if (shareEl) shareEl.innerText = shareUrl;
+
+    const qrEl = document.getElementById('dynamic-qr');
+    if (qrEl) qrEl.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(shareUrl);
+});
+</script>
+
 </body>
 </html>
