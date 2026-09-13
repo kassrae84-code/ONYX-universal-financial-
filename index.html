@@ -29,19 +29,20 @@
         .container { max-width:1200px; margin:0 auto; padding:2rem 1.2rem; }
         header { text-align:center; padding:4rem 1rem 3rem; }
         header h1 {
-            font-size:clamp(2.2rem,5vw,3.5rem);
+            font-size:clamp(2.8rem,6vw,4.2rem);
             margin-bottom:0.8rem;
-            letter-spacing:1px;
+            letter-spacing:2px;
             font-weight:700;
             color: var(--champagne);
             position: relative;
             display: inline-block;
+            line-height:1;
         }
         .trademark-sup {
-            font-size: 0.35em;
+            font-size: 0.3em;
             position: absolute;
-            top: 0.2em;
-            right: -0.6em;
+            top: 0.15em;
+            right: -0.55em;
             color: var(--champagne);
             font-weight: 400;
         }
@@ -84,7 +85,7 @@
         .price small { font-size:0.9rem; color:var(--text-dim); font-weight:400; }
         .tier-card ul { list-style:none; margin:1.5rem 0; }
         .tier-card li { padding:0.4rem 0; border-bottom:1px dashed rgba(229,197,148,0.1); }
-        .tier-card li::before { content:"✓ "; color:var(--coral-accent); font-weight:bold; }
+        .tier-card li::before { content:"• "; color:var(--champagne); font-weight:bold; font-size:1.2em; }
 
         .pay-btn {
             width:100%;
