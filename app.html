@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYX ONE — Client Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --obsidian: #050507;
+            --matte-card: #0A0B0E;
+            --matte-card-hover: #101217;
+            --gold-foil: #D4B98C;
+            --gold-bright: #F5E6BE;
+            --gold-subtle: rgba(212, 185, 140, 0.08);
+            --gold-border: rgba(212, 185, 140, 0.2);
+            --gold-border-bright: rgba(212, 185, 140, 0.55);
+            --text-main: #E2D4B7;
+            --text-dim: #8A857A;
+            --transition-luxury: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--obsidian);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% -10%, rgba(212, 185, 140, 0.07) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, .brand-name {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        header {
+            background: rgba(5, 5, 7, 0.85);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--gold-border);
+            padding: 1.8rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 1.2rem; }
+        .emblem-svg {
+            width: 38px;
+            height: 38px;
+            fill: url(#goldGradient);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+        }
+        .brand-name { font-size: 1.25rem; color: var(--gold-foil); letter-spacing: 0.3em; }
+        .brand-tag { font-size: 0.5rem; color: var(--text-dim); letter-spacing: 0.45em; display: block; margin-top: 0.2rem; }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .welcome-banner {
+            background: var(--matte-card);
+            border: 1px solid var(--gold-foil);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border-radius: 2px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px rgba(212, 185, 140, 0.08);
+        }
+        .welcome-banner h1 {
+            color: var(--gold-bright);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.2em;
+        }
+        .welcome-banner p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--gold-bright);
+            margin-bottom: 2rem;
+            letter-spacing: 0.25em;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .tool-card {
+            background: var(--matte-card);
+            border: 1px solid var(--gold-border);
+            padding: 3rem 2.5rem;
+            transition: var(--transition-luxury);
+            border-radius: 2px;
+            position: relative;
+        }
+        .tool-card:hover {
+            background: var(--matte-card-hover);
+            border-color: var(--gold-border-bright);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+        .tool-card h3 {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2em;
+        }
+        .tool-card p {
+            color: var(--text-dim);
+            font-size: 0.84rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2.2rem;
+            border: 1px solid var(--gold-border);
+            color: var(--gold-foil);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: var(--transition-luxury);
+            background: var(--obsidian);
+            border-radius: 2px;
+            font-weight: 400;
+        }
+        .btn:hover {
+            background: var(--gold-subtle);
+            border-color: var(--gold-border-bright);
+            color: var(--gold-bright);
+        }
+        .btn.primary {
+            background: linear-gradient(135deg, #D4B98C 0%, #B8975E 100%);
+            color: var(--obsidian);
+            border-color: transparent;
+            font-weight: 500;
+        }
+
+        footer {
+            border-top: 1px solid var(--gold-border);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+        }
+    </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;">
+    <defs>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F5E6BE" />
+            <stop offset="50%" stop-color="#D4B98C" />
+            <stop offset="100%" stop-color="#9A7B4C" />
+        </linearGradient>
+    </defs>
+</svg>
+
+<header>
+    <div class="logo-area">
+        <svg class="emblem-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div>
+            <span class="brand-name">ONYX ONE</span>
+            <span class="brand-tag">CLIENT COMMAND CENTER</span>
+        </div>
+    </div>
+    <a href="index.html" class="btn">Sign Out</a>
+</header>
+
+<div class="dashboard-container">
+    <div class="welcome-banner">
+        <h1>ACCESS GRANTED</h1>
+        <p>Your secure private financial command center is initialized. All automated tools, templates, and encrypted meeting gateways are active below.</p>
+    </div>
+
+    <h2 class="section-title">Core Execution Tools</h2>
+    <div class="grid-2">
+        <div class="tool-card">
+            <h3>Automated Invoicing & Quotes</h3>
+            <p>Generate sharp, brand-aligned invoices and track payment statuses instantly without spreadsheet clutter.</p>
+            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Invoice%20Template" class="btn primary">Launch Generator</a>
+        </div>
+
+        <div class="tool-card">
+            <h3>Leak Detection & Cost Audit</h3>
+            <p>Review overhead, identify redundant subscriptions, and calculate immediate capital recovery metrics.</p>
+            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Cost%20Audit" class="btn primary">Run Audit Protocol</a>
+        </div>
+
+        <div class="tool-card">
+            <h3>Email Marketing Library</h3>
+            <p>Access high-converting luxury outreach templates, sales sequences, and follow-up copy ready for deployment.</p>
+            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Marketing%20Templates" class="btn primary">Access Library</a>
+        </div>
+
+        <div class="tool-card">
+            <h3>Secure Meeting Gateway</h3>
+            <p>Launch encrypted conference sessions with automated smart-summaries and clear action item tracking.</p>
+            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Secure%20Meeting%20Link" class="btn primary">Initialize Room</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 ONYX ONE FINANCIAL SOLUTIONS. SECURE CLIENT ENVIRONMENT.</p>
+</footer>
+
+</body>
+</html>
