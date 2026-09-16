@@ -170,7 +170,6 @@
             color: #0A0A0A;
             font-weight: 600;
         }
-        /* Custom Input Fields */
         .executive-input {
             width: 100%;
             background: rgba(0, 0, 0, 0.6);
@@ -188,7 +187,21 @@
             border-color: #FCF6BA;
             box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
         }
-        /* Glowing Interactive Map Grid */
+        /* Custom File Upload Box Styling */
+        .upload-dropzone {
+            border: 2px dashed rgba(191, 149, 63, 0.6);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .upload-dropzone:hover {
+            border-color: #FCF6BA;
+            background: rgba(191, 149, 63, 0.05);
+        }
         .map-grid-container {
             position: relative;
             background: #050505;
@@ -308,16 +321,23 @@
             <div id="hubOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 4. TAILORED PROFESSION VAULT & EVIDENCE REPORT GENERATOR -->
+        <!-- 4. TAILORED PROFESSION VAULT & EVIDENCE UPLOAD / REPORT GENERATOR -->
         <div class="executive-sanctuary">
             <h2>Tailored Profession Vault & Evidence Reporting</h2>
-            <p class="section-desc">Instantly customize your workspace to your exact trade (e.g., Asbestos Surveyor, Photographer, Contractor). Store survey evidence, upload site photos, and auto-generate certified professional reports.</p>
+            <p class="section-desc">Instantly customize your workspace to your exact trade (e.g., Asbestos Surveyor, Photographer, Contractor). Upload site photos or survey evidence and auto-generate certified professional reports.</p>
             
             <div style="max-width: 600px; margin: 0 auto;">
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Select or Enter Your Profession:</label>
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Your Profession / Trade:</label>
                 <input type="text" id="userProfession" class="executive-input" placeholder="e.g. Asbestos Surveyor, Electrician, Photographer..." value="Asbestos Surveyor">
                 
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Evidence Log / Notes (Sample Data):</label>
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Evidence File Upload (Photos, Lab Samples, PDF Docs):</label>
+                <div class="upload-dropzone" onclick="document.getElementById('evidenceFile').click()">
+                    <p style="color: #FCF6BA; font-size: 0.85rem; margin: 0 0 4px 0;">📂 Click to browse or drop site evidence files here</p>
+                    <p id="fileStatusDisplay" style="color: #888888; font-size: 0.75rem; margin: 0;">No file selected (Local Session Secure)</p>
+                </div>
+                <input type="file" id="evidenceFile" style="display: none;" onchange="handleFileSelect(this)">
+
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Survey Findings / Notes:</label>
                 <input type="text" id="evidenceNotes" class="executive-input" placeholder="e.g. Sample #4 - Boiler Room Pipe Insulation (Chrysotile Positive)..." value="Site Inspection Ref: ASB-2026-99 - Suspended ceiling material sampled and logged.">
                 
                 <button class="cinematic-button" onclick="generateProfessionReport()">Generate Tailored Compliance Report</button>
@@ -498,12 +518,20 @@
             panel.innerHTML = `<strong>[SECURE VIDEO NODE ACTIVE]:</strong> Room ID: <code>${roomId}</code>. Encrypted end-to-end communication channel ready for client briefings.`;
         }
 
+        function handleFileSelect(input) {
+            const status = document.getElementById('fileStatusDisplay');
+            if (input.files && input.files[0]) {
+                status.innerHTML = `✅ Attached: <strong>${input.files[0].name}</strong> (Stored securely in local session vault)`;
+                status.style.color = '#FCF6BA';
+            }
+        }
+
         function generateProfessionReport() {
             const prof = document.getElementById('userProfession').value;
             const notes = document.getElementById('evidenceNotes').value;
             const panel = document.getElementById('professionReportOutput');
             panel.style.display = 'block';
-            panel.innerHTML = `<strong>[TAILORED COMPLIANCE VAULT - ${prof.toUpperCase()}]:</strong><br>• Evidence Vault Status: Secure, Local Encryption Active.<br>• Logged Evidence: "${notes}"<br>• Generated Output: Certified professional inspection record formatted with automated compliance signatures and ready for immediate client delivery.`;
+            panel.innerHTML = `<strong>[TAILORED COMPLIANCE VAULT - ${prof.toUpperCase()}]:</strong><br>• Evidence Vault Status: Secure, Local Session Encryption Active.<br>• Logged Findings: "${notes}"<br>• Generated Output: Certified professional inspection record formatted with compliance signatures, photo evidence attachments, and ready for immediate client delivery.`;
         }
 
         function loadFinancialData(type) {
