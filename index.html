@@ -134,19 +134,6 @@
             color: var(--bg-dark);
             box-shadow: 0 0 15px rgba(191, 149, 63, 0.4);
         }
-        .live-output-panel {
-            margin-top: 1.2rem;
-            background: #000000;
-            border: 1px dashed rgba(191, 149, 63, 0.6);
-            padding: 1.2rem;
-            border-radius: 4px;
-            font-family: var(--body-font);
-            font-size: 0.85rem;
-            color: #FCF6BA;
-            display: none;
-            line-height: 1.6;
-            text-align: left;
-        }
         .tab-bar {
             display: flex;
             gap: 0.5rem;
@@ -187,7 +174,6 @@
             border-color: #FCF6BA;
             box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
         }
-        /* Custom File Upload Box Styling */
         .upload-dropzone {
             border: 2px dashed rgba(191, 149, 63, 0.6);
             background: rgba(0, 0, 0, 0.4);
@@ -202,6 +188,56 @@
             border-color: #FCF6BA;
             background: rgba(191, 149, 63, 0.05);
         }
+        /* POPUP MODAL STYLING (FANCY & IMMERSIVE) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .modal-card {
+            background: #0F0F0F;
+            border: 1px solid #BF953F;
+            border-radius: 10px;
+            padding: 2.5rem;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(191, 149, 63, 0.4);
+            text-align: center;
+            position: relative;
+        }
+        .modal-card h3 {
+            font-family: var(--primary-font);
+            color: #FCF6BA;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .modal-card p {
+            color: #DDDDDD;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .close-modal-btn {
+            background: var(--accent-gold);
+            color: #0A0A0A;
+            font-weight: 600;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        /* Map and QR Styling */
         .map-grid-container {
             position: relative;
             background: #050505;
@@ -264,7 +300,7 @@
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Sovereign Financial Architecture & Operations</div>
 
-        <!-- 2. MISSION & ZERO-DATA-SALE PLEDGE -->
+        <!-- 2. MISSION & PLEDGE -->
         <div class="executive-sanctuary" style="text-align: center;">
             <h2>Our Mission & Zero-Data-Sale Pledge</h2>
             <p class="section-desc" style="max-width: 800px; margin-bottom: 1rem;">
@@ -272,7 +308,7 @@
             </p>
         </div>
 
-        <!-- 3. COMMAND & CONTROL HUB + JARGON TAB -->
+        <!-- 3. COMMAND & CONTROL HUB -->
         <div class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
             <p class="section-desc">Manage core operations, security audits, and client syncs. Unsure of corporate terms? Use the translator tab below.</p>
@@ -282,32 +318,30 @@
                 <button class="tab-btn" onclick="switchTab('translator')">New to Business? (Jargon Translator)</button>
             </div>
 
-            <!-- Hub View -->
             <div id="viewHub" class="choices-grid">
                 <div class="choice-card">
                     <div>
                         <h3>Core Dashboard</h3>
                         <p>Monitor active workspace data integrity and system routing.</p>
                     </div>
-                    <button class="cinematic-button" onclick="runHubAction('Dashboard online. All local telemetry streams secure, encrypted, and fully operational.')">Initialize</button>
+                    <button class="cinematic-button" onclick="showModal('Core Dashboard', 'Dashboard online. All local telemetry streams secure, encrypted, and fully operational across all workspace nodes.')">Initialize</button>
                 </div>
                 <div class="choice-card">
                     <div>
                         <h3>Asset Protection</h3>
                         <p>Run real-time leakage audits and track capital retention.</p>
                     </div>
-                    <button class="cinematic-button" onclick="runHubAction('Audit complete. Zero capital leakage detected. All revenue pipelines secured through active Stripe endpoints.')">Run Audit</button>
+                    <button class="cinematic-button" onclick="showModal('Asset Protection Audit', 'Audit complete. Zero capital leakage detected. All revenue pipelines secured through active Stripe endpoints.')">Run Audit</button>
                 </div>
                 <div class="choice-card">
                     <div>
                         <h3>Sovereign Comms</h3>
                         <p>Secure encrypted video rooms and automated calendar booking sync.</p>
                     </div>
-                    <button class="cinematic-button" onclick="launchCommsRoom()">Launch Comms</button>
+                    <button class="cinematic-button" onclick="launchCommsRoomModal()">Launch Comms</button>
                 </div>
             </div>
 
-            <!-- Translator View -->
             <div id="viewTranslator" style="display: none;">
                 <p style="font-size: 0.85rem; color: #AAAAAA; text-align: center; margin-bottom: 1rem;">Click any term to instantly translate corporate speak into normal language:</p>
                 <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
@@ -315,13 +349,11 @@
                     <button class="cinematic-button" style="width: auto;" onclick="translateTerm('leakage')">Leakage Audit?</button>
                     <button class="cinematic-button" style="width: auto;" onclick="translateTerm('routing')">Routing?</button>
                 </div>
-                <div id="translatorResult" class="live-output-panel" style="margin-top: 1rem;"></div>
+                <div id="translatorResult" class="live-output-panel" style="margin-top: 1rem; display:none; background:#000; padding:1rem; border:1px dashed #BF953F; color:#FCF6BA;"></div>
             </div>
-
-            <div id="hubOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 4. TAILORED PROFESSION VAULT & EVIDENCE UPLOAD / REPORT GENERATOR -->
+        <!-- 4. TAILORED PROFESSION VAULT -->
         <div class="executive-sanctuary">
             <h2>Tailored Profession Vault & Evidence Reporting</h2>
             <p class="section-desc">Instantly customize your workspace to your exact trade (e.g., Asbestos Surveyor, Photographer, Contractor). Upload site photos or survey evidence and auto-generate certified professional reports.</p>
@@ -342,10 +374,9 @@
                 
                 <button class="cinematic-button" onclick="generateProfessionReport()">Generate Tailored Compliance Report</button>
             </div>
-            <div id="professionReportOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 5. NET WORTH, MULTI-CURRENCY & CRYPTO ASSET TRACKER -->
+        <!-- 5. NET WORTH, MULTI-CURRENCY & CRYPTO ASSET HUB -->
         <div class="executive-sanctuary">
             <h2>Sovereign Net Worth & Crypto Asset Hub</h2>
             <p class="section-desc">Total financial visibility in one place. Consolidate your fiat revenue, bank reserves, and crypto wallet holdings with AI-driven saving and spending optimisation tips.</p>
@@ -373,10 +404,9 @@
                     <button class="cinematic-button" onclick="loadFinancialData('tips')">Get Financial Tips</button>
                 </div>
             </div>
-            <div id="financialOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 6. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE -->
+        <!-- 6. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE (FANCY POPUPS WITH SIGN & MULTILINGUAL) -->
         <div class="executive-sanctuary">
             <h2>Sovereign Accessibility & Global Comms Suite</h2>
             <p class="section-desc">Inclusive AI-powered tools designed to break down language barriers, support deaf communication via sign translation, and record smart meeting memos automatically. 100% Free for all members.</p>
@@ -387,17 +417,16 @@
                         <h3>AI Multilingual & Sign Studio</h3>
                         <p>Real-time speech translation across international languages and AI sign-language visual mapping for deaf accessibility.</p>
                     </div>
-                    <button class="cinematic-button" onclick="launchAccessibility('multilingual')">Activate Sign & Voice AI</button>
+                    <button class="cinematic-button" onclick="showModal('AI Multilingual & Sign Studio', '🌐 Voice Translator Active: Real-time speech translating across international languages and dialects.<br><br>🤟 Sign Language Visual Mapping: Kinetic AI avatar online, translating spoken dialogue into live sign language for complete deaf accessibility.')">Launch Sign & Voice AI</button>
                 </div>
                 <div class="choice-card">
                     <div>
                         <h3>Smart Meeting Memos</h3>
                         <p>Automated AI transcription, key action items, and secure email summary dispatch straight to clients.</p>
                     </div>
-                    <button class="cinematic-button" onclick="launchAccessibility('memos')">Generate Memo Bot</button>
+                    <button class="cinematic-button" onclick="showModal('Smart Meeting Memos & Email Bot', '📝 AI Transcription Engine Online: Capturing meeting discussions in real-time.<br><br>✉️ Automated Dispatch: Summarized executive memos and action items formatted and ready for secure email delivery to clients.')">Generate Memo Bot</button>
                 </div>
             </div>
-            <div id="accessOutput" class="live-output-panel"></div>
         </div>
 
         <!-- 7. INTERACTIVE GLOWING SALES & GEO-TELEMETRY MAP -->
@@ -423,7 +452,7 @@
                     <p>Status: Expanding</p>
                 </div>
             </div>
-            <div id="mapInspection" class="live-output-panel" style="display: block; margin-top: 1rem; border-color: #FCF6BA;">
+            <div id="mapInspection" class="live-output-panel" style="display: block; margin-top: 1rem; border-color: #FCF6BA; background:#000; padding:1rem; border:1px dashed #BF953F; color:#FCF6BA;">
                 <strong>[MAP TELEMETRY TERMINAL]:</strong> Hover over any regional node above to inspect real-time financial yields, market trends, and strategic pull-out signals.
             </div>
         </div>
@@ -473,6 +502,15 @@
         </div>
     </div>
 
+    <!-- POPUP MODAL CONTAINER -->
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 id="modalTitle">System Notification</h3>
+            <p id="modalBody">Modal content goes here...</p>
+            <button class="close-modal-btn" onclick="closeModal()">Close Terminal</button>
+        </div>
+    </div>
+
     <script>
         function switchTab(tab) {
             const btnHub = document.querySelectorAll('.tab-btn')[0];
@@ -493,6 +531,16 @@
             }
         }
 
+        function showModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerHTML = text;
+            document.getElementById('customModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').style.display = 'none';
+        }
+
         function translateTerm(term) {
             const panel = document.getElementById('translatorResult');
             panel.style.display = 'block';
@@ -505,17 +553,9 @@
             }
         }
 
-        function runHubAction(msg) {
-            const panel = document.getElementById('hubOutput');
-            panel.style.display = 'block';
-            panel.innerHTML = `<strong>[SYSTEM STATUS]:</strong> ${msg}`;
-        }
-
-        function launchCommsRoom() {
+        function launchCommsRoomModal() {
             const roomId = 'ONYX-' + Math.floor(100000 + Math.random() * 900000);
-            const panel = document.getElementById('hubOutput');
-            panel.style.display = 'block';
-            panel.innerHTML = `<strong>[SECURE VIDEO NODE ACTIVE]:</strong> Room ID: <code>${roomId}</code>. Encrypted end-to-end communication channel ready for client briefings.`;
+            showModal('Secure Video Room Active', `Room ID Generated: <code>${roomId}</code><br><br>Encrypted end-to-end sovereign video channel initialized for client briefings.`);
         }
 
         function handleFileSelect(input) {
@@ -529,30 +569,16 @@
         function generateProfessionReport() {
             const prof = document.getElementById('userProfession').value;
             const notes = document.getElementById('evidenceNotes').value;
-            const panel = document.getElementById('professionReportOutput');
-            panel.style.display = 'block';
-            panel.innerHTML = `<strong>[TAILORED COMPLIANCE VAULT - ${prof.toUpperCase()}]:</strong><br>• Evidence Vault Status: Secure, Local Session Encryption Active.<br>• Logged Findings: "${notes}"<br>• Generated Output: Certified professional inspection record formatted with compliance signatures, photo evidence attachments, and ready for immediate client delivery.`;
+            showModal(`Tailored Compliance Vault - ${prof.toUpperCase()}`, `• Evidence Vault Status: Secure Local Encryption Active.<br>• Logged Findings: "${notes}"<br>• Generated Output: Certified professional inspection record formatted with compliance signatures, photo attachments, and ready for client delivery.`);
         }
 
         function loadFinancialData(type) {
-            const panel = document.getElementById('financialOutput');
-            panel.style.display = 'block';
             if(type === 'fiat') {
-                panel.innerHTML = `<strong>[FIAT & BANK RESERVES]:</strong><br>• Business Operating Balance: £12,450.00 (Healthy Viability)<br>• Monthly Operational Overhead: £1,200.00<br>• Net Liquid Position: Fully Sovereign & Positive.`;
+                showModal('Fiat & Bank Reserves', '• Business Operating Balance: £12,450.00 (Healthy Viability)<br>• Monthly Overhead: £1,200.00<br>• Net Liquid Position: Fully Sovereign & Positive.');
             } else if(type === 'crypto') {
-                panel.innerHTML = `<strong>[CRYPTO ASSET PORTFOLIO SYNC]:</strong><br>• Connected Wallets: Verified Secure (Local Session)<br>• Holdings Tracked: BTC, ETH, Solana<br>• Combined Portfolio Valuation: £18,920.00 equivalent.`;
+                showModal('Crypto Asset Portfolio Sync', '• Connected Wallets: Verified Secure (Local Session)<br>• Holdings Tracked: BTC, ETH, Solana<br>• Combined Portfolio Valuation: £18,920.00 equivalent.');
             } else if(type === 'tips') {
-                panel.innerHTML = `<strong>[AI WEALTH & SPENDING TIPS]:</strong><br>1. <em>Capital Allocation:</em> Set aside 20% of incoming Stripe revenue into your tax vault immediately.<br>2. <em>Spending Optimization:</em> Zero redundant software subscriptions detected.<br>3. <em>Growth Tip:</em> Re-invest peak regional profits into high-converting digital product tiers.`;
-            }
-        }
-
-        function launchAccessibility(type) {
-            const panel = document.getElementById('accessOutput');
-            panel.style.display = 'block';
-            if(type === 'multilingual') {
-                panel.innerHTML = `<strong>[AI MULTILINGUAL & SIGN SUITE ACTIVE]:</strong><br>• Real-time voice translation online (Supports international languages & dialects).<br>• AI Sign-Language Vision Mapping initialized for deaf participant accessibility and live kinetic translation.`;
-            } else if(type === 'memos') {
-                panel.innerHTML = `<strong>[SMART MEETING MEMOS & EMAIL DISPATCH]:</strong><br>• Live AI transcription engine online.<br>• Automated executive summary generated and formatted for instant email distribution to client archives.`;
+                showModal('AI Wealth & Spending Tips', '1. <em>Capital Allocation:</em> Set aside 20% of incoming Stripe revenue into your tax vault immediately.<br>2. <em>Spending Optimization:</em> Zero redundant software subscriptions detected.<br>3. <em>Growth Tip:</em> Re-invest peak regional profits into high-converting digital product tiers.');
             }
         }
 
