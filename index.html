@@ -138,13 +138,13 @@
             margin-top: 1.2rem;
             background: #000000;
             border: 1px dashed rgba(191, 149, 63, 0.6);
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 4px;
             font-family: var(--body-font);
             font-size: 0.85rem;
             color: #FCF6BA;
             display: none;
-            line-height: 1.5;
+            line-height: 1.6;
             text-align: left;
         }
         .tab-bar {
@@ -169,6 +169,44 @@
             background: #BF953F;
             color: #0A0A0A;
             font-weight: 600;
+        }
+        /* Glowing Interactive Map Grid */
+        .map-grid-container {
+            position: relative;
+            background: #050505;
+            border: 1px solid rgba(191, 149, 63, 0.5);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .map-node {
+            background: rgba(191, 149, 63, 0.05);
+            border: 1px solid rgba(191, 149, 63, 0.3);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .map-node:hover {
+            background: rgba(191, 149, 63, 0.2);
+            border-color: #FCF6BA;
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.4);
+            transform: translateY(-2px);
+        }
+        .map-node h4 {
+            font-family: var(--primary-font);
+            color: #FCF6BA;
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        .map-node p {
+            font-size: 0.75rem;
+            color: #CCCCCC;
+            margin: 0;
         }
         .qr-container {
             margin-top: 1.5rem;
@@ -195,15 +233,15 @@
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Sovereign Financial Architecture & Operations</div>
 
-        <!-- 2. MISSION & WHO WE ARE -->
+        <!-- 2. MISSION & PRIVACY PLEDGE -->
         <div class="executive-sanctuary" style="text-align: center;">
-            <h2>Our Mission & Core Philosophy</h2>
-            <p class="section-desc" style="max-width: 800px; margin-bottom: 0;">
-                Onyx One is built for independent creators, modern entrepreneurs, and visionaries who refuse to sell a corporate lie. We engineer institutional-grade financial telemetry, sovereign global comms, and inclusive AI accessibility into a single, unbreakable command center. Absolute transparency, zero language barriers, and total operational control.
+            <h2>Our Mission & Zero-Data-Sale Pledge</h2>
+            <p class="section-desc" style="max-width: 800px; margin-bottom: 1rem;">
+                Onyx One is built for independent creators and visionaries who demand absolute sovereignty. <strong>We never sell your data.</strong> Everything you process, build, and store lives securely directly inside your local dashboard environment. Zero tracking, zero third-party brokers, pure operational privacy.
             </p>
         </div>
 
-        <!-- 3. COMMAND & CONTROL HUB + NEW TO BUSINESS TAB -->
+        <!-- 3. COMMAND & CONTROL HUB + JARGON TAB -->
         <div class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
             <p class="section-desc">Manage core operations, security audits, and client syncs. Unsure of corporate terms? Use the translator tab below.</p>
@@ -220,7 +258,7 @@
                         <h3>Core Dashboard</h3>
                         <p>Monitor active workspace data integrity and system routing.</p>
                     </div>
-                    <button class="cinematic-button" onclick="runHubAction('Dashboard online. All telemetry streams secure, encrypted, and fully operational across back-end and front-end channels.')">Initialize</button>
+                    <button class="cinematic-button" onclick="runHubAction('Dashboard online. All local telemetry streams secure, encrypted, and fully operational.')">Initialize</button>
                 </div>
                 <div class="choice-card">
                     <div>
@@ -252,16 +290,16 @@
             <div id="hubOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 4. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE (AI TRANSLATOR, MULTILINGUAL, SIGN & SMART NOTES) -->
+        <!-- 4. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE -->
         <div class="executive-sanctuary">
             <h2>Sovereign Accessibility & Global Comms Suite</h2>
-            <p class="section-desc">Inclusive AI-powered tools designed to break down language barriers, support deaf communication via sign translation, and record smart meeting memos automatically.</p>
+            <p class="section-desc">Inclusive AI-powered tools designed to break down language barriers, support deaf communication via sign translation, and record smart meeting memos automatically. 100% Free for all members.</p>
             
             <div class="choices-grid">
                 <div class="choice-card">
                     <div>
                         <h3>AI Multilingual & Sign Studio</h3>
-                        <p>Real-time speech-to-text translation across multiple languages and AI sign-language visualizer mapping for deaf accessibility.</p>
+                        <p>Real-time speech translation across international languages and AI sign-language visual mapping for deaf accessibility.</p>
                     </div>
                     <button class="cinematic-button" onclick="launchAccessibility('multilingual')">Activate Sign & Voice AI</button>
                 </div>
@@ -276,12 +314,32 @@
             <div id="accessOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 5. INTERACTIVE GLOBAL MAP & SALES TELEMETRY -->
+        <!-- 5. INTERACTIVE GLOWING SALES & GEO-TELEMETRY MAP -->
         <div class="executive-sanctuary">
             <h2>Global Sales & Node Telemetry Map</h2>
-            <p class="section-desc">Real-time geographic distribution of active digital products, customer input nodes, and cross-border transactions.</p>
-            <button class="cinematic-button" onclick="loadMap()" style="max-width: 280px; display: block; margin: 0 auto;">Activate Sales Map Grid</button>
-            <div id="mapOutput" class="live-output-panel"></div>
+            <p class="section-desc">Hover over international nodes below to inspect live regional sales hot-spots, revenue tracking, market trends, and automated pull-out triggers.</p>
+            
+            <div class="map-grid-container">
+                <div class="map-node" onmouseover="inspectNode('UK Hub (West Yorkshire)', '£4,850.00', 'High demand for sovereign digital architecture', 'Optimal Hold (Stable Yield)')">
+                    <h4>Node Alpha: United Kingdom</h4>
+                    <p>Status: Glowing / Active</p>
+                </div>
+                <div class="map-node" onmouseover="inspectNode('European Gateway (Germany/France)', '€7,200.00', 'Surge in automated workflow bundles', 'Scale Up (Increase Ad Spend)')">
+                    <h4>Node Beta: European Union</h4>
+                    <p>Status: High Growth</p>
+                </div>
+                <div class="map-node" onmouseover="inspectNode('North American Channel (USA/Canada)', '$12,400.00', 'Peak conversion on Master Tier suites', 'Harvest Profits (Pull-out Recommended)')">
+                    <h4>Node Gamma: North America</h4>
+                    <p>Status: Peak Hotspot</p>
+                </div>
+                <div class="map-node" onmouseover="inspectNode('Asia-Pacific Gateway (Singapore/Aus)', '$3,100.00', 'Emerging market for minimalist creator tools', 'Hold & Monitor')">
+                    <h4>Node Delta: APAC Region</h4>
+                    <p>Status: Expanding</p>
+                </div>
+            </div>
+            <div id="mapInspection" class="live-output-panel" style="display: block; margin-top: 1rem; border-color: #FCF6BA;">
+                <strong>[MAP TELEMETRY TERMINAL]:</strong> Hover over any regional node above to inspect real-time financial yields, market trends, and strategic pull-out signals.
+            </div>
         </div>
 
         <!-- 6. MOBILE QR CODE GENERATOR -->
@@ -298,10 +356,10 @@
             </div>
         </div>
 
-        <!-- 7. MONETIZATION TIERS & TRIAL ENTRY -->
+        <!-- 7. MONETIZATION TIERS (NO FREE TRIAL - PURCHASE ONLY) -->
         <div class="executive-sanctuary" style="border-color: #BF953F;">
             <h2>Ecosystem Access Tiers & Deployment</h2>
-            <p class="section-desc">Test the environment with our active trial framework or secure your permanent institutional tier via verified Stripe checkout.</p>
+            <p class="section-desc">Secure your institutional tier via verified Stripe checkout. Direct purchase required for sovereign platform authorization.</p>
             
             <div class="choices-grid">
                 <div class="choice-card">
@@ -325,12 +383,6 @@
                     </div>
                     <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
                 </div>
-            </div>
-            
-            <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.2rem;">
-                <p style="font-size: 0.82rem; color: #BBBBBB; margin-bottom: 0.8rem;">New user evaluation? Access a 2-day sandbox pass before committing details:</p>
-                <button class="cinematic-button" style="max-width: 260px;" onclick="initTrialPass()">Initialize 2-Day Sandbox Pass</button>
-                <div id="trialOutput" class="live-output-panel"></div>
             </div>
         </div>
     </div>
@@ -390,10 +442,9 @@
             }
         }
 
-        function loadMap() {
-            const panel = document.getElementById('mapOutput');
-            panel.style.display = 'block';
-            panel.innerHTML = `<strong>[GEO-TELEMETRY & SALES MAP ACTIVE]:</strong><br>• Node UK (West Yorkshire Gateway): 100% Live<br>• International Inbound Hubs: Synced<br>• Product Sales Hotspots: Active & Ready for Customer Input.`;
+        function inspectNode(region, revenue, trend, action) {
+            const panel = document.getElementById('mapInspection');
+            panel.innerHTML = `<strong>[LIVE NODE TELEMETRY - ${region.toUpperCase()}]:</strong><br>• Total Revenue Generated: <span style="color:#FCF6BA;">${revenue}</span><br>• Current Market Trend: ${trend}<br>• Strategic Recommendation: <strong style="color:#BF953F;">${action}</strong>`;
         }
 
         function generateQR(url) {
@@ -413,12 +464,6 @@
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
-        }
-
-        function initTrialPass() {
-            const panel = document.getElementById('trialOutput');
-            panel.style.display = 'block';
-            panel.innerHTML = `<strong>[2-DAY SANDBOX ACTIVE]:</strong> Temporary evaluation session granted. Explore core features before linking subscriber details.`;
         }
     </script>
 </body>
