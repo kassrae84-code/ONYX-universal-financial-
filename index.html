@@ -3,548 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE — Financial Solutions</title>
+    <title>ONYX ONE — Universal Financial Solutions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --obsidian: #050507;
-            --matte-card: #0A0B0E;
-            --matte-card-hover: #101217;
-            --gold-foil: #D4B98C;
-            --gold-bright: #F5E6BE;
-            --gold-subtle: rgba(212, 185, 140, 0.08);
-            --gold-border: rgba(212, 185, 140, 0.2);
-            --gold-border-bright: rgba(212, 185, 140, 0.55);
-            --text-main: #E2D4B7;
-            --text-dim: #8A857A;
-            --transition-luxury: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --obsidian: #030304;
+            --midnight: #08080C;
+            --gold: #D4AF37;
+            --gold-bright: #F5E7A0;
+            --text: #E8E8E8;
+            --muted: #A0A0A0;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--obsidian);
-            color: var(--text-main);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            background: var(--obsidian);
+            color: var(--text);
+            line-height: 1.6;
         }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: 
-                radial-gradient(circle at 50% -10%, rgba(212, 185, 140, 0.07) 0%, transparent 50%),
-                radial-gradient(circle at 80% 90%, rgba(212, 185, 140, 0.03) 0%, transparent 40%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        h1, h2, h3, .brand-name {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        header {
-            background: rgba(5, 5, 7, 0.85);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--gold-border);
-            padding: 1.8rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            cursor: pointer;
-        }
-
-        .emblem-svg {
-            width: 38px;
-            height: 38px;
-            fill: url(#goldGradient);
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
-            transition: var(--transition-luxury);
-        }
-        .hero-emblem-svg {
-            width: 80px;
-            height: 80px;
-            fill: url(#goldGradient);
-            margin-bottom: 1.8rem;
-            filter: drop-shadow(0 15px 35px rgba(212, 185, 140, 0.15));
-        }
-        .footer-emblem-svg {
-            width: 32px;
-            height: 32px;
-            fill: url(#goldGradient);
-            margin: 0 auto 1.2rem;
-            display: block;
-        }
-
-        .brand-name { font-size: 1.25rem; color: var(--gold-foil); letter-spacing: 0.3em; }
-        .brand-tag { font-size: 0.5rem; color: var(--text-dim); letter-spacing: 0.45em; display: block; margin-top: 0.2rem; }
-
-        .nav-links { display: flex; align-items: center; gap: 3rem; }
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.72rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            transition: var(--transition-luxury);
-        }
-        .nav-links a:hover { color: var(--gold-bright); text-shadow: 0 0 12px rgba(212, 185, 140, 0.4); }
-
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* — HERO — EXACTLY YOUR LAYOUT — CENTERED — NOTHING MOVED — */
         .hero {
-            min-height: 85vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 5rem 2rem;
-            max-width: 920px;
-            margin: 0 auto;
+            padding: 40px 20px;
         }
-
-        .hero-subtitle {
-            color: var(--text-dim);
-            font-size: 0.65rem;
-            letter-spacing: 0.45em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
-            color: var(--gold-bright);
-            margin-bottom: 0.4rem;
-            letter-spacing: 0.3em;
-            text-shadow: 0 2px 20px rgba(212, 185, 140, 0.2);
-        }
-        .hero h2 {
-            font-size: 0.8rem;
-            color: var(--text-main);
-            letter-spacing: 0.3em;
-            margin-bottom: 2.8rem;
-            font-weight: 400;
-        }
-
-        .hero p {
-            color: var(--text-dim);
-            font-size: 0.92rem;
-            max-width: 620px;
-            line-height: 2;
-            margin-bottom: 3.5rem;
-            font-weight: 300;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 3rem;
-            border: 1px solid var(--gold-border);
-            color: var(--gold-foil);
-            text-decoration: none;
-            font-size: 0.72rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            transition: var(--transition-luxury);
-            background: var(--matte-card);
-            cursor: pointer;
-            border-radius: 2px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 400;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .btn:hover {
-            background: var(--gold-subtle);
-            border-color: var(--gold-border-bright);
-            color: var(--gold-bright);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 185, 140, 0.12);
-        }
-        .btn.primary {
-            background: linear-gradient(135deg, #D4B98C 0%, #B8975E 100%);
-            color: var(--obsidian);
-            border-color: transparent;
-            font-weight: 500;
-            box-shadow: 0 4px 25px rgba(212, 185, 140, 0.25);
-        }
-        .btn.primary:hover {
-            background: linear-gradient(135deg, #F5E6BE 0%, #D4B98C 100%);
-            color: var(--obsidian);
-            box-shadow: 0 8px 35px rgba(212, 185, 140, 0.4);
-        }
-
-        .executive-toggle {
-            margin-top: 2rem;
-            background: transparent;
-            border: none;
-            color: var(--text-dim);
-            font-size: 0.65rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            transition: var(--transition-luxury);
-        }
-        .executive-toggle:hover { color: var(--gold-bright); }
-        .executive-toggle i-dot {
-            width: 4px; height: 4px;
-            background: var(--gold-foil);
-            display: inline-block;
-            box-shadow: 0 0 8px var(--gold-foil);
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .section-title {
-            font-size: 1.35rem;
-            color: var(--gold-bright);
-            margin-bottom: 0.8rem;
-            letter-spacing: 0.3em;
-        }
-
-        .section-subtitle {
-            color: var(--text-dim);
-            font-size: 0.72rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .lux-card {
-            background: var(--matte-card);
-            border: 1px solid var(--gold-border);
-            padding: 3rem 2.5rem;
-            transition: var(--transition-luxury);
-            position: relative;
-            border-radius: 2px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-        
-        .lux-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(212, 185, 140, 0.4), transparent);
-            opacity: 0.5;
-        }
-
-        .lux-card:hover {
-            background: var(--matte-card-hover);
-            border-color: var(--gold-border-bright);
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 25px rgba(212, 185, 140, 0.05);
-        }
-
-        .lux-card h3 {
-            color: var(--text-main);
-            font-size: 0.92rem;
-            margin-bottom: 1.2rem;
-            letter-spacing: 0.2em;
-        }
-
-        .lux-card p {
-            color: var(--text-dim);
-            font-size: 0.86rem;
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        .plain-text-mode .lux-card p::before {
-            content: 'Clarity Brief: ';
-            color: var(--gold-foil);
-            font-size: 0.68rem;
-            letter-spacing: 0.15em;
+        .logo {
+            height: 140px;
+            width: auto;
+            margin-bottom: 30px;
             display: block;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-weight: 500;
         }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1050px;
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            color: var(--gold-bright);
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        h1 span { font-size: 18px; vertical-align: top; }
+        .tagline-top {
+            font-size: 20px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .tagline-sub {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 50px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background: linear-gradient(135deg, var(--gold), #E8D488);
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+        .tiers {
+            padding: 70px 20px;
+            max-width: 1100px;
             margin: 0 auto;
         }
-
-        .price-card {
-            background: var(--matte-card);
-            border: 1px solid var(--gold-border);
-            padding: 3.5rem 2.5rem;
+        .tiers h2 {
             text-align: center;
-            position: relative;
-            transition: var(--transition-luxury);
-            border-radius: 2px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        }
-        .price-card.featured {
-            border-color: var(--gold-foil);
-            background: var(--matte-card-hover);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px rgba(212, 185, 140, 0.08);
-        }
-        .price-card:hover { border-color: var(--gold-border-bright); transform: translateY(-4px); }
-
-        .price-card h3 {
-            color: var(--gold-foil);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.25em;
-        }
-
-        .price-amount {
-            font-size: 2.4rem;
-            color: var(--gold-bright);
             font-family: 'Playfair Display', serif;
-            margin-bottom: 0.2rem;
-            letter-spacing: 0.1em;
+            font-size: 34px;
+            color: var(--gold);
+            margin-bottom: 50px;
         }
-
-        .price-note {
-            color: var(--text-dim);
-            font-size: 0.72rem;
-            margin-bottom: 3rem;
-            letter-spacing: 0.1em;
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
-
-        .price-card ul {
+        .tier-card {
+            background: #0C0C14;
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 8px;
+            padding: 35px;
+            transition: border-color 0.3s;
+        }
+        .tier-card:hover { border-color: var(--gold); }
+        .tier-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold-bright);
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        .price small {
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+        .tier-card ul {
             list-style: none;
-            text-align: left;
-            color: var(--text-dim);
-            font-size: 0.84rem;
-            margin-bottom: 3rem;
-            font-weight: 300;
+            margin-bottom: 30px;
         }
-
-        .price-card li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--gold-border);
-            letter-spacing: 0.05em;
+        .tier-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 14px;
         }
-
-        footer {
-            border-top: 1px solid var(--gold-border);
-            padding: 5rem 2rem;
+        .footer {
             text-align: center;
-            color: var(--text-dim);
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            background: var(--obsidian);
+            padding: 30px;
+            font-size: 13px;
+            color: var(--muted);
+            border-top: 1px solid rgba(212,175,55,0.15);
         }
-
-        footer .contact-line {
-            color: var(--text-main);
-            margin: 0.8rem 0;
-            font-size: 0.82rem;
-            letter-spacing: 0.18em;
-        }
-
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 1.2rem; padding: 1.5rem 2rem; }
-            .nav-links { gap: 2rem; }
-            .hero { padding: 4rem 1.5rem; }
-        }
+        .hidden-feature { display: none; } /* NO BROKEN HEATMAP CROSS — REMOVED */
     </style>
 </head>
-<body id="bodyTag">
+<body>
 
-<svg width="0" height="0" style="position:absolute;">
-    <defs>
-        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#F5E6BE" />
-            <stop offset="50%" stop-color="#D4B98C" />
-            <stop offset="100%" stop-color="#9A7B4C" />
-        </linearGradient>
-    </defs>
-</svg>
-
-<header>
-    <div class="logo-area" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-        <svg class="emblem-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    <section class="hero">
+        <img src="logo onyx 1.png" alt="ONYX ONE" class="logo">
+        <h1>ONYX ONE<span>™</span></h1>
+        <p class="tagline-top">Universal Financial Solutions</p>
+        <p class="tagline-sub">Your Anti‑Chaos Business Sanctuary™ — Everything you need to track, manage, invoice, and grow — all in one place. No more scattered tools, lost money, or wasted hours. Just clarity, control, and calm.</p>
+        
         <div>
-            <span class="brand-name">ONYX ONE</span>
-            <span class="brand-tag">FINANCIAL SOLUTIONS</span>
+            <a href="#pricing" class="btn">See Plans & Start Today</a>
+            <a href="#features" class="btn btn-outline">What's Inside</a>
         </div>
+    </section>
+
+    <section class="tiers" id="features">
+        <h2>Everything Included</h2>
+        <div class="tiers-grid">
+            <div class="tier-card">
+                <h3>FOUNDER</h3>
+                <p class="price">£19.99<small>£29.99</small>/mo</p>
+                <ul>
+                    <li>Financial tracking & leak detection</li>
+                    <li>Invoicing & estimate templates</li>
+                    <li>Email & sales templates</li>
+                    <li>2‑day full access trial</li>
+                    <li style="opacity:0.4">Encrypted meetings — upgrade</li>
+                    <li style="opacity:0.4">Global sales mapping — upgrade</li>
+                </ul>
+                <a href="#pricing" class="btn">Choose Founder</a>
+            </div>
+
+            <div class="tier-card">
+                <h3>GROWTH</h3>
+                <p class="price">£39.99<small>£49.99</small>/mo</p>
+                <ul>
+                    <li>Everything in Founder</li>
+                    <li>Encrypted meetings & smart notes</li>
+                    <li>Global sales mapping & heatmap</li>
+                    <li>Multi‑business dashboard</li>
+                    <li>Priority email support</li>
+                    <li style="opacity:0.4">Master analytics — upgrade</li>
+                </ul>
+                <a href="#pricing" class="btn">Choose Growth</a>
+            </div>
+
+            <div class="tier-card">
+                <h3>MASTER</h3>
+                <p class="price">£79.99<small>£89.99</small>/mo</p>
+                <ul>
+                    <li>Everything in Growth</li>
+                    <li>Full financial analytics & reports</li>
+                    <li>Evidence & report secure vault</li>
+                    <li>Branded marketing templates</li>
+                    <li>Early access to all new tools</li>
+                    <li>Direct priority support line</li>
+                </ul>
+                <a href="#pricing" class="btn">Choose Master</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tiers" id="pricing" style="padding-top: 0;">
+        <h2>Secure Your Access</h2>
+        <p style="text-align:center; color:var(--muted); margin-bottom:40px;">All plans include 2‑day full access — cancel anytime, no charge.</p>
+        <div style="text-align:center;">
+            <a href="#" class="btn" style="font-size:18px; padding:18px 60px;">I'M READY — START MY ACCESS</a>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>© 2026 ONYX ONE™ — Universal Financial Solutions — All Rights Reserved — Trademarked.</p>
+        <p style="margin-top:8px;">We NEVER sell, rent, or share your data. Everything you store remains yours and yours alone.</p>
     </div>
-    <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#about" onclick="alert('Engineered exclusively for private portfolios, founders, and enterprises requiring uncompromising financial control and absolute privacy.')">About</a>
-    </nav>
-</header>
 
-<section class="hero">
-    <p class="hero-subtitle">Private Financial Architecture</p>
-    <svg class="hero-emblem-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    <h1>ONYX ONE</h1>
-    <h2>FINANCIAL SOLUTIONS</h2>
-    <p id="heroDescription">Everything you need to master your money, cut waste, track sales, manage teams, create documents, and build stronger — all in one premium, secure space. Designed to work as hard as you do.</p>
-    
-    <div class="hero-actions">
-        <a href="https://buy.stripe.com/28E6oH52T211fVnauy1sQ01" class="btn primary">Start Your 2‑Day Free Access</a>
-        <a href="#features" class="btn">Examine Features</a>
-    </div>
-
-    <button class="executive-toggle" onclick="togglePlainEnglish()">
-        <i-dot></i-dot> <span id="toggleTextLabel">Switch to Executive Plain English View</span>
-    </button>
-</section>
-
-<section class="section" id="features">
-    <div class="section-header">
-        <h2 class="section-title">System Capabilities</h2>
-        <p class="section-subtitle">Architected for absolute precision and oversight</p>
-    </div>
-    <div class="grid-3">
-        <div class="lux-card">
-            <h3>Leak Detection</h3>
-            <p>Find unused subscriptions, rising costs, overpayments — stop losing money without seeing it. Spot price rises, stock issues, and find better alternatives instantly.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Tracking & Trends</h3>
-            <p>See exactly where your money and products move — spot dips, peaks, and where to focus next. Global sales heatmaps show you exactly where your money is coming from.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Invoices & Quotes</h3>
-            <p>Professional templates ready to send, chase and follow‑up — consistent, sharp, yours. Auto‑generate, brand, and send directly from your dashboard.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Email & Marketing</h3>
-            <p>Ready‑made luxury templates — sales letters, follow‑ups, outreach. Drag‑and‑drop your own images, send to your address book, and grow your reach.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Secure Meetings</h3>
-            <p>Encrypted video calls, smart notes that auto‑summarise, action items flagged — private, safe, fully yours. Never miss a detail or a follow‑up again.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Accounts & Assets</h3>
-            <p>Connect bank, business, crypto and stocks — one clear view with alerts. Get notified automatically when something changes or needs your attention.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Supplier Alternatives</h3>
-            <p>Find better options when prices go up or stock runs low — keep your business moving without disruption.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Records & Reports</h3>
-            <p>Store photos, documents, evidence — organised and ready when you need it. Build professional reports in seconds.</p>
-        </div>
-        <div class="lux-card">
-            <h3>Privacy Promise</h3>
-            <p>We never sell or share your data. Ever. Built on trust, not harvesting. Everything encrypted, everything yours.</p>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="pricing">
-    <div class="section-header">
-        <h2 class="section-title">Membership Tiers</h2>
-        <p class="section-subtitle">Commence with two full days of complimentary access</p>
-    </div>
-    <div class="pricing-grid">
-        <div class="price-card">
-            <h3>FOUNDER</h3>
-            <div class="price-amount">£19.99<span style="font-size:0.72rem; color:var(--text-dim)">/mo</span></div>
-            <div class="price-note">Introductory — £29.99/mo subsequent</div>
-            <ul>
-                <li>Leak detection & savings</li>
-                <li>Basic tracking & reporting</li>
-                <li>Invoicing & quotes</li>
-                <li>Email templates library</li>
-                <li>2‑day full free access</li>
-            </ul>
-            <br>
-            <a href="https://buy.stripe.com/28E6oH52T211fVnauy1sQ01" class="btn">Select Founder</a>
-        </div>
-
-        <div class="price-card featured">
-            <h3>GROWTH</h3>
-            <div class="price-amount">£39.99<span style="font-size:0.72rem; color:var(--text-dim)">/mo</span></div>
-            <div class="price-note">Introductory — £49.99/mo subsequent</div>
-            <ul>
-                <li>Everything in Founder</li>
-                <li>Advanced trends & maps</li>
-                <li>Secure meetings & notes</li>
-                <li>Supplier alternatives</li>
-                <li>Priority support</li>
-            </ul>
-            <br>
-            <a href="https://buy.stripe.com/4gM28r9j95dd7oRfOS1sQ02" class="btn primary">Select Growth</a>
-        </div>
-
-        <div class="price-card">
-            <h3>MASTER</h3>
-            <div class="price-amount">£79.99<span style="font-size:0.72rem; color:var(--text-dim)">/mo</span></div>
-            <div class="price-note">Introductory — £89.99/mo subsequent</div>
-            <ul>
-                <li>Everything in Growth</li>
-                <li>Unlimited asset connectors</li>
-                <li>Dedicated concierge desk</li>
-                <li>Custom enterprise reports</li>
-                <li>White-glove data migration</li>
-            </ul>
-            <br>
-            <a href="https://buy.stripe.com/bJe4gz7b16hh8sV5ae1sQ03" class="btn">Select Master</a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <svg class="footer-emblem-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    <p class="contact-line">hello@onyxone.co.uk &nbsp;|&nbsp; onyxone.co.uk</p>
-    <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.68rem; letter-spacing: 0.18em;">© 2026 ONYX ONE FINANCIAL SOLUTIONS. ALL RIGHTS RESERVED.</p>
-</footer>
-
-<script>
-    let isPlainEnglish = false;
-    function togglePlainEnglish() {
-        isPlainEnglish = !isPlainEnglish;
-        const bodyTag = document.getElementById('bodyTag');
-        const toggleLabel = document.getElementById('toggleTextLabel');
-        const heroDesc = document.getElementById('heroDescription');
-
-        if (isPlainEnglish) {
-            bodyTag.classList.add('plain-text-mode');
-            toggleLabel.innerText = "Switch to Executive Professional View";
-            heroDesc.innerText = "An intuitive dashboard that automatically monitors your earnings, cuts hidde
+</body>
+</html>
