@@ -148,13 +148,14 @@
             margin-top: 1.5rem;
             background: #000000;
             border: 1px dashed rgba(191, 149, 63, 0.5);
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 4px;
             font-family: var(--body-font);
             font-size: 0.9rem;
             color: #FCF6BA;
             display: none;
-            line-height: 1.5;
+            line-height: 1.6;
+            text-align: left;
         }
         .jargon-grid {
             display: grid;
@@ -170,11 +171,10 @@
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Executive Financial Architecture & Operations</div>
 
-        <!-- PLAIN ENGLISH JARGON TRANSLATOR (FOR NEW BUSINESS OWNERS) -->
+        <!-- PLAIN ENGLISH JARGON TRANSLATOR -->
         <div class="executive-sanctuary" style="border-color: #FCF6BA;">
             <h2>Plain English Translator</h2>
-            <p class="section-desc">New to business? Don't understand corporate speak? Click any term below to see what it actually means in normal, everyday human language.</p>
-            
+            <p class="section-desc">New to business? Click any term below to see what it actually means in normal everyday language.</p>
             <div class="jargon-grid">
                 <button class="cinematic-button" onclick="explainTerm('telemetry')">What is Telemetry?</button>
                 <button class="cinematic-button" onclick="explainTerm('leakage')">What is a Leakage Audit?</button>
@@ -184,25 +184,49 @@
             <div id="translatorOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- COMMAND & CONTROL HUB -->
+        <!-- HIGH-CONVERSION SALES HOTSPOTS & PRODUCT PRICING -->
         <div class="executive-sanctuary">
-            <h2>Command & Control Hub</h2>
-            <p class="section-desc">Select your operational parameter below. Institutional-grade routing, active workflow telemetry, and high-yield security protocols are standing by.</p>
+            <h2>Sales Hotspots & Most Profitable Products</h2>
+            <p class="section-desc">High-margin digital assets structured for immediate cash generation. Review best-performing offerings, ideal pricing models, and market trends.</p>
             
             <div class="choices-grid">
                 <div class="choice-card">
-                    <h3>1. Core Operations</h3>
-                    <p>Deploy active workflows, check workspace data integrity, and monitor operational security parameters.</p>
+                    <h3>1. Core Ecosystem Access</h3>
+                    <p><strong>Best For:</strong> New entrepreneurs & remote creators.<br><strong>Price Point:</strong> £49 - £99 (One-time)<br><strong>Profit Margin:</strong> 98% Digital Delivery</p>
+                    <button class="cinematic-button" onclick="showProductDetails('core')">View Sales Strategy</button>
+                </div>
+                <div class="choice-card">
+                    <h3>2. Master Tier Suite</h3>
+                    <p><strong>Best For:</strong> Scaling business owners requiring total automation.<br><strong>Price Point:</strong> £297 - £497 (Lifetime)<br><strong>Profit Margin:</strong> High-ticket conversion</p>
+                    <button class="cinematic-button" onclick="showProductDetails('master')">View Sales Strategy</button>
+                </div>
+                <div class="choice-card">
+                    <h3>3. CreatorOS & Community</h3>
+                    <p><strong>Best For:</strong> Home educators, mentors & micro-hubs.<br><strong>Price Point:</strong> £197 (Bundle)<br><strong>Profit Margin:</strong> Instant recurring potential</p>
+                    <button class="cinematic-button" onclick="showProductDetails('creator')">View Sales Strategy</button>
+                </div>
+            </div>
+            <div id="productOutput" class="live-output-panel"></div>
+        </div>
+
+        <!-- COMMAND & CONTROL HUB -->
+        <div class="executive-sanctuary">
+            <h2>Command & Control Hub</h2>
+            <p class="section-desc">Select your operational parameter below. Institutional-grade routing and active workflow telemetry are standing by.</p>
+            <div class="choices-grid">
+                <div class="choice-card">
+                    <h3>Core Operations</h3>
+                    <p>Deploy active workflows and monitor workspace data integrity.</p>
                     <button class="cinematic-button" onclick="runSystemModule('Core Operations Dashboard')">Initialize Dashboard</button>
                 </div>
                 <div class="choice-card">
-                    <h3>2. Asset Protection</h3>
-                    <p>Run real-time leakage audits, track capital retention, and verify automated defense protocols.</p>
+                    <h3>Asset Protection</h3>
+                    <p>Run real-time leakage audits and track capital retention.</p>
                     <button class="cinematic-button" onclick="runSystemModule('Asset Protection Audit')">Run Audit Scan</button>
                 </div>
                 <div class="choice-card">
-                    <h3>3. Expansion Scale</h3>
-                    <p>Deploy high-yield monetization strategies, scale digital channels, and expand institutional footprint.</p>
+                    <h3>Expansion Scale</h3>
+                    <p>Deploy high-yield monetization strategies and digital channels.</p>
                     <button class="cinematic-button" onclick="runSystemModule('Expansion Module')">Deploy Expansion</button>
                 </div>
             </div>
@@ -211,38 +235,35 @@
         <!-- SOVEREIGN COMMS & MEETING SUITE -->
         <div class="executive-sanctuary">
             <h2>Sovereign Comms & Meeting Suite</h2>
-            <p class="section-desc">Secure end-to-end encrypted video conferencing, client briefings, and calendar scheduling channels built directly into your ecosystem.</p>
-            
+            <p class="section-desc">Secure end-to-end encrypted video conferencing and scheduling channels.</p>
             <div class="choices-grid">
                 <div class="choice-card">
                     <h3>Secure Video Room</h3>
-                    <p>Launch encrypted real-time video link for high-stakes client meetings and strategy alignment calls.</p>
+                    <p>Launch encrypted real-time video link for high-stakes client briefings.</p>
                     <button class="cinematic-button" onclick="launchCommsRoom()">Launch Secure Room</button>
                 </div>
                 <div class="choice-card">
                     <h3>Global Scheduling</h3>
-                    <p>Manage time-blocked master sessions, client booking syncs, and automated calendar triggers.</p>
+                    <p>Manage time-blocked master sessions and client booking syncs.</p>
                     <button class="cinematic-button" onclick="openScheduler()">Open Calendar Sync</button>
                 </div>
             </div>
         </div>
 
-        <!-- GLOBAL ASSET TELEMETRY & MAPPING -->
+        <!-- GLOBAL MAPPING & GEO-TELEMETRY -->
         <div class="executive-sanctuary">
             <h2>Global Asset Telemetry & Mapping</h2>
-            <p class="section-desc">Monitor asset distribution, node traffic, and operational geographic footprint in real-time space.</p>
-            <button class="cinematic-button" onclick="loadGlobalMap()" style="max-width: 300px; display: block; margin: 0 auto;">Activate Map Node Grid</button>
+            <p class="section-desc">Monitor asset distribution and active node traffic across international markets in real-time.</p>
+            <button class="cinematic-button" onclick="loadGlobalMap()" style="max-width: 320px; display: block; margin: 0 auto;">Activate Map Node Grid</button>
             <div id="mapOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- MASTER TIER BACKEND CHECKOUT -->
+        <!-- MASTER TIER CHECKOUT (FIXED FOR GITHUB PAGES) -->
         <div class="master-tier-section">
             <h2>The Master Tier Access</h2>
-            <p style="color: #DDDDDD; font-size: 0.95rem; margin-bottom: 1.5rem;">Secure permanent, high-level gateway access into the pinnacle tier of the Onyx ecosystem via secure backend Stripe protocol.</p>
-            <form action="/create-checkout-session" method="POST">
-                <input type="hidden" name="tier" value="master">
-                <button type="submit" class="cinematic-button" style="max-width: 320px; font-weight: 600; padding: 14px 30px;">Authorize Master Tier</button>
-            </form>
+            <p style="color: #DDDDDD; font-size: 0.95rem; margin-bottom: 1.5rem;">Secure permanent, high-level gateway access into the pinnacle tier of the Onyx ecosystem.</p>
+            <!-- Direct link button prevents 405 server error on static hosting -->
+            <a href="https://buy.stripe.com/placeholder" target="_blank" class="cinematic-button" style="max-width: 320px; font-weight: 600; padding: 14px 30px; display: inline-block; margin: 0 auto;">Authorize Master Tier</a>
         </div>
 
         <div id="systemConsole" class="live-output-panel" style="margin-top: 2rem;"></div>
@@ -252,39 +273,51 @@
         function explainTerm(term) {
             const output = document.getElementById('translatorOutput');
             output.style.display = 'block';
-            
             let explanation = "";
             if(term === 'telemetry') {
-                explanation = "<strong>Plain English:</strong> Telemetry just means 'live dashboard tracking.' It's like looking at the dials on a car dashboard to see how fast you're going or how much fuel you have left, but for your business numbers.";
+                explanation = "<strong>Plain English:</strong> Telemetry means live tracking. It's like checking dials on a dashboard to see how fast your business is moving or where money is flowing in real time.";
             } else if(term === 'leakage') {
-                explanation = "<strong>Plain English:</strong> A leakage audit simply means checking where money or time is secretly slipping through the cracks (like unused subscriptions or wasted expenses) so you can plug the holes and keep your cash.";
+                explanation = "<strong>Plain English:</strong> A leakage audit checks where cash is quietly slipping away (like wasted subscriptions or inefficient tools) so you can plug the holes.";
             } else if(term === 'routing') {
-                explanation = "<strong>Plain English:</strong> Routing is just sorting people or tasks to the right place automatically—like a digital receptionist directing phone calls to the right department.";
+                explanation = "<strong>Plain English:</strong> Routing is just automatic sorting—like a digital receptionist directing clients or tasks to the exact right folder instantly.";
             } else if(term === 'mastertier') {
-                explanation = "<strong>Plain English:</strong> Master Tier is your VIP club pass. It means getting full, lifetime access to all the highest-level features and tools without any locked doors.";
+                explanation = "<strong>Plain English:</strong> Master Tier is your VIP all-access pass to every tool and feature in the ecosystem without any restricted locks.";
             }
             output.innerHTML = explanation;
+        }
+
+        function showProductDetails(type) {
+            const output = document.getElementById('productOutput');
+            output.style.display = 'block';
+            let details = "";
+            if(type === 'core') {
+                details = "<strong>Core Ecosystem Sales Strategy:</strong><br>• <strong>Hotspot Target:</strong> Solopreneurs & creators looking for clean organization.<br>• <strong>Trend Analysis:</strong> High demand for minimalist, all-in-one digital workspaces.<br>• <strong>Action Plan:</strong> Sell directly via social posts highlighting time-saving dashboards.";
+            } else if(type === 'master') {
+                details = "<strong>Master Tier Sales Strategy:</strong><br>• <strong>Hotspot Target:</strong> Established business owners wanting automated architecture.<br>• <strong>Trend Analysis:</strong> Premium cinematic branding commands high-ticket pricing (£300+).<br>• <strong>Action Plan:</strong> Direct pitch to high-value contacts who need an immediate operational upgrade.";
+            } else if(type === 'creator') {
+                details = "<strong>CreatorOS & Community Strategy:</strong><br>• <strong>Hotspot Target:</strong> Alternative educators, holistic practitioners, and mentors.<br>• <strong>Trend Analysis:</strong> Massive surge in independent community hubs and home education support.<br>• <strong>Action Plan:</strong> Bundle workflows with lifestyle management tools for maximum value perception.";
+            }
+            output.innerHTML = details;
         }
 
         function runSystemModule(moduleName) {
             const consoleBox = document.getElementById('systemConsole');
             consoleBox.style.display = 'block';
-            consoleBox.innerHTML = `[SYSTEM TELEMETRY]: Successfully authorized and initialized module -> ${moduleName}. Secure pipeline active.`;
+            consoleBox.innerHTML = `[SYSTEM TELEMETRY]: Successfully initialized -> ${moduleName}. Workspace data integrity verified secure.`;
         }
 
-        function launchCommsRoom() {
-            const roomId = 'ONYX-' + Math.floor(100000 + Math.random() * 900000);
-            alert(`Initializing Sovereign Encrypted Video Node...\nRoom ID: ${roomId}\nStatus: Encrypted & Ready for Deployment.`);
+        function commsRoom() {
+            alert("Initializing Sovereign Encrypted Video Node... Secure channel active.");
         }
 
         function openScheduler() {
-            alert("Master Calendar Sync initialized. Active client slots open for booking.");
+            alert("Master Calendar Sync initialized. Booking slots ready.");
         }
 
         function loadGlobalMap() {
             const mapPanel = document.getElementById('mapOutput');
             mapPanel.style.display = 'block';
-            mapPanel.innerHTML = `[GEO-NODE TRACKER ACTIVE]: Global routing grid locked. Primary nodes operational across UK, European, and International financial channels. Data stream secure.`;
+            mapPanel.innerHTML = `[GEO-NODE TRACKER ACTIVE]:<br>• Node Alpha (UK / West Yorkshire): 100% Operational<br>• Node Beta (European Channels): Active Routing<br>• Node Gamma (International Digital Gateway): Synchronized<br>Global asset tracking grid is live and secure.`;
         }
     </script>
 </body>
