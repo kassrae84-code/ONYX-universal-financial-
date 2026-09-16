@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onyx One | Complete Sovereign Ecosystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
             --primary-font: 'Cinzel', serif;
@@ -95,6 +96,9 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .choice-card h3 {
             font-family: var(--primary-font);
@@ -163,6 +167,22 @@
             gap: 1rem;
             margin-top: 1rem;
         }
+        .qr-container {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(191, 149, 63, 0.3);
+        }
+        #qrcode {
+            background: #FFFFFF;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -184,29 +204,48 @@
             <div id="translatorOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- HIGH-CONVERSION SALES HOTSPOTS & PRODUCT PRICING -->
+        <!-- TIERED MONETIZATION TIERS (FOUNDER, GROWTH, MASTER) -->
         <div class="executive-sanctuary">
-            <h2>Sales Hotspots & Most Profitable Products</h2>
-            <p class="section-desc">High-margin digital assets structured for immediate cash generation. Review best-performing offerings, ideal pricing models, and market trends.</p>
+            <h2>Ecosystem Access Tiers</h2>
+            <p class="section-desc">Select your operational level. Direct institutional-grade Stripe integration ready for immediate deployment.</p>
             
             <div class="choices-grid">
                 <div class="choice-card">
-                    <h3>1. Core Ecosystem Access</h3>
-                    <p><strong>Best For:</strong> New entrepreneurs & remote creators.<br><strong>Price Point:</strong> £49 - £99 (One-time)<br><strong>Profit Margin:</strong> 98% Digital Delivery</p>
-                    <button class="cinematic-button" onclick="showProductDetails('core')">View Sales Strategy</button>
+                    <div>
+                        <h3>1. Founder Tier</h3>
+                        <p><strong>Access:</strong> Essential workflows & foundational setup.<br><strong>Investment:</strong> £19.99 / month</p>
+                    </div>
+                    <a href="https://buy.stripe.com/8x2fZhgLBcFFbF7fOS1sQ04" target="_blank" class="cinematic-button">Authorize Founder</a>
                 </div>
                 <div class="choice-card">
-                    <h3>2. Master Tier Suite</h3>
-                    <p><strong>Best For:</strong> Scaling business owners requiring total automation.<br><strong>Price Point:</strong> £297 - £497 (Lifetime)<br><strong>Profit Margin:</strong> High-ticket conversion</p>
-                    <button class="cinematic-button" onclick="showProductDetails('master')">View Sales Strategy</button>
+                    <div>
+                        <h3>2. Growth Tier</h3>
+                        <p><strong>Access:</strong> Advanced modules, expansion tracking & scaling tools.<br><strong>Investment:</strong> Active Scaling Plan</p>
+                    </div>
+                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Growth</a>
                 </div>
                 <div class="choice-card">
-                    <h3>3. CreatorOS & Community</h3>
-                    <p><strong>Best For:</strong> Home educators, mentors & micro-hubs.<br><strong>Price Point:</strong> £197 (Bundle)<br><strong>Profit Margin:</strong> Instant recurring potential</p>
-                    <button class="cinematic-button" onclick="showProductDetails('creator')">View Sales Strategy</button>
+                    <div>
+                        <h3>3. Master Tier</h3>
+                        <p><strong>Access:</strong> Pinnacle sovereign ecosystem & total automated architecture.<br><strong>Investment:</strong> Full VIP Suite</p>
+                    </div>
+                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
                 </div>
             </div>
-            <div id="productOutput" class="live-output-panel"></div>
+        </div>
+
+        <!-- INSTANT DYNAMIC QR CODE GENERATOR -->
+        <div class="executive-sanctuary">
+            <h2>Live Mobile QR Code Generator</h2>
+            <p class="section-desc">Instantly generate a functional QR code pointing to your live platform or checkout links for physical marketing and cards.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <button class="cinematic-button" style="max-width: 250px;" onclick="generateQR('https://kassrae84-code.github.io/ONYX-universal-financial-/')">Generate Site QR</button>
+                <button class="cinematic-button" style="max-width: 250px;" onclick="generateQR('https://buy.stripe.com/8x2fZhgLBcFFbF7fOS1sQ04')">Generate Founder QR</button>
+            </div>
+            <div class="qr-container" id="qrWrapper" style="display: none;">
+                <p id="qrLabel" style="font-size: 0.85rem; color: #FCF6BA; margin: 0;"></p>
+                <div id="qrcode"></div>
+            </div>
         </div>
 
         <!-- COMMAND & CONTROL HUB -->
@@ -215,18 +254,24 @@
             <p class="section-desc">Select your operational parameter below. Institutional-grade routing and active workflow telemetry are standing by.</p>
             <div class="choices-grid">
                 <div class="choice-card">
-                    <h3>Core Operations</h3>
-                    <p>Deploy active workflows and monitor workspace data integrity.</p>
+                    <div>
+                        <h3>Core Operations</h3>
+                        <p>Deploy active workflows and monitor workspace data integrity.</p>
+                    </div>
                     <button class="cinematic-button" onclick="runSystemModule('Core Operations Dashboard')">Initialize Dashboard</button>
                 </div>
                 <div class="choice-card">
-                    <h3>Asset Protection</h3>
-                    <p>Run real-time leakage audits and track capital retention.</p>
+                    <div>
+                        <h3>Asset Protection</h3>
+                        <p>Run real-time leakage audits and track capital retention.</p>
+                    </div>
                     <button class="cinematic-button" onclick="runSystemModule('Asset Protection Audit')">Run Audit Scan</button>
                 </div>
                 <div class="choice-card">
-                    <h3>Expansion Scale</h3>
-                    <p>Deploy high-yield monetization strategies and digital channels.</p>
+                    <div>
+                        <h3>Expansion Scale</h3>
+                        <p>Deploy high-yield monetization strategies and digital channels.</p>
+                    </div>
                     <button class="cinematic-button" onclick="runSystemModule('Expansion Module')">Deploy Expansion</button>
                 </div>
             </div>
@@ -238,13 +283,17 @@
             <p class="section-desc">Secure end-to-end encrypted video conferencing and scheduling channels.</p>
             <div class="choices-grid">
                 <div class="choice-card">
-                    <h3>Secure Video Room</h3>
-                    <p>Launch encrypted real-time video link for high-stakes client briefings.</p>
+                    <div>
+                        <h3>Secure Video Room</h3>
+                        <p>Launch encrypted real-time video link for high-stakes client briefings.</p>
+                    </div>
                     <button class="cinematic-button" onclick="launchCommsRoom()">Launch Secure Room</button>
                 </div>
                 <div class="choice-card">
-                    <h3>Global Scheduling</h3>
-                    <p>Manage time-blocked master sessions and client booking syncs.</p>
+                    <div>
+                        <h3>Global Scheduling</h3>
+                        <p>Manage time-blocked master sessions and client booking syncs.</p>
+                    </div>
                     <button class="cinematic-button" onclick="openScheduler()">Open Calendar Sync</button>
                 </div>
             </div>
@@ -256,14 +305,6 @@
             <p class="section-desc">Monitor asset distribution and active node traffic across international markets in real-time.</p>
             <button class="cinematic-button" onclick="loadGlobalMap()" style="max-width: 320px; display: block; margin: 0 auto;">Activate Map Node Grid</button>
             <div id="mapOutput" class="live-output-panel"></div>
-        </div>
-
-        <!-- MASTER TIER CHECKOUT (FIXED FOR GITHUB PAGES) -->
-        <div class="master-tier-section">
-            <h2>The Master Tier Access</h2>
-            <p style="color: #DDDDDD; font-size: 0.95rem; margin-bottom: 1.5rem;">Secure permanent, high-level gateway access into the pinnacle tier of the Onyx ecosystem.</p>
-            <!-- Direct link button prevents 405 server error on static hosting -->
-            <a href="https://buy.stripe.com/placeholder" target="_blank" class="cinematic-button" style="max-width: 320px; font-weight: 600; padding: 14px 30px; display: inline-block; margin: 0 auto;">Authorize Master Tier</a>
         </div>
 
         <div id="systemConsole" class="live-output-panel" style="margin-top: 2rem;"></div>
@@ -286,18 +327,23 @@
             output.innerHTML = explanation;
         }
 
-        function showProductDetails(type) {
-            const output = document.getElementById('productOutput');
-            output.style.display = 'block';
-            let details = "";
-            if(type === 'core') {
-                details = "<strong>Core Ecosystem Sales Strategy:</strong><br>• <strong>Hotspot Target:</strong> Solopreneurs & creators looking for clean organization.<br>• <strong>Trend Analysis:</strong> High demand for minimalist, all-in-one digital workspaces.<br>• <strong>Action Plan:</strong> Sell directly via social posts highlighting time-saving dashboards.";
-            } else if(type === 'master') {
-                details = "<strong>Master Tier Sales Strategy:</strong><br>• <strong>Hotspot Target:</strong> Established business owners wanting automated architecture.<br>• <strong>Trend Analysis:</strong> Premium cinematic branding commands high-ticket pricing (£300+).<br>• <strong>Action Plan:</strong> Direct pitch to high-value contacts who need an immediate operational upgrade.";
-            } else if(type === 'creator') {
-                details = "<strong>CreatorOS & Community Strategy:</strong><br>• <strong>Hotspot Target:</strong> Alternative educators, holistic practitioners, and mentors.<br>• <strong>Trend Analysis:</strong> Massive surge in independent community hubs and home education support.<br>• <strong>Action Plan:</strong> Bundle workflows with lifestyle management tools for maximum value perception.";
-            }
-            output.innerHTML = details;
+        function generateQR(url) {
+            const wrapper = document.getElementById('qrWrapper');
+            const label = document.getElementById('qrLabel');
+            const container = document.getElementById('qrcode');
+            
+            wrapper.style.display = 'flex';
+            container.innerHTML = ""; // Clear previous QR
+            label.innerText = `Active QR Target: ${url}`;
+            
+            new QRCode(container, {
+                text: url,
+                width: 180,
+                height: 180,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
         }
 
         function runSystemModule(moduleName) {
@@ -306,7 +352,7 @@
             consoleBox.innerHTML = `[SYSTEM TELEMETRY]: Successfully initialized -> ${moduleName}. Workspace data integrity verified secure.`;
         }
 
-        function commsRoom() {
+        function launchCommsRoom() {
             alert("Initializing Sovereign Encrypted Video Node... Secure channel active.");
         }
 
