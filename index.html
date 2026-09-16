@@ -9,13 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --obsidian: #030304;
-            --gold: #D4AF37;
-            --gold-bright: #F5E7A0;
-            --gold-soft: #E8D488;
-            --text: #E8E8E8;
-            --muted: #909090;
-            --accent: #B8962E;
+            --obsidian: #020408;
+            --midnight: #050714;
+            --champagne: #C8A951;
+            --champagne-bright: #F2E8C8;
+            --text: #D0D0D8;
+            --muted: #888890;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -25,9 +24,7 @@
             color: var(--text);
             line-height: 1.6;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* — HERO — LOGO BLENDED PERFECTLY — */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -36,75 +33,86 @@
             justify-content: center;
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(180deg, #030304 0%, #080810 100%);
+            background: linear-gradient(180deg, #020408 0%, #050714 100%);
         }
-        .logo {
-            height: 160px;
-            width: auto;
-            margin-bottom: 25px;
+        /* YOUR LOGO ABOVE EVERYTHING */
+        .your-logo {
+            max-width: 280px;
+            width: 70%;
+            height: auto;
+            margin-bottom: 24px;
             display: block;
-            filter: drop-shadow(0 0 15px rgba(212,175,55,0.2));
-            object-fit: contain;
         }
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 56px;
-            color: var(--gold-bright);
-            letter-spacing: 3px;
-            margin-bottom: 8px;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--champagne-bright);
+            letter-spacing: 6px;
+            margin-bottom: 6px;
         }
-        h1 span { font-size: 18px; vertical-align: top; }
-        .tagline-top {
-            font-size: 20px;
-            color: var(--gold);
+        h1 span { font-size: 20px; vertical-align: top; opacity: 0.7; }
+        .sub-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--champagne);
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 32px;
         }
-        .tagline-sub {
+        .tagline {
             font-size: 18px;
             color: var(--muted);
-            max-width: 650px;
-            margin-bottom: 50px;
+            max-width: 680px;
+            margin-bottom: 16px;
             line-height: 1.7;
+        }
+        .privacy-note {
+            font-size: 14px;
+            color: var(--champagne);
+            opacity: 0.8;
+            margin-bottom: 48px;
+            font-style: italic;
         }
         .btn {
             display: inline-block;
             padding: 16px 45px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-soft));
-            color: #000;
+            background: linear-gradient(135deg, #B8963E, #D4B870);
+            color: #020408;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
             font-size: 16px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 2px;
             transition: all 0.3s ease;
             margin: 10px;
+            letter-spacing: 1px;
             border: none;
             cursor: pointer;
         }
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212,175,55,0.25);
+            box-shadow: 0 8px 30px rgba(200, 169, 81, 0.2);
         }
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
+            border: 1px solid var(--champagne);
+            color: var(--champagne);
         }
         .btn-outline:hover {
-            background: rgba(212,175,55,0.1);
+            background: rgba(200, 169, 81, 0.08);
         }
 
-        /* — HEATMAP SECTION — FULLY WORKING — */
         .heatmap-section {
             padding: 70px 20px;
-            background: linear-gradient(180deg, #06060A, #030304);
+            background: var(--midnight);
         }
         .heatmap-section h2 {
-            text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 34px;
-            color: var(--gold);
+            font-size: 32px;
+            color: var(--champagne);
             margin-bottom: 10px;
+            text-align: center;
+            font-weight: 600;
         }
         .heatmap-desc {
             text-align: center;
@@ -117,24 +125,25 @@
         #heatmap-container {
             width: 100%;
             height: 500px;
-            border: 1px solid rgba(212,175,55,0.2);
-            border-radius: 12px;
-            background: rgba(10,10,20,0.5);
+            border: 1px solid rgba(200, 169, 81, 0.15);
+            border-radius: 4px;
+            background: rgba(10, 12, 24, 0.5);
             position: relative;
             overflow: hidden;
+            margin: 0 auto;
+            max-width: 1000px;
         }
-        .world-map-svg { width: 100%; height: 100%; }
         .country {
-            fill: #1A1A2E;
-            stroke: #2A2A4A;
+            fill: #141828;
+            stroke: #202440;
             stroke-width: 0.5;
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        .country:hover { fill: #2E2E4F; stroke: var(--gold); }
-        .activity-low { fill: #2A4D3C; }
-        .activity-med { fill: #B8962E; }
-        .activity-high { fill: var(--gold); filter: drop-shadow(0 0 4px rgba(212,175,55,0.5)); }
+        .country:hover { fill: #242848; stroke: var(--champagne); }
+        .activity-low { fill: #2A4040; }
+        .activity-med { fill: #907830; }
+        .activity-high { fill: var(--champagne); opacity: 0.9; }
         .map-legend {
             display: flex;
             justify-content: center;
@@ -149,39 +158,36 @@
             font-size: 13px;
             color: var(--muted);
         }
-        .legend-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-        }
-        .dot-low { background: #2A4D3C; }
-        .dot-med { background: #B8962E; }
-        .dot-high { background: var(--gold); box-shadow: 0 0 6px rgba(212,175,55,0.6); }
+        .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
+        .dot-low { background: #2A4040; }
+        .dot-med { background: #907830; }
+        .dot-high { background: var(--champagne); }
         .tooltip {
             position: absolute;
-            background: #111;
-            border: 1px solid var(--gold);
-            padding: 10px 14px;
-            border-radius: 6px;
+            background: #0A0C18;
+            border: 1px solid rgba(200, 169, 81, 0.3);
+            padding: 12px 16px;
+            border-radius: 2px;
             font-size: 13px;
             pointer-events: none;
             display: none;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            color: #E4D4A8;
         }
 
-        /* — TIERS — ALL FEATURES — */
         .tiers {
             padding: 70px 20px;
             max-width: 1100px;
             margin: 0 auto;
         }
         .tiers h2 {
-            text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 34px;
-            color: var(--gold);
+            font-size: 32px;
+            color: var(--champagne);
             margin-bottom: 50px;
+            text-align: center;
+            font-weight: 600;
         }
         .tiers-grid {
             display: grid;
@@ -189,32 +195,35 @@
             gap: 30px;
         }
         .tier-card {
-            background: #0C0C14;
-            border: 1px solid rgba(212,175,55,0.25);
-            border-radius: 8px;
+            background: #080A14;
+            border: 1px solid rgba(200, 169, 81, 0.15);
+            border-radius: 4px;
             padding: 35px;
             transition: all 0.3s ease;
         }
         .tier-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
+            border-color: rgba(200, 169, 81, 0.4);
+            transform: translateY(-3px);
         }
         .tier-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 22px;
-            color: var(--gold-bright);
+            color: var(--champagne-bright);
             margin-bottom: 10px;
+            letter-spacing: 2px;
         }
         .price {
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 25px;
+            color: #E4D4A8;
         }
         .price small {
             font-size: 14px;
             color: var(--muted);
             text-decoration: line-through;
             margin-left: 8px;
+            font-weight: 400;
         }
         .tier-card ul {
             list-style: none;
@@ -222,78 +231,66 @@
         }
         .tier-card li {
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
             font-size: 15px;
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .feature-gold { color: var(--gold); font-weight: 600; }
+        .feature-gold { color: var(--champagne); font-weight: 500; }
 
-        /* — FOOTER — YOUR EXACT WORDS — */
         .footer {
             text-align: center;
             padding: 40px 20px;
             font-size: 13px;
             color: var(--muted);
-            border-top: 1px solid rgba(212,175,55,0.15);
+            border-top: 1px solid rgba(200, 169, 81, 0.1);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .footer p { margin-bottom: 8px; }
     </style>
 </head>
 <body>
 
-    <!-- HERO — EXACTLY YOUR LAYOUT, LOGO BLENDED -->
     <section class="hero" id="top">
-        <img src="logo onyx 1.png" alt="ONYX ONE" class="logo" onerror="this.src='https://via.placeholder.com/160x100/030304/D4AF37?text=ONYX+ONE'">
+        <!-- YOUR LOGO — PUT logo.png IN SAME FOLDER AS index.html -->
+        <img src="logo.png" alt="ONYX ONE" class="your-logo">
+        
         <h1>ONYX ONE<span>™</span></h1>
-        <p class="tagline-top">Universal Financial Solutions</p>
-        <p class="tagline-sub">Your Anti‑Chaos Business Sanctuary™ — Everything you need to track, manage, invoice, and grow — all in one place. No more scattered tools, lost money, or wasted hours. Just clarity, control, and calm.</p>
+        <p class="sub-brand">Universal Financial Solutions</p>
+        
+        <p class="tagline">Your Anti‑Chaos Business Sanctuary™ — Everything you need to track, manage, invoice, and grow — all in one place. No more scattered tools, lost money, or wasted hours. Just clarity, control, and calm.</p>
+        
+        <p class="privacy-note">✦ We NEVER sell, rent or share your data. Ever. ✦</p>
+        
         <div>
             <a href="#pricing" class="btn">See Plans & Start Today</a>
             <a href="#heatmap" class="btn btn-outline">Live Global Heatmap</a>
         </div>
     </section>
 
-    <!-- LIVE INTERACTIVE HEATMAP — FULLY WORKING ON LOAD -->
     <section class="heatmap-section" id="heatmap">
         <h2>Global Sales & Demand Heatmap</h2>
         <p class="heatmap-desc">Real‑time activity across every region. See where your customers are, where demand is rising, and where to expand next.</p>
-        
         <div id="heatmap-container">
             <svg class="world-map-svg" viewBox="0 0 1000 500">
                 <path class="country activity-high" data-name="United Kingdom" data-value="High Demand — Your Base" d="M485,175 L500,172 L505,180 L498,190 L488,188 Z"/>
                 <path class="country activity-high" data-name="United States" data-value="Strong Growth" d="M120,140 L200,135 L210,180 L130,185 Z"/>
                 <path class="country activity-med" data-name="Canada" data-value="Growing" d="M110,95 L220,90 L225,120 L115,125 Z"/>
                 <path class="country activity-med" data-name="Australia" data-value="Steady Growth" d="M780,340 L860,335 L865,390 L785,395 Z"/>
-                <path class="country activity-med" data-name="New Zealand" data-value="Emerging" d="M880,410 L910,405 L915,430 L885,435 Z"/>
                 <path class="country activity-med" data-name="Germany" data-value="Rising Demand" d="M510,165 L540,162 L545,190 L515,193 Z"/>
                 <path class="country activity-high" data-name="Singapore" data-value="High Growth" d="M670,290 L685,290 L687,305 L672,305 Z"/>
-                <path class="country activity-med" data-name="UAE" data-value="Emerging Market" d="M610,240 L635,240 L640,260 L615,262 Z"/>
                 <path class="country activity-low" data-name="Brazil" data-value="Building" d="M320,300 L380,295 L390,360 L330,365 Z"/>
                 <path class="country activity-low" data-name="India" data-value="Expanding" d="M620,220 L680,215 L690,270 L630,275 Z"/>
                 <path class="country activity-low" data-name="Japan" data-value="Stable" d="M820,180 L850,178 L855,205 L825,207 Z"/>
                 <path class="country" data-name="France" data-value="Building" d="M495,185 L520,183 L525,200 L500,202 Z"/>
-                <path class="country" data-name="South Korea" data-value="Growing" d="M790,200 L810,198 L813,215 L793,217 Z"/>
+                <path class="country" data-name="UAE" data-value="Emerging Market" d="M610,240 L635,240 L640,260 L615,262 Z"/>
                 <path class="country" data-name="South Africa" data-value="Emerging" d="M510,340 L545,338 L550,370 L515,372 Z"/>
                 <path class="country" data-name="Mexico" data-value="Steady" d="M100,200 L150,198 L155,230 L105,232 Z"/>
-                <path class="country" data-name="Italy" data-value="Building" d="M525,195 L545,193 L550,215 L530,217 Z"/>
-                <path class="country" data-name="Spain" data-value="Steady" d="M460,200 L485,198 L488,220 L463,222 Z"/>
                 <path class="country" data-name="China" data-value="Expanding" d="M700,170 L780,165 L785,210 L705,215 Z"/>
-                <path class="country" data-name="Russia" data-value="Variable" d="M550,100 L750,90 L755,130 L555,140 Z"/>
                 <path class="country" data-name="Nigeria" data-value="Emerging" d="M500,280 L530,278 L535,310 L505,312 Z"/>
-                <path class="country" data-name="Egypt" data-value="Growing" d="M560,250 L585,248 L588,270 L563,272 Z"/>
-                <path class="country" data-name="Argentina" data-value="Building" d="M340,370 L380,368 L385,400 L345,402 Z"/>
-                <path class="country" data-name="Netherlands" data-value="Strong" d="M500,155 L515,153 L518,170 L503,172 Z"/>
-                <path class="country" data-name="Switzerland" data-value="Premium" d="M515,175 L528,173 L530,188 L517,190 Z"/>
-                <path class="country" data-name="Sweden" data-value="Stable" d="M520,115 L545,113 L548,135 L523,137 Z"/>
-                <path class="country" data-name="Norway" data-value="Stable" d="M480,110 L505,108 L508,130 L483,132 Z"/>
-                <path class="country" data-name="Ireland" data-value="Tech Hub" d="M465,160 L480,158 L483,175 L468,177 Z"/>
-                <path class="country" data-name="Israel" data-value="Tech Hub" d="M575,235 L590,233 L593,250 L578,252 Z"/>
-                <path class="country" data-name="Singapore" data-value="Financial Hub" d="M670,290 L685,290 L687,305 L672,305 Z"/>
-                <path class="country" data-name="India" data-value="Fast Growing" d="M620,220 L680,215 L690,270 L630,275 Z"/>
-                <path class="country" data-name="UAE" data-value="Global Business Hub" d="M610,240 L635,240 L640,260 L615,262 Z"/>
             </svg>
             <div class="tooltip" id="map-tooltip"></div>
         </div>
-        
         <div class="map-legend">
             <div class="legend-item"><span class="legend-dot dot-low"></span> Emerging / Building</div>
             <div class="legend-item"><span class="legend-dot dot-med"></span> Growing / Steady</div>
@@ -301,7 +298,6 @@
         </div>
     </section>
 
-    <!-- PRICING — ALL 3 TIERS, CORRECT PRICES -->
     <section class="tiers" id="pricing">
         <h2>Choose Your Level</h2>
         <div class="tiers-grid">
@@ -318,7 +314,6 @@
                 </ul>
                 <a href="#pricing" class="btn">Choose Founder</a>
             </div>
-
             <div class="tier-card">
                 <h3>GROWTH</h3>
                 <p class="price">£39.99<small>£49.99</small>/mo</p>
@@ -332,7 +327,6 @@
                 </ul>
                 <a href="#pricing" class="btn">Choose Growth</a>
             </div>
-
             <div class="tier-card">
                 <h3>MASTER</h3>
                 <p class="price">£79.99<small>£89.99</small>/mo</p>
@@ -347,25 +341,21 @@
                 <a href="#pricing" class="btn">Choose Master</a>
             </div>
         </div>
-        
         <div style="text-align:center; margin-top: 60px;">
             <p style="color:var(--muted); margin-bottom:20px;">All plans include 2‑day full access — cancel anytime, no charge.</p>
             <a href="#pricing" class="btn" style="font-size:18px; padding:18px 60px;">I'M READY — START MY ACCESS</a>
         </div>
     </section>
 
-    <!-- COPYRIGHT — YOUR EXACT WORDS -->
     <div class="footer">
         <p>© 2026 ONYX ONE™ — Universal Financial Solutions — All Rights Reserved — Trademarked.</p>
-        <p>We NEVER sell, rent, or share your data. Everything you store remains yours and yours alone.</p>
+        <p>We NEVER sell, rent or share your data. Everything remains yours and yours alone.</p>
     </div>
 
-    <!-- — HEATMAP INTERACTIVE — RUNS AUTOMATICALLY — -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('heatmap-container');
             const tooltip = document.getElementById('map-tooltip');
-            
             document.querySelectorAll('.country').forEach(region => {
                 region.addEventListener('mouseenter', function(e) {
                     const name = this.getAttribute('data-name');
@@ -373,13 +363,11 @@
                     tooltip.innerHTML = `<strong>${name}</strong><br>${value}`;
                     tooltip.style.display = 'block';
                 });
-                
                 region.addEventListener('mousemove', function(e) {
                     const rect = container.getBoundingClientRect();
                     tooltip.style.left = (e.clientX - rect.left + 15) + 'px';
                     tooltip.style.top = (e.clientY - rect.top + 15) + 'px';
                 });
-                
                 region.addEventListener('mouseleave', function() {
                     tooltip.style.display = 'none';
                 });
