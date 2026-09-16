@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONYX ONE™ — Universal Financial Solutions</title>
     
-    <!-- ⛔ PROTECTION -->
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, noarchive">
     
@@ -13,25 +12,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- STRIPE -->
     <script src="https://js.stripe.com/v3/"></script>
     
     <style>
         :root {
-            --pure-black: #050505;
+            --obsidian: #050505;
             --layer-black: #0A0A0A;
-            --card-black: #0F0F0F;
-            --antique-gold: #C8B288;
-            --antique-gold-bright: #E5B98F;
-            --gold-glow: rgba(200, 178, 136, 0.15);
-            --border-gold: rgba(200, 178, 136, 0.25);
+            --card-black: #0D0D0D;
+            --champagne-gold: #C8B288;
+            --champagne-bright: #E5B98F;
+            --gold-glow: rgba(200, 178, 136, 0.12);
+            --border-gold: rgba(200, 178, 136, 0.22);
             --text: #F8F4E9;
             --muted: #A39B8B;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: var(--pure-black);
+            background: var(--obsidian);
             color: var(--text);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
@@ -50,24 +48,27 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
+            width: 140px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--antique-gold), transparent);
+            background: linear-gradient(90deg, transparent, var(--champagne-gold), transparent);
         }
         
         .logo-container { margin-bottom: 2.5rem; }
         .logo-img { 
-            max-width: 160px; 
+            max-width: 180px; 
             height: auto; 
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));
             border-radius: 12px;
         }
         
-        h1 {
+        h1, h2, .tier-name, .node-title, .command-panel h3 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 4.8rem);
+        }
+
+        .brand-title {
+            font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 600;
-            color: var(--antique-gold-bright);
+            color: var(--champagne-bright);
             letter-spacing: 0.18em;
             margin-bottom: 0.4rem;
             position: relative;
@@ -78,11 +79,11 @@
             position: absolute;
             top: 0.4em;
             right: -0.8em;
-            color: var(--antique-gold);
+            color: var(--champagne-gold);
         }
         .subtitle {
-            font-size: 1rem;
-            color: var(--antique-gold);
+            font-size: 0.95rem;
+            color: var(--champagne-gold);
             letter-spacing: 0.35em;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
@@ -96,7 +97,7 @@
             font-weight: 300;
         }
 
-        /* TABS NAVIGATION */
+        /* NAVIGATION TABS */
         .workspace-nav {
             display: flex;
             justify-content: center;
@@ -107,7 +108,7 @@
         .nav-btn {
             background: var(--card-black);
             border: 1px solid var(--border-gold);
-            color: var(--antique-gold);
+            color: var(--champagne-gold);
             padding: 0.8rem 1.6rem;
             border-radius: 8px;
             cursor: pointer;
@@ -117,19 +118,18 @@
             transition: all 0.3s ease;
         }
         .nav-btn.active, .nav-btn:hover {
-            background: var(--antique-gold);
-            color: var(--pure-black);
-            border-color: var(--antique-gold-bright);
-            box-shadow: 0 0 20px var(--gold-glow);
+            background: var(--champagne-gold);
+            color: var(--obsidian);
+            border-color: var(--champagne-bright);
+            box-shadow: 0 0 25px var(--gold-glow);
         }
 
         .tab-content { display: none; margin-bottom: 4rem; }
         .tab-content.active { display: block; }
         
         .section-heading {
-            font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            color: var(--antique-gold-bright);
+            color: var(--champagne-bright);
             text-align: center;
             margin: 4rem 0 2.5rem;
             font-weight: 500;
@@ -150,40 +150,38 @@
             transition: all 0.4s ease;
         }
         .feature-card:hover {
-            border-color: var(--antique-gold-bright);
+            border-color: var(--champagne-bright);
             background: #141414;
             transform: translateY(-4px);
             box-shadow: 0 15px 35px var(--gold-glow);
         }
         .feature-card h3 {
-            color: var(--antique-gold-bright);
-            font-family: 'Playfair Display', serif;
+            color: var(--champagne-bright);
             font-size: 1.25rem;
             margin-bottom: 0.8rem;
             font-weight: 500;
         }
         .feature-card p { color: var(--muted); font-size: 0.92rem; font-weight: 300; }
 
-        /* INTERACTIVE COMMAND SUITE (MEMOS, NOTES, MAPS) */
+        /* COMMAND SUITE & WORKSPACES */
         .command-panel {
             background: var(--card-black);
             border: 1px solid var(--border-gold);
             border-radius: 16px;
             padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
         .command-panel h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--antique-gold-bright);
+            color: var(--champagne-bright);
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
-        .command-panel p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .command-panel p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 300; }
         
         textarea, input {
             width: 100%;
-            background: var(--pure-black);
+            background: var(--obsidian);
             border: 1px solid var(--border-gold);
             border-radius: 8px;
             padding: 1rem;
@@ -194,13 +192,13 @@
         }
         textarea:focus, input:focus {
             outline: none;
-            border-color: var(--antique-gold-bright);
+            border-color: var(--champagne-bright);
             box-shadow: 0 0 15px var(--gold-glow);
         }
 
-        /* GLOWING WORLD SALES MAP CONTAINER */
+        /* GLOWING WORLD SALES MAP */
         .map-wrapper {
-            background: radial-gradient(circle at center, #121212 0%, var(--pure-black) 100%);
+            background: radial-gradient(circle at center, #121212 0%, var(--obsidian) 100%);
             border: 1px solid var(--border-gold);
             border-radius: 14px;
             padding: 2rem;
@@ -216,21 +214,20 @@
             margin-top: 1.5rem;
         }
         .map-node {
-            background: rgba(15, 15, 15, 0.8);
+            background: rgba(13, 13, 13, 0.9);
             border: 1px solid var(--border-gold);
             border-radius: 10px;
             padding: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
         }
         .map-node:hover {
-            border-color: var(--antique-gold-bright);
+            border-color: var(--champagne-bright);
             background: rgba(200, 178, 136, 0.08);
             box-shadow: 0 0 25px rgba(229, 185, 143, 0.25);
             transform: translateY(-3px);
         }
-        .node-title { font-family: 'Playfair Display', serif; color: var(--antique-gold-bright); font-size: 1.05rem; margin-bottom: 0.3rem; }
+        .node-title { color: var(--champagne-bright); font-size: 1.05rem; margin-bottom: 0.3rem; }
         .node-val { font-size: 1.2rem; font-weight: 600; color: var(--text); }
         .node-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.05em; }
 
@@ -238,14 +235,14 @@
             margin-top: 1.5rem;
             padding: 1.2rem;
             background: rgba(200,178,136,0.04);
-            border-left: 3px solid var(--antique-gold-bright);
+            border-left: 3px solid var(--champagne-bright);
             border-radius: 6px;
             text-align: left;
             font-size: 0.92rem;
             color: var(--text);
         }
 
-        /* TIERS */
+        /* PRICING TIERS */
         .tiers {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -260,17 +257,16 @@
             transition: all 0.4s ease;
             position: relative;
         }
-        .tier-card:hover { transform: translateY(-6px); border-color: var(--antique-gold); }
+        .tier-card:hover { transform: translateY(-6px); border-color: var(--champagne-gold); }
         .tier-card.featured {
-            border-color: var(--antique-gold-bright);
+            border-color: var(--champagne-bright);
             box-shadow: 0 0 45px rgba(200, 178, 136, 0.08);
             background: #141414;
             transform: scale(1.02);
         }
         .tier-name {
-            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: var(--antique-gold-bright);
+            color: var(--champagne-bright);
             margin-bottom: 0.5rem;
             letter-spacing: 0.05em;
         }
@@ -291,8 +287,8 @@
             display: block;
             width: 100%;
             padding: 1.1rem;
-            background: linear-gradient(135deg, var(--antique-gold), var(--antique-gold-bright));
-            color: var(--pure-black);
+            background: linear-gradient(135deg, var(--champagne-gold), var(--champagne-bright));
+            color: var(--obsidian);
             font-weight: 600;
             border-radius: 10px;
             text-align: center;
@@ -305,7 +301,7 @@
         }
         .cta-btn:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 8px 25px rgba(229, 185, 143, 0.2); 
+            box-shadow: 0 8px 25px rgba(229, 185, 143, 0.25); 
         }
         .cta-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         
@@ -328,16 +324,16 @@
                 <img src="logo.png" alt="ONYX ONE™" class="logo-img">
             </div>
             
-            <h1>ONYX ONE<span class="tm">™</span></h1>
+            <h1 class="brand-title">ONYX ONE<span class="tm">™</span></h1>
             <p class="subtitle">Universal Financial Solutions</p>
             <p class="tagline">Your Anti‑Chaos Business Sanctuary — Unified intelligence, immaculate security, zero friction.</p>
 
-            <!-- WORKSPACE SWITCHER -->
             <div class="workspace-nav">
                 <button class="nav-btn active" onclick="switchTab('overview', event)">Overview</button>
                 <button class="nav-btn" onclick="switchTab('mapTab', event)">🌍 Worldwide Sales Map</button>
+                <button class="nav-btn" onclick="switchTab('accountsTab', event)">🌐 Multi-Account Watcher</button>
                 <button class="nav-btn" onclick="switchTab('notesTab', event)">🤖 AI Smart Notes & Memos</button>
-                <button class="nav-btn" onclick="switchTab('emailTab', event)">📧 Email & Marketing Suite</button>
+                <button class="nav-btn" onclick="switchTab('emailTab', event)">📧 Email & Marketing</button>
             </div>
         </header>
 
@@ -380,14 +376,14 @@
             </div>
         </div>
 
-        <!-- TAB 2: WORLDWIDE SALES MAP & HEATMAP ENGINE -->
+        <!-- TAB 2: WORLDWIDE SALES MAP -->
         <div id="mapTab" class="tab-content">
             <div class="command-panel">
                 <h3>🌍 Worldwide Sales Map & Trend Engine</h3>
                 <p>Interactive glowing geographic telemetry. Hover over any regional hub below to inspect live revenue volume, conversion velocity, and performance status in real time.</p>
                 
                 <div class="map-wrapper">
-                    <div style="font-size:0.8rem; letter-spacing:0.2em; color:var(--antique-gold); margin-bottom:1rem; text-transform:uppercase;">Global Liquidity Matrix Active</div>
+                    <div style="font-size:0.8rem; letter-spacing:0.2em; color:var(--champagne-gold); margin-bottom:1rem; text-transform:uppercase;">Global Liquidity Matrix Active</div>
                     
                     <div class="map-grid">
                         <div class="map-node" onmouseenter="inspectNode('United Kingdom', '£18,450', '94 Units / Index 68', 'Dominating Market Share')" onmouseleave="clearNode()">
@@ -419,11 +415,30 @@
             </div>
         </div>
 
-        <!-- TAB 3: AI SMART NOTES & MEMOS -->
+        <!-- TAB 3: MULTI-ACCOUNT WATCHER -->
+        <div id="accountsTab" class="tab-content">
+            <div class="command-panel">
+                <h3>🌐 Multi-Account & Portfolio Watcher</h3>
+                <p>Link and monitor all business accounts, merchant gateways, and capital reserves in real time.</p>
+                <div style="display:grid; grid-template-columns: 1fr 1fr auto; gap:0.5rem; margin-bottom:1rem;">
+                    <input type="text" id="accountName" placeholder="Account Name (e.g., Business Bank / Stripe)">
+                    <input type="number" id="accountBalance" placeholder="Current Balance (£)">
+                    <button class="cta-btn" style="width:auto; padding:0.8rem 1.5rem;" onclick="addAccount()">Link</button>
+                </div>
+                <div id="accountsList">
+                    <div style="padding:0.8rem; background:var(--obsidian); border:1px solid var(--border-gold); border-radius:6px; margin-bottom:0.5rem; font-size:0.9rem; display:flex; justify-content:space-between;">
+                        <span>Primary Business Account (Connected)</span>
+                        <strong style="color:var(--champagne-bright);">£12,450.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: AI SMART NOTES -->
         <div id="notesTab" class="tab-content">
             <div class="command-panel">
                 <h3>🤖 Encrypted AI Smart Notes & Executive Memos</h3>
-                <p>Input strategic discussions or meeting transcripts below. Our sovereign intelligence engine parses key financial takeaways, action items, and structural directives instantly.</p>
+                <p>Input strategic discussions or meeting transcripts below. Our sovereign intelligence engine parses key financial takeaways instantly.</p>
                 
                 <textarea id="rawNotesInput" rows="5" placeholder="Paste meeting notes, client debriefs, or raw thoughts here..."></textarea>
                 <button class="cta-btn" style="width: auto; padding: 0.8rem 2rem; margin-bottom: 1.5rem;" onclick="processSmartNotes()">Generate Encrypted Executive Summary</button>
@@ -432,7 +447,7 @@
             </div>
         </div>
 
-        <!-- TAB 4: EMAIL & MARKETING SUITE -->
+        <!-- TAB 5: EMAIL SUITE -->
         <div id="emailTab" class="tab-content">
             <div class="command-panel">
                 <h3>📧 Instant High-Conversion Email & Marketing Suite</h3>
@@ -504,7 +519,6 @@
     </div>
 
     <script>
-        // TAB SWITCHING LOGIC
         function switchTab(tabId, event) {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -512,10 +526,9 @@
             event.currentTarget.classList.add('active');
         }
 
-        // INTERACTIVE MAP HOVER TELEMETRY
         function inspectNode(region, revenue, velocity, status) {
             document.getElementById('telemetryBox').innerHTML = `
-                📍 <strong>Region Monitored:</strong> <span style="color:var(--antique-gold-bright);">${region}</span> &nbsp;|&nbsp; 
+                📍 <strong>Region Monitored:</strong> <span style="color:var(--champagne-bright);">${region}</span> &nbsp;|&nbsp; 
                 <strong>Revenue Generated:</strong> <span style="color:#E5B98F; font-weight:700;">${revenue}</span> &nbsp;|&nbsp; 
                 <strong>Telemetry:</strong> ${velocity} &nbsp;|&nbsp; 
                 <strong>Status:</strong> <span style="color:#C8B288;">${status}</span>
@@ -526,47 +539,46 @@
             document.getElementById('telemetryBox').innerHTML = `📍 <strong>Live Regional Inspector:</strong> Hover any regional node above to analyze real-time revenue and performance metrics instantly.`;
         }
 
-        // AI SMART NOTES GENERATOR
+        function addAccount() {
+            const name = document.getElementById('accountName').value;
+            const balance = Number(document.getElementById('accountBalance').value) || 0;
+            if(!name) { alert('Please enter an account name'); return; }
+            
+            const list = document.getElementById('accountsList');
+            const item = document.createElement('div');
+            item.style = "padding:0.8rem; background:var(--obsidian); border:1px solid var(--border-gold); border-radius:6px; margin-bottom:0.5rem; font-size:0.9rem; display:flex; justify-content:space-between;";
+            item.innerHTML = `<span>${name} (Connected)</span><strong style="color:var(--champagne-bright);">£${balance.toLocaleString()}</strong>`;
+            list.appendChild(item);
+            
+            document.getElementById('accountName').value = '';
+            document.getElementById('accountBalance').value = '';
+        }
+
         function processSmartNotes() {
             const raw = document.getElementById('rawNotesInput').value;
             const output = document.getElementById('notesOutput');
-            if(!raw.trim()) {
-                alert('Please input notes to parse.');
-                return;
-            }
+            if(!raw.trim()) { alert('Please input notes to parse.'); return; }
             output.style.display = 'block';
             output.innerHTML = `
-                <h4 style="color:var(--antique-gold-bright); margin-bottom:0.5rem;">🔒 Encrypted Executive Summary Generated</h4>
+                <h4 style="color:var(--champagne-bright); margin-bottom:0.5rem;">🔒 Encrypted Executive Summary Generated</h4>
                 <strong>Core Directive:</strong> Strategic resource allocation confirmed.<br>
                 <strong>Key Metrics Extracted:</strong> High yield priority verified across active operational channels.<br>
                 <strong>Actionable Directive:</strong> Proceed with automated deployment. Record securely stored in client-side vault.
             `;
         }
 
-        // EMAIL CAMPAIGN DEPLOYMENT
         function deployCampaign() {
             const subj = document.getElementById('campaignSubject').value;
             const output = document.getElementById('campaignOutput');
-            if(!subj.trim()) {
-                alert('Please specify a campaign subject.');
-                return;
-            }
+            if(!subj.trim()) { alert('Please specify a campaign subject.'); return; }
             output.style.display = 'block';
             output.innerHTML = `
-                <h4 style="color:var(--antique-gold-bright); margin-bottom:0.5rem;">⚡ Campaign Dispatched Successfully</h4>
+                <h4 style="color:var(--champagne-bright); margin-bottom:0.5rem;">⚡ Campaign Dispatched Successfully</h4>
                 <strong>Subject:</strong> ${subj}<br>
                 <strong>Status:</strong> Active telemetry tracking enabled. Behavioral sequence deployed across sovereign gateway nodes.
             `;
         }
 
-        // STRIPE CHECKOUT SIMULATION
-        const PUBLISHABLE_KEY = 'pk_test_YOUR_KEY_HERE';
-        const PRICES = {
-            founder: 'price_FOUNDER_ID_HERE',
-            builder: 'price_BUILDER_ID_HERE',
-            master:  'price_MASTER_ID_HERE'
-        };
-        
         async function goToCheckout(tier) {
             const btn = event.target;
             btn.disabled = true;
@@ -578,7 +590,6 @@
                     builder: 'https://buy.stripe.com/REPLACE_WITH_BUILDER_LINK',
                     master:  'https://buy.stripe.com/REPLACE_WITH_MASTER_LINK'
                 };
-                
                 window.location.href = links[tier];
             } catch (err) {
                 console.error(err);
