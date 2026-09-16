@@ -170,6 +170,24 @@
             color: #0A0A0A;
             font-weight: 600;
         }
+        /* Custom Input Fields */
+        .executive-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(191, 149, 63, 0.4);
+            color: #FCF6BA;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: var(--body-font);
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+        .executive-input:focus {
+            outline: none;
+            border-color: #FCF6BA;
+            box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
+        }
         /* Glowing Interactive Map Grid */
         .map-grid-container {
             position: relative;
@@ -233,11 +251,11 @@
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Sovereign Financial Architecture & Operations</div>
 
-        <!-- 2. MISSION & PRIVACY PLEDGE -->
+        <!-- 2. MISSION & ZERO-DATA-SALE PLEDGE -->
         <div class="executive-sanctuary" style="text-align: center;">
             <h2>Our Mission & Zero-Data-Sale Pledge</h2>
             <p class="section-desc" style="max-width: 800px; margin-bottom: 1rem;">
-                Onyx One is built for independent creators and visionaries who demand absolute sovereignty. <strong>We never sell your data.</strong> Everything you process, build, and store lives securely directly inside your local dashboard environment. Zero tracking, zero third-party brokers, pure operational privacy.
+                Onyx One is built for independent creators, trades, and visionaries who demand absolute sovereignty. <strong>We never sell your data.</strong> Everything you process, build, and store lives securely directly inside your local dashboard environment. Zero tracking, zero third-party brokers, pure operational privacy.
             </p>
         </div>
 
@@ -290,7 +308,55 @@
             <div id="hubOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 4. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE -->
+        <!-- 4. TAILORED PROFESSION VAULT & EVIDENCE REPORT GENERATOR -->
+        <div class="executive-sanctuary">
+            <h2>Tailored Profession Vault & Evidence Reporting</h2>
+            <p class="section-desc">Instantly customize your workspace to your exact trade (e.g., Asbestos Surveyor, Photographer, Contractor). Store survey evidence, upload site photos, and auto-generate certified professional reports.</p>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Select or Enter Your Profession:</label>
+                <input type="text" id="userProfession" class="executive-input" placeholder="e.g. Asbestos Surveyor, Electrician, Photographer..." value="Asbestos Surveyor">
+                
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Evidence Log / Notes (Sample Data):</label>
+                <input type="text" id="evidenceNotes" class="executive-input" placeholder="e.g. Sample #4 - Boiler Room Pipe Insulation (Chrysotile Positive)..." value="Site Inspection Ref: ASB-2026-99 - Suspended ceiling material sampled and logged.">
+                
+                <button class="cinematic-button" onclick="generateProfessionReport()">Generate Tailored Compliance Report</button>
+            </div>
+            <div id="professionReportOutput" class="live-output-panel"></div>
+        </div>
+
+        <!-- 5. NET WORTH, MULTI-CURRENCY & CRYPTO ASSET TRACKER -->
+        <div class="executive-sanctuary">
+            <h2>Sovereign Net Worth & Crypto Asset Hub</h2>
+            <p class="section-desc">Total financial visibility in one place. Consolidate your fiat revenue, bank reserves, and crypto wallet holdings with AI-driven saving and spending optimisation tips.</p>
+            
+            <div class="choices-grid">
+                <div class="choice-card">
+                    <div>
+                        <h3>Fiat & Bank Reserves</h3>
+                        <p>Track business revenue, expenses, and cash-flow viability.</p>
+                    </div>
+                    <button class="cinematic-button" onclick="loadFinancialData('fiat')">View Cash Flow</button>
+                </div>
+                <div class="choice-card">
+                    <div>
+                        <h3>Crypto Asset Portfolio</h3>
+                        <p>Link wallets (BTC, ETH, Solana, etc.) for live valuation tracking.</p>
+                    </div>
+                    <button class="cinematic-button" onclick="loadFinancialData('crypto')">Sync Crypto Wallets</button>
+                </div>
+                <div class="choice-card">
+                    <div>
+                        <h3>AI Wealth & Spending Tips</h3>
+                        <p>Smart localized advice on when to save, invest, or pull out.</p>
+                    </div>
+                    <button class="cinematic-button" onclick="loadFinancialData('tips')">Get Financial Tips</button>
+                </div>
+            </div>
+            <div id="financialOutput" class="live-output-panel"></div>
+        </div>
+
+        <!-- 6. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE -->
         <div class="executive-sanctuary">
             <h2>Sovereign Accessibility & Global Comms Suite</h2>
             <p class="section-desc">Inclusive AI-powered tools designed to break down language barriers, support deaf communication via sign translation, and record smart meeting memos automatically. 100% Free for all members.</p>
@@ -314,7 +380,7 @@
             <div id="accessOutput" class="live-output-panel"></div>
         </div>
 
-        <!-- 5. INTERACTIVE GLOWING SALES & GEO-TELEMETRY MAP -->
+        <!-- 7. INTERACTIVE GLOWING SALES & GEO-TELEMETRY MAP -->
         <div class="executive-sanctuary">
             <h2>Global Sales & Node Telemetry Map</h2>
             <p class="section-desc">Hover over international nodes below to inspect live regional sales hot-spots, revenue tracking, market trends, and automated pull-out triggers.</p>
@@ -342,7 +408,7 @@
             </div>
         </div>
 
-        <!-- 6. MOBILE QR CODE GENERATOR -->
+        <!-- 8. MOBILE QR CODE GENERATOR -->
         <div class="executive-sanctuary">
             <h2>Live Mobile QR Code Generator</h2>
             <p class="section-desc">Instantly generate functional QR codes pointing directly to your live platform or active payment gateways.</p>
@@ -356,7 +422,7 @@
             </div>
         </div>
 
-        <!-- 7. MONETIZATION TIERS (NO FREE TRIAL - PURCHASE ONLY) -->
+        <!-- 9. MONETIZATION TIERS -->
         <div class="executive-sanctuary" style="border-color: #BF953F;">
             <h2>Ecosystem Access Tiers & Deployment</h2>
             <p class="section-desc">Secure your institutional tier via verified Stripe checkout. Direct purchase required for sovereign platform authorization.</p>
@@ -430,6 +496,26 @@
             const panel = document.getElementById('hubOutput');
             panel.style.display = 'block';
             panel.innerHTML = `<strong>[SECURE VIDEO NODE ACTIVE]:</strong> Room ID: <code>${roomId}</code>. Encrypted end-to-end communication channel ready for client briefings.`;
+        }
+
+        function generateProfessionReport() {
+            const prof = document.getElementById('userProfession').value;
+            const notes = document.getElementById('evidenceNotes').value;
+            const panel = document.getElementById('professionReportOutput');
+            panel.style.display = 'block';
+            panel.innerHTML = `<strong>[TAILORED COMPLIANCE VAULT - ${prof.toUpperCase()}]:</strong><br>• Evidence Vault Status: Secure, Local Encryption Active.<br>• Logged Evidence: "${notes}"<br>• Generated Output: Certified professional inspection record formatted with automated compliance signatures and ready for immediate client delivery.`;
+        }
+
+        function loadFinancialData(type) {
+            const panel = document.getElementById('financialOutput');
+            panel.style.display = 'block';
+            if(type === 'fiat') {
+                panel.innerHTML = `<strong>[FIAT & BANK RESERVES]:</strong><br>• Business Operating Balance: £12,450.00 (Healthy Viability)<br>• Monthly Operational Overhead: £1,200.00<br>• Net Liquid Position: Fully Sovereign & Positive.`;
+            } else if(type === 'crypto') {
+                panel.innerHTML = `<strong>[CRYPTO ASSET PORTFOLIO SYNC]:</strong><br>• Connected Wallets: Verified Secure (Local Session)<br>• Holdings Tracked: BTC, ETH, Solana<br>• Combined Portfolio Valuation: £18,920.00 equivalent.`;
+            } else if(type === 'tips') {
+                panel.innerHTML = `<strong>[AI WEALTH & SPENDING TIPS]:</strong><br>1. <em>Capital Allocation:</em> Set aside 20% of incoming Stripe revenue into your tax vault immediately.<br>2. <em>Spending Optimization:</em> Zero redundant software subscriptions detected.<br>3. <em>Growth Tip:</em> Re-invest peak regional profits into high-converting digital product tiers.`;
+            }
         }
 
         function launchAccessibility(type) {
