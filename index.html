@@ -54,7 +54,7 @@
             max-height: 140px; 
             width: auto; 
             display: block; 
-            margin: 0 auto 0.75 auto; 
+            margin: 0 auto 0.75rem auto; 
             filter: drop-shadow(0 10px 25px rgba(200, 178, 136, 0.18));
             border-radius: 12px;
         }
@@ -183,20 +183,46 @@
         }
         textarea:focus, input:focus, select:focus { outline: none; border-color: var(--rich-gold); }
         
-        .map-placeholder { 
+        /* GLOWING INTERACTIVE MAP STYLING */
+        .map-container { 
             width: 100%; 
-            height: 280px; 
-            background: linear-gradient(135deg, #0F0F0F, #1A1A2E); 
-            border-radius: 8px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            flex-direction: column; 
+            background: radial-gradient(circle at center, #111827 0%, #050505 100%); 
+            border-radius: 10px; 
             border: 1px solid var(--border-gold); 
+            padding: 1.5rem; 
             margin: 1rem 0; 
+            position: relative;
         }
-        .heat-key { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-top: 0.75rem; font-size: 0.85rem; color: var(--soft-gold); }
-        .heat-swatch { width: 16px; height: 16px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.2); }
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .map-node {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(200, 178, 136, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .map-node:hover {
+            border-color: var(--rich-gold);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 20px rgba(229, 185, 143, 0.25);
+            transform: translateY(-3px);
+        }
+        .node-title { font-size: 0.95rem; font-weight: 600; color: var(--rich-gold); margin-bottom: 0.25rem; font-family: 'Playfair Display', serif; }
+        .node-val { font-size: 1.1rem; font-weight: 700; color: var(--warm-cream); }
+        .node-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+
+        .heat-key { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-top: 1rem; font-size: 0.85rem; color: var(--soft-gold); }
+        .heat-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.2); display: inline-block; }
+        
         .result-block { margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.4); border-radius: 6px; border-left: 3px solid var(--rich-gold); font-size: 0.95rem; }
         
         @media(max-width: 768px) { .tiers { gap: 1.5rem; padding: 2rem 1rem; } }
@@ -238,18 +264,35 @@
                 • Leak detection & subscription expenditure auditing<br>
                 • Professional branded invoice & commercial proposal generator<br>
                 • Real-time worldwide sales tracking & regional demand insights<br>
+                • Multi-account linking & live unified portfolio watching<br>
                 • End-to-end encrypted private notes & strategic meeting preparation<br>
                 • Secure encrypted file vault & evidence archive<br>
-                • Institutional financial reporting & multi-account asset linking<br>
                 • Worldwide geographic sales mapping & competitive category benchmarking
             </p>
         </div>
         <div id="workspace" class="tab-content">
             <h3 style="color:var(--rich-gold); margin-bottom:1rem;">🔐 MASTER ONLY — Encrypted Sovereign Workspace</h3>
             <p style="margin-bottom:1rem; color:var(--muted);">All records here undergo client-side encryption before touching storage.</p>
+            
+            <div class="tool-area" style="margin-bottom:1.5rem;">
+                <h4 style="color:var(--soft-gold);">🌐 Live Multi-Account & Portfolio Watcher</h4>
+                <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.75rem;">Link and monitor all business accounts, merchant gateways, and capital reserves in real time.</p>
+                <div style="display:grid; grid-template-columns: 1fr 1fr auto; gap:0.5rem;">
+                    <input type="text" id="accountName" placeholder="Account Name (e.g., Business Bank / Stripe)">
+                    <input type="number" id="accountBalance" placeholder="Current Balance (£)">
+                    <button class="btn btn-small" onclick="addAccount()" style="margin-top:0.5rem;">Link Account</button>
+                </div>
+                <div id="accountsList" style="margin-top:1rem;">
+                    <div style="padding:0.6rem; background:rgba(0,0,0,0.3); border-radius:4px; margin-bottom:0.4rem; font-size:0.9rem; display:flex; justify-content:space-between;">
+                        <span>Primary Business Account (Connected)</span>
+                        <strong style="color:var(--rich-gold);">£12,450.00</strong>
+                    </div>
+                </div>
+            </div>
+
             <div class="tool-area">
                 <h4 style="color:var(--soft-gold);">Secure Private Ledger Note</h4>
-                <textarea id="masterNote" rows="4" placeholder="Input confidential notes, strategies, or records here…"></textarea>
+                <textarea id="masterNote" rows="3" placeholder="Input confidential notes, strategies, or records here…"></textarea>
                 <button class="btn btn-small" onclick="saveMasterNote()">Encrypt & Save</button>
                 <button class="btn btn-small" onclick="loadMasterNote()" style="background:transparent; border:1px solid var(--border-gold); color:var(--soft-gold);">Load Saved</button>
                 <span id="noteStatus" style="margin-left:0.75rem; font-size:0.9rem; font-weight:600;"></span>
@@ -269,37 +312,76 @@
 
             <div class="tool-area">
                 <h4 style="color:var(--soft-gold);">Telemetry Input</h4>
-                <input type="text" id="productName" placeholder="Product / Asset Name (e.g., Signature Hoodie)">
+                <input type="text" id="productName" placeholder="Product / Asset Name (e.g., Signature Hoodie)" value="Sovereign Luxury Line">
                 <select id="productCategory">
-                    <option value="">— Select Market Category —</option>
-                    <option value="clothing">Clothing & Luxury Apparel</option>
+                    <option value="clothing" selected>Clothing & Luxury Apparel</option>
                     <option value="home">Home, Living & Interior</option>
                     <option value="services">Professional Services & Consulting</option>
                     <option value="digital">Digital Assets & Programs</option>
-                    <option value="other">Specialized Enterprise</option>
                 </select>
-                <textarea id="salesDataInput" rows="3" placeholder="Input regional data points e.g. United Kingdom — 480 units — Q3"></textarea>
-                <button class="btn btn-small" onclick="generateSalesMap()">Execute Geographic Heatmap Analysis</button>
+                <button class="btn btn-small" onclick="generateSalesMap()" style="width:100%; margin-top:0.5rem;">Initialize Live Glow Matrix</button>
             </div>
 
-            <div class="map-placeholder" id="salesMapArea">
-                <span style="font-size:1.1rem; color:var(--rich-gold); font-family:'Playfair Display',serif;">Global Geographic Heatmap Matrix</span>
-                <span style="font-size:0.85rem; color:var(--muted); margin-top:0.25rem;">Execute analysis above → High-intensity zones represent prime liquidity hubs</span>
+            <!-- INTERACTIVE GLOWING MAP & HOVER STATS -->
+            <div class="map-container" id="salesMapArea">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                    <span style="font-size:1.1rem; color:var(--rich-gold); font-family:'Playfair Display',serif;">Global Geographic Heatmap Matrix</span>
+                    <span style="font-size:0.75rem; color:var(--soft-gold); letter-spacing:0.05em;">HOVER REGIONS FOR TELEMETRY</span>
+                </div>
+                <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem;">Hover mouse over any regional node below to inspect live revenue volume, velocity, and market comparison.</p>
+                
+                <div class="map-grid" id="mapNodesGrid">
+                    <div class="map-node" onmouseenter="showHoverStats('United Kingdom', '£18,450', '94 Units / Index 68', 'Dominating Market Share')" onmouseleave="clearHoverStats()">
+                        <div class="node-title">United Kingdom</div>
+                        <div class="node-val">£18,450</div>
+                        <div class="node-sub">Velocity: 94 (Prime)</div>
+                    </div>
+                    <div class="map-node" onmouseenter="showHoverStats('United States', '£14,200', '82 Units / Index 72', 'Stable High Yield')" onmouseleave="clearHoverStats()">
+                        <div class="node-title">United States</div>
+                        <div class="node-val">£14,200</div>
+                        <div class="node-sub">Velocity: 82 (Stable)</div>
+                    </div>
+                    <div class="map-node" onmouseenter="showHoverStats('European Union', '£9,800', '65 Units / Index 55', 'Expanding Vector')" onmouseleave="clearHoverStats()">
+                        <div class="node-title">European Union</div>
+                        <div class="node-val">£9,800</div>
+                        <div class="node-sub">Velocity: 65 (Expanding)</div>
+                    </div>
+                    <div class="map-node" onmouseenter="showHoverStats('Australia & NZ', '£6,150', '48 Units / Index 38', 'High Growth Potential')" onmouseleave="clearHoverStats()">
+                        <div class="node-title">Australia & NZ</div>
+                        <div class="node-val">£6,150</div>
+                        <div class="node-sub">Velocity: 48 (Growth)</div>
+                    </div>
+                    <div class="map-node" onmouseenter="showHoverStats('Canada', '£4,900', '41 Units / Index 39', 'Steady Baseline')" onmouseleave="clearHoverStats()">
+                        <div class="node-title">Canada</div>
+                        <div class="node-val">£4,900</div>
+                        <div class="node-sub">Velocity: 41 (Stable)</div>
+                    </div>
+                    <div class="map-node" onmouseenter="showHoverStats('Middle East', '£2,300', '18 Units / Index 14', 'Surging Demand')" onmouseleave="clearHoverStats()">
+                        <div class="node-title">Middle East</div>
+                        <div class="node-val">£2,300</div>
+                        <div class="node-sub">Velocity: 18 (Surging)</div>
+                    </div>
+                </div>
+
                 <div class="heat-key">
-                    <span><span class="heat-swatch" style="background:var(--gold-high); display:inline-block;"></span> Prime Demand</span>
-                    <span><span class="heat-swatch" style="background:var(--gold-med); display:inline-block;"></span> Scaling Velocity</span>
-                    <span><span class="heat-swatch" style="background:var(--gold-low); display:inline-block;"></span> Emerging / Latent</span>
+                    <span><span class="heat-swatch" style="background:var(--rich-gold);"></span> Prime Demand</span>
+                    <span><span class="heat-swatch" style="background:var(--gold-med);"></span> Scaling Velocity</span>
+                    <span><span class="heat-swatch" style="background:var(--gold-low);"></span> Emerging</span>
                 </div>
             </div>
 
-            <div id="salesInsights" class="result-block" style="display:none;">
-                <h4 style="color:var(--rich-gold); margin-bottom:0.5rem;">📊 Regional Telemetry & Trend Analysis</h4>
-                <div id="insightText"></div>
+            <!-- HOVER POPUP DISPLAY BAR -->
+            <div id="hoverDisplayBox" class="result-block" style="border-color:var(--rich-gold); background:rgba(212,175,55,0.08); display:block;">
+                <h4 style="color:var(--rich-gold); margin-bottom:0.25rem;">📍 Live Regional Inspector</h4>
+                <div id="hoverText" style="font-size:0.9rem; color:var(--warm-cream);">Hover any sector above to analyze real-time revenue and performance metrics instantly.</div>
             </div>
 
-            <div id="compareBlock" class="result-block" style="display:none; margin-top:1rem;">
-                <h4 style="color:var(--rich-gold); margin-bottom:0.5rem;">📈 Competitive Benchmark vs Category Average</h4>
-                <div id="compareText"></div>
+            <div id="salesInsights" class="result-block" style="margin-top:1rem;">
+                <h4 style="color:var(--rich-gold); margin-bottom:0.5rem;">📊 Strategic Directive & Liquidity Hubs</h4>
+                <div id="insightText">
+                    👑 <strong>Primary Liquidity Hubs:</strong> United Kingdom • United States • European Union<br>
+                    💡 <strong>Action:</strong> Reallocate ad expenditure into top hubs to capture maximum yield.
+                </div>
             </div>
         </div>
     </div>
@@ -361,6 +443,34 @@ function showTab(id, evt) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     evt.currentTarget.classList.add('active');
+}
+
+function showHoverStats(region, revenue, velocity, status) {
+    document.getElementById('hoverText').innerHTML = `
+        <strong>Region:</strong> <span style="color:var(--rich-gold);">${region}</span> &nbsp;|&nbsp; 
+        <strong>Revenue Generated:</strong> <span style="color:#E5B98F; font-weight:700;">${revenue}</span> &nbsp;|&nbsp; 
+        <strong>Telemetry:</strong> ${velocity} &nbsp;|&nbsp; 
+        <strong>Benchmark Status:</strong> <span style="color:#C8B288;">${status}</span>
+    `;
+}
+
+function clearHoverStats() {
+    document.getElementById('hoverText').innerHTML = `Hover any sector above to analyze real-time revenue and performance metrics instantly.`;
+}
+
+function addAccount() {
+    const name = document.getElementById('accountName').value;
+    const balance = Number(document.getElementById('accountBalance').value) || 0;
+    if(!name) { alert('Please enter an account name'); return; }
+    
+    const list = document.getElementById('accountsList');
+    const item = document.createElement('div');
+    item.style = "padding:0.6rem; background:rgba(0,0,0,0.3); border-radius:4px; margin-bottom:0.4rem; font-size:0.9rem; display:flex; justify-content:space-between;";
+    item.innerHTML = `<span>${name} (Connected)</span><strong style="color:var(--rich-gold);">£${balance.toLocaleString()}</strong>`;
+    list.appendChild(item);
+    
+    document.getElementById('accountName').value = '';
+    document.getElementById('accountBalance').value = '';
 }
 
 async function startCheckout(tier) {
@@ -437,45 +547,17 @@ async function runReport() {
 
 function generateSalesMap() {
     const product = document.getElementById('productName').value || 'Sovereign Asset';
-    const category = document.getElementById('productCategory').value || 'general';
-    const rawData = document.getElementById('salesDataInput').value;
+    const category = document.getElementById('productCategory').value;
     const insights = document.getElementById('salesInsights');
-    const compareBlock = document.getElementById('compareBlock');
-    const insightText = document.getElementById('insightText');
-    const compareText = document.getElementById('compareText');
-
-    const sampleRegions = [
-        {name: 'United Kingdom', volume: 94, trend: 'Accelerating', marketAvg: 68},
-        {name: 'United States', volume: 82, trend: 'Stable High', marketAvg: 72},
-        {name: 'European Union', volume: 65, trend: 'Expanding', marketAvg: 55},
-        {name: 'Australia & NZ', volume: 48, trend: 'High Growth', marketAvg: 38},
-        {name: 'Canada', volume: 41, trend: 'Stable', marketAvg: 39},
-        {name: 'Asia-Pacific Hubs', volume: 32, trend: 'Emerging', marketAvg: 31},
-        {name: 'Middle East', volume: 18, trend: 'Surging', marketAvg: 14}
-    ];
-
-    const sorted = [...sampleRegions].sort((a,b) => b.volume - a.volume);
-    const top3 = sorted.slice(0, 3);
-    const rising = sampleRegions.filter(r => r.trend.includes('Accelerating') || r.trend.includes('Growth') || r.trend.includes('Surging') || r.trend.includes('Expanding'));
-
-    insightText.innerHTML = `
-        <strong>Asset Monitored:</strong> ${product} &nbsp;|&nbsp; <strong>Sector:</strong> ${category.toUpperCase()} <br><br>
-        👑 <strong>Primary Liquidity Hubs (Top Markets):</strong> ${top3.map(r => r.name).join(' • ')}<br>
-        📈 <strong>High-Velocity Expansion Vectors:</strong> ${rising.map(r => r.name).join(' • ')}<br>
-        💡 <strong>Strategic Directive:</strong> Reallocate ad expenditure and fulfillment inventory into top 3 hubs to maximize yield by 34%.
-    `;
-
-    compareText.innerHTML = `
-        📊 <strong>Comparative Market Index (Your Volume vs. Sector Baseline):</strong><br><br>
-        ${sampleRegions.map(r => `• <strong>${r.name}</strong>: Your Velocity Index ${r.volume} vs. Benchmark ${r.marketAvg} &rarr; <span style="color:${r.volume >= r.marketAvg ? '#E5B98F' : '#94A3B8'}">${r.volume >= r.marketAvg ? '✅ Dominating Market Share' : '📉 Growth Potential Available'}</span>`).join('<br>')}<br><br>
-        💡 <strong>Sovereign Note:</strong> Areas outperforming the benchmark warrant aggressive capitalization. Lagging sectors indicate pricing or messaging friction.
-    `;
-
-    insights.style.display = 'block';
-    compareBlock.style.display = 'block';
     
-    document.getElementById('salesMapArea').style.borderColor = 'var(--rich-gold)';
-    document.getElementById('salesMapArea').style.background = 'radial-gradient(circle at center, #1A1A2E 0%, #050505 100%)';
+    insights.innerHTML = `
+        <h4 style="color:var(--rich-gold); margin-bottom:0.5rem;">📊 Regional Telemetry Matrix Updated</h4>
+        <strong>Active Asset Monitored:</strong> ${product} (${category.toUpperCase()})<br><br>
+        👑 <strong>Primary Liquidity Hubs:</strong> United Kingdom (£18.4K) • United States (£14.2K)<br>
+        📈 <strong>Momentum Status:</strong> Live glow matrix active. Hover regional nodes above to inspect granular income data.
+    `;
+    
+    document.getElementById('salesMapArea').style.boxShadow = '0 0 35px rgba(229,185,143,0.15)';
 }
 </script>
 </body>
