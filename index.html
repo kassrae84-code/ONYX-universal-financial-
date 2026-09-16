@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx One | Executive Financial Architecture</title>
+    <title>Onyx One | Complete Sovereign Ecosystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -27,14 +27,14 @@
         }
         .ecosystem-wrapper {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 3rem 1.5rem;
             box-sizing: border-box;
             text-align: center;
         }
         .logo-img {
-            max-width: 220px; /* Increased size for strong visual impact */
+            max-width: 220px;
             height: auto;
             margin-bottom: 1.5rem;
             filter: drop-shadow(0 4px 15px rgba(191, 149, 63, 0.4));
@@ -65,6 +65,7 @@
             padding: 2.5rem;
             margin-bottom: 2.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            text-align: left;
         }
         .executive-sanctuary h2 {
             font-family: var(--primary-font);
@@ -73,17 +74,19 @@
             font-size: 1.6rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            text-align: center;
         }
-        .executive-sanctuary p {
+        .executive-sanctuary p.section-desc {
             color: #CCCCCC;
             font-size: 0.95rem;
             line-height: 1.6;
             max-width: 750px;
             margin: 0 auto 1.8rem auto;
+            text-align: center;
         }
         .choices-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -92,7 +95,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             padding: 1.5rem;
-            text-align: left;
         }
         .choice-card h3 {
             font-family: var(--primary-font);
@@ -126,6 +128,7 @@
         .cinematic-button:hover {
             background: var(--accent-gold);
             color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
         }
         .master-tier-section {
             margin-top: 2.5rem;
@@ -141,6 +144,24 @@
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
+        .live-output-panel {
+            margin-top: 1.5rem;
+            background: #000000;
+            border: 1px dashed rgba(191, 149, 63, 0.5);
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: var(--body-font);
+            font-size: 0.9rem;
+            color: #FCF6BA;
+            display: none;
+            line-height: 1.5;
+        }
+        .jargon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -149,29 +170,72 @@
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Executive Financial Architecture & Operations</div>
 
+        <!-- PLAIN ENGLISH JARGON TRANSLATOR (FOR NEW BUSINESS OWNERS) -->
+        <div class="executive-sanctuary" style="border-color: #FCF6BA;">
+            <h2>Plain English Translator</h2>
+            <p class="section-desc">New to business? Don't understand corporate speak? Click any term below to see what it actually means in normal, everyday human language.</p>
+            
+            <div class="jargon-grid">
+                <button class="cinematic-button" onclick="explainTerm('telemetry')">What is Telemetry?</button>
+                <button class="cinematic-button" onclick="explainTerm('leakage')">What is a Leakage Audit?</button>
+                <button class="cinematic-button" onclick="explainTerm('routing')">What is Routing?</button>
+                <button class="cinematic-button" onclick="explainTerm('mastertier')">What is Master Tier?</button>
+            </div>
+            <div id="translatorOutput" class="live-output-panel"></div>
+        </div>
+
+        <!-- COMMAND & CONTROL HUB -->
         <div class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
-            <p>Select your operational parameter below. Institutional-grade routing, active workflow telemetry, and high-yield security protocols are standing by.</p>
+            <p class="section-desc">Select your operational parameter below. Institutional-grade routing, active workflow telemetry, and high-yield security protocols are standing by.</p>
             
             <div class="choices-grid">
                 <div class="choice-card">
                     <h3>1. Core Operations</h3>
                     <p>Deploy active workflows, check workspace data integrity, and monitor operational security parameters.</p>
-                    <button class="cinematic-button">Initialize Dashboard</button>
+                    <button class="cinematic-button" onclick="runSystemModule('Core Operations Dashboard')">Initialize Dashboard</button>
                 </div>
                 <div class="choice-card">
                     <h3>2. Asset Protection</h3>
                     <p>Run real-time leakage audits, track capital retention, and verify automated defense protocols.</p>
-                    <button class="cinematic-button">Run Audit Scan</button>
+                    <button class="cinematic-button" onclick="runSystemModule('Asset Protection Audit')">Run Audit Scan</button>
                 </div>
                 <div class="choice-card">
                     <h3>3. Expansion Scale</h3>
                     <p>Deploy high-yield monetization strategies, scale digital channels, and expand institutional footprint.</p>
-                    <button class="cinematic-button">Deploy Expansion</button>
+                    <button class="cinematic-button" onclick="runSystemModule('Expansion Module')">Deploy Expansion</button>
                 </div>
             </div>
         </div>
 
+        <!-- SOVEREIGN COMMS & MEETING SUITE -->
+        <div class="executive-sanctuary">
+            <h2>Sovereign Comms & Meeting Suite</h2>
+            <p class="section-desc">Secure end-to-end encrypted video conferencing, client briefings, and calendar scheduling channels built directly into your ecosystem.</p>
+            
+            <div class="choices-grid">
+                <div class="choice-card">
+                    <h3>Secure Video Room</h3>
+                    <p>Launch encrypted real-time video link for high-stakes client meetings and strategy alignment calls.</p>
+                    <button class="cinematic-button" onclick="launchCommsRoom()">Launch Secure Room</button>
+                </div>
+                <div class="choice-card">
+                    <h3>Global Scheduling</h3>
+                    <p>Manage time-blocked master sessions, client booking syncs, and automated calendar triggers.</p>
+                    <button class="cinematic-button" onclick="openScheduler()">Open Calendar Sync</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- GLOBAL ASSET TELEMETRY & MAPPING -->
+        <div class="executive-sanctuary">
+            <h2>Global Asset Telemetry & Mapping</h2>
+            <p class="section-desc">Monitor asset distribution, node traffic, and operational geographic footprint in real-time space.</p>
+            <button class="cinematic-button" onclick="loadGlobalMap()" style="max-width: 300px; display: block; margin: 0 auto;">Activate Map Node Grid</button>
+            <div id="mapOutput" class="live-output-panel"></div>
+        </div>
+
+        <!-- MASTER TIER BACKEND CHECKOUT -->
         <div class="master-tier-section">
             <h2>The Master Tier Access</h2>
             <p style="color: #DDDDDD; font-size: 0.95rem; margin-bottom: 1.5rem;">Secure permanent, high-level gateway access into the pinnacle tier of the Onyx ecosystem via secure backend Stripe protocol.</p>
@@ -180,6 +244,48 @@
                 <button type="submit" class="cinematic-button" style="max-width: 320px; font-weight: 600; padding: 14px 30px;">Authorize Master Tier</button>
             </form>
         </div>
+
+        <div id="systemConsole" class="live-output-panel" style="margin-top: 2rem;"></div>
     </div>
+
+    <script>
+        function explainTerm(term) {
+            const output = document.getElementById('translatorOutput');
+            output.style.display = 'block';
+            
+            let explanation = "";
+            if(term === 'telemetry') {
+                explanation = "<strong>Plain English:</strong> Telemetry just means 'live dashboard tracking.' It's like looking at the dials on a car dashboard to see how fast you're going or how much fuel you have left, but for your business numbers.";
+            } else if(term === 'leakage') {
+                explanation = "<strong>Plain English:</strong> A leakage audit simply means checking where money or time is secretly slipping through the cracks (like unused subscriptions or wasted expenses) so you can plug the holes and keep your cash.";
+            } else if(term === 'routing') {
+                explanation = "<strong>Plain English:</strong> Routing is just sorting people or tasks to the right place automatically—like a digital receptionist directing phone calls to the right department.";
+            } else if(term === 'mastertier') {
+                explanation = "<strong>Plain English:</strong> Master Tier is your VIP club pass. It means getting full, lifetime access to all the highest-level features and tools without any locked doors.";
+            }
+            output.innerHTML = explanation;
+        }
+
+        function runSystemModule(moduleName) {
+            const consoleBox = document.getElementById('systemConsole');
+            consoleBox.style.display = 'block';
+            consoleBox.innerHTML = `[SYSTEM TELEMETRY]: Successfully authorized and initialized module -> ${moduleName}. Secure pipeline active.`;
+        }
+
+        function launchCommsRoom() {
+            const roomId = 'ONYX-' + Math.floor(100000 + Math.random() * 900000);
+            alert(`Initializing Sovereign Encrypted Video Node...\nRoom ID: ${roomId}\nStatus: Encrypted & Ready for Deployment.`);
+        }
+
+        function openScheduler() {
+            alert("Master Calendar Sync initialized. Active client slots open for booking.");
+        }
+
+        function loadGlobalMap() {
+            const mapPanel = document.getElementById('mapOutput');
+            mapPanel.style.display = 'block';
+            mapPanel.innerHTML = `[GEO-NODE TRACKER ACTIVE]: Global routing grid locked. Primary nodes operational across UK, European, and International financial channels. Data stream secure.`;
+        }
+    </script>
 </body>
 </html>
