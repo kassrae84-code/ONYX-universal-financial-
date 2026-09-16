@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Onyx One | Executive Financial Architecture</title>
-    <!-- High-End Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,7 +14,6 @@
             --card-bg: rgba(255, 255, 255, 0.02);
             --border-gold: rgba(191, 149, 63, 0.4);
         }
-
         body {
             margin: 0;
             padding: 0;
@@ -26,9 +24,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
         }
-
         .ecosystem-wrapper {
             width: 100%;
             max-width: 1100px;
@@ -37,16 +33,12 @@
             box-sizing: border-box;
             text-align: center;
         }
-
-        /* Logo Styling */
         .logo-img {
-            max-width: 140px;
+            max-width: 220px; /* Increased size for strong visual impact */
             height: auto;
             margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 12px rgba(191, 149, 63, 0.35));
+            filter: drop-shadow(0 4px 15px rgba(191, 149, 63, 0.4));
         }
-
-        /* Posh Title */
         .brand-title {
             font-family: var(--primary-font);
             background: var(--accent-gold);
@@ -57,7 +49,6 @@
             font-size: 2.8rem;
             margin: 0 0 0.5rem 0;
         }
-
         .brand-subtitle {
             font-weight: 300;
             letter-spacing: 6px;
@@ -66,19 +57,15 @@
             font-size: 0.85rem;
             margin-bottom: 2.5rem;
         }
-
-        /* Executive Command Header (Replacing the soft welcome) */
         .executive-sanctuary {
             background: var(--card-bg);
             border: 1px solid var(--border-gold);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-radius: 8px;
             padding: 2.5rem;
             margin-bottom: 2.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
-
         .executive-sanctuary h2 {
             font-family: var(--primary-font);
             color: #FCF6BA;
@@ -87,7 +74,6 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
-
         .executive-sanctuary p {
             color: #CCCCCC;
             font-size: 0.95rem;
@@ -95,49 +81,32 @@
             max-width: 750px;
             margin: 0 auto 1.8rem auto;
         }
-
-        /* Choice Grid */
         .choices-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
-
         .choice-card {
             background: rgba(255, 255, 255, 0.015);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             padding: 1.5rem;
-            transition: all 0.3s ease;
             text-align: left;
         }
-
-        .choice-card:hover {
-            border-color: rgba(191, 149, 63, 0.8);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(191, 149, 63, 0.15);
-        }
-
         .choice-card h3 {
             font-family: var(--primary-font);
             color: #FFFFFF;
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 1px;
         }
-
         .choice-card p {
             font-size: 0.85rem;
             color: #AAAAAA;
             margin-bottom: 1.2rem;
         }
-
-        /* Cinematic Immersive Buttons */
         .cinematic-button {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(191, 149, 63, 0.6);
             color: #FFFFFF;
             padding: 12px 24px;
@@ -146,24 +115,18 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.4s ease;
             border-radius: 4px;
             text-decoration: none;
             display: inline-block;
             width: 100%;
             box-sizing: border-box;
             text-align: center;
+            transition: all 0.4s ease;
         }
-
         .cinematic-button:hover {
             background: var(--accent-gold);
             color: var(--bg-dark);
-            box-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
-            border-color: #FFFFFF;
-            font-weight: 600;
         }
-
-        /* Master Tier Special Section */
         .master-tier-section {
             margin-top: 2.5rem;
             background: linear-gradient(135deg, rgba(191, 149, 63, 0.12), rgba(10, 10, 10, 0.95));
@@ -172,56 +135,43 @@
             padding: 2.5rem;
             text-align: center;
         }
-
         .master-tier-section h2 {
             font-family: var(--primary-font);
             color: #FCF6BA;
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
-
     <div class="ecosystem-wrapper">
-        <!-- Logo File (Now directly in the root directory) -->
         <img src="logo.png" alt="Onyx One Logo" class="logo-img">
-        
-        <!-- Posh Brand Heading -->
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Executive Financial Architecture & Operations</div>
 
-        <!-- Executive Command Header (Professional, authoritative framing) -->
         <div class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
             <p>Select your operational parameter below. Institutional-grade routing, active workflow telemetry, and high-yield security protocols are standing by.</p>
             
             <div class="choices-grid">
-                <!-- Path Option 1 -->
                 <div class="choice-card">
                     <h3>1. Core Operations</h3>
                     <p>Deploy active workflows, check workspace data integrity, and monitor operational security parameters.</p>
-                    <button class="cinematic-button" onclick="executeSystem('Operations Dashboard')">Initialize Dashboard</button>
+                    <button class="cinematic-button">Initialize Dashboard</button>
                 </div>
-
-                <!-- Path Option 2 -->
                 <div class="choice-card">
                     <h3>2. Asset Protection</h3>
                     <p>Run real-time leakage audits, track capital retention, and verify automated defense protocols.</p>
-                    <button class="cinematic-button" onclick="executeSystem('Protection Audit')">Run Audit Scan</button>
+                    <button class="cinematic-button">Run Audit Scan</button>
                 </div>
-
-                <!-- Path Option 3 -->
                 <div class="choice-card">
                     <h3>3. Expansion Scale</h3>
                     <p>Deploy high-yield monetization strategies, scale digital channels, and expand institutional footprint.</p>
-                    <button class="cinematic-button" onclick="executeSystem('Expansion Module')">Deploy Expansion</button>
+                    <button class="cinematic-button">Deploy Expansion</button>
                 </div>
             </div>
         </div>
 
-        <!-- Master Tier Backend Checkout Hub -->
         <div class="master-tier-section">
             <h2>The Master Tier Access</h2>
             <p style="color: #DDDDDD; font-size: 0.95rem; margin-bottom: 1.5rem;">Secure permanent, high-level gateway access into the pinnacle tier of the Onyx ecosystem via secure backend Stripe protocol.</p>
@@ -231,12 +181,5 @@
             </form>
         </div>
     </div>
-
-    <script>
-        function executeSystem(moduleName) {
-            console.log("Executing module: " + moduleName);
-            alert("Authorizing and launching " + moduleName + "...");
-        }
-    </script>
 </body>
 </html>
