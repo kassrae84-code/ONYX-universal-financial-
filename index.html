@@ -15,6 +15,9 @@
             --card-bg: rgba(255, 255, 255, 0.02);
             --border-gold: rgba(191, 149, 63, 0.4);
         }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -26,6 +29,43 @@
             align-items: center;
             min-height: 100vh;
         }
+        /* STICKY QUICK-NAVIGATION TABS AT THE TOP */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(191, 149, 63, 0.3);
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .nav-tab-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(191, 149, 63, 0.4);
+            color: #CCCCCC;
+            padding: 8px 14px;
+            font-family: var(--body-font);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-tab-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            border-color: #FCF6BA;
+            box-shadow: 0 0 15px rgba(191, 149, 63, 0.5);
+            font-weight: 600;
+        }
+
         .ecosystem-wrapper {
             width: 100%;
             max-width: 1100px;
@@ -188,7 +228,7 @@
             border-color: #FCF6BA;
             background: rgba(191, 149, 63, 0.05);
         }
-        /* POPUP MODAL STYLING (FANCY & IMMERSIVE) */
+        /* POPUP MODAL STYLING */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -294,8 +334,21 @@
     </style>
 </head>
 <body>
+
+    <!-- STICKY QUICK NAVIGATION TABS -->
+    <nav class="sticky-nav">
+        <a href="#heroSection" class="nav-tab-btn">Home</a>
+        <a href="#hubSection" class="nav-tab-btn">Command Hub</a>
+        <a href="#vaultSection" class="nav-tab-btn">Profession Vault</a>
+        <a href="#wealthSection" class="nav-tab-btn">Net Worth & Crypto</a>
+        <a href="#accessibilitySection" class="nav-tab-btn">Accessibility & Sign</a>
+        <a href="#mapSection" class="nav-tab-btn">Sales Map</a>
+        <a href="#pricingSection" class="nav-tab-btn">Tiers & Checkout</a>
+    </nav>
+
     <div class="ecosystem-wrapper">
         <!-- 1. CINEMATIC HERO & LOGO -->
+        <div id="heroSection"></div>
         <img src="logo.png" alt="Onyx One Logo" class="logo-img">
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Sovereign Financial Architecture & Operations</div>
@@ -309,7 +362,7 @@
         </div>
 
         <!-- 3. COMMAND & CONTROL HUB -->
-        <div class="executive-sanctuary">
+        <div id="hubSection" class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
             <p class="section-desc">Manage core operations, security audits, and client syncs. Unsure of corporate terms? Use the translator tab below.</p>
             
@@ -354,7 +407,7 @@
         </div>
 
         <!-- 4. TAILORED PROFESSION VAULT -->
-        <div class="executive-sanctuary">
+        <div id="vaultSection" class="executive-sanctuary">
             <h2>Tailored Profession Vault & Evidence Reporting</h2>
             <p class="section-desc">Instantly customize your workspace to your exact trade (e.g., Asbestos Surveyor, Photographer, Contractor). Upload site photos or survey evidence and auto-generate certified professional reports.</p>
             
@@ -377,7 +430,7 @@
         </div>
 
         <!-- 5. NET WORTH, MULTI-CURRENCY & CRYPTO ASSET HUB -->
-        <div class="executive-sanctuary">
+        <div id="wealthSection" class="executive-sanctuary">
             <h2>Sovereign Net Worth & Crypto Asset Hub</h2>
             <p class="section-desc">Total financial visibility in one place. Consolidate your fiat revenue, bank reserves, and crypto wallet holdings with AI-driven saving and spending optimisation tips.</p>
             
@@ -406,8 +459,8 @@
             </div>
         </div>
 
-        <!-- 6. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE (FANCY POPUPS WITH SIGN & MULTILINGUAL) -->
-        <div class="executive-sanctuary">
+        <!-- 6. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE -->
+        <div id="accessibilitySection" class="executive-sanctuary">
             <h2>Sovereign Accessibility & Global Comms Suite</h2>
             <p class="section-desc">Inclusive AI-powered tools designed to break down language barriers, support deaf communication via sign translation, and record smart meeting memos automatically. 100% Free for all members.</p>
             
@@ -430,7 +483,7 @@
         </div>
 
         <!-- 7. INTERACTIVE GLOWING SALES & GEO-TELEMETRY MAP -->
-        <div class="executive-sanctuary">
+        <div id="mapSection" class="executive-sanctuary">
             <h2>Global Sales & Node Telemetry Map</h2>
             <p class="section-desc">Hover over international nodes below to inspect live regional sales hot-spots, revenue tracking, market trends, and automated pull-out triggers.</p>
             
@@ -472,7 +525,7 @@
         </div>
 
         <!-- 9. MONETIZATION TIERS -->
-        <div class="executive-sanctuary" style="border-color: #BF953F;">
+        <div id="pricingSection" class="executive-sanctuary" style="border-color: #BF953F;">
             <h2>Ecosystem Access Tiers & Deployment</h2>
             <p class="section-desc">Secure your institutional tier via verified Stripe checkout. Direct purchase required for sovereign platform authorization.</p>
             
