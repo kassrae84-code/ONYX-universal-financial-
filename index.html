@@ -12,6 +12,7 @@
             --obsidian: #020408;
             --midnight: #050714;
             --champagne: #C8A951;
+            --champagne-soft: #E4D4A8;
             --champagne-bright: #F2E8C8;
             --text: #D0D0D8;
             --muted: #888890;
@@ -35,43 +36,42 @@
             padding: 40px 20px;
             background: linear-gradient(180deg, #020408 0%, #050714 100%);
         }
-        /* YOUR LOGO ABOVE EVERYTHING */
-        .your-logo {
-            max-width: 280px;
-            width: 70%;
+        /* YOUR LOGO — EXACTLY WHERE IT BELONGS */
+        .main-logo {
+            max-width: 320px;
+            width: 80%;
             height: auto;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: block;
         }
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 64px;
+            font-size: 72px;
             font-weight: 700;
             color: var(--champagne-bright);
             letter-spacing: 6px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         h1 span { font-size: 20px; vertical-align: top; opacity: 0.7; }
-        .sub-brand {
+        .subheading {
             font-family: 'Playfair Display', serif;
             font-size: 22px;
             color: var(--champagne);
             letter-spacing: 2px;
-            margin-bottom: 32px;
+            margin-bottom: 30px;
         }
         .tagline {
             font-size: 18px;
             color: var(--muted);
-            max-width: 680px;
+            max-width: 650px;
             margin-bottom: 16px;
             line-height: 1.7;
         }
-        .privacy-note {
+        .privacy-line {
             font-size: 14px;
             color: var(--champagne);
-            opacity: 0.8;
+            opacity: 0.85;
             margin-bottom: 48px;
-            font-style: italic;
         }
         .btn {
             display: inline-block;
@@ -173,7 +173,7 @@
             display: none;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            color: #E4D4A8;
+            color: var(--champagne-soft);
         }
 
         .tiers {
@@ -216,7 +216,7 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 25px;
-            color: #E4D4A8;
+            color: var(--champagne-soft);
         }
         .price small {
             font-size: 14px;
@@ -252,15 +252,15 @@
 <body>
 
     <section class="hero" id="top">
-        <!-- YOUR LOGO — PUT logo.png IN SAME FOLDER AS index.html -->
-        <img src="logo.png" alt="ONYX ONE" class="your-logo">
+        <!-- YOUR LOGO — KEEP YOUR FILE NAMED logo.png IN SAME FOLDER -->
+        <img src="logo.png" alt="ONYX ONE" class="main-logo">
         
         <h1>ONYX ONE<span>™</span></h1>
-        <p class="sub-brand">Universal Financial Solutions</p>
+        <p class="subheading">Universal Financial Solutions</p>
         
         <p class="tagline">Your Anti‑Chaos Business Sanctuary™ — Everything you need to track, manage, invoice, and grow — all in one place. No more scattered tools, lost money, or wasted hours. Just clarity, control, and calm.</p>
         
-        <p class="privacy-note">✦ We NEVER sell, rent or share your data. Ever. ✦</p>
+        <p class="privacy-line">✦ We NEVER sell, rent or share your data. Ever. Everything remains yours and yours alone. ✦</p>
         
         <div>
             <a href="#pricing" class="btn">See Plans & Start Today</a>
@@ -303,7 +303,7 @@
         <div class="tiers-grid">
             <div class="tier-card">
                 <h3>FOUNDER</h3>
-                <p class="price">£19.99<small>£29.99</small>/mo</p>
+                <p class="price">£19.99<small> £29.99</small>/mo</p>
                 <ul>
                     <li>✅ Financial tracking & leak detection</li>
                     <li>✅ Invoicing & estimate templates</li>
@@ -316,7 +316,7 @@
             </div>
             <div class="tier-card">
                 <h3>GROWTH</h3>
-                <p class="price">£39.99<small>£49.99</small>/mo</p>
+                <p class="price">£39.99<small> £49.99</small>/mo</p>
                 <ul>
                     <li>✅ Everything in Founder</li>
                     <li>✅ <span class="feature-gold">LIVE</span> Global Sales Heatmap</li>
@@ -329,7 +329,7 @@
             </div>
             <div class="tier-card">
                 <h3>MASTER</h3>
-                <p class="price">£79.99<small>£89.99</small>/mo</p>
+                <p class="price">£79.99<small> £89.99</small>/mo</p>
                 <ul>
                     <li>✅ Everything in Growth</li>
                     <li>✅ Full financial analytics & reports</li>
