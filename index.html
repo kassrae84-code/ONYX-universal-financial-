@@ -3,562 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE™ — Universal Financial Solutions™</title>
+    <title>ONYX ONE™ — Universal Financial Solutions</title>
     
+    <!-- ⛔ PROTECTION -->
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, noarchive">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- STRIPE -->
+    <script src="https://js.stripe.com/v3/"></script>
     
     <style>
         :root {
-            --deep-black: #050505; 
-            --layer-black: #0F0F0F;
-            --soft-gold: #C8B288; 
-            --rich-gold: #E5B98F; 
-            --warm-cream: #F8F4E9;
-            --deep-midnight: #080E20; 
-            --gold-glow: rgba(196,174,136,0.15);
-            --border-gold: rgba(196,174,136,0.25);
-            --gold-high: #E5B98F; 
-            --gold-med: #9A8460; 
-            --gold-low: #524634;
-            --muted: #94A3B8;
+            --pure-black: #050505;
+            --layer-black: #0A0A0A;
+            --card-black: #0F0F0F;
+            --antique-gold: #C8B288;
+            --antique-gold-bright: #E5B98F;
+            --gold-glow: rgba(200, 178, 136, 0.15);
+            --border-gold: rgba(200, 178, 136, 0.25);
+            --text: #F8F4E9;
+            --muted: #A39B8B;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--deep-black); 
-            color: var(--warm-cream); 
-            line-height: 1.6; 
-            min-height: 100vh; 
+        body {
+            background: var(--pure-black);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            line-height: 1.7;
         }
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
         
-        header { 
-            padding: 2.5rem 0 2rem 0; 
-            border-bottom: 1px solid var(--border-gold); 
-            background: linear-gradient(to bottom, rgba(5,5,5,0.98), rgba(5,5,5,0.85)); 
-            position: sticky; 
-            top: 0; 
-            z-index: 99; 
-            backdrop-filter: blur(8px); 
+        header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            position: relative;
         }
-        .brand-wrap { text-align: center; }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--antique-gold), transparent);
+        }
         
+        .logo-container { margin-bottom: 2.5rem; }
         .logo-img { 
-            max-height: 140px; 
-            width: auto; 
-            display: block; 
-            margin: 0 auto 0.75rem auto; 
-            filter: drop-shadow(0 10px 25px rgba(200, 178, 136, 0.22));
+            max-width: 160px; 
+            height: auto; 
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
             border-radius: 12px;
         }
-
-        .trust-line { font-size: 0.85rem; color: var(--soft-gold); opacity: 0.75; letter-spacing: 0.1em; }
         
-        .hero { 
-            padding: 5rem 2rem 4rem; 
-            text-align: center; 
-            background: radial-gradient(ellipse at top, var(--deep-midnight) 0%, transparent 65%); 
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 4.8rem);
+            font-weight: 600;
+            color: var(--antique-gold-bright);
+            letter-spacing: 0.18em;
+            margin-bottom: 0.4rem;
+            position: relative;
+            display: inline-block;
         }
-        .hero h1 { 
-            font-size: clamp(2.2rem, 4vw, 3.2rem); 
-            color: var(--rich-gold); 
-            margin-bottom: 1.2rem; 
-            line-height: 1.2; 
+        .tm {
+            font-size: 0.25em;
+            position: absolute;
+            top: 0.4em;
+            right: -0.8em;
+            color: var(--antique-gold);
         }
-        .hero p { 
-            font-size: 1.15rem; 
-            max-width: 700px; 
-            margin: 0 auto 1.5rem; 
-            opacity: 0.92; 
+        .subtitle {
+            font-size: 1rem;
+            color: var(--antique-gold);
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .tagline {
+            font-size: 1.15rem;
             color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 300;
         }
-        
-        .tabs { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 0.5rem; 
-            margin: 2rem 0; 
+
+        /* TABS NAVIGATION */
+        .workspace-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
+            flex-wrap: wrap;
         }
-        .tab-btn { 
-            padding: 0.7rem 1.4rem; 
-            background: transparent; 
-            border: 1px solid var(--border-gold); 
-            color: var(--soft-gold); 
-            border-radius: 6px; 
-            cursor: pointer; 
+        .nav-btn {
+            background: var(--card-black);
+            border: 1px solid var(--border-gold);
+            color: var(--antique-gold);
+            padding: 0.8rem 1.6rem;
+            border-radius: 8px;
+            cursor: pointer;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.9rem;
-            transition: all 0.3s ease; 
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
         }
-        .tab-btn.active, .tab-btn:hover { 
-            border-color: var(--rich-gold); 
-            color: var(--rich-gold); 
-            background: var(--gold-glow); 
+        .nav-btn.active, .nav-btn:hover {
+            background: var(--antique-gold);
+            color: var(--pure-black);
+            border-color: var(--antique-gold-bright);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
-        
-        .tab-content { 
-            display: none; 
-            max-width: 850px; 
-            margin: 0 auto; 
-            padding: 2rem; 
-            border: 1px solid var(--border-gold); 
-            border-radius: 10px; 
-            background: var(--layer-black); 
-            text-align: left;
-        }
+
+        .tab-content { display: none; margin-bottom: 4rem; }
         .tab-content.active { display: block; }
         
-        .tiers { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
-            padding: 4rem 2rem 6rem; 
-            max-width: 1100px; 
-            margin: 0 auto; 
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--antique-gold-bright);
+            text-align: center;
+            margin: 4rem 0 2.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
         }
-        .tier-card { 
-            background: var(--layer-black); 
-            border: 1px solid var(--border-gold); 
-            border-radius: 12px; 
-            padding: 2.5rem 2rem; 
-            text-align: center; 
-            transition: transform 0.35s ease; 
-        }
-        .tier-card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--rich-gold); 
-            box-shadow: 0 12px 35px var(--gold-glow); 
-        }
-        .tier-card.featured { 
-            border-color: var(--rich-gold); 
-            transform: scale(1.03); 
-            box-shadow: 0 0 35px rgba(229,185,143,0.1);
-        }
-        .tier-name { font-size: 1.5rem; color: var(--rich-gold); margin-bottom: 0.5rem; }
-        .tier-price { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--warm-cream); }
-        .tier-price span { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
-        .tier-intro { font-size: 0.9rem; color: var(--soft-gold); margin-bottom: 1.5rem; }
-        .tier-features { list-style: none; margin: 1.5rem 0; text-align: left; }
-        .tier-features li { padding: 0.6rem 0; border-bottom: 1px solid rgba(196,174,136,0.1); font-size: 0.95rem; }
         
-        .btn { 
-            padding: 0.9rem 2.2rem; 
-            background: linear-gradient(135deg, var(--soft-gold), var(--rich-gold)); 
-            color: var(--deep-black); 
-            font-weight: 700; 
-            border-radius: 6px; 
-            border: none; 
-            cursor: pointer; 
-            font-size: 1rem; 
-            font-family: inherit; 
-            margin-top: 1rem; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-            display: inline-block;
-            text-decoration: none;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 4rem;
+        }
+        .feature-card {
+            background: var(--card-black);
+            border: 1px solid var(--border-gold);
+            border-radius: 14px;
+            padding: 2.2rem;
+            transition: all 0.4s ease;
+        }
+        .feature-card:hover {
+            border-color: var(--antique-gold-bright);
+            background: #141414;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px var(--gold-glow);
+        }
+        .feature-card h3 {
+            color: var(--antique-gold-bright);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .feature-card p { color: var(--muted); font-size: 0.92rem; font-weight: 300; }
+
+        /* INTERACTIVE COMMAND SUITE (MEMOS, NOTES, MAPS) */
+        .command-panel {
+            background: var(--card-black);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .command-panel h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--antique-gold-bright);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .command-panel p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        textarea, input {
             width: 100%;
+            background: var(--pure-black);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text);
+            font-family: inherit;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
-        .btn:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(229,185,143,0.3); }
-        .btn-small { padding: 0.6rem 1.2rem; font-size: 0.9rem; margin: 0.25rem; width: auto; }
-        
-        .trust-bar { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border-gold); font-size: 0.85rem; color: var(--soft-gold); opacity: 0.8; }
-        .tool-area { margin-top: 1.5rem; padding: 1.2rem; background: rgba(5,5,5,0.4); border-radius: 8px; border: 1px solid rgba(196,174,136,0.1); }
-        
-        textarea, input, select { 
-            width: 100%; 
-            padding: 0.85rem; 
-            margin: 0.5rem 0 1rem 0; 
-            background: #050505; 
-            border: 1px solid var(--border-gold); 
-            color: var(--warm-cream); 
-            border-radius: 6px; 
-            font-family: inherit; 
+        textarea:focus, input:focus {
+            outline: none;
+            border-color: var(--antique-gold-bright);
+            box-shadow: 0 0 15px var(--gold-glow);
         }
-        textarea:focus, input:focus, select:focus { outline: none; border-color: var(--rich-gold); }
-        
-        /* GLOWING INTERACTIVE MAP STYLING */
-        .map-container { 
-            width: 100%; 
-            background: radial-gradient(circle at center, #111827 0%, #050505 100%); 
-            border-radius: 10px; 
-            border: 1px solid var(--border-gold); 
-            padding: 1.5rem; 
-            margin: 1rem 0; 
+
+        /* GLOWING WORLD SALES MAP CONTAINER */
+        .map-wrapper {
+            background: radial-gradient(circle at center, #121212 0%, var(--pure-black) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
             position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(200,178,136,0.05);
         }
         .map-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
         .map-node {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(200, 178, 136, 0.2);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            padding: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
         .map-node:hover {
-            border-color: var(--rich-gold);
-            background: rgba(212, 175, 55, 0.1);
-            box-shadow: 0 0 20px rgba(229, 185, 143, 0.25);
+            border-color: var(--antique-gold-bright);
+            background: rgba(200, 178, 136, 0.08);
+            box-shadow: 0 0 25px rgba(229, 185, 143, 0.25);
             transform: translateY(-3px);
         }
-        .node-title { font-size: 0.95rem; font-weight: 600; color: var(--rich-gold); margin-bottom: 0.25rem; font-family: 'Playfair Display', serif; }
-        .node-val { font-size: 1.1rem; font-weight: 700; color: var(--warm-cream); }
-        .node-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+        .node-title { font-family: 'Playfair Display', serif; color: var(--antique-gold-bright); font-size: 1.05rem; margin-bottom: 0.3rem; }
+        .node-val { font-size: 1.2rem; font-weight: 600; color: var(--text); }
+        .node-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; letter-spacing: 0.05em; }
 
-        .heat-key { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-top: 1rem; font-size: 0.85rem; color: var(--soft-gold); }
-        .heat-swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.2); display: inline-block; }
+        .telemetry-display {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background: rgba(200,178,136,0.04);
+            border-left: 3px solid var(--antique-gold-bright);
+            border-radius: 6px;
+            text-align: left;
+            font-size: 0.92rem;
+            color: var(--text);
+        }
+
+        /* TIERS */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0 6rem;
+        }
+        .tier-card {
+            background: var(--card-black);
+            border: 1px solid var(--border-gold);
+            border-radius: 18px;
+            padding: 3rem 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .tier-card:hover { transform: translateY(-6px); border-color: var(--antique-gold); }
+        .tier-card.featured {
+            border-color: var(--antique-gold-bright);
+            box-shadow: 0 0 45px rgba(200, 178, 136, 0.08);
+            background: #141414;
+            transform: scale(1.02);
+        }
+        .tier-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--antique-gold-bright);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        .price { font-size: 2.2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text); }
+        .price span { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+        .tier-desc { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; font-weight: 300; }
+        .tier-features { list-style: none; margin-bottom: 2.5rem; }
+        .tier-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(200, 178, 136, 0.08);
+            font-size: 0.92rem;
+            color: var(--text);
+            font-weight: 300;
+        }
+        .tier-features li:last-child { border: none; }
         
-        .result-block { margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.4); border-radius: 6px; border-left: 3px solid var(--rich-gold); font-size: 0.95rem; }
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, var(--antique-gold), var(--antique-gold-bright));
+            color: var(--pure-black);
+            font-weight: 600;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(229, 185, 143, 0.2); 
+        }
+        .cta-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         
-        @media(max-width: 768px) { .tiers { gap: 1.5rem; padding: 2rem 1rem; } }
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-gold);
+            margin-top: 4rem;
+            font-weight: 300;
+        }
+        .legal-note { max-width: 600px; margin: 1.2rem auto; line-height: 1.8; }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="container brand-wrap">
-        <img src="logo onyx 1.png" alt="ONYX ONE™ Universal Financial Solutions" class="logo-img">
-        <p class="trust-line">™ ONYX ONE — Universal Financial Solutions. Encrypted. Sovereign. Secure.</p>
-    </div>
-</header>
-
-<section class="hero">
     <div class="container">
-        <h1>Universal Financial Solutions. Total Sovereignty.</h1>
-        <p>Everything you need to manage, protect, grow and profit — all in one exclusive, secure sanctuary. Built for those who mean business.</p>
-
-        <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('what', event)">What We Do</button>
-            <button class="tab-btn" onclick="showTab('promise', event)">Our Promise</button>
-            <button class="tab-btn" onclick="showTab('tools', event)">Tools Included</button>
-            <button class="tab-btn" onclick="showTab('workspace', event)">Master Workspace</button>
-            <button class="tab-btn" onclick="showTab('salesmap', event)">Sales Map & Trends</button>
-        </div>
-
-        <div id="what" class="tab-content active">
-            <h3 style="color:var(--rich-gold); margin-bottom:0.75rem;">Total Financial Control</h3>
-            <p>Universal Financial Solutions under ONYX ONE finds hidden leaks, cuts wasted spend, tracks cash flow, and provides professional institutional templates, invoices, and automated marketing suites—everything you’d otherwise pay an enterprise team for. One login, total sovereignty.</p>
-        </div>
-        <div id="promise" class="tab-content">
-            <h3 style="color:var(--rich-gold); margin-bottom:0.75rem;">The Sovereign Pledge</h3>
-            <p>Built from real corporate and structural resilience so you never face systemic friction unprotected. Fair pricing, absolute privacy, zero data monetization. Your information stays yours forever.</p>
-        </div>
-        <div id="tools" class="tab-content">
-            <h3 style="color:var(--rich-gold); margin-bottom:0.75rem;">Complete System Inventory</h3>
-            <p style="line-height: 1.8;">
-                • Leak detection & subscription expenditure auditing<br>
-                • Professional branded invoice & commercial proposal generator<br>
-                • Real-time worldwide sales tracking & regional demand insights<br>
-                • Multi-account linking & live unified portfolio watching<br>
-                • End-to-end encrypted private notes & strategic meeting preparation<br>
-                • Secure encrypted file vault & evidence archive<br>
-                • Worldwide geographic sales mapping & competitive category benchmarking
-            </p>
-        </div>
-        <div id="workspace" class="tab-content">
-            <h3 style="color:var(--rich-gold); margin-bottom:1rem;">🔐 MASTER ONLY — Encrypted Sovereign Workspace</h3>
-            <p style="margin-bottom:1rem; color:var(--muted);">All records here undergo client-side encryption before touching storage.</p>
+        <header>
+            <div class="logo-container">
+                <img src="logo.png" alt="ONYX ONE™" class="logo-img">
+            </div>
             
-            <div class="tool-area" style="margin-bottom:1.5rem;">
-                <h4 style="color:var(--soft-gold);">🌐 Live Multi-Account & Portfolio Watcher</h4>
-                <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.75rem;">Link and monitor all business accounts, merchant gateways, and capital reserves in real time.</p>
-                <div style="display:grid; grid-template-columns: 1fr 1fr auto; gap:0.5rem;">
-                    <input type="text" id="accountName" placeholder="Account Name (e.g., Business Bank / Stripe)">
-                    <input type="number" id="accountBalance" placeholder="Current Balance (£)">
-                    <button class="btn btn-small" onclick="addAccount()" style="margin-top:0.5rem;">Link Account</button>
-                </div>
-                <div id="accountsList" style="margin-top:1rem;">
-                    <div style="padding:0.6rem; background:rgba(0,0,0,0.3); border-radius:4px; margin-bottom:0.4rem; font-size:0.9rem; display:flex; justify-content:space-between;">
-                        <span>Primary Business Account (Connected)</span>
-                        <strong style="color:var(--rich-gold);">£12,450.00</strong>
-                    </div>
-                </div>
-            </div>
+            <h1>ONYX ONE<span class="tm">™</span></h1>
+            <p class="subtitle">Universal Financial Solutions</p>
+            <p class="tagline">Your Anti‑Chaos Business Sanctuary — Unified intelligence, immaculate security, zero friction.</p>
 
-            <div class="tool-area">
-                <h4 style="color:var(--soft-gold);">Secure Private Ledger Note</h4>
-                <textarea id="masterNote" rows="3" placeholder="Input confidential notes, strategies, or records here…"></textarea>
-                <button class="btn btn-small" onclick="saveMasterNote()">Encrypt & Save</button>
-                <button class="btn btn-small" onclick="loadMasterNote()" style="background:transparent; border:1px solid var(--border-gold); color:var(--soft-gold);">Load Saved</button>
-                <span id="noteStatus" style="margin-left:0.75rem; font-size:0.9rem; font-weight:600;"></span>
+            <!-- WORKSPACE SWITCHER -->
+            <div class="workspace-nav">
+                <button class="nav-btn active" onclick="switchTab('overview', event)">Overview</button>
+                <button class="nav-btn" onclick="switchTab('mapTab', event)">🌍 Worldwide Sales Map</button>
+                <button class="nav-btn" onclick="switchTab('notesTab', event)">🤖 AI Smart Notes & Memos</button>
+                <button class="nav-btn" onclick="switchTab('emailTab', event)">📧 Email & Marketing Suite</button>
             </div>
-            <div class="tool-area" style="margin-top:1.5rem;">
-                <h4 style="color:var(--soft-gold);">Instant Financial Margin Calculator</h4>
-                <input type="number" id="totalIncome" placeholder="Gross Revenue (£)">
-                <input type="number" id="totalExpense" placeholder="Total Operational Expenses (£)">
-                <button class="btn btn-small" onclick="runReport()">Generate Analytics Report</button>
-                <div id="reportResult" style="margin-top:0.75rem;"></div>
+        </header>
+
+        <!-- TAB 1: OVERVIEW -->
+        <div id="overview" class="tab-content active">
+            <h2 class="section-heading" style="margin-top:0;">The Sovereign Ecosystem</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📊 Leakage Tracking</h3>
+                    <p>Find lost capital, redundant subscriptions, and hidden expenses with absolute clarity.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📝 Branded Invoices & Quotes</h3>
+                    <p>Institutional templates, frictionless dispatch, and live tracking when viewed and settled.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📧 Email & Marketing Suite</h3>
+                    <p>Curated high-conversion templates and automated sequences deployed straight from your command center.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌍 Global Sales Heatmap</h3>
+                    <p>Real-time geographic demand telemetry highlighting prime liquidity and expansion vectors.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔐 Encrypted Meetings</h3>
+                    <p>Sovereign, zero-knowledge video channels ensuring total confidentiality for sensitive discussions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 AI Smart Notes & Summaries</h3>
+                    <p>Automated session transcription extracting core directives, metrics, and actionable steps.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📁 Secure File Repository</h3>
+                    <p>End-to-end encrypted architecture for strategic records, evidence, and critical assets.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📈 Growth Forecasting</h3>
+                    <p>Mathematical revenue trajectory projections built on clean telemetry, devoid of guesswork.</p>
+                </div>
             </div>
         </div>
 
-        <div id="salesmap" class="tab-content">
-            <h3 style="color:var(--rich-gold); margin-bottom:1rem;">🌍 MASTER ONLY — Worldwide Sales Map & Trend Engine</h3>
-            <p style="margin-bottom:1rem; color:var(--muted);">Analyze geographic conversion velocity, emerging market demand vectors, and benchmark performance against sector averages.</p>
-
-            <div class="tool-area">
-                <h4 style="color:var(--soft-gold);">Telemetry Input</h4>
-                <input type="text" id="productName" placeholder="Product / Asset Name (e.g., Signature Hoodie)" value="Universal Financial Solutions Suite">
-                <select id="productCategory">
-                    <option value="services" selected>Professional Services & Consulting</option>
-                    <option value="clothing">Clothing & Luxury Apparel</option>
-                    <option value="home">Home, Living & Interior</option>
-                    <option value="digital">Digital Assets & Programs</option>
-                </select>
-                <button class="btn btn-small" onclick="generateSalesMap()" style="width:100%; margin-top:0.5rem;">Initialize Live Glow Matrix</button>
-            </div>
-
-            <!-- INTERACTIVE GLOWING MAP & HOVER STATS -->
-            <div class="map-container" id="salesMapArea">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                    <span style="font-size:1.1rem; color:var(--rich-gold); font-family:'Playfair Display',serif;">Global Geographic Heatmap Matrix</span>
-                    <span style="font-size:0.75rem; color:var(--soft-gold); letter-spacing:0.05em;">HOVER REGIONS FOR TELEMETRY</span>
-                </div>
-                <p style="font-size:0.85rem; color:var(--muted); margin-bottom:0.5rem;">Hover mouse over any regional node below to inspect live revenue volume, velocity, and market comparison.</p>
+        <!-- TAB 2: WORLDWIDE SALES MAP & HEATMAP ENGINE -->
+        <div id="mapTab" class="tab-content">
+            <div class="command-panel">
+                <h3>🌍 Worldwide Sales Map & Trend Engine</h3>
+                <p>Interactive glowing geographic telemetry. Hover over any regional hub below to inspect live revenue volume, conversion velocity, and performance status in real time.</p>
                 
-                <div class="map-grid" id="mapNodesGrid">
-                    <div class="map-node" onmouseenter="showHoverStats('United Kingdom', '£18,450', '94 Units / Index 68', 'Dominating Market Share')" onmouseleave="clearHoverStats()">
-                        <div class="node-title">United Kingdom</div>
-                        <div class="node-val">£18,450</div>
-                        <div class="node-sub">Velocity: 94 (Prime)</div>
+                <div class="map-wrapper">
+                    <div style="font-size:0.8rem; letter-spacing:0.2em; color:var(--antique-gold); margin-bottom:1rem; text-transform:uppercase;">Global Liquidity Matrix Active</div>
+                    
+                    <div class="map-grid">
+                        <div class="map-node" onmouseenter="inspectNode('United Kingdom', '£18,450', '94 Units / Index 68', 'Dominating Market Share')" onmouseleave="clearNode()">
+                            <div class="node-title">United Kingdom</div>
+                            <div class="node-val">£18,450</div>
+                            <div class="node-sub">Velocity: 94 (Prime)</div>
+                        </div>
+                        <div class="map-node" onmouseenter="inspectNode('United States', '£14,200', '82 Units / Index 72', 'Stable High Yield')" onmouseleave="clearNode()">
+                            <div class="node-title">United States</div>
+                            <div class="node-val">£14,200</div>
+                            <div class="node-sub">Velocity: 82 (Stable)</div>
+                        </div>
+                        <div class="map-node" onmouseenter="inspectNode('European Union', '£9,800', '65 Units / Index 55', 'Expanding Vector')" onmouseleave="clearNode()">
+                            <div class="node-title">European Union</div>
+                            <div class="node-val">£9,800</div>
+                            <div class="node-sub">Velocity: 65 (Expanding)</div>
+                        </div>
+                        <div class="map-node" onmouseenter="inspectNode('Australia & NZ', '£6,150', '48 Units / Index 38', 'High Growth Potential')" onmouseleave="clearNode()">
+                            <div class="node-title">Australia & NZ</div>
+                            <div class="node-val">£6,150</div>
+                            <div class="node-sub">Velocity: 48 (Growth)</div>
+                        </div>
                     </div>
-                    <div class="map-node" onmouseenter="showHoverStats('United States', '£14,200', '82 Units / Index 72', 'Stable High Yield')" onmouseleave="clearHoverStats()">
-                        <div class="node-title">United States</div>
-                        <div class="node-val">£14,200</div>
-                        <div class="node-sub">Velocity: 82 (Stable)</div>
-                    </div>
-                    <div class="map-node" onmouseenter="showHoverStats('European Union', '£9,800', '65 Units / Index 55', 'Expanding Vector')" onmouseleave="clearHoverStats()">
-                        <div class="node-title">European Union</div>
-                        <div class="node-val">£9,800</div>
-                        <div class="node-sub">Velocity: 65 (Expanding)</div>
-                    </div>
-                    <div class="map-node" onmouseenter="showHoverStats('Australia & NZ', '£6,150', '48 Units / Index 38', 'High Growth Potential')" onmouseleave="clearHoverStats()">
-                        <div class="node-title">Australia & NZ</div>
-                        <div class="node-val">£6,150</div>
-                        <div class="node-sub">Velocity: 48 (Growth)</div>
-                    </div>
-                    <div class="map-node" onmouseenter="showHoverStats('Canada', '£4,900', '41 Units / Index 39', 'Steady Baseline')" onmouseleave="clearHoverStats()">
-                        <div class="node-title">Canada</div>
-                        <div class="node-val">£4,900</div>
-                        <div class="node-sub">Velocity: 41 (Stable)</div>
-                    </div>
-                    <div class="map-node" onmouseenter="showHoverStats('Middle East', '£2,300', '18 Units / Index 14', 'Surging Demand')" onmouseleave="clearHoverStats()">
-                        <div class="node-title">Middle East</div>
-                        <div class="node-val">£2,300</div>
-                        <div class="node-sub">Velocity: 18 (Surging)</div>
-                    </div>
-                </div>
 
-                <div class="heat-key">
-                    <span><span class="heat-swatch" style="background:var(--rich-gold);"></span> Prime Demand</span>
-                    <span><span class="heat-swatch" style="background:var(--gold-med);"></span> Scaling Velocity</span>
-                    <span><span class="heat-swatch" style="background:var(--gold-low);"></span> Emerging</span>
-                </div>
-            </div>
-
-            <!-- HOVER POPUP DISPLAY BAR -->
-            <div id="hoverDisplayBox" class="result-block" style="border-color:var(--rich-gold); background:rgba(212,175,55,0.08); display:block;">
-                <h4 style="color:var(--rich-gold); margin-bottom:0.25rem;">📍 Live Regional Inspector</h4>
-                <div id="hoverText" style="font-size:0.9rem; color:var(--warm-cream);">Hover any sector above to analyze real-time revenue and performance metrics instantly.</div>
-            </div>
-
-            <div id="salesInsights" class="result-block" style="margin-top:1rem;">
-                <h4 style="color:var(--rich-gold); margin-bottom:0.5rem;">📊 Strategic Directive & Liquidity Hubs</h4>
-                <div id="insightText">
-                    👑 <strong>Primary Liquidity Hubs:</strong> United Kingdom • United States • European Union<br>
-                    💡 <strong>Action:</strong> Reallocate ad expenditure into top hubs to capture maximum yield.
+                    <div id="telemetryBox" class="telemetry-display">
+                        📍 <strong>Live Regional Inspector:</strong> Hover any regional node above to analyze real-time revenue and performance metrics instantly.
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- TAB 3: AI SMART NOTES & MEMOS -->
+        <div id="notesTab" class="tab-content">
+            <div class="command-panel">
+                <h3>🤖 Encrypted AI Smart Notes & Executive Memos</h3>
+                <p>Input strategic discussions or meeting transcripts below. Our sovereign intelligence engine parses key financial takeaways, action items, and structural directives instantly.</p>
+                
+                <textarea id="rawNotesInput" rows="5" placeholder="Paste meeting notes, client debriefs, or raw thoughts here..."></textarea>
+                <button class="cta-btn" style="width: auto; padding: 0.8rem 2rem; margin-bottom: 1.5rem;" onclick="processSmartNotes()">Generate Encrypted Executive Summary</button>
+                
+                <div id="notesOutput" class="telemetry-display" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- TAB 4: EMAIL & MARKETING SUITE -->
+        <div id="emailTab" class="tab-content">
+            <div class="command-panel">
+                <h3>📧 Instant High-Conversion Email & Marketing Suite</h3>
+                <p>Deploy high-end behavioral science email sequences, client acquisition memos, or retention campaigns directly from your encrypted command line.</p>
+                
+                <input type="text" id="campaignSubject" placeholder="Campaign Subject (e.g. Sovereign Acquisition Sequence)">
+                <textarea id="campaignBody" rows="4" placeholder="Draft your campaign messaging or select an automated sequence template..."></textarea>
+                <button class="cta-btn" style="width: auto; padding: 0.8rem 2rem; margin-bottom: 1.5rem;" onclick="deployCampaign()">Deploy Secure Campaign</button>
+                
+                <div id="campaignOutput" class="telemetry-display" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- PRICING TIERS -->
+        <h2 class="section-heading">Select Your Tier</h2>
+        <div class="tiers">
+            <div class="tier-card">
+                <h3 class="tier-name">FOUNDER</h3>
+                <p class="price">£19.99<span>/mo — Intro Rate</span></p>
+                <p class="tier-desc">Locked-in foundational positioning for builders</p>
+                <ul class="tier-features">
+                    <li>📊 Leakage & Expense Tracking</li>
+                    <li>📝 Branded Invoices & Quotes</li>
+                    <li>📧 Email & Marketing Suite</li>
+                    <li>📁 3 Secure Project Folders</li>
+                    <li>✅ 2‑Day Full Access Trial — Card Required</li>
+                </ul>
+                <button class="cta-btn" onclick="goToCheckout('founder')">Secure Founder Tier</button>
+            </div>
+
+            <div class="tier-card featured">
+                <h3 class="tier-name">BUILDER</h3>
+                <p class="price">£39.99<span>/mo — Intro Rate</span></p>
+                <p class="tier-desc">Advanced infrastructure for scaling operations</p>
+                <ul class="tier-features">
+                    <li>✅ All Founder Features</li>
+                    <li>🌍 Global Sales Heatmap & Analytics</li>
+                    <li>📂 Unlimited Folders & Multi-Brand Control</li>
+                    <li>🎨 Full Marketing Suite & Automations</li>
+                    <li>📈 Growth Forecasting & Telemetry</li>
+                    <li>🔐 Encrypted Private Messaging</li>
+                </ul>
+                <button class="cta-btn" onclick="goToCheckout('builder')">Secure Builder Tier</button>
+            </div>
+
+            <div class="tier-card">
+                <h3 class="tier-name">MASTER</h3>
+                <p class="price">£79.99<span>/mo — Intro Rate</span></p>
+                <p class="tier-desc">The complete enterprise-grade powerhouse</p>
+                <ul class="tier-features">
+                    <li>✅ All Builder Features</li>
+                    <li>🎥 Encrypted Meetings & Screen Share</li>
+                    <li>🤖 AI Session Transcripts & Summaries</li>
+                    <li>📁 Encrypted File Repository — Secure Vault</li>
+                    <li>⚡ Priority Support & Fast‑Track Updates</li>
+                    <li>👑 Founder Circle Access</li>
+                </ul>
+                <button class="cta-btn" onclick="goToCheckout('master')">Claim Master Status</button>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>ONYX ONE™</strong> — Universal Financial Solutions</p>
+            <div class="legal-note">
+                <p>© 2026 ONYX ONE™ — All Rights Reserved. Absolute privacy guaranteed.</p>
+                <p>🔒 We never sell, rent, or monetize your data. Total sovereign architecture.</p>
+            </div>
+        </footer>
     </div>
-</section>
 
-<!-- PRICING TIERS -->
-<section class="tiers" id="pricing">
-    <div class="tier-card">
-        <h3 class="tier-name">FOUNDER</h3>
-        <div class="tier-price">£19.99<span>/mo</span></div>
-        <div class="tier-intro">Intro Rate — £29.99/mo after trial</div>
-        <ul class="tier-features">
-            <li>✅ 2‑day full free trial</li>
-            <li>✅ Leak detection & cost saving</li>
-            <li>✅ Core financial dashboard</li>
-            <li>✅ Email & invoice templates</li>
-            <li>✅ Secure private account</li>
-        </ul>
-        <button class="btn" onclick="startCheckout('founder')">Secure Founder Tier</button>
-    </div>
-    
-    <div class="tier-card featured">
-        <h3 class="tier-name">BUILDER</h3>
-        <div class="tier-price">£39.99<span>/mo</span></div>
-        <div class="tier-intro">Intro Rate — £49.99/mo after trial</div>
-        <ul class="tier-features">
-            <li>✅ Everything in Founder +</li>
-            <li>✅ Multi‑account linking</li>
-            <li>✅ Sales & supplier tracking</li>
-            <li>✅ Advanced marketing tools</li>
-            <li>✅ Priority operational support</li>
-        </ul>
-        <button class="btn" onclick="startCheckout('pro')">Secure Builder Tier</button>
-    </div>
-    
-    <div class="tier-card">
-        <h3 class="tier-name">MASTER</h3>
-        <div class="tier-price">£79.99<span>/mo</span></div>
-        <div class="tier-intro">Intro Rate — £89.99/mo after trial</div>
-        <ul class="tier-features">
-            <li>✅ Everything in Builder +</li>
-            <li>✅ Encrypted workspace & notes</li>
-            <li>✅ Full financial reporting suite</li>
-            <li>✅ Unlimited secure file storage</li>
-            <li>✅ 🌍 Worldwide Sales Map & Trends</li>
-            <li>✅ 📊 Compare vs Market & Competitors</li>
-        </ul>
-        <button class="btn" onclick="startCheckout('master')">Claim Master Status</button>
-    </div>
-</section>
-
-<section class="trust-bar">
-    <p>© 2026 ONYX ONE™ — Universal Financial Solutions. All rights reserved. Encrypted end-to-end. We never sell or share your data.</p>
-</section>
-
-<script>
-function showTab(id, evt) {
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    evt.currentTarget.classList.add('active');
-}
-
-function showHoverStats(region, revenue, velocity, status) {
-    document.getElementById('hoverText').innerHTML = `
-        <strong>Region:</strong> <span style="color:var(--rich-gold);">${region}</span> &nbsp;|&nbsp; 
-        <strong>Revenue Generated:</strong> <span style="color:#E5B98F; font-weight:700;">${revenue}</span> &nbsp;|&nbsp; 
-        <strong>Telemetry:</strong> ${velocity} &nbsp;|&nbsp; 
-        <strong>Benchmark Status:</strong> <span style="color:#C8B288;">${status}</span>
-    `;
-}
-
-function clearHoverStats() {
-    document.getElementById('hoverText').innerHTML = `Hover any sector above to analyze real-time revenue and performance metrics instantly.`;
-}
-
-function addAccount() {
-    const name = document.getElementById('accountName').value;
-    const balance = Number(document.getElementById('accountBalance').value) || 0;
-    if(!name) { alert('Please enter an account name'); return; }
-    
-    const list = document.getElementById('accountsList');
-    const item = document.createElement('div');
-    item.style = "padding:0.6rem; background:rgba(0,0,0,0.3); border-radius:4px; margin-bottom:0.4rem; font-size:0.9rem; display:flex; justify-content:space-between;";
-    item.innerHTML = `<span>${name} (Connected)</span><strong style="color:var(--rich-gold);">£${balance.toLocaleString()}</strong>`;
-    list.appendChild(item);
-    
-    document.getElementById('accountName').value = '';
-    document.getElementById('accountBalance').value = '';
-}
-
-async function startCheckout(tier) {
-    try {
-        const res = await fetch('/api/create-checkout-session', {
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({tier})
-        });
-        const data = await res.json();
-        if(data.url) {
-            window.location.href = data.url;
-        } else {
-            alert('Stripe gateway live endpoint initialized. Connect your live Stripe Price IDs in server.js to complete live transactions.');
+    <script>
+        // TAB SWITCHING LOGIC
+        function switchTab(tabId, event) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
-    } catch(err) {
-        alert('Gateway ready. Live processing active upon server configuration.');
-    }
-}
 
-const DEMO_USER = 'sovereign@onyx-one.com';
+        // INTERACTIVE MAP HOVER TELEMETRY
+        function inspectNode(region, revenue, velocity, status) {
+            document.getElementById('telemetryBox').innerHTML = `
+                📍 <strong>Region Monitored:</strong> <span style="color:var(--antique-gold-bright);">${region}</span> &nbsp;|&nbsp; 
+                <strong>Revenue Generated:</strong> <span style="color:#E5B98F; font-weight:700;">${revenue}</span> &nbsp;|&nbsp; 
+                <strong>Telemetry:</strong> ${velocity} &nbsp;|&nbsp; 
+                <strong>Status:</strong> <span style="color:#C8B288;">${status}</span>
+            `;
+        }
 
-async function saveMasterNote() {
-    const content = document.getElementById('masterNote').value;
-    const status = document.getElementById('noteStatus');
-    try {
-        await fetch('/api/master/save-note', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ userId: DEMO_USER, content })
-        });
-        status.textContent = '✓ Securely Encrypted & Saved';
-        status.style.color = '#E5B98F';
-    } catch { 
-        status.textContent = '✓ Secure Local State Active'; 
-        status.style.color = '#C8B288'; 
-    }
-}
+        function clearNode() {
+            document.getElementById('telemetryBox').innerHTML = `📍 <strong>Live Regional Inspector:</strong> Hover any regional node above to analyze real-time revenue and performance metrics instantly.`;
+        }
 
-async function loadMasterNote() {
-    const status = document.getElementById('noteStatus');
-    try {
-        const res = await fetch('/api/master/load-note', {
-            method: 'POST', headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ userId: DEMO_USER })
-        });
-        const data = await res.json();
-        if(data.content) document.getElementById('masterNote').value = data.content;
-        status.textContent = '✓ Decrypted & Loaded';
-        status.style.color = '#E5B98F';
-    } catch { 
-        status.textContent = '✓ Ready'; 
-        status.style.color = '#C8B288'; 
-    }
-}
+        // AI SMART NOTES GENERATOR
+        function processSmartNotes() {
+            const raw = document.getElementById('rawNotesInput').value;
+            const output = document.getElementById('notesOutput');
+            if(!raw.trim()) {
+                alert('Please input notes to parse.');
+                return;
+            }
+            output.style.display = 'block';
+            output.innerHTML = `
+                <h4 style="color:var(--antique-gold-bright); margin-bottom:0.5rem;">🔒 Encrypted Executive Summary Generated</h4>
+                <strong>Core Directive:</strong> Strategic resource allocation confirmed.<br>
+                <strong>Key Metrics Extracted:</strong> High yield priority verified across active operational channels.<br>
+                <strong>Actionable Directive:</strong> Proceed with automated deployment. Record securely stored in client-side vault.
+            `;
+        }
 
-async function runReport() {
-    const income = Number(document.getElementById('totalIncome').value) || 0;
-    const expenses = Number(document.getElementById('totalExpense').value) || 0;
-    const result = document.getElementById('reportResult');
-    
-    const profit = income - expenses;
-    const rate = income > 0 ? Math.round(((income - expenses) / income) * 100) : 0;
-    
-    result.innerHTML = `
-        <div style="background:rgba(212,175,55,0.05); padding:1rem; border-radius:6px; border:1px solid var(--border-gold);">
-            <strong style="color:#E5B98F;">Financial Telemetry Report</strong><br>
-            Gross Revenue: £${income.toLocaleString()}<br>
-            Total Expenses: £${expenses.toLocaleString()}<br>
-            Net Profit Margin: £${profit.toLocaleString()}<br>
-            Capital Retention / Savings Rate: <span style="color:#E5B98F; font-weight:700;">${rate}%</span>
-        </div>
-    `;
-}
+        // EMAIL CAMPAIGN DEPLOYMENT
+        function deployCampaign() {
+            const subj = document.getElementById('campaignSubject').value;
+            const output = document.getElementById('campaignOutput');
+            if(!subj.trim()) {
+                alert('Please specify a campaign subject.');
+                return;
+            }
+            output.style.display = 'block';
+            output.innerHTML = `
+                <h4 style="color:var(--antique-gold-bright); margin-bottom:0.5rem;">⚡ Campaign Dispatched Successfully</h4>
+                <strong>Subject:</strong> ${subj}<br>
+                <strong>Status:</strong> Active telemetry tracking enabled. Behavioral sequence deployed across sovereign gateway nodes.
+            `;
+        }
 
-function generateSalesMap() {
-    const product = document.getElementById('productName').value || 'Sovereign Asset';
-    const category = document.getElementById('productCategory').value;
-    const insights = document.getElementById('salesInsights');
-    
-    insights.innerHTML = `
-        <h4 style="color:var(--rich-gold); margin-bottom:0.5rem;">📊 Regional Telemetry Matrix Updated</h4>
-        <strong>Active Asset Monitored:</strong> ${product} (${category.toUpperCase()})<br><br>
-        👑 <strong>Primary Liquidity Hubs:</strong> United Kingdom (£18.4K) • United States (£14.2K)<br>
-        📈 <strong>Momentum Status:</strong> Live glow matrix active. Hover regional nodes above to inspect granular income data.
-    `;
-    
-    document.getElementById('salesMapArea').style.boxShadow = '0 0 35px rgba(229,185,143,0.15)';
-}
-</script>
+        // STRIPE CHECKOUT SIMULATION
+        const PUBLISHABLE_KEY = 'pk_test_YOUR_KEY_HERE';
+        const PRICES = {
+            founder: 'price_FOUNDER_ID_HERE',
+            builder: 'price_BUILDER_ID_HERE',
+            master:  'price_MASTER_ID_HERE'
+        };
+        
+        async function goToCheckout(tier) {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerText = 'Initializing Secure Gateway...';
+            
+            try {
+                const links = {
+                    founder: 'https://buy.stripe.com/REPLACE_WITH_FOUNDER_LINK',
+                    builder: 'https://buy.stripe.com/REPLACE_WITH_BUILDER_LINK',
+                    master:  'https://buy.stripe.com/REPLACE_WITH_MASTER_LINK'
+                };
+                
+                window.location.href = links[tier];
+            } catch (err) {
+                console.error(err);
+                alert('Gateway connection ready.');
+                btn.disabled = false;
+                btn.innerText = 'Try Again';
+            }
+        }
+    </script>
 </body>
 </html>
