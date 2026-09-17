@@ -15,7 +15,7 @@
             --champagne-gold: #FCF6BA;
             --antique-gold: #BF953F;
             --bg-dark: #0A0A0A;
-            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-bg: rgba(20, 20, 20, 0.85);
             --border-gold: rgba(191, 149, 63, 0.4);
             --gold-glow: 0 0 30px rgba(191, 149, 63, 0.35);
         }
@@ -48,7 +48,7 @@
             width: 100%; max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; box-sizing: border-box; text-align: center; position: relative;
         }
 
-        /* FORCED VISIBLE SIDE QR CODES */
+        /* SIDE QR CODES */
         .qr-side-left, .qr-side-right {
             position: fixed; top: 50%; transform: translateY(-50%);
             background: rgba(15, 15, 15, 0.95); border: 1px solid var(--antique-gold);
@@ -57,30 +57,27 @@
         }
         .qr-side-left { left: 15px; }
         .qr-side-right { right: 15px; }
-        @media (max-width: 1350px) {
-            .qr-side-left, .qr-side-right { display: none; } /* Fallback for very small screens */
-        }
+        @media (max-width: 1350px) { .qr-side-left, .qr-side-right { display: none; } }
         .qr-side-left span, .qr-side-right span {
             font-size: 0.65rem; color: #FCF6BA; text-transform: uppercase; margin-top: 6px; letter-spacing: 1px; font-weight: 600;
         }
         .qr-box-inner { background: #FFFFFF; padding: 6px; border-radius: 4px; }
 
-        /* MASSIVE LOGO CONTAINER WITH TRANSPARENCY BLEND */
+        /* LOGO CONTAINER */
         .logo-container {
-            width: 280px; height: 280px; margin: 0 auto 1.5rem auto;
-            display: flex; align-items: center; justify-content: center;
-            background: transparent;
+            width: 260px; height: 260px; margin: 0 auto 1rem auto;
+            display: flex; align-items: center; justify-content: center; background: transparent;
         }
         .logo-img {
             width: 100%; height: 100%; object-fit: contain;
-            mix-blend-mode: screen; /* Knocks out dark/black bounding boxes */
-            filter: drop-shadow(0 0 25px rgba(191, 149, 63, 0.6));
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 25px rgba(191, 149, 63, 0.5));
         }
 
         .brand-title {
             font-family: var(--primary-font); background: var(--accent-gold);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            letter-spacing: 4px; text-transform: uppercase; font-size: 3.5rem; margin: 0 0 0.5rem 0;
+            letter-spacing: 4px; text-transform: uppercase; font-size: 3.2rem; margin: 0 0 0.5rem 0;
         }
         .brand-subtitle { font-weight: 300; letter-spacing: 5px; color: #B3B3B3; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 0.5rem; }
         .brand-privacy-tag { font-size: 0.75rem; letter-spacing: 2px; color: #BF953F; text-transform: uppercase; margin-bottom: 2.5rem; }
@@ -134,30 +131,29 @@
         }
         .upload-dropzone:hover { border-color: #FCF6BA; background: rgba(191, 149, 63, 0.05); }
 
-        /* ACTUAL VISUAL WORLD MAP CONTAINER */
-        .world-map-visual {
-            position: relative; background: radial-gradient(circle at center, #151515 0%, #050505 100%);
-            border: 1px solid rgba(191, 149, 63, 0.5); border-radius: 8px; padding: 2rem 1rem; margin-top: 1.5rem; text-align: center; overflow: hidden;
-            box-shadow: inset 0 0 40px rgba(0,0,0,0.9); height: 380px; display: flex; align-items: center; justify-content: center;
+        /* CLEAN, ORGANIZED WORLD MAP CONTAINER */
+        .world-map-container {
+            background: radial-gradient(circle at center, #141414 0%, #050505 100%);
+            border: 1px solid rgba(191, 149, 63, 0.4); border-radius: 8px; padding: 2rem; margin-top: 1.5rem;
         }
-        .world-map-svg {
-            position: absolute; width: 100%; height: 100%; opacity: 0.45; pointer-events: none;
+        .world-map-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;
         }
-        .map-node-pin {
-            position: absolute; width: 16px; height: 16px; background: #FCF6BA; border-radius: 50%;
-            box-shadow: 0 0 20px #FCF6BA; cursor: pointer; transition: transform 0.3s; z-index: 10;
+        .region-card {
+            background: rgba(15, 15, 15, 0.9); border: 1px solid rgba(191, 149, 63, 0.3);
+            border-radius: 6px; padding: 1.2rem; text-align: left; cursor: pointer; transition: all 0.3s ease;
         }
-        .map-node-pin:hover { transform: scale(1.8); background: #FFFFFF; }
-        .map-ping-ring {
-            position: absolute; width: 36px; height: 36px; border: 1px solid #BF953F; border-radius: 50%;
-            animation: radar-pulse 2s infinite ease-out; pointer-events: none;
+        .region-card:hover {
+            border-color: #FCF6BA; background: rgba(191, 149, 63, 0.1); box-shadow: 0 0 20px rgba(191, 149, 63, 0.3); transform: translateY(-2px);
         }
-        @keyframes radar-pulse {
-            0% { transform: scale(0.5); opacity: 1; }
-            100% { transform: scale(2.5); opacity: 0; }
+        .region-card h4 {
+            font-family: var(--primary-font); color: #FCF6BA; margin: 0 0 0.4rem 0; font-size: 0.95rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
+        .region-card p { font-size: 0.78rem; color: #AAAAAA; margin: 0 0 0.8rem 0; }
+        .status-badge { font-size: 0.65rem; color: #00FF66; background: rgba(0,255,102,0.1); padding: 2px 6px; border-radius: 3px; border: 1px solid rgba(0,255,102,0.3); }
 
-        /* POPUP MODAL STYLING */
+        /* MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
@@ -198,7 +194,7 @@
     </div>
 
     <div class="ecosystem-wrapper">
-        <!-- 1. CINEMATIC HERO & MASSIVE TRANSPARENT LOGO -->
+        <!-- 1. CINEMATIC HERO & LOGO -->
         <div id="heroSection"></div>
         <div class="logo-container">
             <img src="logo.png" alt="Onyx One Logo" class="logo-img" onerror="this.src='7476.png';">
@@ -301,32 +297,37 @@
             </div>
         </div>
 
-        <!-- 7. REAL VISUAL WORLD MAP -->
+        <!-- 7. ORGANIZED GLOBAL SALES MAP -->
         <div id="mapSection" class="executive-sanctuary">
             <h2>Global Sales & Telemetry World Map</h2>
-            <p class="section-desc">Live worldwide node distribution, transaction velocity, and secure regional routing.</p>
-            <div class="world-map-visual">
-                <!-- SVG World Map Vector Backdrop with Connection Arcs -->
-                <svg class="world-map-svg" viewBox="0 0 1000 500" fill="none" stroke="#BF953F" stroke-width="1.5">
-                    <path d="M150,150 Q300,80 450,200 T750,120 T900,250" stroke-dasharray="4"/>
-                    <path d="M200,350 Q400,250 600,320 T850,200" stroke-dasharray="4"/>
-                    <ellipse cx="250" cy="200" rx="80" ry="50" stroke="rgba(191,149,63,0.3)"/>
-                    <ellipse cx="520" cy="180" rx="60" ry="40" stroke="rgba(191,149,63,0.3)"/>
-                    <ellipse cx="780" cy="260" rx="90" ry="60" stroke="rgba(191,149,63,0.3)"/>
-                </svg>
-                <!-- Interactive Map Pins -->
-                <div style="top: 35%; left: 25%;" class="absolute map-ping-ring"></div>
-                <div style="top: 35%; left: 25%;" class="absolute map-node-pin" onclick="inspectRegion('North America (NA-EAST)')" title="NA-EAST Node"></div>
-
-                <div style="top: 28%; left: 52%;" class="absolute map-ping-ring"></div>
-                <div style="top: 28%; left: 52%;" class="absolute map-node-pin" onclick="inspectRegion('Europe Core (EU-WEST)')" title="EU-WEST Node"></div>
-
-                <div style="top: 55%; left: 78%;" class="absolute map-ping-ring"></div>
-                <div style="top: 55%; left: 78%;" class="absolute map-node-pin" onclick="inspectRegion('Asia-Pacific (APAC-C)')" title="APAC Node"></div>
-
-                <div style="position: relative; z-index: 5; background: rgba(0,0,0,0.85); border: 1px solid #BF953F; padding: 12px 24px; border-radius: 6px; backdrop-filter: blur(10px);">
-                    <p style="font-family: var(--primary-font); color: #FCF6BA; font-size: 0.95rem; margin: 0 0 4px 0;">INTERACTIVE GLOBAL TELEMETRY MATRIX</p>
-                    <p style="font-size: 0.75rem; color: #AAAAAA; margin: 0;">Click any glowing pulse node on the map to inspect regional secure packet routing.</p>
+            <p class="section-desc">Structured worldwide node distribution, transaction velocity, and secure regional routing.</p>
+            
+            <div class="world-map-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(191,149,63,0.3); padding-bottom: 0.8rem;">
+                    <span style="font-family: var(--primary-font); color: #FCF6BA; font-size: 1rem; letter-spacing: 1.5px;">ACTIVE REGIONAL GATEWAYS</span>
+                    <span class="status-badge">GLOBAL NETWORK SECURE</span>
+                </div>
+                <div class="world-map-grid">
+                    <div class="region-card" onclick="inspectRegion('North America (NA-EAST)')">
+                        <h4>North America <span class="status-badge">ONLINE</span></h4>
+                        <p>New York / Toronto Sovereign Gateway</p>
+                        <span style="font-size: 0.7rem; color: #BF953F; font-weight: 600;">Latency: 12ms | 100% Secure</span>
+                    </div>
+                    <div class="region-card" onclick="inspectRegion('Europe Core (EU-WEST)')">
+                        <h4>Europe Core <span class="status-badge">ONLINE</span></h4>
+                        <p>London / Frankfurt Settlement Nexus</p>
+                        <span style="font-size: 0.7rem; color: #BF953F; font-weight: 600;">Latency: 8ms | 100% Secure</span>
+                    </div>
+                    <div class="region-card" onclick="inspectRegion('Asia-Pacific (APAC-C)')">
+                        <h4>Asia-Pacific <span class="status-badge">ONLINE</span></h4>
+                        <p>Singapore / Tokyo Relay Hub</p>
+                        <span style="font-size: 0.7rem; color: #BF953F; font-weight: 600;">Latency: 24ms | 100% Secure</span>
+                    </div>
+                    <div class="region-card" onclick="inspectRegion('Latin America (LATAM)')">
+                        <h4>Latin America <span class="status-badge">ONLINE</span></h4>
+                        <p>São Paulo Financial Relay</p>
+                        <span style="font-size: 0.7rem; color: #BF953F; font-weight: 600;">Latency: 31ms | 100% Secure</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -460,7 +461,7 @@
             showModal("Cryptographic Signature Verified", "Session ID: ONYX-2026-SECURE-9941\nStatus: 100% Authenticated.");
         }
         function inspectRegion(name) {
-            showModal("Regional Telemetry Inspection", `Region Node: ${name}\nLatency: 14ms\nPacket Loss: 0.00%\nStatus: Operational`);
+            showModal("Regional Telemetry Inspection", `Region Node: ${name}\nLatency: 12ms\nPacket Loss: 0.00%\nStatus: Operational & Secure`);
         }
         function selectTier(tier, price) {
             showModal("Executive Tier Activation", `Initializing secure gateway for '${tier}' (£${price}). Connecting...`);
