@@ -74,36 +74,28 @@
             box-sizing: border-box;
             text-align: center;
         }
+
+        /* TRANSPARENT LOGO STYLING */
         .logo-img {
-            max-width: 240px;
+            max-width: 280px;
+            width: 100%;
             height: auto;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 20px rgba(191, 149, 63, 0.5));
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            filter: drop-shadow(0 10px 25px rgba(191, 149, 63, 0.4));
+            transition: transform 0.4s ease;
         }
-        .brand-title {
-            font-family: var(--primary-font);
-            background: var(--accent-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 3rem;
-            margin: 0 0 0.5rem 0;
+        .logo-img:hover {
+            transform: scale(1.03);
         }
-        .brand-subtitle {
-            font-weight: 300;
-            letter-spacing: 5px;
-            color: #B3B3B3;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
+
         .brand-privacy-tag {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
             color: #BF953F;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 500;
         }
 
         /* LUXURY HERO MANIFESTO */
@@ -406,14 +398,12 @@
     </nav>
 
     <div class="ecosystem-wrapper">
-        <!-- 1. CINEMATIC HERO & LOGO -->
+        <!-- 1. TRANSPARENT PNG LOGO -->
         <div id="heroSection"></div>
         <img src="logo.png" alt="Onyx One Logo" class="logo-img">
-        <h1 class="brand-title">Onyx One</h1>
-        <div class="brand-subtitle">Sovereign Financial Solutions™</div>
         <div class="brand-privacy-tag">™ ONYX ONE — Your data is encrypted, never sold, never shared. All rights reserved.</div>
 
-        <!-- 2. LUXURY MANIFESTO (ELEVATED HERO COPY) -->
+        <!-- 2. LUXURY MANIFESTO HERO -->
         <div class="luxury-hero-box">
             <h2>Transcend the Chaos. Command Your Empire.</h2>
             <p>
@@ -542,7 +532,7 @@
             </div>
         </div>
 
-        <!-- 7. STUNNING GLOWING GLOBAL SALES & PRODUCT MATCHING MAP -->
+        <!-- 7. GLOBAL SALES & PRODUCT MATCHING MAP -->
         <div id="mapSection" class="executive-sanctuary">
             <h2>Global Sales & Product Matching Map</h2>
             <p class="section-desc">Input your product or service below. Our AI telemetry engine will instantly analyze global demand and identify your next high-converting target market.</p>
@@ -621,7 +611,7 @@
                         <h3>Master Tier</h3>
                         <p>Pinnacle sovereign ecosystem & complete automation.<br><strong>VIP Suite Access</strong></p>
                     </div>
-                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-where" href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
+                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
                 </div>
             </div>
         </div>
@@ -712,7 +702,7 @@
             showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended Next Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.</em>`);
         }
 
-        function openMapModal(region, revenue, trend, action) {
+        function openMapModal(region,revenue, trend, action) {
             showModal(`Global Node Terminal: ${region}`, `• Total Regional Revenue: <span style="color:#FCF6BA;">${revenue}</span><br><br>• Active Market Trend: ${trend}<br><br>• Strategic Recommendation: <strong style="color:#BF953F;">${action}</strong><br><br><em>Status: Glowing node connection synchronized with live localized secure telemetry.</em>`);
         }
 
