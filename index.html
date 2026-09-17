@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE™ — Universal Financial Solutions</title>
+    <title>ONYX ONE™ — Global Behavioral Intelligence & Sovereign Solutions</title>
     
     <!-- ⛔ PROTECTION - NOT TO BE REMOVED -->
     <meta name="robots" content="index, follow">
@@ -24,21 +24,22 @@
     
     <style>
         :root {
-            --obsidian: #020612;
-            --midnight-layer: #080E20;
-            --midnight-soft: #0F172A;
+            --obsidian: #000000;
+            --midnight-layer: #050505;
+            --midnight-soft: #0C0C0C;
             --champagne-gold: #D4AF37;
             --champagne-soft: #F3E5AB;
-            --antique-gold-border: rgba(212, 175, 55, 0.35);
+            --antique-gold-border: rgba(212, 175, 55, 0.4);
             --text: #E2E8F0;
-            --muted: #94A3B8;
+            --muted: #888888;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         
         body {
-            background: linear-gradient(180deg, var(--obsidian) 0%, var(--midnight-layer) 50%, var(--midnight-soft) 100%);
+            background-color: var(--obsidian);
+            background-image: radial-gradient(circle at 50% 0%, #151103 0%, var(--obsidian) 70%);
             color: var(--text);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
@@ -53,7 +54,7 @@
             top: 0;
             z-index: 1000;
             width: 100%;
-            background: rgba(2, 6, 18, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--antique-gold-border);
             padding: 0.8rem 1rem;
@@ -63,10 +64,10 @@
             flex-wrap: wrap;
         }
         .nav-tab-btn {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(12, 12, 12, 0.8);
             border: 1px solid var(--antique-gold-border);
             color: var(--champagne-soft);
-            padding: 6px 12px;
+            padding: 6px 14px;
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -79,7 +80,7 @@
             background: var(--champagne-gold);
             color: var(--obsidian);
             border-color: var(--champagne-soft);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             font-weight: 600;
         }
 
@@ -90,10 +91,10 @@
         
         .logo-container { margin-bottom: 1.5rem; }
         .logo-img { 
-            max-width: 220px; 
+            max-width: 200px; 
             width: 100%;
             height: auto; 
-            filter: drop-shadow(0 15px 35px rgba(212, 175, 55, 0.35));
+            filter: drop-shadow(0 15px 35px rgba(212, 175, 55, 0.4));
             transition: transform 0.4s ease;
         }
         .logo-img:hover { transform: scale(1.04); }
@@ -140,13 +141,13 @@
         
         /* APP ACCESS & QR BAR */
         .app-access-bar {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(15, 23, 42, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(5, 5, 5, 0.95) 100%);
             border: 1px solid var(--antique-gold-border);
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 3rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
         }
         .app-access-bar h3 {
             font-family: 'Playfair Display', serif;
@@ -163,7 +164,7 @@
             margin: 1.5rem 0;
         }
         .qr-card {
-            background: rgba(2, 6, 18, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border: 1px solid var(--antique-gold-border);
             padding: 1rem;
             border-radius: 8px;
@@ -207,7 +208,7 @@
         .app-btn:hover {
             background: var(--champagne-gold);
             color: var(--obsidian);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
         .section-heading {
@@ -221,13 +222,13 @@
         
         /* EXECUTIVE SANCTUARY CONTAINERS */
         .executive-sanctuary {
-            background: rgba(15, 23, 42, 0.65);
+            background: rgba(12, 12, 12, 0.85);
             border: 1px solid var(--antique-gold-border);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
             border-radius: 12px;
             padding: 2.5rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
         }
         .executive-sanctuary h2 {
             font-family: 'Playfair Display', serif;
@@ -256,7 +257,7 @@
             flex-wrap: wrap;
         }
         .tab-btn {
-            background: rgba(2, 6, 18, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid var(--antique-gold-border);
             color: var(--muted);
             padding: 8px 16px;
@@ -281,8 +282,8 @@
             gap: 1.5rem;
         }
         .choice-card {
-            background: rgba(2, 6, 18, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(5, 5, 5, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.15);
             border-radius: 8px;
             padding: 1.5rem;
             display: flex;
@@ -291,8 +292,9 @@
             transition: all 0.3s ease;
         }
         .choice-card:hover {
-            border-color: var(--antique-gold-border);
+            border-color: var(--champagne-gold);
             transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
         .choice-card h3 {
             font-family: 'Playfair Display', serif;
@@ -308,7 +310,7 @@
         
         .executive-input, .executive-select {
             width: 100%;
-            background: rgba(2, 6, 18, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             border: 1px solid var(--antique-gold-border);
             color: var(--champagne-soft);
             padding: 12px;
@@ -320,7 +322,7 @@
         .executive-input:focus, .executive-select:focus {
             outline: none;
             border-color: var(--champagne-gold);
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
         .executive-select option {
             background: var(--obsidian);
@@ -328,7 +330,7 @@
         }
 
         .cinematic-button {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(12, 12, 12, 0.9);
             border: 1px solid var(--champagne-gold);
             color: var(--champagne-soft);
             padding: 11px 20px;
@@ -347,12 +349,12 @@
         .cinematic-button:hover {
             background: var(--champagne-gold);
             color: var(--obsidian);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
         }
 
         /* LIVE REPORT TERMINAL OUTPUT BOX */
         .report-terminal-box {
-            background: rgba(2, 6, 18, 0.85);
+            background: rgba(0, 0, 0, 0.95);
             border: 1px solid var(--champagne-gold);
             border-radius: 8px;
             padding: 1.5rem;
@@ -365,7 +367,7 @@
             overflow-y: auto;
             white-space: pre-wrap;
             display: none;
-            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.15);
         }
 
         /* FEATURES GRID */
@@ -376,7 +378,7 @@
             margin-bottom: 4rem;
         }
         .feature-card {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(12, 12, 12, 0.8);
             border: 1px solid var(--antique-gold-border);
             border-radius: 12px;
             padding: 1.8rem;
@@ -384,8 +386,9 @@
         }
         .feature-card:hover {
             border-color: var(--champagne-gold);
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(12, 12, 12, 0.95);
             transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
         }
         .feature-card h3 {
             font-family: 'Playfair Display', serif;
@@ -395,15 +398,25 @@
         }
         .feature-card p { color: var(--muted); font-size: 0.9rem; }
 
-        /* COMMANDING GLOBAL INTELLIGENCE MAP SHOWPIECE */
+        /* 🌍 IMMERSIVE GLASSMORPHIC GLOWING WIREFRAME WORLD MAP SHOWPIECE (PIERS MORGAN STYLE) */
         .world-map-container {
             position: relative;
-            background: radial-gradient(circle at center, #0B132B 0%, var(--obsidian) 100%);
+            background: radial-gradient(circle at center, #110D02 0%, #000000 85%);
             border: 1px solid var(--antique-gold-border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 3rem 2rem;
             margin-top: 1.5rem;
-            box-shadow: inset 0 0 70px rgba(212,175,55,0.15), 0 20px 40px rgba(0,0,0,0.85);
+            box-shadow: inset 0 0 80px rgba(212,175,55,0.2), 0 25px 50px rgba(0,0,0,0.95);
+            overflow: hidden;
+        }
+        .svg-world-map {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            opacity: 0.65;
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
+            margin: 0 auto 2.5rem auto;
+            display: block;
         }
         .global-grid-display {
             display: grid;
@@ -413,20 +426,20 @@
             z-index: 2;
         }
         .map-hotspot-card {
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(10, 10, 10, 0.9);
             border: 1px solid var(--antique-gold-border);
             border-radius: 10px;
             padding: 1.8rem;
             text-align: left;
             cursor: pointer;
             transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
         .map-hotspot-card:hover {
             border-color: var(--champagne-gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.45);
             transform: translateY(-4px);
-            background: rgba(212, 175, 55, 0.08);
+            background: rgba(212, 175, 55, 0.1);
         }
         .map-hotspot-card h4 {
             font-family: 'Playfair Display', serif;
@@ -448,12 +461,12 @@
             background-color: var(--champagne-gold);
             border-radius: 50%;
             display: inline-block;
-            box-shadow: 0 0 14px var(--champagne-gold);
+            box-shadow: 0 0 15px var(--champagne-gold);
             animation: pulse-glow 2s infinite;
         }
         @keyframes pulse-glow {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.8); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.85); }
+            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
@@ -465,17 +478,18 @@
             margin: 4rem 0;
         }
         .tier-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(12, 12, 12, 0.85);
             border: 1px solid var(--antique-gold-border);
             border-radius: 16px;
             padding: 2.5rem;
             transition: all 0.3s ease;
         }
-        .tier-card:hover { transform: translateY(-5px); border-color: var(--champagne-gold); }
+        .tier-card:hover { transform: translateY(-5px); border-color: var(--champagne-gold); box-shadow: 0 0 30px rgba(212,175,55,0.25); }
         .tier-card.featured {
             border-color: var(--champagne-gold);
-            box-shadow: 0 0 35px rgba(212,175,55,0.12);
+            box-shadow: 0 0 40px rgba(212,175,55,0.2);
             transform: scale(1.02);
+            background: rgba(20, 16, 4, 0.9);
         }
         .tier-name {
             font-family: 'Playfair Display', serif;
@@ -511,15 +525,15 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .cta-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(212,175,55,0.4); }
+        .cta-btn:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(212,175,55,0.5); }
         .cta-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         /* MODAL */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(2, 6, 18, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -532,7 +546,7 @@
             padding: 2.5rem;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
             text-align: center;
         }
         .modal-card h3 {
@@ -571,8 +585,8 @@
     <nav class="sticky-nav">
         <a href="#heroSection" class="nav-tab-btn">Home</a>
         <a href="#accessSection" class="nav-tab-btn">Access & App</a>
-        <a href="#reportSection" class="nav-tab-btn">Report Engine</a>
         <a href="#mapSection" class="nav-tab-btn">Global Map</a>
+        <a href="#reportSection" class="nav-tab-btn">Report Engine</a>
         <a href="#hubSection" class="nav-tab-btn">Command Hub</a>
         <a href="#vaultSection" class="nav-tab-btn">Profession Vault</a>
         <a href="#wealthSection" class="nav-tab-btn">Net Worth & Crypto</a>
@@ -589,7 +603,7 @@
             
             <h1>ONYX ONE<span class="tm">™</span></h1>
             <p class="subtitle">Universal Financial Solutions</p>
-            <p class="tagline">Your Sovereign Financial Architecture & Operations Sanctuary — Absolute control, absolute privacy.</p>
+            <p class="tagline">Your Sovereign Financial Architecture & Behavioral Operations Sanctuary — Absolute control, absolute privacy.</p>
             <div class="divider"></div>
         </header>
 
@@ -615,10 +629,69 @@
             </div>
         </div>
 
+        <!-- 🌍 IMMERSIVE GLASSMORPHIC GLOWING WIREFRAME WORLD MAP SHOWPIECE -->
+        <div id="mapSection" class="executive-sanctuary">
+            <h2>Global Behavioral Intelligence Map</h2>
+            <p class="section-desc">Real-time international sentiment and capital telemetry built on Chase Hughes human intelligence principles. Track market velocity, behavioral triggers, and precision entry/exit signals across sovereign territories.</p>
+            
+            <div class="world-map-container">
+                <!-- Glowing Antique Gold Wireframe World Map SVG -->
+                <svg class="svg-world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+                        <!-- North America -->
+                        <path d="M150,80 Q180,70 210,90 Q240,110 260,140 Q230,170 200,160 Q170,140 150,120 Z" />
+                        <path d="M210,160 Q230,180 220,210 Q200,230 180,210 Q190,180 210,160 Z" />
+                        <!-- South America -->
+                        <path d="M260,240 Q290,260 280,320 Q260,380 240,410 Q220,380 230,320 Q240,260 260,240 Z" />
+                        <!-- Europe & UK -->
+                        <path d="M480,90 Q510,80 540,95 Q520,120 490,130 Q470,110 480,90 Z" />
+                        <path d="M440,100 Q460,95 470,110 Q450,130 430,120 Q435,105 440,100 Z" />
+                        <!-- Africa -->
+                        <path d="M470,160 Q530,150 560,210 Q540,290 500,340 Q460,290 450,210 Q460,170 470,160 Z" />
+                        <!-- Asia -->
+                        <path d="M550,70 Q650,60 750,90 Q800,120 780,180 Q720,200 650,160 Q580,140 550,70 Z" />
+                        <path d="M700,170 Q750,160 780,210 Q740,260 680,220 Q690,180 700,170 Z" />
+                        <!-- Australia -->
+                        <path d="M780,320 Q840,310 860,370 Q820,410 760,380 Q770,340 780,320 Z" />
+                    </g>
+                    <!-- Glowing Connection Nodes / Behavioral Telemetry Links -->
+                    <circle cx="450" cy="115" r="6" fill="#D4AF37" />
+                    <circle cx="505" cy="105" r="6" fill="#D4AF37" />
+                    <circle cx="210" cy="120" r="6" fill="#D4AF37" />
+                    <circle cx="720" cy="140" r="6" fill="#D4AF37" />
+                    <line x1="450" y1="115" x2="505" y2="105" stroke="#D4AF37" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                    <line x1="450" y1="115" x2="210" y2="120" stroke="#D4AF37" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                </svg>
+
+                <div class="global-grid-display">
+                    <div class="map-hotspot-card" onclick="showModal('United Kingdom Hub', 'Behavioral Index: 99.8% (High Trust)\nActive Node: London / Halifax\nCapital Velocity: Peak Momentum\nSignal: HOLD POSITION / COLLECT PROFITS')">
+                        <h4>United Kingdom <span class="glow-pulse"></span></h4>
+                        <p>Sovereign Registry & Operations HQ</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Optimal Yield</span>
+                    </div>
+                    <div class="map-hotspot-card" onclick="showModal('European Union Node', 'Behavioral Index: 94.5% (Stable)\nActive Node: Frankfurt / Amsterdam\nCapital Velocity: Stable Growth\nSignal: ACCUMULATE')">
+                        <h4>European Union <span class="glow-pulse"></span></h4>
+                        <p>Continental Distribution Network</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Stable Expansion</span>
+                    </div>
+                    <div class="map-hotspot-card" onclick="showModal('North America Node', 'Behavioral Index: 98.2% (High Volatility)\nActive Node: New York / Delaware\nCapital Velocity: High Velocity\nSignal: PREPARE STRATEGIC EXIT')">
+                        <h4>North America <span class="glow-pulse"></span></h4>
+                        <p>Strategic Capital & Asset Markets</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Peak Velocity</span>
+                    </div>
+                    <div class="map-hotspot-card" onclick="showModal('Asia-Pacific Node', 'Behavioral Index: 92.1% (Accelerating)\nActive Node: Singapore / Tokyo\nCapital Velocity: High Demand\nSignal: ENTER / NEW POSITIONS')">
+                        <h4>Asia-Pacific <span class="glow-pulse"></span></h4>
+                        <p>Technology & Logistics Gateway</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Early Accumulation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 📝 DYNAMIC SOVEREIGN REPORT & PROFESSION TAILORING ENGINE -->
         <div id="reportSection" class="executive-sanctuary">
-            <h2>Sovereign Profession & Report Generator</h2>
-            <p class="section-desc">Select your domain and operational focus to instantly tailor the workspace parameters and generate real, audit-ready reports tailored to your exact needs.</p>
+            <h2>Sovereign Profession & Behavioral Report Generator</h2>
+            <p class="section-desc">Select your domain to tailor workspace parameters and generate real, audit-ready behavioral reports calibrated using precision intelligence metrics.</p>
             
             <div style="max-width: 650px; margin: 0 auto; text-align: left;">
                 <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--champagne-soft); display: block; margin-bottom: 0.5rem;">Select Your Profession / Focus:</label>
@@ -631,42 +704,11 @@
                 </select>
 
                 <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--champagne-soft); display: block; margin-bottom: 0.5rem; margin-top: 1rem;">Primary Report Objective:</label>
-                <input type="text" id="reportObjective" class="executive-input" value="Quarterly Capital Allocation & Safeguarding Audit">
+                <input type="text" id="reportObjective" class="executive-input" value="Behavioral Capital Allocation & Risk Mitigation Audit">
 
                 <button class="cinematic-button" style="margin-top: 0.5rem;" onclick="generateSovereignReport()">Generate Tailored Executive Report</button>
                 
                 <div id="reportTerminal" class="report-terminal-box"></div>
-            </div>
-        </div>
-
-        <!-- 🌍 GLOBAL INTELLIGENCE MAP SHOWPIECE -->
-        <div id="mapSection" class="executive-sanctuary">
-            <h2>Global Sales & Market Intelligence Map</h2>
-            <p class="section-desc">Real-time international demand telemetry. Track liquidity flow, market momentum, and execute precision entry/exit strategies across sovereign territories.</p>
-            
-            <div class="world-map-container">
-                <div class="global-grid-display">
-                    <div class="map-hotspot-card" onclick="showModal('United Kingdom Hub', 'Optimization Index: 99.8%\nActive Node: London / Halifax\nCapital Velocity: Peak Momentum\nSignal: HOLD POSITION / COLLECT PROFITS')">
-                        <h4>United Kingdom <span class="glow-pulse"></span></h4>
-                        <p>Sovereign Registry & Operations HQ</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Optimal Yield</span>
-                    </div>
-                    <div class="map-hotspot-card" onclick="showModal('European Union Node', 'Optimization Index: 94.5%\nActive Node: Frankfurt / Amsterdam\nCapital Velocity: Stable Growth\nSignal: ACCUMULATE')">
-                        <h4>European Union <span class="glow-pulse"></span></h4>
-                        <p>Continental Distribution Network</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Stable Expansion</span>
-                    </div>
-                    <div class="map-hotspot-card" onclick="showModal('North America Node', 'Optimization Index: 98.2%\nActive Node: New York / Delaware\nCapital Velocity: High Volatility\nSignal: PREPARE STRATEGIC EXIT')">
-                        <h4>North America <span class="glow-pulse"></span></h4>
-                        <p>Strategic Capital & Asset Markets</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Peak Velocity</span>
-                    </div>
-                    <div class="map-hotspot-card" onclick="showModal('Asia-Pacific Node', 'Optimization Index: 92.1%\nActive Node: Singapore / Tokyo\nCapital Velocity: Accelerating\nSignal: ENTER / NEW POSITIONS')">
-                        <h4>Asia-Pacific <span class="glow-pulse"></span></h4>
-                        <p>Technology & Logistics Gateway</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Early Accumulation</span>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -747,7 +789,7 @@
             <h2>Professional Vault & Repository</h2>
             <p class="section-desc">Securely upload, encrypt, and archive critical operational documentation and evidence records.</p>
             
-            <div style="border: 2px dashed var(--antique-gold-border); background: rgba(2,6,18,0.4); padding: 2rem; border-radius: 8px; text-align: center; cursor: pointer;" onclick="document.getElementById('fileUpload').click()">
+            <div style="border: 2px dashed var(--antique-gold-border); background: rgba(0,0,0,0.6); padding: 2rem; border-radius: 8px; text-align: center; cursor: pointer;" onclick="document.getElementById('fileUpload').click()">
                 <p style="color: var(--champagne-soft); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Click or Drop Files Here to Encrypt & Store</p>
                 <p style="color: var(--muted); font-size: 0.75rem;">Supported formats: PDF, PNG, JPG, DOCX, CSV</p>
                 <input type="file" id="fileUpload" style="display: none;" onchange="handleFileUpload(event)">
@@ -866,7 +908,7 @@
                 text: appUrl,
                 width: 100,
                 height: 100,
-                colorDark: "#020612",
+                colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.M
             });
@@ -876,7 +918,7 @@
                 text: appUrl + "?ref=sovereign",
                 width: 100,
                 height: 100,
-                colorDark: "#020612",
+                colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.M
             });
@@ -891,39 +933,39 @@
             const terminal = document.getElementById('reportTerminal');
             
             terminal.style.display = 'block';
-            terminal.innerText = 'Initializing Secure Sovereign Report Pipeline...\nSynthesizing operational parameters for [' + profession.toUpperCase() + ']...\nFetching cryptographic workspace telemetry...\n';
+            terminal.innerText = 'Initializing Secure Behavioral Pipeline (Chase Hughes HUMINT Protocol)...\nSynthesizing operational parameters for [' + profession.toUpperCase() + ']...\nEvaluating behavioral threat & trust metrics...\n';
 
             setTimeout(() => {
                 let reportBody = '';
                 const timestamp = new Date().toISOString();
 
                 if (profession === 'learning_hub') {
-                    reportBody = `=== ONYX ONE™ SOVEREIGN LEARNING HUB REPORT ===\n` +
+                    reportBody = `=== ONYX ONE™ BEHAVIORAL LEARNING HUB REPORT ===\n` +
                                  `Timestamp: ${timestamp}\n` +
                                  `Objective: ${objective}\n` +
                                  `--------------------------------------------------\n` +
-                                 `1. ENROLLMENT & ACCREDITATION METRICS:\n` +
+                                 `1. BEHAVIORAL & TRUST METRICS:\n` +
                                  `   - Active Enrolled Youth Nodes: 14\n` +
-                                 `   - Key Stage Progression Rate: 98.4%\n` +
-                                 `   - Resource Allocation Health: Optimal\n\n` +
+                                 `   - Baseline Trust Index (HUMINT): 98.4% (Optimal)\n` +
+                                 `   - Environmental Stress Index: Low\n\n` +
                                  `2. SAFEGUARDING & RESOURCE INTEGRITY:\n` +
                                  `   - Facility Compliance Status: Fully Verified\n` +
                                  `   - Capital Overhead Leakage: £0.00\n` +
                                  `   - Community Support Fund Balance: Secured\n\n` +
-                                 `STATUS: REPORT GENERATED & ENCRYPTED FOR SUBMISSION.`;
+                                 `STATUS: REPORT GENERATED & ENCRYPTED FOR SOVEREIGN SUBMISSION.`;
                 } else if (profession === 'studio_founder') {
-                    reportBody = `=== ONYX ONE™ CREATIVE STUDIO EXECUTIVE REPORT ===\n` +
+                    reportBody = `=== ONYX ONE™ CREATIVE STUDIO BEHAVIORAL REPORT ===\n` +
                                  `Timestamp: ${timestamp}\n` +
                                  `Objective: ${objective}\n` +
                                  `--------------------------------------------------\n` +
                                  `1. PROJECT & CLIENT PIPELINE:\n` +
                                  `   - Active Commercial Contracts: 6\n` +
-                                 `   - Outstanding Invoices: Settled\n` +
+                                 `   - Client Rapport Velocity: Maximum\n` +
                                  `   - Asset Protection Hash: SHA-256 Validated\n\n` +
                                  `2. FINANCIAL VELOCITY:\n` +
                                  `   - Gross Monthly Run-Rate: Optimized\n` +
                                  `   - Overhead Redundancy Index: Minimal\n\n` +
-                                 `STATUS: REPORT GENERATED & READY FOR EXPORT.`;
+                                 `STATUS: REPORT GENERATED & READY FOR SOVEREIGN EXPORT.`;
                 } else {
                     reportBody = `=== ONYX ONE™ SOVEREIGN EXECUTIVE REPORT ===\n` +
                                  `Timestamp: ${timestamp}\n` +
@@ -933,7 +975,7 @@
                                  `1. OPERATIONAL TELEMETRY:\n` +
                                  `   - Database Synchronization: Active (Supabase Cluster)\n` +
                                  `   - Capital Retention Ratio: 99.2%\n` +
-                                 `   - Security Audit Status: Passed (Zero Leakage)\n\n` +
+                                 `   - Behavioral Security Status: Verified (Zero Leakage)\n\n` +
                                  `STATUS: REPORT COMPILED SUCCESSFULLY.`;
                 }
 
