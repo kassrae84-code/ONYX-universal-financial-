@@ -27,9 +27,9 @@
             --obsidian: #000000;
             --midnight-layer: #050505;
             --midnight-soft: #0C0C0C;
-            --champagne-gold: #D4AF37;
-            --champagne-soft: #F3E5AB;
-            --antique-gold-border: rgba(212, 175, 55, 0.4);
+            --champagne-gold: #C5A059;
+            --champagne-soft: #E3C886;
+            --antique-gold-border: rgba(197, 160, 89, 0.35);
             --text: #E2E8F0;
             --muted: #888888;
         }
@@ -39,7 +39,7 @@
         
         body {
             background-color: var(--obsidian);
-            background-image: radial-gradient(circle at 50% 0%, #151103 0%, var(--obsidian) 70%);
+            background-image: radial-gradient(circle at 50% 0%, #120F04 0%, var(--obsidian) 70%);
             color: var(--text);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
@@ -80,7 +80,7 @@
             background: var(--champagne-gold);
             color: var(--obsidian);
             border-color: var(--champagne-soft);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
             font-weight: 600;
         }
 
@@ -94,7 +94,7 @@
             max-width: 200px; 
             width: 100%;
             height: auto; 
-            filter: drop-shadow(0 15px 35px rgba(212, 175, 55, 0.4));
+            filter: drop-shadow(0 15px 35px rgba(197, 160, 89, 0.3));
             transition: transform 0.4s ease;
         }
         .logo-img:hover { transform: scale(1.04); }
@@ -141,7 +141,7 @@
         
         /* APP ACCESS & QR BAR */
         .app-access-bar {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(5, 5, 5, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.06) 0%, rgba(5, 5, 5, 0.95) 100%);
             border: 1px solid var(--antique-gold-border);
             border-radius: 12px;
             padding: 2rem;
@@ -208,7 +208,7 @@
         .app-btn:hover {
             background: var(--champagne-gold);
             color: var(--obsidian);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
         }
 
         .section-heading {
@@ -283,7 +283,7 @@
         }
         .choice-card {
             background: rgba(5, 5, 5, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(197, 160, 89, 0.15);
             border-radius: 8px;
             padding: 1.5rem;
             display: flex;
@@ -294,7 +294,7 @@
         .choice-card:hover {
             border-color: var(--champagne-gold);
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.15);
         }
         .choice-card h3 {
             font-family: 'Playfair Display', serif;
@@ -322,7 +322,7 @@
         .executive-input:focus, .executive-select:focus {
             outline: none;
             border-color: var(--champagne-gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.25);
         }
         .executive-select option {
             background: var(--obsidian);
@@ -349,7 +349,7 @@
         .cinematic-button:hover {
             background: var(--champagne-gold);
             color: var(--obsidian);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
         }
 
         /* LIVE REPORT TERMINAL OUTPUT BOX */
@@ -367,7 +367,7 @@
             overflow-y: auto;
             white-space: pre-wrap;
             display: none;
-            box-shadow: inset 0 0 25px rgba(212, 175, 55, 0.15);
+            box-shadow: inset 0 0 20px rgba(197, 160, 89, 0.1);
         }
 
         /* FEATURES GRID */
@@ -388,7 +388,7 @@
             border-color: var(--champagne-gold);
             background: rgba(12, 12, 12, 0.95);
             transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.15);
         }
         .feature-card h3 {
             font-family: 'Playfair Display', serif;
@@ -406,15 +406,15 @@
             border-radius: 16px;
             padding: 3rem 2rem;
             margin-top: 1.5rem;
-            box-shadow: inset 0 0 80px rgba(212,175,55,0.2), 0 25px 50px rgba(0,0,0,0.95);
+            box-shadow: inset 0 0 70px rgba(197,160,89,0.15), 0 25px 50px rgba(0,0,0,0.95);
             overflow: hidden;
         }
         .svg-world-map {
             width: 100%;
             max-width: 950px;
             height: auto;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.6));
+            opacity: 0.65;
+            filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.4));
             margin: 0 auto 2.5rem auto;
             display: block;
         }
@@ -437,9 +437,9 @@
         }
         .map-hotspot-card:hover {
             border-color: var(--champagne-gold);
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.35);
             transform: translateY(-4px);
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(197, 160, 89, 0.08);
         }
         .map-hotspot-card h4 {
             font-family: 'Playfair Display', serif;
@@ -461,13 +461,13 @@
             background-color: var(--champagne-gold);
             border-radius: 50%;
             display: inline-block;
-            box-shadow: 0 0 15px var(--champagne-gold);
+            box-shadow: 0 0 12px var(--champagne-gold);
             animation: pulse-glow 2s infinite;
         }
         @keyframes pulse-glow {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.85); }
-            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(197, 160, 89, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
         }
 
         /* TIERS & PRICING */
@@ -484,12 +484,12 @@
             padding: 2.5rem;
             transition: all 0.3s ease;
         }
-        .tier-card:hover { transform: translateY(-5px); border-color: var(--champagne-gold); box-shadow: 0 0 30px rgba(212,175,55,0.25); }
+        .tier-card:hover { transform: translateY(-5px); border-color: var(--champagne-gold); box-shadow: 0 0 25px rgba(197,160,89,0.2); }
         .tier-card.featured {
             border-color: var(--champagne-gold);
-            box-shadow: 0 0 40px rgba(212,175,55,0.2);
+            box-shadow: 0 0 35px rgba(197,160,89,0.15);
             transform: scale(1.02);
-            background: rgba(20, 16, 4, 0.9);
+            background: rgba(18, 15, 4, 0.9);
         }
         .tier-name {
             font-family: 'Playfair Display', serif;
@@ -512,8 +512,8 @@
             display: block;
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(90deg, var(--champagne-gold), #B8860B);
-            color: var(--obsidian);
+            background: linear-gradient(90deg, #C5A059, #9C7A35);
+            color: #000000;
             font-weight: 700;
             border-radius: 10px;
             text-align: center;
@@ -525,7 +525,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .cta-btn:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(212,175,55,0.5); }
+        .cta-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(197,160,89,0.4); }
         .cta-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
         /* MODAL */
@@ -546,7 +546,7 @@
             padding: 2.5rem;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
             text-align: center;
         }
         .modal-card h3 {
@@ -557,8 +557,8 @@
         }
         .modal-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6; white-space: pre-line; }
         .close-modal-btn {
-            background: var(--champagne-gold);
-            color: var(--obsidian);
+            background: linear-gradient(90deg, #C5A059, #9C7A35);
+            color: #000000;
             font-weight: 700;
             border: none;
             padding: 10px 25px;
@@ -635,9 +635,9 @@
             <p class="section-desc">Real-time international sentiment and capital telemetry built on Chase Hughes human intelligence principles. Track market velocity, behavioral triggers, and precision entry/exit signals across sovereign territories.</p>
             
             <div class="world-map-container">
-                <!-- Working Glowing Antique Gold Wireframe World Map SVG -->
+                <!-- Glowing Antique Champagne Gold Wireframe World Map SVG -->
                 <svg class="svg-world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+                    <g fill="none" stroke="#C5A059" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
                         <!-- North America -->
                         <path d="M150,80 Q180,70 210,90 Q240,110 260,140 Q230,170 200,160 Q170,140 150,120 Z" />
                         <path d="M210,160 Q230,180 220,210 Q200,230 180,210 Q190,180 210,160 Z" />
@@ -655,12 +655,12 @@
                         <path d="M780,320 Q840,310 860,370 Q820,410 760,380 Q770,340 780,320 Z" />
                     </g>
                     <!-- Glowing Connection Nodes / Behavioral Telemetry Links -->
-                    <circle cx="450" cy="115" r="6" fill="#D4AF37" />
-                    <circle cx="505" cy="105" r="6" fill="#D4AF37" />
-                    <circle cx="210" cy="120" r="6" fill="#D4AF37" />
-                    <circle cx="720" cy="140" r="6" fill="#D4AF37" />
-                    <line x1="450" y1="115" x2="505" y2="105" stroke="#D4AF37" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
-                    <line x1="450" y1="115" x2="210" y2="120" stroke="#D4AF37" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                    <circle cx="450" cy="115" r="6" fill="#C5A059" />
+                    <circle cx="505" cy="105" r="6" fill="#C5A059" />
+                    <circle cx="210" cy="120" r="6" fill="#C5A059" />
+                    <circle cx="720" cy="140" r="6" fill="#C5A059" />
+                    <line x1="450" y1="115" x2="505" y2="105" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                    <line x1="450" y1="115" x2="210" y2="120" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
                 </svg>
 
                 <div class="global-grid-display">
@@ -883,16 +883,10 @@
 
     <script>
         // ==========================================
-        // CONFIGURATION & INITIALIZATION
+        // CONFIGURATION & LIVE STRIPE CHECKOUT LINKS
         // ==========================================
         const PUBLISHABLE_KEY = 'pk_test_YOUR_KEY_HERE';
         
-        const PRICES = {
-            founder: 'price_FOUNDER_ID_HERE',
-            builder: 'price_BUILDER_ID_HERE',
-            master:  'price_MASTER_ID_HERE'
-        };
-
         const STRIPE_LINKS = {
             founder: 'https://buy.stripe.com/REPLACE_WITH_FOUNDER_LINK',
             builder: 'https://buy.stripe.com/REPLACE_WITH_BUILDER_LINK',
