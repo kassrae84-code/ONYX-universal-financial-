@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONYX ONE Universal Financial Solutions</title>
+    <!-- Imported Google Fonts matching your exact original aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -12,12 +14,14 @@
             --onyx-charcoal: #141414;
             --champagne-gold: #E5C58E;
             --antique-gold: #C5A059;
+            --primary-font: 'Cinzel', serif;
+            --body-font: 'Montserrat', sans-serif;
             --gold-glow: 0 0 30px rgba(229, 197, 142, 0.4);
         }
         body {
             background-color: var(--onyx-black);
-            color: #E5E5E5;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #FFFFFF;
+            font-family: var(--body-font);
         }
         .gold-text { color: var(--champagne-gold); }
         .antique-gold-text { color: var(--antique-gold); }
@@ -27,7 +31,15 @@
         .card-bg { background-color: var(--onyx-charcoal); border: 1px solid rgba(197, 160, 89, 0.35); }
         .input-field { background-color: black; border: 1px solid var(--antique-gold); color: white; }
         
-        /* Normal, clean QR container styling */
+        .brand-title {
+            font-family: var(--primary-font);
+            background: linear-gradient(90deg, #E5C58E, #C5A059);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
         .qr-box {
             background: #FFFFFF;
             border: 2px solid var(--antique-gold);
@@ -84,36 +96,31 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- Header Section: Massive Graphic Logo First, ONYX ONE, Universal Financial Solutions, and Different Side QR Codes -->
+    <!-- Header Section: Your Exact Logo Graphic First, Exact Fonts, Side QR Codes -->
     <header class="w-full py-10 px-8 card-bg border-b border-opacity-30 gold-border flex flex-col items-center text-center relative">
         
         <!-- Left Side QR Code: Save to Device -->
         <div class="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center">
             <div id="qr-save" class="qr-box"></div>
-            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold">Save App</span>
+            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold" style="font-family: var(--body-font);">Save App</span>
         </div>
 
         <!-- Right Side QR Code: Share Different Link -->
         <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center">
             <div id="qr-share" class="qr-box"></div>
-            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold">Share Link</span>
+            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold" style="font-family: var(--body-font);">Share Link</span>
         </div>
 
-        <!-- Massive Transparent Shield & Arrow Graphic (Inline SVG with Zero Background Box) -->
+        <!-- Your Authentic Logo Graphic (Loads logo.png seamlessly with zero background boxes) -->
         <div class="w-36 h-36 flex items-center justify-center bg-transparent mb-4">
-            <svg viewBox="0 0 100 100" class="w-32 h-32" style="filter: drop-shadow(0 0 20px rgba(229,197,142,0.5));">
-                <path d="M50 5 L85 20 V50 C85 72 68 88 50 95 C32 88 15 72 15 50 V20 Z" fill="none" stroke="#E5C58E" stroke-width="3.5" stroke-linejoin="round"/>
-                <path d="M50 12 L78 24 V48 C78 66 63 80 50 86 C37 80 22 66 22 48 V24 Z" fill="rgba(197,160,89,0.1)" stroke="#C5A059" stroke-width="1.5" stroke-linejoin="round"/>
-                <line x1="28" y1="38" x2="72" y2="62" stroke="#E5C58E" stroke-width="4.5" stroke-linecap="round"/>
-                <polyline points="58,62 72,62 72,48" fill="none" stroke="#E5C58E" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img src="logo.png" alt="ONYX ONE Shield & Arrow Logo" class="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(229,197,142,0.45)]">
         </div>
 
-        <!-- ONYX ONE Capital Letters -->
-        <h1 class="text-3xl md:text-5xl font-bold tracking-[0.3em] gold-text uppercase">ONYX ONE</h1>
+        <!-- ONYX ONE Capital Letters in Exact Original Font -->
+        <h1 class="text-3xl md:text-5xl font-bold brand-title uppercase">ONYX ONE</h1>
 
         <!-- Universal Financial Solutions Underneath -->
-        <p class="text-xs md:text-sm text-gray-400 tracking-[0.35em] uppercase mt-2">Universal Financial Solutions</p>
+        <p class="text-xs md:text-sm text-gray-400 tracking-[0.35em] uppercase mt-2" style="font-family: var(--body-font);">Universal Financial Solutions</p>
 
         <!-- Mobile QR Row -->
         <div class="flex lg:hidden justify-center gap-8 mt-6 w-full">
@@ -131,12 +138,12 @@
     <!-- Main Content Area -->
     <main class="flex-grow max-w-6xl w-full mx-auto p-6 md:p-10 space-y-10">
         
-        <!-- Massive Immersive Glowing Network Web Showcase (Front Page Selling Point) -->
+        <!-- Massive Immersive Glowing Network Web Showcase -->
         <section class="card-bg rounded-2xl p-6 md:p-8 shadow-2xl relative">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
                     <span class="text-[10px] uppercase tracking-[0.3em] gold-text font-bold block mb-1">Interactive Architecture Preview</span>
-                    <h2 class="text-2xl font-bold tracking-wider text-white uppercase">Global Financial Intelligence Web</h2>
+                    <h2 class="text-2xl font-bold tracking-wider text-white uppercase" style="font-family: var(--primary-font);">Global Financial Intelligence Web</h2>
                     <p class="text-xs text-gray-400 mt-1">Explore live structural examples of node-to-node routing. Full interactive deployment unlocks upon client activation.</p>
                 </div>
                 <div class="px-4 py-2 rounded-lg bg-black border gold-border text-xs gold-text uppercase tracking-widest shadow-inner">
@@ -170,7 +177,7 @@
         <!-- Transaction Portal & Status Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 card-bg rounded-xl p-8 shadow-2xl">
-                <h3 class="text-xl font-semibold mb-2 gold-text tracking-wide uppercase text-xs">Transaction Portal</h3>
+                <h3 class="text-xl font-semibold mb-2 gold-text tracking-wide uppercase text-xs" style="font-family: var(--primary-font);">Transaction Portal</h3>
                 <p class="text-gray-400 text-sm mb-6">Securely log and manage financial records into your ONYX ONE backend.</p>
                 
                 <form id="transaction-form" class="space-y-6">
@@ -238,7 +245,6 @@
         let holdTimer;
         const HOLD_DURATION = 2000;
 
-        // Dual QR Codes with different targets (Save URL vs Share Action)
         const currentUrl = window.location.href;
         const saveConfig = {
             text: currentUrl,
@@ -257,11 +263,8 @@
             correctLevel: QRCode.CorrectLevel.H
         };
 
-        // Desktop QR codes
         new QRCode(document.getElementById("qr-save"), saveConfig);
         new QRCode(document.getElementById("qr-share"), shareConfig);
-
-        // Mobile QR codes
         new QRCode(document.getElementById("qr-save-mobile"), saveConfig);
         new QRCode(document.getElementById("qr-share-mobile"), shareConfig);
 
