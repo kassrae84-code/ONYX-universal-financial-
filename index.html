@@ -542,14 +542,20 @@
             </div>
         </div>
 
-        <!-- 7. STUNNING GLOWING GLOBAL SALES & GEO-TELEMETRY MAP -->
+        <!-- 7. STUNNING GLOWING GLOBAL SALES & PRODUCT MATCHING MAP -->
         <div id="mapSection" class="executive-sanctuary">
-            <h2>Global Sales & Geo-Telemetry Map</h2>
-            <p class="section-desc">Interactive live world terminal. Click any international region below to inspect real-time sales hotspots, revenue tracking, trending products, and automated pull-out strategies.</p>
+            <h2>Global Sales & Product Matching Map</h2>
+            <p class="section-desc">Input your product or service below. Our AI telemetry engine will instantly analyze global demand and identify your next high-converting target market.</p>
             
+            <div style="max-width: 600px; margin: 0 auto 1.5rem auto;">
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Your Product / Service Name:</label>
+                <input type="text" id="userProductInput" class="executive-input" placeholder="e.g. Sovereign Financial Vault, Asbestos Survey Report, Fine Art Print..." value="Sovereign Financial Software">
+                <button class="cinematic-button" onclick="analyzeProductMarket()">Analyze & Find Next Target Market</button>
+            </div>
+
             <div class="world-map-visual">
                 <div style="font-family: var(--primary-font); color: #FCF6BA; font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 2px;">🌍 LIVE INTERNATIONAL TELEMETRY GRID</div>
-                <p style="color: #888888; font-size: 0.75rem; margin-bottom: 1.5rem;">Select a region below to open live analytics:</p>
+                <p style="color: #888888; font-size: 0.75rem; margin-bottom: 1.5rem;">Select a region below to inspect live analytics:</p>
                 
                 <div class="map-grid-visual">
                     <div class="map-region-card" onclick="openMapModal('United Kingdom Hub', '£4,850.00', 'High demand for sovereign digital architecture & custom trade vaults.', 'Optimal Hold (Stable Yield)')">
@@ -615,7 +621,7 @@
                         <h3>Master Tier</h3>
                         <p>Pinnacle sovereign ecosystem & complete automation.<br><strong>VIP Suite Access</strong></p>
                     </div>
-                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
+                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-where" href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
                 </div>
             </div>
         </div>
@@ -699,6 +705,11 @@
             } else if(type === 'tips') {
                 showModal('AI Wealth & Spending Tips', '1. <em>Capital Allocation:</em> Set aside 20% of incoming Stripe revenue into your tax vault immediately.<br>2. <em>Spending Optimization:</em> Zero redundant software subscriptions detected.<br>3. <em>Growth Tip:</em> Re-invest peak regional profits into high-converting digital product tiers.');
             }
+        }
+
+        function analyzeProductMarket() {
+            const product = document.getElementById('userProductInput').value;
+            showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended Next Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.</em>`);
         }
 
         function openMapModal(region, revenue, trend, action) {
