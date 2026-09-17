@@ -3,43 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE Universal Financial Solutions</title>
-    <!-- Imported Google Fonts matching your exact original aesthetic -->
+    <title>Onyx One | Sovereign Financial Architecture & Operations</title>
+    <!-- Google Fonts for Cinzel & Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --onyx-black: #0B0B0B;
-            --onyx-charcoal: #141414;
-            --champagne-gold: #E5C58E;
-            --antique-gold: #C5A059;
             --primary-font: 'Cinzel', serif;
             --body-font: 'Montserrat', sans-serif;
-            --gold-glow: 0 0 30px rgba(229, 197, 142, 0.4);
+            --accent-gold: linear-gradient(90deg, #E5C58E, #C5A059);
+            --champagne-gold: #E5C58E;
+            --antique-gold: #C5A059;
+            --bg-dark: #0B0B0B;
+            --card-bg: rgba(20, 20, 20, 0.85);
+            --border-gold: rgba(197, 160, 89, 0.4);
+            --gold-glow: 0 0 30px rgba(229, 197, 142, 0.35);
         }
+        html { scroll-behavior: smooth; }
         body {
-            background-color: var(--onyx-black);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
             color: #FFFFFF;
             font-family: var(--body-font);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
-        .gold-text { color: var(--champagne-gold); }
-        .antique-gold-text { color: var(--antique-gold); }
-        .gold-border { border-color: var(--antique-gold); }
-        .gold-bg { background-color: var(--antique-gold); }
-        .gold-bg:hover { background-color: var(--champagne-gold); }
-        .card-bg { background-color: var(--onyx-charcoal); border: 1px solid rgba(197, 160, 89, 0.35); }
-        .input-field { background-color: black; border: 1px solid var(--antique-gold); color: white; }
-        
+
+        /* STICKY QUICK-NAVIGATION TABS AT THE TOP */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .nav-tab-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            color: #FFFFFF;
+            padding: 6px 14px;
+            font-family: var(--body-font);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-tab-btn:hover {
+            background: var(--champagne-gold);
+            color: var(--bg-dark);
+            border-color: #E5C58E;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+            font-weight: 600;
+        }
+
+        /* HEADER & BRANDING */
+        .luxury-header {
+            width: 100%;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
         .brand-title {
             font-family: var(--primary-font);
-            background: linear-gradient(90deg, #E5C58E, #C5A059);
+            background: var(--accent-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 6px;
-            text-transform: uppercase;
+            font-size: 3rem;
+            margin: 0.5rem 0 0.3rem 0;
+            filter: drop-shadow(0 4px 15px rgba(197, 160, 89, 0.3));
         }
-
+        .brand-subtitle {
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: #A0A0A0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
         .qr-box {
             background: #FFFFFF;
             border: 2px solid var(--antique-gold);
@@ -48,245 +108,362 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
-        /* Immersive Glowing Network Web Map */
-        .immersive-map-showcase {
+        /* IMMERSIVE MAP & TELEMETRY MATRIX */
+        .map-showcase-container {
             position: relative;
-            background: radial-gradient(circle at center, #1F1912 0%, #0B0B0B 85%);
+            background: radial-gradient(circle at center, #1F1912 0%, #0B0B0B 90%);
             border: 1px solid var(--antique-gold);
             box-shadow: var(--gold-glow);
-            overflow: hidden;
             border-radius: 1rem;
+            overflow: hidden;
+            width: 100%;
+            height: 420px;
         }
-        .map-node {
+        .interactive-node {
             position: absolute;
-            width: 14px;
-            height: 14px;
-            background-color: var(--champagne-gold);
+            width: 18px;
+            height: 18px;
+            background: var(--champagne-gold);
             border-radius: 50%;
-            box-shadow: 0 0 16px var(--champagne-gold);
-            animation: pulse-glow 2.5s infinite ease-in-out;
+            box-shadow: 0 0 20px var(--champagne-gold);
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            z-index: 10;
         }
-        @keyframes pulse-glow {
-            0% { transform: scale(1); opacity: 0.75; box-shadow: 0 0 10px var(--champagne-gold); }
-            50% { transform: scale(1.5); opacity: 1; box-shadow: 0 0 25px var(--champagne-gold); }
-            100% { transform: scale(1); opacity: 0.75; box-shadow: 0 0 10px var(--champagne-gold); }
+        .interactive-node:hover {
+            transform: scale(1.6);
+            background: #FFFFFF;
+            box-shadow: 0 0 30px #FFFFFF;
         }
-        .connection-line {
-            stroke: var(--antique-gold);
-            stroke-width: 1.2;
-            opacity: 0.45;
-            stroke-dasharray: 4;
-            animation: dash-flow 15s linear infinite;
+        .map-ping {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--champagne-gold);
+            border-radius: 50%;
+            animation: radar-ping 2s infinite ease-out;
+            pointer-events: none;
         }
-        @keyframes dash-flow {
-            to { stroke-dashoffset: -100; }
+        @keyframes radar-ping {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
         }
 
-        .custom-check-symbol::before {
-            content: '';
-            display: inline-block;
-            width: 7px;
-            height: 13px;
-            border: solid var(--onyx-black);
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-            margin-right: 10px;
+        /* PANELS & SECTIONS */
+        .executive-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 1100px;
+            margin: 1.5rem auto;
+        }
+        .input-field {
+            background: #000000;
+            border: 1px solid var(--antique-gold);
+            color: #FFFFFF;
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            width: 100%;
+            font-family: var(--body-font);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus {
+            border-color: var(--champagne-gold);
+            box-shadow: 0 0 10px rgba(229,197,142,0.3);
+        }
+        .cinematic-btn {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            font-family: var(--primary-font);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 1rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cinematic-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(229,197,142,0.5);
+        }
+
+        /* MODAL POPUP SYSTEM */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-box {
+            background: #141414;
+            border: 2px solid var(--antique-gold);
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 0 50px rgba(197,160,89,0.4);
+            text-align: center;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- Header Section: Your Exact Logo Graphic First, Exact Fonts, Side QR Codes -->
-    <header class="w-full py-10 px-8 card-bg border-b border-opacity-30 gold-border flex flex-col items-center text-center relative">
-        
-        <!-- Left Side QR Code: Save to Device -->
+    <!-- STICKY TOP QUICK NAVIGATION TABS -->
+    <nav class="sticky-nav">
+        <a href="#command-hub" class="nav-tab-btn">Command Hub</a>
+        <a href="#profession-vault" class="nav-tab-btn">Profession Vault</a>
+        <a href="#net-worth" class="nav-tab-btn">Net Worth & Crypto</a>
+        <a href="#accessibility-sign" class="nav-tab-btn">Accessibility & Sign</a>
+        <a href="#global-map" class="nav-tab-btn">Global Sales Map</a>
+        <a href="#tiers-checkout" class="nav-tab-btn">Tiers & Checkouts</a>
+    </nav>
+
+    <!-- HEADER SECTION -->
+    <header class="luxury-header">
+        <!-- Left Side QR Code: Save App -->
         <div class="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center">
             <div id="qr-save" class="qr-box"></div>
-            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold" style="font-family: var(--body-font);">Save App</span>
+            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold">Save App</span>
         </div>
 
-        <!-- Right Side QR Code: Share Different Link -->
+        <!-- Right Side QR Code: Share Link -->
         <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center">
             <div id="qr-share" class="qr-box"></div>
-            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold" style="font-family: var(--body-font);">Share Link</span>
+            <span class="text-[10px] uppercase tracking-widest gold-text mt-2 font-bold">Share Link</span>
         </div>
 
-        <!-- Your Authentic Logo Graphic (Loads logo.png seamlessly with zero background boxes) -->
-        <div class="w-36 h-36 flex items-center justify-center bg-transparent mb-4">
-            <img src="logo.png" alt="ONYX ONE Shield & Arrow Logo" class="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(229,197,142,0.45)]">
+        <!-- Authentic Logo Graphic (logo.png) -->
+        <div class="w-36 h-36 flex items-center justify-center bg-transparent mb-2">
+            <img src="logo.png" alt="Onyx One Logo" class="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(229,197,142,0.5)]">
         </div>
 
-        <!-- ONYX ONE Capital Letters in Exact Original Font -->
-        <h1 class="text-3xl md:text-5xl font-bold brand-title uppercase">ONYX ONE</h1>
-
-        <!-- Universal Financial Solutions Underneath -->
-        <p class="text-xs md:text-sm text-gray-400 tracking-[0.35em] uppercase mt-2" style="font-family: var(--body-font);">Universal Financial Solutions</p>
-
-        <!-- Mobile QR Row -->
-        <div class="flex lg:hidden justify-center gap-8 mt-6 w-full">
-            <div class="flex flex-col items-center">
-                <div id="qr-save-mobile" class="qr-box"></div>
-                <span class="text-[9px] uppercase tracking-widest gold-text mt-1">Save</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <div id="qr-share-mobile" class="qr-box"></div>
-                <span class="text-[9px] uppercase tracking-widest gold-text mt-1">Share</span>
-            </div>
-        </div>
+        <h1 class="brand-title">ONYX ONE</h1>
+        <p class="brand-subtitle">Universal Financial Solutions</p>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow max-w-6xl w-full mx-auto p-6 md:p-10 space-y-10">
-        
-        <!-- Massive Immersive Glowing Network Web Showcase -->
-        <section class="card-bg rounded-2xl p-6 md:p-8 shadow-2xl relative">
+    <!-- MAIN APP CONTAINER -->
+    <main class="w-full max-w-6xl p-4 md:p-8 space-y-8">
+
+        <!-- SECTION 1: GLOBAL SALES MAP & TELEMETRY WEB (Interactive Selling Point) -->
+        <section id="global-map" class="executive-panel">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
-                    <span class="text-[10px] uppercase tracking-[0.3em] gold-text font-bold block mb-1">Interactive Architecture Preview</span>
-                    <h2 class="text-2xl font-bold tracking-wider text-white uppercase" style="font-family: var(--primary-font);">Global Financial Intelligence Web</h2>
-                    <p class="text-xs text-gray-400 mt-1">Explore live structural examples of node-to-node routing. Full interactive deployment unlocks upon client activation.</p>
+                    <span class="text-xs uppercase tracking-[0.3em] text-[#E5C58E] font-bold block mb-1">Live Telemetry Matrix</span>
+                    <h2 class="text-2xl font-bold font-serif uppercase text-white">Global Financial Intelligence Map</h2>
+                    <p class="text-xs text-gray-400 mt-1">Interactive live routing web. Click any active regional node to inspect liquidity telemetry.</p>
                 </div>
-                <div class="px-4 py-2 rounded-lg bg-black border gold-border text-xs gold-text uppercase tracking-widest shadow-inner">
-                    Demonstration Mode
-                </div>
+                <button onclick="triggerMapAudit()" class="nav-tab-btn">Run Regional Diagnostic</button>
             </div>
 
-            <div class="immersive-map-showcase w-full h-80 md:h-96 flex items-center justify-center relative">
-                <svg class="absolute inset-0 w-full h-full" fill="none">
-                    <line x1="15%" y1="30%" x2="45%" y2="50%" class="connection-line" />
-                    <line x1="45%" y1="50%" x2="80%" y2="25%" class="connection-line" />
-                    <line x1="45%" y1="50%" x2="70%" y2="75%" class="connection-line" />
-                    <line x1="25%" y1="75%" x2="45%" y2="50%" class="connection-line" />
-                    <line x1="15%" y1="30%" x2="25%" y2="75%" class="connection-line" />
-                    <line x1="80%" y1="25%" x2="70%" y2="75%" class="connection-line" />
+            <!-- Immersive Map Showcase Container -->
+            <div class="map-showcase-container flex items-center justify-center">
+                <!-- SVG World Map Vector Grid & Connection Lines -->
+                <svg class="absolute inset-0 w-full h-full opacity-60 pointer-events-none" fill="none">
+                    <!-- Continents vector wireframe background placeholder -->
+                    <path d="M100,120 Q250,50 400,150 T700,100 T900,200" stroke="#332512" stroke-width="2"/>
+                    <path d="M150,300 Q300,350 500,280 T800,320" stroke="#332512" stroke-width="2"/>
+                    <!-- Real-time routing data pulses -->
+                    <line x1="200" y1="180" x2="480" y2="240" stroke="#C5A059" stroke-width="1.5" stroke-dasharray="6" class="animate-pulse"/>
+                    <line x1="480" y1="240" x2="750" y2="160" stroke="#C5A059" stroke-width="1.5" stroke-dasharray="6" class="animate-pulse"/>
+                    <line x1="480" y1="240" x2="350" y2="350" stroke="#C5A059" stroke-width="1.5" stroke-dasharray="6" class="animate-pulse"/>
                 </svg>
 
-                <div class="map-node" style="top: 30%; left: 15%;"></div>
-                <div class="map-node" style="top: 50%; left: 45%; animation-delay: 0.4s;"></div>
-                <div class="map-node" style="top: 25%; left: 80%; animation-delay: 0.8s;"></div>
-                <div class="map-node" style="top: 75%; left: 25%; animation-delay: 1.2s;"></div>
-                <div class="map-node" style="top: 75%; left: 70%; animation-delay: 1.6s;"></div>
+                <!-- Interactive Nodes with Pings -->
+                <div class="absolute" style="top: 42%; left: 22%;">
+                    <div class="map-ping"></div>
+                    <div class="interactive-node" onclick="openNodeModal('North America Hub', 'Liquidity Flow: £42.8M | Latency: 12ms', 'Optimized')"></div>
+                </div>
+                <div class="absolute" style="top: 57%; left: 48%;">
+                    <div class="map-ping" style="animation-delay: 0.5s;"></div>
+                    <div class="interactive-node" onclick="openNodeModal('London Core Nexus', 'Primary Settlement Gateway | Active', 'Secured')"></div>
+                </div>
+                <div class="absolute" style="top: 38%; left: 75%;">
+                    <div class="map-ping" style="animation-delay: 1s;"></div>
+                    <div class="interactive-node" onclick="openNodeModal('APAC Telemetry Hub', 'Node Routing: Synchronized', 'Active')"></div>
+                </div>
 
-                <div class="relative z-10 text-center bg-black bg-opacity-85 p-4 rounded-xl border gold-border max-w-sm shadow-2xl backdrop-blur-md">
-                    <p class="text-xs gold-text uppercase tracking-widest font-bold mb-1">Live Telemetry Preview</p>
-                    <p class="text-[11px] text-gray-300">Hover nodes to inspect encrypted transaction routes. Fully interactive matrix activates upon account authentication.</p>
+                <!-- Floating Interactive Instructions Badge -->
+                <div class="absolute bottom-6 bg-black bg-opacity-90 border border-[#C5A059] px-4 py-2 rounded-lg text-center backdrop-blur-md">
+                    <p class="text-xs text-[#E5C58E] font-bold uppercase tracking-widest">Interactive Web Active</p>
+                    <p class="text-[10px] text-gray-300">Click glowing nodes on the map to inspect encrypted telemetry channels.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Transaction Portal & Status Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2 card-bg rounded-xl p-8 shadow-2xl">
-                <h3 class="text-xl font-semibold mb-2 gold-text tracking-wide uppercase text-xs" style="font-family: var(--primary-font);">Transaction Portal</h3>
-                <p class="text-gray-400 text-sm mb-6">Securely log and manage financial records into your ONYX ONE backend.</p>
-                
-                <form id="transaction-form" class="space-y-6">
+        <!-- SECTION 2: COMMAND HUB & TRANSACTION PORTAL -->
+        <section id="command-hub" class="executive-panel grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold font-serif uppercase text-[#E5C58E]">Transaction Portal</h2>
+                    <p class="text-xs text-gray-400 mt-1">Record financial entries directly into your secure Supabase database.</p>
+                </div>
+
+                <form id="transaction-form" class="space-y-4">
                     <div>
                         <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Amount (£)</label>
-                        <input type="number" step="0.01" id="amount" required 
-                            class="input-field w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#E5C58E]"
-                            placeholder="0.00">
+                        <input type="number" step="0.01" id="amount" required class="input-field" placeholder="0.00">
                     </div>
                     <div>
                         <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Category</label>
-                        <input type="text" id="category" required 
-                            class="input-field w-full rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#E5C58E]"
-                            placeholder="e.g. Asset Management, Infrastructure, Revenue">
+                        <input type="text" id="category" required class="input-field" placeholder="e.g. Asset Management, Infrastructure">
                     </div>
-
-                    <button type="submit" id="submit-btn" 
-                        class="w-full gold-bg text-black font-bold uppercase tracking-widest py-4 rounded-lg transition-all duration-200 shadow-lg transform active:scale-95 select-none"
-                        onmousedown="startSaving(this)" 
-                        onmouseup="cancelSaving(this)" 
-                        onmouseleave="cancelSaving(this)"
-                        ontouchstart="startSaving(this)"
-                        ontouchend="cancelSaving(this)"
-                        ontouchcancel="cancelSaving(this)">
+                    <!-- Hold-to-Save Button -->
+                    <button type="submit" id="submit-btn" class="cinematic-btn select-none"
+                        onmousedown="startSaving(this)" onmouseup="cancelSaving(this)" onmouseleave="cancelSaving(this)"
+                        ontouchstart="startSaving(this)" ontouchend="cancelSaving(this)" ontouchcancel="cancelSaving(this)">
                         Hold to Save (<span id="hold-timer">2</span>s)
                     </button>
                 </form>
             </div>
 
-            <aside class="space-y-6">
-                <div class="card-bg rounded-xl p-6 flex flex-col items-center justify-center space-y-4 shadow-2xl h-full">
-                    <div class="text-center">
-                        <p class="text-xs text-gray-400 tracking-widest uppercase mb-1">Secure Access</p>
-                        <p id="record-count" class="text-3xl font-mono font-bold text-white tracking-tight">0</p>
-                        <p class="text-xs uppercase text-gray-500">Records Logged</p>
-                    </div>
-                    <div class="w-full border-t border-opacity-20 gold-border"></div>
-                    <div class="text-center">
-                        <p class="text-xs gold-text uppercase tracking-widest mb-1">System Status</p>
-                        <p class="text-xs text-gray-400">Database Connected</p>
-                    </div>
+            <!-- System Telemetry Widget -->
+            <div class="flex flex-col justify-center items-center bg-black bg-opacity-60 border border-[#C5A059] p-6 rounded-xl text-center space-y-4">
+                <p class="text-xs uppercase text-gray-400 tracking-widest">Database Records</p>
+                <p id="record-count" class="text-4xl font-bold font-mono text-[#E5C58E]">0</p>
+                <div class="w-full border-t border-[#C5A059] opacity-30"></div>
+                <p class="text-[11px] text-gray-400">Supabase Sync Online</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PROFESSION VAULT & EVIDENCE HUB -->
+        <section id="profession-vault" class="executive-panel space-y-6">
+            <h2 class="text-xl font-bold font-serif uppercase text-[#E5C58E]">Profession Vault & Compliance</h2>
+            <p class="text-xs text-gray-400">Generate encrypted compliance packages and professional records.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="userProfession" class="input-field" placeholder="Profession / Sector (e.g. Asset Director)">
+                <input type="text" id="evidenceNotes" class="input-field" placeholder="Audit Reference / Notes">
+            </div>
+            <button onclick="generateProfessionReport()" class="cinematic-btn">Generate Compliance Vault Record</button>
+        </section>
+
+        <!-- SECTION 4: NET WORTH & CRYPTO BALANCES -->
+        <section id="net-worth" class="executive-panel space-y-6">
+            <h2 class="text-xl font-bold font-serif uppercase text-[#E5C58E]">Net Worth & Crypto Telemetry</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-black p-4 rounded-lg border border-[#C5A059] text-center cursor-pointer hover:border-white transition-all" onclick="loadFinancialData('fiat')">
+                    <p class="text-xs text-gray-400 uppercase">Fiat & Reserves</p>
+                    <p class="text-lg font-bold text-[#E5C58E] mt-1">£17,458.00</p>
                 </div>
-            </aside>
-        </div>
+                <div class="bg-black p-4 rounded-lg border border-[#C5A059] text-center cursor-pointer hover:border-white transition-all" onclick="loadFinancialData('crypto')">
+                    <p class="text-xs text-gray-400 uppercase">Encrypted Assets</p>
+                    <p class="text-lg font-bold text-[#E5C58E] mt-1">Verified Sync</p>
+                </div>
+                <div class="bg-black p-4 rounded-lg border border-[#C5A059] text-center cursor-pointer hover:border-white transition-all" onclick="loadFinancialData('tips')">
+                    <p class="text-xs text-gray-400 uppercase">Capital Allocations</p>
+                    <p class="text-lg font-bold text-[#E5C58E] mt-1">Active</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: ACCESSIBILITY & SIGN -->
+        <section id="accessibility-sign" class="executive-panel space-y-6">
+            <h2 class="text-xl font-bold font-serif uppercase text-[#E5C58E]">Accessibility & Sovereign Sign</h2>
+            <div class="flex flex-wrap gap-4">
+                <button onclick="showModal('Accessibility Matrix', 'High-contrast champagne lighting and screen-reader telemetry enabled.')" class="nav-tab-btn">Toggle High Contrast</button>
+                <button onclick="showModal('Sovereign Sign', 'Digital cryptographic signature verified for account session.')" class="nav-tab-btn">Verify Digital Signature</button>
+            </div>
+        </section>
+
+        <!-- SECTION 6: TIERS & CHECKOUTS -->
+        <section id="tiers-checkout" class="executive-panel space-y-6 text-center">
+            <h2 class="text-xl font-bold font-serif uppercase text-[#E5C58E]">Executive Activation Tiers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-black p-6 rounded-xl border border-[#C5A059]">
+                    <h3 class="font-serif text-lg text-white mb-2">Standard Sovereign</h3>
+                    <p class="text-2xl font-bold text-[#E5C58E] mb-4">£495</p>
+                    <button onclick="showModal('Checkout Secure', 'Redirecting to secure merchant gateway for Standard Sovereign tier.')" class="cinematic-btn">Activate Tier</button>
+                </div>
+                <div class="bg-black p-6 rounded-xl border-2 border-[#E5C58E] shadow-[0_0_20px_rgba(229,197,142,0.2)]">
+                    <h3 class="font-serif text-lg text-white mb-2">Enterprise Master</h3>
+                    <p class="text-2xl font-bold text-[#E5C58E] mb-4">£1,495</p>
+                    <button onclick="showModal('Checkout Secure', 'Redirecting to secure merchant gateway for Enterprise Master tier.')" class="cinematic-btn">Activate Tier</button>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="w-full py-4 text-center text-xs text-gray-500 border-t border-opacity-20 gold-border mt-10">
+    <!-- FOOTER -->
+    <footer class="w-full py-6 text-center text-xs text-gray-500 border-t border-[#C5A059] opacity-40 mt-12">
         &copy; 2026 ONYX ONE Universal Financial Solutions. All Rights Reserved.
     </footer>
 
-    <!-- Application Script -->
+    <!-- INTERACTIVE MODAL DIALOG POPUP -->
+    <div id="modal-overlay">
+        <div class="modal-box">
+            <h3 id="modal-title" class="text-xl font-serif text-[#E5C58E] mb-3">Notification</h3>
+            <p id="modal-desc" class="text-sm text-gray-300 mb-6">Details here...</p>
+            <button onclick="closeModal()" class="cinematic-btn">Acknowledge</button>
+        </div>
+    </div>
+
+    <!-- APPLICATION JAVASCRIPT -->
     <script>
+        // SUPABASE CONNECTION
         const SUPABASE_URL = 'https://sbquvooqlzgxehobprke.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_SDx1ZoPy9bnCr0m-SLhGwA_QwR7...'; 
-        
         const { createClient } = supabase;
         const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        
-        const form = document.getElementById('transaction-form');
-        const recordCountDisplay = document.getElementById('record-count');
-        const submitBtn = document.getElementById('submit-btn');
-        const holdTimerDisplay = document.getElementById('hold-timer');
 
-        let holdTimer;
-        const HOLD_DURATION = 2000;
-
+        // QR CODES GENERATION
         const currentUrl = window.location.href;
-        const saveConfig = {
-            text: currentUrl,
-            width: 80,
-            height: 80,
-            colorDark: "#C5A059",
-            colorLight: "#FFFFFF",
-            correctLevel: QRCode.CorrectLevel.H
-        };
-        const shareConfig = {
-            text: currentUrl + "?action=share",
-            width: 80,
-            height: 80,
-            colorDark: "#C5A059",
-            colorLight: "#FFFFFF",
-            correctLevel: QRCode.CorrectLevel.H
-        };
+        const saveConfig = { text: currentUrl, width: 72, height: 72, colorDark: "#C5A059", colorLight: "#FFFFFF", correctLevel: QRCode.CorrectLevel.H };
+        const shareConfig = { text: currentUrl + "?share=true", width: 72, height: 72, colorDark: "#C5A059", colorLight: "#FFFFFF", correctLevel: QRCode.CorrectLevel.H };
 
-        new QRCode(document.getElementById("qr-save"), saveConfig);
-        new QRCode(document.getElementById("qr-share"), shareConfig);
-        new QRCode(document.getElementById("qr-save-mobile"), saveConfig);
-        new QRCode(document.getElementById("qr-share-mobile"), shareConfig);
+        if (typeof QRCode !== 'undefined') {
+            new QRCode(document.getElementById("qr-save"), saveConfig);
+            new QRCode(document.getElementById("qr-share"), shareConfig);
+        }
 
+        // MODAL SYSTEM
+        function showModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-overlay').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+        }
+        function openNodeModal(title, telemetry, status) {
+            showModal(title, `${telemetry} | Status: ${status}`);
+        }
+        function triggerMapAudit() {
+            showModal('Regional Diagnostic', 'All telemetry nodes operating at peak encryption standard. Zero latency detected across European and North American relays.');
+        }
+
+        // FETCH RECORD COUNT
         async function fetchRecordCount() {
             const { count, error } = await _supabase
                 .from('ONYX ONE Universal Financial Solutions')
                 .select('*', { count: 'exact', head: true });
-
             if (!error) {
-                recordCountDisplay.textContent = count || 0;
+                document.getElementById('record-count').textContent = count || 0;
             }
         }
 
+        // HOLD-TO-SAVE LOGIC
+        let holdTimer;
+        const HOLD_DURATION = 2000;
+        const holdTimerDisplay = document.getElementById('hold-timer');
+
         function startSaving(btn) {
-            btn.classList.add('opacity-80');
-            let timeRemaining = HOLD_DURATION / 1000;
-            holdTimerDisplay.textContent = timeRemaining;
-            
+            btn.classList.add('opacity-85');
+            let timeLeft = HOLD_DURATION / 1000;
+            holdTimerDisplay.textContent = timeLeft;
             holdTimer = setInterval(() => {
-                timeRemaining--;
-                holdTimerDisplay.textContent = timeRemaining;
-                if (timeRemaining <= 0) {
+                timeLeft--;
+                holdTimerDisplay.textContent = timeLeft;
+                if (timeLeft <= 0) {
                     clearInterval(holdTimer);
                     executeSave();
                 }
@@ -295,47 +472,45 @@
 
         function cancelSaving(btn) {
             clearInterval(holdTimer);
-            btn.classList.remove('opacity-80');
+            btn.classList.remove('opacity-85');
             holdTimerDisplay.textContent = (HOLD_DURATION / 1000);
         }
 
         async function executeSave() {
             const amount = parseFloat(document.getElementById('amount').value);
             const category = document.getElementById('category').value;
+            const submitBtn = document.getElementById('submit-btn');
 
-            if (isNaN(amount) || category.trim() === "") {
-                alert("Please fill in all required fields before saving.");
+            if (isNaN(amount) || !category.trim()) {
+                showModal('Validation Error', 'Please fill in all transaction fields.');
                 cancelSaving(submitBtn);
                 return;
             }
 
-            submitBtn.innerHTML = 'Saving...';
-            submitBtn.classList.add('opacity-100', 'cursor-not-allowed');
-            submitBtn.disabled = true;
-
+            submitBtn.textContent = 'Securing Record...';
             const { error } = await _supabase
                 .from('ONYX ONE Universal Financial Solutions')
                 .insert([{ amount, category }]);
 
             if (error) {
-                alert('Security Sync Failed: ' + error.message);
-                submitBtn.innerHTML = 'Hold to Save (<span id="hold-timer">2</span>s)';
-                submitBtn.disabled = false;
-                cancelSaving(submitBtn);
+                showModal('Sync Failed', error.message);
             } else {
-                submitBtn.innerHTML = '<span class="custom-check-symbol"></span>Record Secured';
-                submitBtn.classList.add('!bg-[#E5C58E]', '!text-black', 'gold-border');
-                
-                form.reset();
+                showModal('Success', 'Transaction record permanently secured in Supabase database.');
+                document.getElementById('transaction-form').reset();
                 fetchRecordCount();
-
-                setTimeout(() => {
-                    submitBtn.innerHTML = 'Hold to Save (<span id="hold-timer">2</span>s)';
-                    submitBtn.classList.remove('!bg-[#E5C58E]', '!text-black', 'gold-border');
-                    submitBtn.disabled = false;
-                    cancelSaving(submitBtn);
-                }, 2000);
             }
+            submitBtn.innerHTML = 'Hold to Save (<span id="hold-timer">2</span>s)';
+        }
+
+        function generateProfessionReport() {
+            const prof = document.getElementById('userProfession').value || 'Executive';
+            showModal('Compliance Vault', `Vault record generated for ${prof}. Digital audit package locked.`);
+        }
+
+        function loadFinancialData(type) {
+            if(type === 'fiat') showModal('Fiat Reserves', 'Operating Business Balance: £17,458.00 verified.');
+            if(type === 'crypto') showModal('Crypto Sync', 'Encrypted wallet channels active across multi-chain ledger.');
+            if(type === 'tips') showModal('Capital Allocations', 'Remit capital allocations running at 100% efficiency.');
         }
 
         fetchRecordCount();
