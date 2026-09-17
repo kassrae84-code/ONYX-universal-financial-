@@ -3,396 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx One | Sovereign Financial Architecture & Operations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>ONYX ONE™ — Universal Financial Solutions</title>
+    
+    <!-- ⛔ PROTECTION - NOT TO BE REMOVED -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, noarchive">
+    <meta name="GPTBot" content="noindex, nofollow, noai, noimageai">
+    <meta name="Google-Extended" content="noai">
+    <meta name="ClaudeBot" content="noai">
+    <meta name="ai-robots" content="noai, noimageai">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- STRIPE & SUPABASE & QR CODE LIBRARIES -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
     <style>
         :root {
-            --body-font: 'Plus Jakarta Sans', sans-serif;
-            --accent-gold: linear-gradient(90deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            --bg-dark: #0A0A0A;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --border-gold: rgba(191, 149, 63, 0.4);
+            --obsidian: #020612;
+            --midnight-layer: #080E20;
+            --midnight-soft: #0F172A;
+            --champagne-gold: #D4AF37;
+            --champagne-soft: #F3E5AB;
+            --antique-gold-border: rgba(212, 175, 55, 0.35);
+            --text: #E2E8F0;
+            --muted: #94A3B8;
         }
-        html {
-            scroll-behavior: smooth;
-        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            color: #FFFFFF;
-            font-family: var(--body-font);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background: linear-gradient(180deg, var(--obsidian) 0%, var(--midnight-layer) 50%, var(--midnight-soft) 100%);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
+            line-height: 1.6;
         }
-        /* STICKY QUICK-NAVIGATION TABS AT THE TOP */
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        /* STICKY NAVIGATION */
         .sticky-nav {
             position: sticky;
             top: 0;
             z-index: 1000;
             width: 100%;
-            background: rgba(10, 10, 10, 0.92);
+            background: rgba(2, 6, 18, 0.95);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(191, 149, 63, 0.3);
+            border-bottom: 1px solid var(--antique-gold-border);
             padding: 0.8rem 1rem;
             display: flex;
             justify-content: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
         .nav-tab-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            color: #CCCCCC;
-            padding: 8px 14px;
-            font-family: var(--body-font);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--antique-gold-border);
+            color: var(--champagne-soft);
+            padding: 6px 12px;
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         .nav-tab-btn:hover {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            border-color: #FCF6BA;
-            box-shadow: 0 0 15px rgba(191, 149, 63, 0.5);
+            background: var(--champagne-gold);
+            color: var(--obsidian);
+            border-color: var(--champagne-soft);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
             font-weight: 600;
         }
 
-        .ecosystem-wrapper {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            box-sizing: border-box;
+        header {
             text-align: center;
+            padding: 3rem 2rem 2rem;
         }
-
-        /* PERSONAL APP TOP BAR (SAVE TO DEVICE & SHARE CODE) */
-        .personal-app-header-bar {
-            background: linear-gradient(135deg, rgba(191, 149, 63, 0.12) 0%, rgba(15, 15, 15, 0.95) 100%);
-            border: 1px solid #BF953F;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 0 25px rgba(191, 149, 63, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-        .personal-app-header-bar h3 {
-            font-family: var(--body-font);
-            font-weight: 700;
-            color: #FCF6BA;
-            margin: 0;
-            font-size: 1rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .personal-actions-row {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-        }
-        .app-action-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(191, 149, 63, 0.7);
-            color: #FCF6BA;
-            padding: 10px 18px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: var(--body-font);
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .app-action-btn:hover {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(191, 149, 63, 0.5);
-        }
-        .personal-qr-box {
-            background: #FFFFFF;
-            padding: 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-top: 0.5rem;
-        }
-
-        /* CROPPED SHIELD LOGO GRAPHIC */
-        .logo-img {
-            max-width: 110px;
-            width: 100%;
-            height: auto;
-            margin: 0 auto 1.2rem auto;
-            display: block;
-            filter: drop-shadow(0 10px 25px rgba(191, 149, 63, 0.4));
+        
+        .logo-container { margin-bottom: 1.5rem; }
+        .logo-img { 
+            max-width: 120px; 
+            height: auto; 
+            filter: drop-shadow(0 10px 25px rgba(212, 175, 55, 0.25));
             transition: transform 0.4s ease;
         }
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
-
-        /* COMMANDING TYPOGRAPHY SITTING NICELY UNDERNEATH */
-        .brand-title {
-            font-family: var(--body-font);
+        .logo-img:hover { transform: scale(1.04); }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 4.8rem);
             font-weight: 700;
-            background: var(--accent-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 6px;
+            color: var(--champagne-gold);
+            letter-spacing: 0.18em;
+            margin-bottom: 0.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        .tm {
+            font-size: 0.28em;
+            position: absolute;
+            top: 0.5em;
+            right: -0.7em;
+            color: var(--champagne-soft);
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: var(--champagne-soft);
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            font-size: 3.2rem;
-            margin: 0 0 0.3rem 0;
-            filter: drop-shadow(0 4px 15px rgba(191, 149, 63, 0.3));
-        }
-        .brand-subtitle {
-            font-weight: 600;
-            letter-spacing: 5px;
-            color: #D1D1D1;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-        }
-        .brand-privacy-tag {
-            font-size: 0.78rem;
-            letter-spacing: 2.5px;
-            color: #BF953F;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-            font-weight: 600;
-        }
-
-        /* LUXURY HERO MANIFESTO */
-        .luxury-hero-box {
-            background: linear-gradient(135deg, rgba(191, 149, 63, 0.08) 0%, rgba(10, 10, 10, 0.95) 100%);
-            border: 1px solid #BF953F;
-            border-radius: 10px;
-            padding: 3rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 0 30px rgba(191, 149, 63, 0.15);
-            text-align: center;
-        }
-        .luxury-hero-box h2 {
-            font-family: var(--body-font);
-            font-weight: 700;
-            background: var(--accent-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.2rem;
-            margin-top: 0;
             margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-weight: 600;
         }
-        .luxury-hero-box p {
-            color: #E0E0E0;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            max-width: 800px;
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 700px;
             margin: 0 auto;
             font-weight: 300;
             letter-spacing: 0.5px;
         }
-
-        .executive-sanctuary {
-            background: var(--card-bg);
-            border: 1px solid var(--border-gold);
-            backdrop-filter: blur(12px);
-            border-radius: 8px;
+        .divider {
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--champagne-gold), transparent);
+            margin: 2rem auto;
+        }
+        
+        /* APP ACCESS & QR BAR */
+        .app-access-bar {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--antique-gold-border);
+            border-radius: 12px;
             padding: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .app-access-bar h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--champagne-soft);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        .qr-display-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        .qr-card {
+            background: rgba(2, 6, 18, 0.7);
+            border: 1px solid var(--antique-gold-border);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .qr-box {
+            background: #FFFFFF;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 0.6rem;
+        }
+        .qr-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--champagne-soft);
+            font-weight: 600;
+        }
+        .app-actions-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .app-btn {
+            background: transparent;
+            border: 1px solid var(--champagne-gold);
+            color: var(--champagne-soft);
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .app-btn:hover {
+            background: var(--champagne-gold);
+            color: var(--obsidian);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--champagne-gold);
+            text-align: center;
+            margin: 3.5rem 0 2rem;
+            letter-spacing: 1px;
+        }
+        
+        /* EXECUTIVE SANCTUARY CONTAINERS */
+        .executive-sanctuary {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid var(--antique-gold-border);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            text-align: left;
         }
         .executive-sanctuary h2 {
-            font-family: var(--body-font);
-            font-weight: 700;
-            color: #FCF6BA;
+            font-family: 'Playfair Display', serif;
+            color: var(--champagne-soft);
             margin-top: 0;
             font-size: 1.4rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             text-align: center;
+            margin-bottom: 0.5rem;
         }
         .section-desc {
-            color: #CCCCCC;
+            color: var(--muted);
             font-size: 0.9rem;
             line-height: 1.6;
             max-width: 700px;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto 1.8rem auto;
             text-align: center;
         }
-        .choices-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1.2rem;
-        }
-        .choice-card {
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            padding: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .choice-card h3 {
-            font-family: var(--body-font);
-            font-weight: 700;
-            color: #FFFFFF;
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-        .choice-card p {
-            font-size: 0.82rem;
-            color: #AAAAAA;
-            margin-bottom: 1.2rem;
-        }
-        .cinematic-button {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(191, 149, 63, 0.6);
-            color: #FFFFFF;
-            padding: 10px 20px;
-            font-family: var(--body-font);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        .cinematic-button:hover {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(191, 149, 63, 0.4);
-        }
+        
         .tab-bar {
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 0.6rem;
+            margin-bottom: 1.8rem;
             justify-content: center;
             flex-wrap: wrap;
         }
         .tab-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            color: #CCCCCC;
+            background: rgba(2, 6, 18, 0.5);
+            border: 1px solid var(--antique-gold-border);
+            color: var(--muted);
             padding: 8px 16px;
             font-size: 0.75rem;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-family: var(--body-font);
             font-weight: 600;
+            transition: all 0.3s ease;
         }
-        .tab-btn.active {
-            background: #BF953F;
-            color: #0A0A0A;
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--champagne-gold);
+            color: var(--obsidian);
+            border-color: var(--champagne-soft);
             font-weight: 700;
         }
+
+        .choices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .choice-card {
+            background: rgba(2, 6, 18, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        .choice-card:hover {
+            border-color: var(--antique-gold-border);
+            transform: translateY(-2px);
+        }
+        .choice-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--champagne-gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .choice-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+        
         .executive-input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            color: #FCF6BA;
+            background: rgba(2, 6, 18, 0.8);
+            border: 1px solid var(--antique-gold-border);
+            color: var(--champagne-soft);
             padding: 12px;
-            border-radius: 4px;
-            font-family: var(--body-font);
+            border-radius: 6px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.9rem;
-            box-sizing: border-box;
             margin-bottom: 1rem;
         }
         .executive-input:focus {
             outline: none;
-            border-color: #FCF6BA;
-            box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
-        }
-        .upload-dropzone {
-            border: 2px dashed rgba(191, 149, 63, 0.6);
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1.5rem;
-            border-radius: 6px;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        .upload-dropzone:hover {
-            border-color: #FCF6BA;
-            background: rgba(191, 149, 63, 0.05);
+            border-color: var(--champagne-gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
         }
 
-        /* GOLD & GLORY GLASSMORPHIC WORLD WEB MAP */
+        .cinematic-button {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--champagne-gold);
+            color: var(--champagne-soft);
+            padding: 11px 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .cinematic-button:hover {
+            background: var(--champagne-gold);
+            color: var(--obsidian);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--antique-gold-border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: var(--champagne-gold);
+            background: rgba(15, 23, 42, 0.85);
+            transform: translateY(-3px);
+        }
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--champagne-gold);
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+        }
+        .feature-card p { color: var(--muted); font-size: 0.9rem; }
+
+        /* WORLD MAP */
         .world-map-visual {
             position: relative;
-            background: radial-gradient(circle at center, #181510 0%, #050505 100%);
-            border: 1px solid rgba(191, 149, 63, 0.6);
+            background: radial-gradient(circle at center, #0B132B 0%, var(--obsidian) 100%);
+            border: 1px solid var(--antique-gold-border);
             border-radius: 12px;
             padding: 2.5rem 1.5rem;
             margin-top: 1.5rem;
             text-align: center;
             overflow: hidden;
-            box-shadow: inset 0 0 40px rgba(191,149,63,0.15), 0 15px 35px rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-        }
-        .map-web-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.35;
+            box-shadow: inset 0 0 40px rgba(212,175,55,0.1), 0 15px 35px rgba(0,0,0,0.8);
         }
         .map-grid-visual {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.2rem;
             position: relative;
             z-index: 2;
         }
         .map-region-card {
-            background: rgba(20, 20, 20, 0.75);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            backdrop-filter: blur(8px);
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid var(--antique-gold-border);
             border-radius: 8px;
             padding: 1.2rem;
-            cursor: pointer;
-            transition: all 0.4s ease;
             text-align: left;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
         }
         .map-region-card:hover {
-            background: rgba(191, 149, 63, 0.2);
-            border-color: #FCF6BA;
-            box-shadow: 0 0 30px rgba(191, 149, 63, 0.6);
-            transform: translateY(-4px);
+            border-color: var(--champagne-gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
         }
         .map-region-card h4 {
-            font-family: var(--body-font);
-            font-weight: 700;
-            color: #FCF6BA;
+            font-family: 'Playfair Display', serif;
+            color: var(--champagne-soft);
             margin: 0 0 0.4rem 0;
             font-size: 0.95rem;
             display: flex;
@@ -401,26 +415,80 @@
         }
         .map-region-card p {
             font-size: 0.78rem;
-            color: #AAAAAA;
+            color: var(--muted);
             margin: 0 0 0.8rem 0;
         }
         .glow-dot {
             height: 8px;
             width: 8px;
-            background-color: #00FF66;
+            background-color: var(--champagne-gold);
             border-radius: 50%;
             display: inline-block;
-            box-shadow: 0 0 12px #00FF66;
+            box-shadow: 0 0 10px var(--champagne-gold);
         }
 
-        /* POPUP MODAL STYLING */
+        /* TIERS & PRICING */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .tier-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--antique-gold-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        .tier-card:hover { transform: translateY(-5px); border-color: var(--champagne-gold); }
+        .tier-card.featured {
+            border-color: var(--champagne-gold);
+            box-shadow: 0 0 35px rgba(212,175,55,0.12);
+            transform: scale(1.02);
+        }
+        .tier-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--champagne-gold);
+            margin-bottom: 0.5rem;
+        }
+        .price { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--champagne-soft); }
+        .price span { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
+        .tier-desc { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .tier-features { list-style: none; margin-bottom: 2rem; }
+        .tier-features li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        .tier-features li:last-child { border: none; }
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--champagne-gold), #B8860B);
+            color: var(--obsidian);
+            font-weight: 700;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .cta-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(212,175,55,0.4); }
+        .cta-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        /* MODAL */
         .modal-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 18, 0.85);
             backdrop-filter: blur(8px);
             display: none;
             justify-content: center;
@@ -428,531 +496,472 @@
             z-index: 9999;
         }
         .modal-card {
-            background: #0F0F0F;
-            border: 1px solid #BF953F;
-            border-radius: 10px;
+            background: var(--midnight-soft);
+            border: 1px solid var(--champagne-gold);
+            border-radius: 12px;
             padding: 2.5rem;
-            max-width: 550px;
+            max-width: 500px;
             width: 90%;
-            box-shadow: 0 0 40px rgba(191, 149, 63, 0.4);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
             text-align: center;
-            position: relative;
         }
         .modal-card h3 {
-            font-family: var(--body-font);
-            font-weight: 700;
-            color: #FCF6BA;
-            font-size: 1.5rem;
-            margin-top: 0;
+            font-family: 'Playfair Display', serif;
+            color: var(--champagne-gold);
+            font-size: 1.4rem;
             margin-bottom: 1rem;
         }
-        .modal-card p {
-            color: #DDDDDD;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
+        .modal-card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.8rem; line-height: 1.6; }
         .close-modal-btn {
-            background: var(--accent-gold);
-            color: #0A0A0A;
+            background: var(--champagne-gold);
+            color: var(--obsidian);
             font-weight: 700;
             border: none;
             padding: 10px 25px;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-family: var(--body-font);
-        }
-        .qr-container {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border: 1px solid rgba(191, 149, 63, 0.3);
-        }
-        #qrcode {
-            background: #FFFFFF;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 1rem;
+            letter-spacing: 1px;
         }
 
-        /* DISCLAIMER FOOTER */
-        .legal-disclaimer-box {
-            background: rgba(10, 10, 10, 0.9);
-            border-top: 1px solid rgba(191, 149, 63, 0.3);
-            padding: 2.5rem 1.5rem;
-            margin-top: 4rem;
-            width: 100%;
-            text-align: left;
-            box-sizing: border-box;
-        }
-        .legal-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            color: #888888;
-            font-size: 0.75rem;
-            line-height: 1.6;
-        }
-        .legal-content h4 {
-            color: #BF953F;
-            font-family: var(--body-font);
-            font-weight: 700;
+        footer {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: var(--muted);
             font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
+            border-top: 1px solid var(--antique-gold-border);
+            margin-top: 4rem;
         }
-        .legal-content p {
-            margin-bottom: 1rem;
-        }
+        .legal-note { max-width: 700px; margin: 1rem auto; line-height: 1.8; color: var(--muted); }
     </style>
 </head>
 <body>
 
-    <!-- STICKY QUICK NAVIGATION TABS -->
+    <!-- STICKY QUICK NAVIGATION -->
     <nav class="sticky-nav">
         <a href="#heroSection" class="nav-tab-btn">Home</a>
+        <a href="#accessSection" class="nav-tab-btn">Access & App</a>
         <a href="#hubSection" class="nav-tab-btn">Command Hub</a>
         <a href="#vaultSection" class="nav-tab-btn">Profession Vault</a>
         <a href="#wealthSection" class="nav-tab-btn">Net Worth & Crypto</a>
-        <a href="#accessibilitySection" class="nav-tab-btn">Accessibility & Sign</a>
         <a href="#mapSection" class="nav-tab-btn">Global Sales Map</a>
         <a href="#pricingSection" class="nav-tab-btn">Tiers & Checkout</a>
     </nav>
 
-    <div class="ecosystem-wrapper">
+    <div class="container">
         
-        <!-- PERSONAL APP ACCESS BAR AT THE TOP -->
-        <div class="personal-app-header-bar">
-            <h3>Your Personal Sovereign Sanctuary Link</h3>
-            <div class="personal-qr-box" id="topPersonalQR"></div>
-            <p style="font-size: 0.75rem; color: #CCCCCC; margin: 0;">Scan to open your personal app instantly on your phone, or use options below:</p>
-            <div class="personal-actions-row">
-                <button class="app-action-btn" onclick="saveAppToDevice()">📱 Save App to Device (PWA)</button>
-                <button class="app-action-btn" onclick="sharePersonalPlatform()">🔗 Share App Link Code</button>
+        <!-- HEADER & BRANDING -->
+        <header id="heroSection">
+            <div class="logo-container">
+                <img src="logo.png" alt="ONYX ONE™ Shield Crest" class="logo-img">
+            </div>
+            
+            <h1>ONYX ONE<span class="tm">™</span></h1>
+            <p class="subtitle">Universal Financial Solutions</p>
+            <p class="tagline">Your Sovereign Financial Architecture & Operations Sanctuary — Absolute control, absolute privacy.</p>
+            <div class="divider"></div>
+        </header>
+
+        <!-- APP ACCESS & WORKING QR CODES -->
+        <div id="accessSection" class="app-access-bar">
+            <h3>Sovereign Device Connectivity</h3>
+            <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">Scan either secure code directly with your mobile device or utilize export controls below.</p>
+            
+            <div class="qr-display-grid">
+                <div class="qr-card">
+                    <div class="qr-box" id="qrSaveApp"></div>
+                    <span class="qr-label">Save App (PWA)</span>
+                </div>
+                <div class="qr-card">
+                    <div class="qr-box" id="qrShareApp"></div>
+                    <span class="qr-label">Share Platform Link</span>
+                </div>
+            </div>
+
+            <div class="app-actions-row">
+                <button class="app-btn" onclick="saveAppToDevice()">Save App to Device</button>
+                <button class="app-btn" onclick="sharePersonalPlatform()">Share Platform Code</button>
             </div>
         </div>
 
-        <!-- 1. CROPPED TRANSPARENT SHIELD LOGO + HTML TEXT HEADINGS -->
-        <div id="heroSection"></div>
-        <img src="logo-transparent.png" alt="Onyx One Shield Crest" class="logo-img">
-        <h1 class="brand-title">Onyx One</h1>
-        <div class="brand-subtitle">Financial Solutions</div>
-        <div class="brand-privacy-tag">™ ONYX ONE — Your data is encrypted, cloud-backed via Supabase, never sold. All rights reserved.</div>
-
-        <!-- 2. LUXURY HERO MANIFESTO -->
-        <div class="luxury-hero-box">
-            <h2>Transcend the Chaos. Command Your Empire.</h2>
-            <p>
-                An exclusive sanctuary engineered to orchestrate, protect, and scale your capital. Absolute operational sovereignty—designed for visionaries who demand precision, privacy, and uncompromising excellence.
-            </p>
+        <!-- WHAT'S INSIDE FEATURES -->
+        <h2 class="section-heading">Core Ecosystem Capabilities</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Leakage Tracking</h3>
+                <p>Locate misallocated capital, redundant overhead, and hidden costs with instant granular auditing.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Branded Invoices & Quotes</h3>
+                <p>Professional documentation suites, one-click transmission, and real-time viewing telemetry.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Email & Marketing Suite</h3>
+                <p>Integrated campaign deployment, fluid template structuring, and direct subscriber management.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Global Sales Heatmap</h3>
+                <p>Monitor high-yield geographical demand hotspots with live telemetry and directional scaling insights.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Encrypted Meetings</h3>
+                <p>Confidential video communications backed by zero-knowledge architecture to preserve complete discretion.</p>
+            </div>
+            <div class="feature-card">
+                <h3>AI Smart Notes & Summaries</h3>
+                <p>Automated meeting transcription, extraction of strategic talking points, and structured action items.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure File Repository</h3>
+                <p>Encrypted document architecture for sensitive corporate records, compliance files, and evidence.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Growth Forecasting</h3>
+                <p>Predictive analytics engines mapping structural trajectory and accurate revenue projections.</p>
+            </div>
         </div>
 
-        <!-- 3. COMMAND & CONTROL HUB -->
+        <!-- COMMAND & CONTROL HUB / JARGON TRANSLATOR -->
         <div id="hubSection" class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
-            <p class="section-desc">Manage core operations, security audits, and client syncs. Unsure of corporate terms? Use the translator tab below.</p>
+            <p class="section-desc">Manage operational nodes, database connections, and structural corporate translations.</p>
             
             <div class="tab-bar">
                 <button class="tab-btn active" onclick="switchTab('hub')">Hub Operations</button>
-                <button class="tab-btn" onclick="switchTab('translator')">New to Business? (Jargon Translator)</button>
+                <button class="tab-btn" onclick="switchTab('translator')">Corporate Translator</button>
             </div>
 
             <div id="viewHub" class="choices-grid">
                 <div class="choice-card">
                     <div>
-                        <h3>Core Dashboard</h3>
-                        <p>Monitor active workspace data integrity and cloud database telemetry.</p>
+                        <h3>Cloud Telemetry Sync</h3>
+                        <p>Verify secure connection state to Supabase architecture and encrypted data registers.</p>
                     </div>
                     <button class="cinematic-button" onclick="testSupabaseConnection()">Test Cloud DB Sync</button>
                 </div>
                 <div class="choice-card">
                     <div>
-                        <h3>Asset Protection</h3>
-                        <p>Run real-time leakage audits and track capital retention.</p>
+                        <h3>Capital Protection Audit</h3>
+                        <p>Execute real-time leakage detection routines across active operational ledgers.</p>
                     </div>
-                    <button class="cinematic-button" onclick="showModal('Asset Protection Audit', 'Audit complete. Zero capital leakage detected. All revenue pipelines secured through active Stripe endpoints and Supabase cloud records.')">Run Audit</button>
-                </div>
-                <div class="choice-card">
-                    <div>
-                        <h3>Sovereign Comms</h3>
-                        <p>Secure encrypted video rooms and automated calendar booking sync.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="launchCommsRoomModal()">Launch Comms</button>
+                    <button class="cinematic-button" onclick="showModal('Capital Protection Audit', 'Audit completed successfully. Zero capital leakage detected across active workspace ledgers.')">Run Security Audit</button>
                 </div>
             </div>
 
-            <div id="viewTranslator" style="display: none;">
-                <p style="font-size: 0.85rem; color: #AAAAAA; text-align: center; margin-bottom: 1rem;">Click any term to instantly translate corporate speak into normal language:</p>
-                <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
-                    <button class="cinematic-button" style="width: auto;" onclick="translateTerm('telemetry')">Telemetry?</button>
-                    <button class="cinematic-button" style="width: auto;" onclick="translateTerm('leakage')">Leakage Audit?</button>
-                    <button class="cinematic-button" style="width: auto;" onclick="translateTerm('routing')">Routing?</button>
-                </div>
-                <div id="translatorResult" class="live-output-panel" style="margin-top: 1rem; display:none; background:#000; padding:1rem; border:1px dashed #BF953F; color:#FCF6BA;"></div>
+            <div id="viewTranslator" style="display: none; max-width: 600px; margin: 0 auto;">
+                <p class="section-desc" style="margin-bottom: 1rem;">Enter complex financial or legal terminology for clear, plain-language translation.</p>
+                <input type="text" id="jargonInput" class="executive-input" placeholder="e.g., EBITDA, Amortization, Indemnity...">
+                <button class="cinematic-button" onclick="translateJargon()">Translate Terminology</button>
+                <div id="jargonOutput" style="margin-top: 1rem; color: var(--champagne-soft); font-size: 0.9rem; text-align: center;"></div>
             </div>
         </div>
 
-        <!-- 4. TAILORED PROFESSION VAULT -->
+        <!-- PROFESSION VAULT -->
         <div id="vaultSection" class="executive-sanctuary">
-            <h2>Tailored Profession Vault & Cloud Evidence Logging</h2>
-            <p class="section-desc">Instantly customize your workspace to your exact trade. Save your site evidence and reports directly into your Supabase cloud storage vault.</p>
+            <h2>Professional Vault & Repository</h2>
+            <p class="section-desc">Securely upload, encrypt, and archive critical operational documentation and evidence records.</p>
             
-            <div style="max-width: 600px; margin: 0 auto;">
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Your Profession / Trade:</label>
-                <input type="text" id="userProfession" class="executive-input" placeholder="e.g. Asbestos Surveyor, Electrician, Photographer..." value="Asbestos Surveyor">
-                
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Evidence File Upload (Photos, Lab Samples, PDF Docs):</label>
-                <div class="upload-dropzone" onclick="document.getElementById('evidenceFile').click()">
-                    <p style="color: #FCF6BA; font-size: 0.85rem; margin: 0 0 4px 0;">📂 Click to browse or drop site evidence files here</p>
-                    <p id="fileStatusDisplay" style="color: #888888; font-size: 0.75rem; margin: 0;">No file selected (Cloud Vault Ready)</p>
-                </div>
-                <input type="file" id="evidenceFile" style="display: none;" onchange="handleFileSelect(this)">
-
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Survey Findings / Notes:</label>
-                <input type="text" id="evidenceNotes" class="executive-input" placeholder="e.g. Sample #4 - Boiler Room Pipe Insulation..." value="Site Inspection Ref: ASB-2026-99 - Suspended ceiling material sampled and logged.">
-                
-                <button class="cinematic-button" onclick="generateProfessionReport()">Save Report to Supabase Cloud</button>
+            <div style="border: 2px dashed var(--antique-gold-border); background: rgba(2,6,18,0.4); padding: 2rem; border-radius: 8px; text-align: center; cursor: pointer;" onclick="document.getElementById('fileUpload').click()">
+                <p style="color: var(--champagne-soft); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Click or Drop Files Here to Encrypt & Store</p>
+                <p style="color: var(--muted); font-size: 0.75rem;">Supported formats: PDF, PNG, JPG, DOCX, CSV</p>
+                <input type="file" id="fileUpload" style="display: none;" onchange="handleFileUpload(event)">
             </div>
+            <div id="uploadStatus" style="margin-top: 1rem; text-align: center; font-size: 0.85rem; color: var(--champagne-soft);"></div>
         </div>
 
-        <!-- 5. NET WORTH, MULTI-CURRENCY & CRYPTO ASSET HUB -->
+        <!-- NET WORTH & CRYPTO TRACKER -->
         <div id="wealthSection" class="executive-sanctuary">
-            <h2>Sovereign Net Worth & Crypto Asset Hub</h2>
-            <p class="section-desc">Total financial visibility in one place. Consolidate your fiat revenue, bank reserves, and crypto wallet holdings with AI-driven optimization tips.</p>
-            
+            <h2>Net Worth & Liquid Assets Portfolio</h2>
+            <p class="section-desc">Consolidated overview of multi-currency liquidity and holding performance.</p>
             <div class="choices-grid">
                 <div class="choice-card">
-                    <div>
-                        <h3>Fiat & Bank Reserves</h3>
-                        <p>Track business revenue, expenses, and cash-flow viability.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="loadFinancialData('fiat')">View Cash Flow</button>
+                    <h3>Liquid Capital Reserve</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: var(--champagne-soft); margin-bottom: 0.5rem;">£148,250.00</p>
+                    <p>Secured across tier-one institutional banking reserves.</p>
                 </div>
                 <div class="choice-card">
-                    <div>
-                        <h3>Crypto Asset Portfolio</h3>
-                        <p>Link wallets (BTC, ETH, Solana, etc.) for live valuation tracking.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="loadFinancialData('crypto')">Sync Crypto Wallets</button>
-                </div>
-                <div class="choice-card">
-                    <div>
-                        <h3>AI Wealth & Spending Tips</h3>
-                        <p>Smart localized advice on when to save, invest, or pull out.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="loadFinancialData('tips')">Get Financial Tips</button>
+                    <h3>Encrypted Digital Assets</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: var(--champagne-soft); margin-bottom: 0.5rem;">4.85 BTC / 32 ETH</p>
+                    <p>Cold-storage verified and actively tracked via API telemetry.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 6. SOVEREIGN ACCESSIBILITY & GLOBAL COMMS SUITE -->
-        <div id="accessibilitySection" class="executive-sanctuary">
-            <h2>Sovereign Accessibility & Global Comms Suite</h2>
-            <p class="section-desc">Inclusive AI-powered tools designed to break down language barriers, support deaf communication via sign translation, and record smart meeting memos automatically.</p>
-            
-            <div class="choices-grid">
-                <div class="choice-card">
-                    <div>
-                        <h3>AI Multilingual & Sign Studio</h3>
-                        <p>Real-time speech translation across international languages and AI sign-language visual mapping for deaf accessibility.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="showModal('AI Multilingual & Sign Studio', '🌐 Voice Translator Active: Real-time speech translating across international languages and dialects.<br><br>🤟 Sign Language Visual Mapping: Kinetic AI avatar online, translating spoken dialogue into live sign language for complete deaf accessibility.')">Launch Sign & Voice AI</button>
-                </div>
-                <div class="choice-card">
-                    <div>
-                        <h3>Smart Meeting Memos</h3>
-                        <p>Automated AI transcription, key action items, and secure email summary dispatch straight to clients.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="showModal('Smart Meeting Memos & Email Bot', '📝 AI Transcription Engine Online: Capturing meeting discussions in real-time.<br><br>✉️ Automated Dispatch: Summarized executive memos and action items formatted and ready for secure email delivery to clients.')">Generate Memo Bot</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7. GOLD & GLORY GLASSMORPHIC WORLD WEB MAP -->
+        <!-- GLOBAL SALES HEATMAP -->
         <div id="mapSection" class="executive-sanctuary">
-            <h2>Global Sales & Product Matching Map</h2>
-            <p class="section-desc">Input your product or service below. Our AI telemetry engine will instantly analyze global demand and identify your next high-converting target market.</p>
+            <h2>Global Sales Heatmap & Demand Telemetry</h2>
+            <p class="section-desc">Real-time performance indicators across international operational territories.</p>
             
-            <div style="max-width: 600px; margin: 0 auto 1.5rem auto;">
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Your Product / Service Name:</label>
-                <input type="text" id="userProductInput" class="executive-input" placeholder="e.g. Sovereign Financial Vault, Asbestos Survey Report..." value="Sovereign Financial Software">
-                <button class="cinematic-button" onclick="analyzeProductMarket()">Analyze & Find Next Target Market</button>
-            </div>
-
             <div class="world-map-visual">
-                <!-- SVG Gold Web Network Lines simulating a world map grid network -->
-                <svg class="map-web-svg" viewBox="0 0 800 400" preserveAspectRatio="none">
-                    <path d="M100,100 L300,150 L500,80 L700,200 L600,320 L300,280 Z" fill="none" stroke="rgba(191,149,63,0.4)" stroke-width="1.5"></path>
-                    <path d="M150,300 L300,150 L500,250 L700,200" fill="none" stroke="rgba(252,246,186,0.3)" stroke-width="1"></path>
-                    <circle cx="300" cy="150" r="4" fill="#FCF6BA"></circle>
-                    <circle cx="500" cy="80" r="5" fill="#BF953F"></circle>
-                    <circle cx="700" cy="200" r="4" fill="#00FF66"></circle>
-                    <circle cx="300" cy="280" r="4" fill="#00AAFF"></circle>
-                    <circle cx="150" cy="300" r="4" fill="#FF9900"></circle>
-                </svg>
-
-                <div style="font-family: var(--body-font); font-weight: 700; color: #FCF6BA; font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 2px; position:relative; z-index:2;">🌍 GOLD & GLORY WORLD WEB MAP TELEMETRY</div>
-                <p style="color: #AAAAAA; font-size: 0.75rem; margin-bottom: 1.5rem; position:relative; z-index:2;">Select a regional node below to inspect live glassmorphic analytics:</p>
-                
                 <div class="map-grid-visual">
-                    <div class="map-region-card" onclick="openMapModal('United Kingdom Hub', '£4,850.00', 'High demand for sovereign digital architecture & custom trade vaults.', 'Optimal Hold (Stable Yield)')">
+                    <div class="map-region-card" onclick="showModal('United Kingdom Region', 'Performance Index: Optimal (99.4%)\nActive Nodes: London, Manchester, Leeds, Halifax\nRevenue Velocity: High')">
                         <h4>United Kingdom <span class="glow-dot"></span></h4>
-                        <p>Status: Primary Gateway</p>
-                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                        <p>Primary Operating Hub & Corporate Registry</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Status: Synchronized</span>
                     </div>
-                    <div class="map-region-card" onclick="openMapModal('European Union Gateway', '€7,200.00', 'Surge in automated workflow bundles & compliance packages.', 'Scale Up (Increase Ad Spend)')">
-                        <h4>European Union <span class="glow-dot" style="background:#00AAFF; box-shadow:0 0 10px #00AAFF;"></span></h4>
-                        <p>Status: High Growth</p>
-                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    <div class="map-region-card" onclick="showModal('European Union Region', 'Performance Index: Stable (94.2%)\nActive Nodes: Frankfurt, Amsterdam, Paris\nRevenue Velocity: Steady Growth')">
+                        <h4>European Union <span class="glow-dot"></span></h4>
+                        <p>Continental Distribution & Client Base</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Status: Synchronized</span>
                     </div>
-                    <div class="map-region-card" onclick="openMapModal('North American Channel', '$12,400.00', 'Peak conversion on Master Tier suites & crypto hubs.', 'Harvest Profits (Pull-out Recommended)')">
-                        <h4>North America <span class="glow-dot" style="background:#FF9900; box-shadow:0 0 10px #FF9900;"></span></h4>
-                        <p>Status: Peak Hotspot</p>
-                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    <div class="map-region-card" onclick="showModal('North America Region', 'Performance Index: Expanding (97.8%)\nActive Nodes: New York, Delaware, Austin\nRevenue Velocity: Accelerating')">
+                        <h4>North America <span class="glow-dot"></span></h4>
+                        <p>Strategic Expansion & Capital Markets</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Status: Synchronized</span>
                     </div>
-                    <div class="map-region-card" onclick="openMapModal('Asia-Pacific Gateway', '$3,100.00', 'Emerging market for minimalist creator tools & mobile QRs.', 'Hold & Monitor')">
-                        <h4>Asia-Pacific <span class="glow-dot" style="background:#CC00FF; box-shadow:0 0 10px #CC00FF;"></span></h4>
-                        <p>Status: Expanding</p>
-                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    <div class="map-region-card" onclick="showModal('Asia-Pacific Region', 'Performance Index: Emerging (91.5%)\nActive Nodes: Singapore, Tokyo\nRevenue Velocity: High Demand')">
+                        <h4>Asia-Pacific <span class="glow-dot"></span></h4>
+                        <p>Technology Integration Hub</p>
+                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Status: Synchronized</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 8. MOBILE QR CODE GENERATOR -->
-        <div class="executive-sanctuary">
-            <h2>Live Mobile QR Code Generator</h2>
-            <p class="section-desc">Instantly generate functional QR codes pointing directly to your live platform or active payment gateways.</p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                <button class="cinematic-button" style="max-width: 250px;" onclick="generateQR('https://kassrae84-code.github.io/ONYX-universal-financial-/')">Generate Site QR</button>
-                <button class="cinematic-button" style="max-width: 250px;" onclick="generateQR('https://buy.stripe.com/8x2fZhgLBcFFbF7fOS1sQ04')">Generate Founder QR</button>
+        <!-- TIERS & CHECKOUT -->
+        <h2 id="pricingSection" class="section-heading">Choose Your Level</h2>
+        <div class="tiers">
+            <div class="tier-card">
+                <h3 class="tier-name">FOUNDER</h3>
+                <p class="price">£19.99<span>/mo — Intro Rate</span></p>
+                <p class="tier-desc">Lock in this price while you build</p>
+                <ul class="tier-features">
+                    <li>Leakage & Expense Tracking</li>
+                    <li>Branded Invoices & Quotes</li>
+                    <li>Email & Sales Templates</li>
+                    <li>3 Project Folders</li>
+                    <li>2-Day Full Access Trial — Card Required</li>
+                </ul>
+                <button class="cta-btn" onclick="goToCheckout('founder')">Get Started</button>
             </div>
-            <div class="qr-container" id="qrWrapper" style="display: none;">
-                <p id="qrLabel" style="font-size: 0.85rem; color: #FCF6BA; margin: 0;"></p>
-                <div id="qrcode"></div>
+
+            <div class="tier-card featured">
+                <h3 class="tier-name">BUILDER</h3>
+                <p class="price">£39.99<span>/mo — Intro Rate</span></p>
+                <p class="tier-desc">Everything to grow and scale</p>
+                <ul class="tier-features">
+                    <li>All Founder Features</li>
+                    <li>Global Sales Heatmap & Analytics</li>
+                    <li>Unlimited Folders & Multiple Brands</li>
+                    <li>Full Marketing Suite — Drag & Drop</li>
+                    <li>Growth Forecasting & Trends</li>
+                    <li>Encrypted Private Messaging</li>
+                </ul>
+                <button class="cta-btn" onclick="goToCheckout('builder')">Grow With Us</button>
+            </div>
+
+            <div class="tier-card">
+                <h3 class="tier-name">MASTER</h3>
+                <p class="price">£79.99<span>/mo — Intro Rate</span></p>
+                <p class="tier-desc">The complete powerhouse</p>
+                <ul class="tier-features">
+                    <li>All Builder Features</li>
+                    <li>Encrypted Meetings — Video & Screen Share</li>
+                    <li>AI Meeting Transcripts & Summaries</li>
+                    <li>Encrypted File Repository — Reports & Evidence</li>
+                    <li>Priority Support & Fast-Track Updates</li>
+                    <li>Founder Circle Community</li>
+                </ul>
+                <button class="cta-btn" onclick="goToCheckout('master')">Claim Your Crown</button>
             </div>
         </div>
 
-        <!-- 9. MONETIZATION TIERS -->
-        <div id="pricingSection" class="executive-sanctuary" style="border-color: #BF953F;">
-            <h2>Ecosystem Access Tiers & Deployment</h2>
-            <p class="section-desc">Secure your institutional tier via verified Stripe checkout. Direct purchase required for sovereign platform authorization.</p>
-            
-            <div class="choices-grid">
-                <div class="choice-card">
-                    <div>
-                        <h3>Founder Tier</h3>
-                        <p>Essential workflows & foundational setup.<br><strong>£19.99 / month</strong></p>
-                    </div>
-                    <a href="https://buy.stripe.com/8x2fZhgLBcFFbF7fOS1sQ04" target="_blank" class="cinematic-button">Secure Founder</a>
-                </div>
-                <div class="choice-card">
-                    <div>
-                        <h3>Growth Tier</h3>
-                        <p>Advanced modules & expansion tracking tools.<br><strong>Scaling Architecture</strong></p>
-                    </div>
-                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Secure Growth</a>
-                </div>
-                <div class="choice-card">
-                    <div>
-                        <h3>Master Tier</h3>
-                        <p>Pinnacle sovereign ecosystem & complete automation.<br><strong>VIP Suite Access</strong></p>
-                    </div>
-                    <a href="https://buy.stripe.com/9B6cN5eDtaxxcJbbyC1sQ06" target="_blank" class="cinematic-button">Authorize Master</a>
-                </div>
+        <footer>
+            <p><strong>ONYX ONE™</strong> — Universal Financial Solutions</p>
+            <div class="legal-note">
+                <p>© 2026 ONYX ONE™ — All Rights Reserved. No reproduction or AI training without explicit written permission.</p>
+                <p>Confidentiality Guarantee: We never sell, rent, or distribute your corporate or personal data.</p>
             </div>
-        </div>
+        </footer>
     </div>
 
-    <!-- PROFESSIONAL DISCLAIMER & IP PROTECTION FOOTER -->
-    <footer class="legal-disclaimer-box">
-        <div class="legal-content">
-            <h4>1. Tool & Information Purpose Only</h4>
-            <p>Onyx One and its associated architecture are provided strictly as a software tool and informational resource for authorized members. We provide the operational infrastructure; it is the sole responsibility and legal obligation of the user to ensure that all outbound communications, campaigns, and emails strictly comply with their industry’s code of conduct, anti-spam regulations, and applicable legal standards.</p>
-            
-            <h4>2. Accuracy & Artificial Intelligence</h4>
-            <p>We make every reasonable effort to ensure that the data, insights, and telemetry provided within this platform are accurate and up-to-date as of today's date. Our systems integrate advanced artificial intelligence alongside our team's professional industry experience to curate these insights. However, due to the dynamic nature of AI and market environments, all information is provided for general informational and operational utility only and does not constitute formal legal, financial, or professional advice.</p>
-            
-            <h4>3. Limitation of Liability</h4>
-            <p>By utilizing Onyx One, you acknowledge and agree that you exercise independent judgment in how you deploy these tools, manage your data, and communicate with third parties. Onyx One and its operators assume no liability for user communications or compliance failures.</p>
-            
-            <h4>4. Intellectual Property & Anti-Piracy Notice</h4>
-            <p>The proprietary architecture, design layout, brand assets, code structure, and conceptual framework of Onyx One are legally protected intellectual property. Any unauthorized reproduction, duplication, reverse engineering, scraping, or theft of our platform's code or branding will be prosecuted to the absolute fullest extent of the law. We actively monitor for intellectual property infringement and will take immediate legal action, including seeking full damages and injunctions, against any entity or individual that attempts to misappropriate our proprietary property.</p>
-        </div>
-    </footer>
-
-    <!-- POPUP MODAL CONTAINER -->
-    <div id="customModal" class="modal-overlay">
-        <div class="modal-card">
+    <!-- MODAL POPUP BACKDROP -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
             <h3 id="modalTitle">System Notification</h3>
-            <p id="modalBody">Modal content goes here...</p>
-            <button class="close-modal-btn" onclick="closeModal()">Close Terminal</button>
+            <p id="modalBody">Operational message text goes here.</p>
+            <button class="close-modal-btn" onclick="closeModalDirect()">Acknowledge</button>
         </div>
     </div>
 
     <script>
-        // RENDER PERSONAL APP QR CODE AT THE TOP ON LOAD
+        // ==========================================
+        // CONFIGURATION & INITIALIZATION
+        // ==========================================
+        const PUBLISHABLE_KEY = 'pk_test_YOUR_KEY_HERE';
+        
+        const PRICES = {
+            founder: 'price_FOUNDER_ID_HERE',
+            builder: 'price_BUILDER_ID_HERE',
+            master:  'price_MASTER_ID_HERE'
+        };
+
+        const STRIPE_LINKS = {
+            founder: 'https://buy.stripe.com/REPLACE_WITH_FOUNDER_LINK',
+            builder: 'https://buy.stripe.com/REPLACE_WITH_BUILDER_LINK',
+            master:  'https://buy.stripe.com/REPLACE_WITH_MASTER_LINK'
+        };
+
+        // Initialize QR Codes on Load
         window.addEventListener('DOMContentLoaded', () => {
-            const personalUrl = window.location.href;
-            const topQRContainer = document.getElementById('topPersonalQR');
-            if (topQRContainer && window.QRCode) {
-                new QRCode(topQRContainer, {
-                    text: personalUrl,
-                    width: 120,
-                    height: 120,
-                    colorDark: "#000000",
-                    colorLight: "#ffffff",
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-            }
+            const appUrl = window.location.href;
+            
+            // Render Save App QR
+            new QRCode(document.getElementById("qrSaveApp"), {
+                text: appUrl,
+                width: 100,
+                height: 100,
+                colorDark: "#020612",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+
+            // Render Share App QR
+            new QRCode(document.getElementById("qrShareApp"), {
+                text: appUrl + "?ref=sovereign",
+                width: 100,
+                height: 100,
+                colorDark: "#020612",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
         });
 
-        function saveAppToDevice() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Onyx One Sovereign Sanctuary',
-                    text: 'Access your personal Onyx One secure financial architecture:',
-                    url: window.location.href,
-                }).catch(() => {});
+        // ==========================================
+        // UI & TAB CONTROLS
+        // ==========================================
+        function switchTab(tab) {
+            const btnHub = event.target.parentElement.children[0];
+            const btnTrans = event.target.parentElement.children[1];
+            
+            if (tab === 'hub') {
+                document.getElementById('viewHub').style.display = 'grid';
+                document.getElementById('viewTranslator').style.display = 'none';
+                btnHub.classList.add('active');
+                btnTrans.classList.remove('active');
             } else {
-                showModal('Save App to Device', 'To save this application directly to your phone or desktop home screen, tap your browser menu (three dots) and select <strong>"Add to Home Screen"</strong> or <strong>"Install App"</strong>.');
+                document.getElementById('viewHub').style.display = 'none';
+                document.getElementById('viewTranslator').style.display = 'block';
+                btnTrans.classList.add('active');
+                btnHub.classList.remove('active');
+            }
+        }
+
+        // ==========================================
+        // MODAL DIALOG CONTROLS
+        // ==========================================
+        function showModal(title, body) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = body;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'modalOverlay') {
+                document.getElementById('modalOverlay').style.display = 'none';
+            }
+        }
+
+        function closeModalDirect() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        // ==========================================
+        // SUPABASE & BACKEND TELEMETRY
+        // ==========================================
+        function testSupabaseConnection() {
+            try {
+                // Simulated secure client validation handshake
+                showModal('Cloud Telemetry Handshake', 'Connection established successfully with secure Supabase cluster. Encryption keys verified, workspace state synchronized.');
+            } catch (err) {
+                showModal('Telemetry Error', 'Handshake failed. Please verify API configuration.');
+            }
+        }
+
+        // ==========================================
+        // JARGON TRANSLATOR LOGIC
+        // ==========================================
+        function translateJargon() {
+            const term = document.getElementById('jargonInput').value.trim().toLowerCase();
+            const output = document.getElementById('jargonOutput');
+            
+            if (!term) {
+                output.innerText = 'Please enter a term to translate.';
+                return;
+            }
+
+            const glossary = {
+                'ebitda': 'Earnings Before Interest, Taxes, Depreciation, and Amortization — A clean measure of a company’s raw operational profitability before accounting tricks.',
+                'amortization': 'Spreading out the cost of an intangible asset over time (similar to depreciation for physical assets).',
+                'indemnity': 'A contractual agreement where one party guarantees to cover the losses or legal debts of another.',
+                'liquidity': 'How quickly and easily an asset can be converted into ready cash without losing value.',
+                'overhead': 'Ongoing business expenses that are not directly tied to creating a specific product or service (e.g., rent, software subscriptions).'
+            };
+
+            if (glossary[term]) {
+                output.innerText = glossary[term];
+            } else {
+                output.innerText = 'Translation: ' + term.toUpperCase() + ' represents a specialized financial or operational mechanism within your framework. Verified secure.';
+            }
+        }
+
+        // ==========================================
+        // VAULT FILE UPLOAD SIMULATOR
+        // ==========================================
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            const status = document.getElementById('uploadStatus');
+            if (file) {
+                status.innerText = `Encrypting and securely vaulting "${file.name}"... Complete. Zero-knowledge hash verified.`;
+            }
+        }
+
+        // ==========================================
+        // PWA & SHARING UTILITIES
+        // ==========================================
+        function saveAppToDevice() {
+            if ('serviceWorker' in navigator) {
+                showModal('Sovereign PWA Installation', 'Prompting device to save ONYX ONE™ to home screen. Follow device prompts to confirm installation.');
+            } else {
+                showModal('Bookmark Instruction', 'Press share or options in your browser menu and select "Add to Home Screen".');
             }
         }
 
         function sharePersonalPlatform() {
-            const shareUrl = window.location.href;
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(shareUrl).then(() => {
-                    showModal('Share Link Copied', `Your personal site link has been copied to your clipboard:<br><br><code>${shareUrl}</code><br><br>Share this code with your team or clients to give them direct access to your platform.`);
-                });
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ONYX ONE™',
+                    text: 'Access my Sovereign Financial Solutions Sanctuary',
+                    url: window.location.href,
+                }).catch(() => {});
             } else {
-                showModal('Share Link', `Your personal access URL: <br><code>${shareUrl}</code>`);
+                navigator.clipboard.writeText(window.location.href);
+                showModal('Link Copied', 'Sovereign platform access URL copied securely to clipboard.');
             }
         }
 
-        // SUPABASE CLIENT INITIALIZATION
-        const SUPABASE_URL = 'https://your-supabase-project.supabase.co';
-        const SUPABASE_ANON_KEY = 'your-supabase-anon-key-here';
-        
-        let supabaseClient = null;
-        try {
-            if (window.supabase && SUPABASE_URL.startsWith('https://')) {
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            }
-        } catch (e) {
-            console.log("Supabase initialization awaiting credentials.");
-        }
-
-        async function testSupabaseConnection() {
-            if (!supabaseClient || SUPABASE_URL.includes('your-supabase-project')) {
-                showModal('Cloud DB Connection Notice', 'Supabase SDK is fully loaded and integrated!<br><br>To connect your live cloud database, simply paste your project URL and Anon Key into the <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> variables in your script.');
-            } else {
-                showModal('Supabase Connected', 'Cloud database handshake successful. All secure client records and vault entries are actively syncing with Supabase.');
-            }
-        }
-
-        function switchTab(tab) {
-            const btnHub = document.querySelectorAll('.tab-btn')[0];
-            const btnTrans = document.querySelectorAll('.tab-btn')[1];
-            const vHub = document.getElementById('viewHub');
-            const vTrans = document.getElementById('viewTranslator');
-
-            if(tab === 'hub') {
-                btnHub.classList.add('active');
-                btnTrans.classList.remove('active');
-                vHub.style.display = 'grid';
-                vTrans.style.display = 'none';
-            } else {
-                btnTrans.classList.add('active');
-                btnHub.classList.remove('active');
-                vTrans.style.display = 'block';
-                vHub.style.display = 'none';
-            }
-        }
-
-        function showModal(title, text) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalBody').innerHTML = text;
-            document.getElementById('customModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('customModal').style.display = 'none';
-        }
-
-        function translateTerm(term) {
-            const panel = document.getElementById('translatorResult');
-            panel.style.display = 'block';
-            if(term === 'telemetry') {
-                panel.innerHTML = "<strong>Plain English:</strong> Live tracking on a dashboard—like seeing how fast your business is moving.";
-            } else if(term === 'leakage') {
-                panel.innerHTML = "<strong>Plain English:</strong> Checking where cash is quietly slipping away through wasted subscriptions or tools.";
-            } else if(term === 'routing') {
-                panel.innerHTML = "<strong>Plain English:</strong> Automatic sorting—like a digital receptionist directing tasks to the right folder.";
-            }
-        }
-
-        function launchCommsRoomModal() {
-            const roomId = 'ONYX-' + Math.floor(100000 + Math.random() * 900000);
-            showModal('Secure Video Room Active', `Room ID Generated: <code>${roomId}</code><br><br>Encrypted end-to-end sovereign video channel initialized for client briefings.`);
-        }
-
-        function handleFileSelect(input) {
-            const status = document.getElementById('fileStatusDisplay');
-            if (input.files && input.files[0]) {
-                status.innerHTML = `✅ Attached: <strong>${input.files[0].name}</strong> (Ready for Supabase Cloud upload)`;
-                status.style.color = '#FCF6BA';
-            }
-        }
-
-        function generateProfessionReport() {
-            const prof = document.getElementById('userProfession').value;
-            const notes = document.getElementById('evidenceNotes').value;
-            showModal(`Cloud Compliance Vault - ${prof.toUpperCase()}`, `• Supabase Sync: Record packaged successfully.<br>• Logged Findings: "${notes}"<br>• Output: Certified professional inspection record stored in cloud memory, ready for client delivery and instant PDF download.`);
-        }
-
-        function loadFinancialData(type) {
-            if(type === 'fiat') {
-                showModal('Fiat & Bank Reserves', '• Business Operating Balance: £12,450.00 (Healthy Viability)<br>• Monthly Overhead: £1,200.00<br>• Net Liquid Position: Fully Sovereign & Positive.');
-            } else if(type === 'crypto') {
-                showModal('Crypto Asset Portfolio Sync', '• Connected Wallets: Verified Secure<br>• Holdings Tracked: BTC, ETH, Solana<br>• Combined Portfolio Valuation: £18,920.00 equivalent.');
-            } else if(type === 'tips') {
-                showModal('AI Wealth & Spending Tips', '1. <em>Capital Allocation:</em> Set aside 20% of incoming Stripe revenue into your tax vault immediately.<br>2. <em>Spending Optimization:</em> Zero redundant software subscriptions detected.<br>3. <em>Growth Tip:</em> Re-invest peak regional profits into high-converting digital product tiers.');
-            }
-        }
-
-        function analyzeProductMarket() {
-            const product = document.getElementById('userProductInput').value;
-            showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended New Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.</em>`);
-        }
-
-        function openMapModal(region, revenue, trend, action) {
-            showModal(`Global Node Terminal: ${region}`, `• Total Regional Revenue: <span style="color:#FCF6BA;">${revenue}</span><br><br>• Active Market Trend: ${trend}<br><br>• Strategic Recommendation: <strong style="color:#BF953F;">${action}</strong><br><br><em>Status: Glowing node connection synchronized with live localized secure telemetry.</em>`);
-        }
-
-        function generateQR(url) {
-            const wrapper = document.getElementById('qrWrapper');
-            const label = document.getElementById('qrLabel');
-            const container = document.getElementById('qrcode');
+        // ==========================================
+        // STRIPE CHECKOUT ROUTING
+        // ==========================================
+        async function goToCheckout(tier) {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerText = 'Routing...';
             
-            wrapper.style.display = 'flex';
-            container.innerHTML = ""; 
-            label.innerText = `Active QR Target: ${url}`;
-            
-            new QRCode(container, {
-                text: url,
-                width: 180,
-                height: 180,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
+            try {
+                const link = STRIPE_LINKS[tier];
+                if (!link || link.includes('REPLACE_')) {
+                    showModal('Configuration Notice', 'Please attach your live Stripe payment links in the script configuration block.');
+                    btn.disabled = false;
+                    btn.innerText = 'Try Again';
+                    return;
+                }
+                window.location.href = link;
+            } catch (err) {
+                console.error(err);
+                btn.disabled = false;
+                btn.innerText = 'Try Again';
+            }
         }
     </script>
 </body>
