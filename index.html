@@ -398,26 +398,47 @@
         }
         .feature-card p { color: var(--muted); font-size: 0.9rem; }
 
-        /* 🌍 IMMERSIVE GLASSMORPHIC GLOWING WIREFRAME WORLD MAP SHOWPIECE */
+        /* 💎 TRUE 3D GLASSMORPHIC FLOATING HOLOGRAPHIC MAP TABLET (ADOBE STOCK / SPLITSHIRE STYLE) */
         .world-map-container {
             position: relative;
-            background: radial-gradient(circle at center, #110D02 0%, #000000 85%);
+            background: radial-gradient(circle at center, #151105 0%, #000000 80%);
             border: 1px solid var(--antique-gold-border);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 3rem 2rem;
             margin-top: 1.5rem;
-            box-shadow: inset 0 0 70px rgba(197,160,89,0.15), 0 25px 50px rgba(0,0,0,0.95);
+            box-shadow: inset 0 0 100px rgba(197,160,89,0.15), 0 30px 60px rgba(0,0,0,0.95);
             overflow: hidden;
         }
+        
+        /* The Translucent Floating Glass Tablet Frame */
+        .glass-tablet-frame {
+            position: relative;
+            background: rgba(15, 20, 35, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            border-radius: 16px;
+            padding: 2rem 1rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(197, 160, 89, 0.2);
+            margin-bottom: 2.5rem;
+            transform: perspective(1000px) rotateX(3deg);
+            transition: transform 0.5s ease;
+        }
+        .glass-tablet-frame:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.01);
+            box-shadow: 0 25px 60px rgba(197, 160, 89, 0.25), inset 0 0 40px rgba(197, 160, 89, 0.3);
+        }
+
         .svg-world-map {
             width: 100%;
-            max-width: 950px;
+            max-width: 900px;
             height: auto;
-            opacity: 0.65;
-            filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.4));
-            margin: 0 auto 2.5rem auto;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.6));
+            margin: 0 auto;
             display: block;
         }
+
         .global-grid-display {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -629,39 +650,42 @@
             </div>
         </div>
 
-        <!-- 🌍 IMMERSIVE GLASSMORPHIC GLOWING WIREFRAME WORLD MAP SHOWPIECE -->
+        <!-- 🌍 TRUE 3D GLASSMORPHIC HOLOGRAPHIC MAP TABLET (SPLITSHIRE / ADOBE STOCK STYLE) -->
         <div id="mapSection" class="executive-sanctuary">
             <h2>Global Behavioral Intelligence Map</h2>
             <p class="section-desc">Real-time international sentiment and capital telemetry built on Chase Hughes human intelligence principles. Track market velocity, behavioral triggers, and precision entry/exit signals across sovereign territories.</p>
             
             <div class="world-map-container">
-                <!-- Glowing Antique Champagne Gold Wireframe World Map SVG -->
-                <svg class="svg-world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="none" stroke="#C5A059" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
-                        <!-- North America -->
-                        <path d="M150,80 Q180,70 210,90 Q240,110 260,140 Q230,170 200,160 Q170,140 150,120 Z" />
-                        <path d="M210,160 Q230,180 220,210 Q200,230 180,210 Q190,180 210,160 Z" />
-                        <!-- South America -->
-                        <path d="M260,240 Q290,260 280,320 Q260,380 240,410 Q220,380 230,320 Q240,260 260,240 Z" />
-                        <!-- Europe & UK -->
-                        <path d="M480,90 Q510,80 540,95 Q520,120 490,130 Q470,110 480,90 Z" />
-                        <path d="M440,100 Q460,95 470,110 Q450,130 430,120 Q435,105 440,100 Z" />
-                        <!-- Africa -->
-                        <path d="M470,160 Q530,150 560,210 Q540,290 500,340 Q460,290 450,210 Q460,170 470,160 Z" />
-                        <!-- Asia -->
-                        <path d="M550,70 Q650,60 750,90 Q800,120 780,180 Q720,200 650,160 Q580,140 550,70 Z" />
-                        <path d="M700,170 Q750,160 780,210 Q740,260 680,220 Q690,180 700,170 Z" />
-                        <!-- Australia -->
-                        <path d="M780,320 Q840,310 860,370 Q820,410 760,380 Q770,340 780,320 Z" />
-                    </g>
-                    <!-- Glowing Connection Nodes / Behavioral Telemetry Links -->
-                    <circle cx="450" cy="115" r="6" fill="#C5A059" />
-                    <circle cx="505" cy="105" r="6" fill="#C5A059" />
-                    <circle cx="210" cy="120" r="6" fill="#C5A059" />
-                    <circle cx="720" cy="140" r="6" fill="#C5A059" />
-                    <line x1="450" y1="115" x2="505" y2="105" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
-                    <line x1="450" y1="115" x2="210" y2="120" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
-                </svg>
+                <!-- Floating Translucent Glass Tablet Frame -->
+                <div class="glass-tablet-frame">
+                    <!-- Glowing Antique Champagne Gold Wireframe World Map SVG -->
+                    <svg class="svg-world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke="#C5A059" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+                            <!-- North America -->
+                            <path d="M150,80 Q180,70 210,90 Q240,110 260,140 Q230,170 200,160 Q170,140 150,120 Z" />
+                            <path d="M210,160 Q230,180 220,210 Q200,230 180,210 Q190,180 210,160 Z" />
+                            <!-- South America -->
+                            <path d="M260,240 Q290,260 280,320 Q260,380 240,410 Q220,380 230,320 Q240,260 260,240 Z" />
+                            <!-- Europe & UK -->
+                            <path d="M480,90 Q510,80 540,95 Q520,120 490,130 Q470,110 480,90 Z" />
+                            <path d="M440,100 Q460,95 470,110 Q450,130 430,120 Q435,105 440,100 Z" />
+                            <!-- Africa -->
+                            <path d="M470,160 Q530,150 560,210 Q540,290 500,340 Q460,290 450,210 Q460,170 470,160 Z" />
+                            <!-- Asia -->
+                            <path d="M550,70 Q650,60 750,90 Q800,120 780,180 Q720,200 650,160 Q580,140 550,70 Z" />
+                            <path d="M700,170 Q750,160 780,210 Q740,260 680,220 Q690,180 700,170 Z" />
+                            <!-- Australia -->
+                            <path d="M780,320 Q840,310 860,370 Q820,410 760,380 Q770,340 780,320 Z" />
+                        </g>
+                        <!-- Glowing Connection Nodes / Behavioral Telemetry Links -->
+                        <circle cx="450" cy="115" r="6" fill="#C5A059" />
+                        <circle cx="505" cy="105" r="6" fill="#C5A059" />
+                        <circle cx="210" cy="120" r="6" fill="#C5A059" />
+                        <circle cx="720" cy="140" r="6" fill="#C5A059" />
+                        <line x1="450" y1="115" x2="505" y2="105" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                        <line x1="450" y1="115" x2="210" y2="120" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                    </svg>
+                </div>
 
                 <div class="global-grid-display">
                     <div class="map-hotspot-card" onclick="showModal('United Kingdom Hub', 'Behavioral Index: 99.8% (High Trust)\nActive Node: London / Halifax\nCapital Velocity: Peak Momentum\nSignal: HOLD POSITION / COLLECT PROFITS')">
