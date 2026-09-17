@@ -35,7 +35,7 @@
             top: 0;
             z-index: 1000;
             width: 100%;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.92);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(191, 149, 63, 0.3);
             padding: 0.8rem 1rem;
@@ -96,8 +96,47 @@
             color: #B3B3B3;
             text-transform: uppercase;
             font-size: 0.85rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
         }
+        .brand-privacy-tag {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #BF953F;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        /* LUXURY HERO MANIFESTO */
+        .luxury-hero-box {
+            background: linear-gradient(135deg, rgba(191, 149, 63, 0.08) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border: 1px solid #BF953F;
+            border-radius: 10px;
+            padding: 3rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 0 30px rgba(191, 149, 63, 0.15);
+            text-align: center;
+        }
+        .luxury-hero-box h2 {
+            font-family: var(--primary-font);
+            background: var(--accent-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .luxury-hero-box p {
+            color: #E0E0E0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
         .executive-sanctuary {
             background: var(--card-bg);
             border: 1px solid var(--border-gold);
@@ -228,6 +267,64 @@
             border-color: #FCF6BA;
             background: rgba(191, 149, 63, 0.05);
         }
+
+        /* STUNNING VISUAL WORLD MAP CONTAINER */
+        .world-map-visual {
+            position: relative;
+            background: radial-gradient(circle at center, #151515 0%, #050505 100%);
+            border: 1px solid rgba(191, 149, 63, 0.5);
+            border-radius: 8px;
+            padding: 2rem 1rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+        }
+        .map-grid-visual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .map-region-card {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(191, 149, 63, 0.3);
+            border-radius: 6px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: left;
+        }
+        .map-region-card:hover {
+            background: rgba(191, 149, 63, 0.15);
+            border-color: #FCF6BA;
+            box-shadow: 0 0 25px rgba(191, 149, 63, 0.5);
+            transform: translateY(-3px);
+        }
+        .map-region-card h4 {
+            font-family: var(--primary-font);
+            color: #FCF6BA;
+            margin: 0 0 0.4rem 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .map-region-card p {
+            font-size: 0.78rem;
+            color: #AAAAAA;
+            margin: 0 0 0.8rem 0;
+        }
+        .glow-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #00FF66;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px #00FF66;
+        }
+
         /* POPUP MODAL STYLING */
         .modal-overlay {
             position: fixed;
@@ -277,44 +374,6 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
-        /* Map and QR Styling */
-        .map-grid-container {
-            position: relative;
-            background: #050505;
-            border: 1px solid rgba(191, 149, 63, 0.5);
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-        .map-node {
-            background: rgba(191, 149, 63, 0.05);
-            border: 1px solid rgba(191, 149, 63, 0.3);
-            border-radius: 6px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .map-node:hover {
-            background: rgba(191, 149, 63, 0.2);
-            border-color: #FCF6BA;
-            box-shadow: 0 0 20px rgba(191, 149, 63, 0.4);
-            transform: translateY(-2px);
-        }
-        .map-node h4 {
-            font-family: var(--primary-font);
-            color: #FCF6BA;
-            margin: 0 0 0.5rem 0;
-            font-size: 0.95rem;
-        }
-        .map-node p {
-            font-size: 0.75rem;
-            color: #CCCCCC;
-            margin: 0;
-        }
         .qr-container {
             margin-top: 1.5rem;
             display: flex;
@@ -342,7 +401,7 @@
         <a href="#vaultSection" class="nav-tab-btn">Profession Vault</a>
         <a href="#wealthSection" class="nav-tab-btn">Net Worth & Crypto</a>
         <a href="#accessibilitySection" class="nav-tab-btn">Accessibility & Sign</a>
-        <a href="#mapSection" class="nav-tab-btn">Sales Map</a>
+        <a href="#mapSection" class="nav-tab-btn">Global Sales Map</a>
         <a href="#pricingSection" class="nav-tab-btn">Tiers & Checkout</a>
     </nav>
 
@@ -351,13 +410,14 @@
         <div id="heroSection"></div>
         <img src="logo.png" alt="Onyx One Logo" class="logo-img">
         <h1 class="brand-title">Onyx One</h1>
-        <div class="brand-subtitle">Sovereign Financial Architecture & Operations</div>
+        <div class="brand-subtitle">Sovereign Financial Solutions™</div>
+        <div class="brand-privacy-tag">™ ONYX ONE — Your data is encrypted, never sold, never shared. All rights reserved.</div>
 
-        <!-- 2. MISSION & PLEDGE -->
-        <div class="executive-sanctuary" style="text-align: center;">
-            <h2>Our Mission & Zero-Data-Sale Pledge</h2>
-            <p class="section-desc" style="max-width: 800px; margin-bottom: 1rem;">
-                Onyx One is built for independent creators, trades, and visionaries who demand absolute sovereignty. <strong>We never sell your data.</strong> Everything you process, build, and store lives securely directly inside your local dashboard environment. Zero tracking, zero third-party brokers, pure operational privacy.
+        <!-- 2. LUXURY MANIFESTO (ELEVATED HERO COPY) -->
+        <div class="luxury-hero-box">
+            <h2>Transcend the Chaos. Command Your Empire.</h2>
+            <p>
+                An exclusive sanctuary engineered to orchestrate, protect, and scale your capital. Absolute operational sovereignty—designed for visionaries who demand precision, privacy, and uncompromising excellence.
             </p>
         </div>
 
@@ -482,31 +542,37 @@
             </div>
         </div>
 
-        <!-- 7. INTERACTIVE GLOWING SALES & GEO-TELEMETRY MAP -->
+        <!-- 7. STUNNING GLOWING GLOBAL SALES & GEO-TELEMETRY MAP -->
         <div id="mapSection" class="executive-sanctuary">
-            <h2>Global Sales & Node Telemetry Map</h2>
-            <p class="section-desc">Hover over international nodes below to inspect live regional sales hot-spots, revenue tracking, market trends, and automated pull-out triggers.</p>
+            <h2>Global Sales & Geo-Telemetry Map</h2>
+            <p class="section-desc">Interactive live world terminal. Click any international region below to inspect real-time sales hotspots, revenue tracking, trending products, and automated pull-out strategies.</p>
             
-            <div class="map-grid-container">
-                <div class="map-node" onmouseover="inspectNode('UK Hub (West Yorkshire)', '£4,850.00', 'High demand for sovereign digital architecture', 'Optimal Hold (Stable Yield)')">
-                    <h4>Node Alpha: United Kingdom</h4>
-                    <p>Status: Glowing / Active</p>
+            <div class="world-map-visual">
+                <div style="font-family: var(--primary-font); color: #FCF6BA; font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 2px;">🌍 LIVE INTERNATIONAL TELEMETRY GRID</div>
+                <p style="color: #888888; font-size: 0.75rem; margin-bottom: 1.5rem;">Select a region below to open live analytics:</p>
+                
+                <div class="map-grid-visual">
+                    <div class="map-region-card" onclick="openMapModal('United Kingdom Hub', '£4,850.00', 'High demand for sovereign digital architecture & custom trade vaults.', 'Optimal Hold (Stable Yield)')">
+                        <h4>United Kingdom <span class="glow-dot"></span></h4>
+                        <p>Status: Primary Gateway</p>
+                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    </div>
+                    <div class="map-region-card" onclick="openMapModal('European Union Gateway', '€7,200.00', 'Surge in automated workflow bundles & compliance packages.', 'Scale Up (Increase Ad Spend)')">
+                        <h4>European Union <span class="glow-dot" style="background:#00AAFF; box-shadow:0 0 10px #00AAFF;"></span></h4>
+                        <p>Status: High Growth</p>
+                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    </div>
+                    <div class="map-region-card" onclick="openMapModal('North American Channel', '$12,400.00', 'Peak conversion on Master Tier suites & crypto hubs.', 'Harvest Profits (Pull-out Recommended)')">
+                        <h4>North America <span class="glow-dot" style="background:#FF9900; box-shadow:0 0 10px #FF9900;"></span></h4>
+                        <p>Status: Peak Hotspot</p>
+                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    </div>
+                    <div class="map-region-card" onclick="openMapModal('Asia-Pacific Gateway', '$3,100.00', 'Emerging market for minimalist creator tools & mobile QRs.', 'Hold & Monitor')">
+                        <h4>Asia-Pacific <span class="glow-dot" style="background:#CC00FF; box-shadow:0 0 10px #CC00FF;"></span></h4>
+                        <p>Status: Expanding</p>
+                        <span style="font-size: 0.7rem; color: #FCF6BA;">Click to inspect ➔</span>
+                    </div>
                 </div>
-                <div class="map-node" onmouseover="inspectNode('European Gateway (Germany/France)', '€7,200.00', 'Surge in automated workflow bundles', 'Scale Up (Increase Ad Spend)')">
-                    <h4>Node Beta: European Union</h4>
-                    <p>Status: High Growth</p>
-                </div>
-                <div class="map-node" onmouseover="inspectNode('North American Channel (USA/Canada)', '$12,400.00', 'Peak conversion on Master Tier suites', 'Harvest Profits (Pull-out Recommended)')">
-                    <h4>Node Gamma: North America</h4>
-                    <p>Status: Peak Hotspot</p>
-                </div>
-                <div class="map-node" onmouseover="inspectNode('Asia-Pacific Gateway (Singapore/Aus)', '$3,100.00', 'Emerging market for minimalist creator tools', 'Hold & Monitor')">
-                    <h4>Node Delta: APAC Region</h4>
-                    <p>Status: Expanding</p>
-                </div>
-            </div>
-            <div id="mapInspection" class="live-output-panel" style="display: block; margin-top: 1rem; border-color: #FCF6BA; background:#000; padding:1rem; border:1px dashed #BF953F; color:#FCF6BA;">
-                <strong>[MAP TELEMETRY TERMINAL]:</strong> Hover over any regional node above to inspect real-time financial yields, market trends, and strategic pull-out signals.
             </div>
         </div>
 
@@ -635,9 +701,8 @@
             }
         }
 
-        function inspectNode(region, revenue, trend, action) {
-            const panel = document.getElementById('mapInspection');
-            panel.innerHTML = `<strong>[LIVE NODE TELEMETRY - ${region.toUpperCase()}]:</strong><br>• Total Revenue Generated: <span style="color:#FCF6BA;">${revenue}</span><br>• Current Market Trend: ${trend}<br>• Strategic Recommendation: <strong style="color:#BF953F;">${action}</strong>`;
+        function openMapModal(region, revenue, trend, action) {
+            showModal(`Global Node Terminal: ${region}`, `• Total Regional Revenue: <span style="color:#FCF6BA;">${revenue}</span><br><br>• Active Market Trend: ${trend}<br><br>• Strategic Recommendation: <strong style="color:#BF953F;">${action}</strong><br><br><em>Status: Glowing node connection synchronized with live localized secure telemetry.</em>`);
         }
 
         function generateQR(url) {
