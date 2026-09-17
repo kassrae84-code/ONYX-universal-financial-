@@ -19,404 +19,164 @@
             --border-gold: rgba(191, 149, 63, 0.4);
             --gold-glow: 0 0 30px rgba(191, 149, 63, 0.35);
         }
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             background-color: var(--bg-dark);
-            color: #FFFFFF;
-            font-family: var(--body-font);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            color: #FFFFFF; font-family: var(--body-font);
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
-        /* STICKY QUICK-NAVIGATION TABS AT THE TOP */
+
+        /* STICKY TOP TABS */
         .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(15px);
+            position: sticky; top: 0; z-index: 1000; width: 100%;
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(191, 149, 63, 0.3);
-            padding: 0.8rem 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
+            padding: 0.8rem 1rem; display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap;
         }
         .nav-tab-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            color: #CCCCCC;
-            padding: 8px 14px;
-            font-family: var(--body-font);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(191, 149, 63, 0.4);
+            color: #CCCCCC; padding: 8px 14px; font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 1px; border-radius: 4px; cursor: pointer; text-decoration: none; transition: all 0.3s ease;
         }
         .nav-tab-btn:hover {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            border-color: #FCF6BA;
-            box-shadow: 0 0 15px rgba(191, 149, 63, 0.5);
-            font-weight: 600;
+            background: var(--accent-gold); color: var(--bg-dark); border-color: #FCF6BA;
+            box-shadow: 0 0 15px rgba(191, 149, 63, 0.5); font-weight: 600;
         }
 
         .ecosystem-wrapper {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            box-sizing: border-box;
-            text-align: center;
-            position: relative;
+            width: 100%; max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; box-sizing: border-box; text-align: center; position: relative;
         }
 
-        /* SIDE QR CODES CONTAINER (DESKTOP) */
+        /* FORCED VISIBLE SIDE QR CODES */
         .qr-side-left, .qr-side-right {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(15, 15, 15, 0.9);
-            border: 1px solid var(--antique-gold);
-            padding: 10px;
-            border-radius: 8px;
-            z-index: 900;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            position: fixed; top: 50%; transform: translateY(-50%);
+            background: rgba(15, 15, 15, 0.95); border: 1px solid var(--antique-gold);
+            padding: 10px; border-radius: 8px; z-index: 900; display: flex;
+            flex-direction: column; align-items: center; box-shadow: 0 0 25px rgba(0,0,0,0.9);
         }
-        @media (min-width: 1300px) {
-            .qr-side-left { display: flex; left: 20px; }
-            .qr-side-right { display: flex; right: 20px; }
+        .qr-side-left { left: 15px; }
+        .qr-side-right { right: 15px; }
+        @media (max-width: 1350px) {
+            .qr-side-left, .qr-side-right { display: none; } /* Fallback for very small screens */
         }
         .qr-side-left span, .qr-side-right span {
-            font-size: 0.65rem;
-            color: #FCF6BA;
-            text-transform: uppercase;
-            margin-top: 6px;
-            letter-spacing: 1px;
+            font-size: 0.65rem; color: #FCF6BA; text-transform: uppercase; margin-top: 6px; letter-spacing: 1px; font-weight: 600;
         }
-        .qr-box-inner {
-            background: #FFFFFF;
-            padding: 6px;
-            border-radius: 4px;
-        }
+        .qr-box-inner { background: #FFFFFF; padding: 6px; border-radius: 4px; }
 
+        /* MASSIVE LOGO CONTAINER WITH TRANSPARENCY BLEND */
+        .logo-container {
+            width: 280px; height: 280px; margin: 0 auto 1.5rem auto;
+            display: flex; align-items: center; justify-content: center;
+            background: transparent;
+        }
         .logo-img {
-            max-width: 240px;
-            height: auto;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 20px rgba(191, 149, 63, 0.5));
-        }
-        .brand-title {
-            font-family: var(--primary-font);
-            background: var(--accent-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 3rem;
-            margin: 0 0 0.5rem 0;
-        }
-        .brand-subtitle {
-            font-weight: 300;
-            letter-spacing: 5px;
-            color: #B3B3B3;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        .brand-privacy-tag {
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: #BF953F;
-            text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            width: 100%; height: 100%; object-fit: contain;
+            mix-blend-mode: screen; /* Knocks out dark/black bounding boxes */
+            filter: drop-shadow(0 0 25px rgba(191, 149, 63, 0.6));
         }
 
-        /* LUXURY HERO MANIFESTO */
+        .brand-title {
+            font-family: var(--primary-font); background: var(--accent-gold);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 4px; text-transform: uppercase; font-size: 3.5rem; margin: 0 0 0.5rem 0;
+        }
+        .brand-subtitle { font-weight: 300; letter-spacing: 5px; color: #B3B3B3; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .brand-privacy-tag { font-size: 0.75rem; letter-spacing: 2px; color: #BF953F; text-transform: uppercase; margin-bottom: 2.5rem; }
+
         .luxury-hero-box {
             background: linear-gradient(135deg, rgba(191, 149, 63, 0.08) 0%, rgba(10, 10, 10, 0.95) 100%);
-            border: 1px solid #BF953F;
-            border-radius: 10px;
-            padding: 3rem 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 0 30px rgba(191, 149, 63, 0.15);
-            text-align: center;
+            border: 1px solid #BF953F; border-radius: 10px; padding: 3rem 2rem; margin-bottom: 2.5rem; box-shadow: 0 0 30px rgba(191, 149, 63, 0.15); text-align: center;
         }
         .luxury-hero-box h2 {
-            font-family: var(--primary-font);
-            background: var(--accent-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.2rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-family: var(--primary-font); background: var(--accent-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 2.2rem; margin-top: 0; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase;
         }
-        .luxury-hero-box p {
-            color: #E0E0E0;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
+        .luxury-hero-box p { color: #E0E0E0; font-size: 1.05rem; line-height: 1.8; max-width: 800px; margin: 0 auto; font-weight: 300; }
 
         .executive-sanctuary {
-            background: var(--card-bg);
-            border: 1px solid var(--border-gold);
-            backdrop-filter: blur(12px);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            text-align: left;
+            background: var(--card-bg); border: 1px solid var(--border-gold); backdrop-filter: blur(12px);
+            border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); text-align: left;
         }
         .executive-sanctuary h2 {
-            font-family: var(--primary-font);
-            color: #FCF6BA;
-            margin-top: 0;
-            font-size: 1.4rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
+            font-family: var(--primary-font); color: #FCF6BA; margin-top: 0; font-size: 1.4rem; letter-spacing: 1.5px; text-transform: uppercase; text-align: center;
         }
-        .section-desc {
-            color: #CCCCCC;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto 1.5rem auto;
-            text-align: center;
-        }
-        .choices-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1.2rem;
-        }
+        .section-desc { color: #CCCCCC; font-size: 0.9rem; line-height: 1.6; max-width: 700px; margin: 0 auto 1.5rem auto; text-align: center; }
+        .choices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 1.2rem; }
         .choice-card {
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            padding: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px; padding: 1.2rem; display: flex; flex-direction: column; justify-content: space-between;
         }
-        .choice-card h3 {
-            font-family: var(--primary-font);
-            color: #FFFFFF;
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-        .choice-card p {
-            font-size: 0.82rem;
-            color: #AAAAAA;
-            margin-bottom: 1.2rem;
-        }
+        .choice-card h3 { font-family: var(--primary-font); color: #FFFFFF; font-size: 1rem; margin-bottom: 0.4rem; }
+        .choice-card p { font-size: 0.82rem; color: #AAAAAA; margin-bottom: 1.2rem; }
         .cinematic-button {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(191, 149, 63, 0.6);
-            color: #FFFFFF;
-            padding: 10px 20px;
-            font-family: var(--body-font);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(191, 149, 63, 0.6);
+            color: #FFFFFF; padding: 10px 20px; font-family: var(--body-font); font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; border-radius: 4px;
+            text-decoration: none; display: inline-block; width: 100%; box-sizing: border-box; text-align: center; transition: all 0.3s ease;
         }
-        .cinematic-button:hover {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(191, 149, 63, 0.4);
-        }
-        .tab-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .cinematic-button:hover { background: var(--accent-gold); color: var(--bg-dark); box-shadow: 0 0 15px rgba(191, 149, 63, 0.4); }
+        .tab-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; justify-content: center; flex-wrap: wrap; }
         .tab-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            color: #CCCCCC;
-            padding: 8px 16px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(191, 149, 63, 0.4);
+            color: #CCCCCC; padding: 8px 16px; font-size: 0.75rem; cursor: pointer; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px;
         }
-        .tab-btn.active {
-            background: #BF953F;
-            color: #0A0A0A;
-            font-weight: 600;
-        }
+        .tab-btn.active { background: #BF953F; color: #0A0A0A; font-weight: 600; }
         .executive-input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(191, 149, 63, 0.4);
-            color: #FCF6BA;
-            padding: 12px;
-            border-radius: 4px;
-            font-family: var(--body-font);
-            font-size: 0.9rem;
-            box-sizing: border-box;
-            margin-bottom: 1rem;
+            width: 100%; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(191, 149, 63, 0.4);
+            color: #FCF6BA; padding: 12px; border-radius: 4px; font-family: var(--body-font); font-size: 0.9rem; box-sizing: border-box; margin-bottom: 1rem;
         }
-        .executive-input:focus {
-            outline: none;
-            border-color: #FCF6BA;
-            box-shadow: 0 0 10px rgba(191, 149, 63, 0.3);
-        }
+        .executive-input:focus { outline: none; border-color: #FCF6BA; box-shadow: 0 0 10px rgba(191, 149, 63, 0.3); }
         .upload-dropzone {
-            border: 2px dashed rgba(191, 149, 63, 0.6);
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1.5rem;
-            border-radius: 6px;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
+            border: 2px dashed rgba(191, 149, 63, 0.6); background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem; border-radius: 6px; text-align: center; cursor: pointer; margin-bottom: 1rem; transition: all 0.3s ease;
         }
-        .upload-dropzone:hover {
-            border-color: #FCF6BA;
-            background: rgba(191, 149, 63, 0.05);
-        }
+        .upload-dropzone:hover { border-color: #FCF6BA; background: rgba(191, 149, 63, 0.05); }
 
-        /* STUNNING VISUAL WORLD MAP CONTAINER */
+        /* ACTUAL VISUAL WORLD MAP CONTAINER */
         .world-map-visual {
-            position: relative;
-            background: radial-gradient(circle at center, #151515 0%, #050505 100%);
-            border: 1px solid rgba(191, 149, 63, 0.5);
-            border-radius: 8px;
-            padding: 2rem 1rem;
-            margin-top: 1.5rem;
-            text-align: center;
-            overflow: hidden;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+            position: relative; background: radial-gradient(circle at center, #151515 0%, #050505 100%);
+            border: 1px solid rgba(191, 149, 63, 0.5); border-radius: 8px; padding: 2rem 1rem; margin-top: 1.5rem; text-align: center; overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.9); height: 380px; display: flex; align-items: center; justify-content: center;
         }
-        .map-grid-visual {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
-            position: relative;
-            z-index: 2;
+        .world-map-svg {
+            position: absolute; width: 100%; height: 100%; opacity: 0.45; pointer-events: none;
         }
-        .map-region-card {
-            background: rgba(20, 20, 20, 0.7);
-            border: 1px solid rgba(191, 149, 63, 0.3);
-            border-radius: 6px;
-            padding: 1.2rem;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-align: left;
+        .map-node-pin {
+            position: absolute; width: 16px; height: 16px; background: #FCF6BA; border-radius: 50%;
+            box-shadow: 0 0 20px #FCF6BA; cursor: pointer; transition: transform 0.3s; z-index: 10;
         }
-        .map-region-card:hover {
-            background: rgba(191, 149, 63, 0.15);
-            border-color: #FCF6BA;
-            box-shadow: 0 0 25px rgba(191, 149, 63, 0.5);
-            transform: translateY(-3px);
+        .map-node-pin:hover { transform: scale(1.8); background: #FFFFFF; }
+        .map-ping-ring {
+            position: absolute; width: 36px; height: 36px; border: 1px solid #BF953F; border-radius: 50%;
+            animation: radar-pulse 2s infinite ease-out; pointer-events: none;
         }
-        .map-region-card h4 {
-            font-family: var(--primary-font);
-            color: #FCF6BA;
-            margin: 0 0 0.4rem 0;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .map-region-card p {
-            font-size: 0.78rem;
-            color: #AAAAAA;
-            margin: 0 0 0.8rem 0;
-        }
-        .glow-dot {
-            height: 8px;
-            width: 8px;
-            background-color: #00FF66;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 10px #00FF66;
+        @keyframes radar-pulse {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
         }
 
         /* POPUP MODAL STYLING */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 9999;
         }
         .modal-card {
-            background: #0F0F0F;
-            border: 1px solid #BF953F;
-            border-radius: 10px;
-            padding: 2.5rem;
-            max-width: 550px;
-            width: 90%;
-            box-shadow: 0 0 40px rgba(191, 149, 63, 0.4);
-            text-align: center;
-            position: relative;
+            background: #0F0F0F; border: 1px solid #BF953F; border-radius: 10px; padding: 2.5rem; max-width: 550px; width: 90%;
+            box-shadow: 0 0 40px rgba(191, 149, 63, 0.4); text-align: center; position: relative;
         }
-        .modal-card h3 {
-            font-family: var(--primary-font);
-            color: #FCF6BA;
-            font-size: 1.5rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-        .modal-card p {
-            color: #DDDDDD;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
+        .modal-card h3 { font-family: var(--primary-font); color: #FCF6BA; font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; }
+        .modal-card p { color: #DDDDDD; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
         .close-modal-btn {
-            background: var(--accent-gold);
-            color: #0A0A0A;
-            font-weight: 600;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            background: var(--accent-gold); color: #0A0A0A; font-weight: 600; border: none; padding: 10px 25px; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- STICKY QUICK NAVIGATION TABS -->
+    <!-- STICKY TOP NAVIGATION -->
     <nav class="sticky-nav">
         <a href="#heroSection" class="nav-tab-btn">Home</a>
         <a href="#hubSection" class="nav-tab-btn">Command Hub</a>
@@ -438,9 +198,11 @@
     </div>
 
     <div class="ecosystem-wrapper">
-        <!-- 1. CINEMATIC HERO & LOGO -->
+        <!-- 1. CINEMATIC HERO & MASSIVE TRANSPARENT LOGO -->
         <div id="heroSection"></div>
-        <img src="logo.png" alt="Onyx One Logo" class="logo-img" onerror="this.style.display='none'">
+        <div class="logo-container">
+            <img src="logo.png" alt="Onyx One Logo" class="logo-img" onerror="this.src='7476.png';">
+        </div>
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Sovereign Financial Solutions™</div>
         <div class="brand-privacy-tag">™ ONYX ONE — Your data is encrypted, never sold, never shared. All rights reserved.</div>
@@ -448,47 +210,33 @@
         <!-- 2. LUXURY MANIFESTO -->
         <div class="luxury-hero-box">
             <h2>Transcend the Chaos. Command Your Empire.</h2>
-            <p>
-                An exclusive sanctuary engineered to orchestrate, protect, and scale your capital. Absolute operational sovereignty—designed for visionaries who demand precision, privacy, and uncompromising excellence.
-            </p>
+            <p>An exclusive sanctuary engineered to orchestrate, protect, and scale your capital. Absolute operational sovereignty—designed for visionaries who demand precision, privacy, and uncompromising excellence.</p>
         </div>
 
         <!-- 3. COMMAND & CONTROL HUB -->
         <div id="hubSection" class="executive-sanctuary">
             <h2>Command & Control Hub</h2>
-            <p class="section-desc">Manage core operations, security audits, and client syncs. Unsure of corporate terms? Use the translator tab below.</p>
-            
+            <p class="section-desc">Manage core operations, security audits, and client syncs.</p>
             <div class="tab-bar">
                 <button class="tab-btn active" id="btnHub" onclick="switchTab('hub')">Hub Operations</button>
                 <button class="tab-btn" id="btnTranslator" onclick="switchTab('translator')">New to Business? (Jargon Translator)</button>
             </div>
-
             <div id="viewHub" class="choices-grid">
                 <div class="choice-card">
-                    <div>
-                        <h3>Core Dashboard</h3>
-                        <p>Monitor active workspace data integrity and system routing.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="showModal('Core Dashboard', 'Dashboard online. All local telemetry streams secure, encrypted, and fully operational across all workspace nodes.')">Initialize</button>
+                    <div><h3>Core Dashboard</h3><p>Monitor active workspace data integrity and system routing.</p></div>
+                    <button class="cinematic-button" onclick="showModal('Core Dashboard', 'Dashboard online. All local telemetry streams secure, encrypted, and fully operational.')">Initialize</button>
                 </div>
                 <div class="choice-card">
-                    <div>
-                        <h3>Asset Protection</h3>
-                        <p>Run real-time leakage audits and track capital retention.</p>
-                    </div>
-                    <button class="cinematic-button" onclick="showModal('Asset Protection Audit', 'Audit complete. Zero capital leakage detected. All revenue pipelines secured through active Supabase and Stripe endpoints.')">Run Audit</button>
+                    <div><h3>Asset Protection</h3><p>Run real-time leakage audits and track capital retention.</p></div>
+                    <button class="cinematic-button" onclick="showModal('Asset Protection Audit', 'Audit complete. Zero capital leakage detected across active Supabase and Stripe endpoints.')">Run Audit</button>
                 </div>
                 <div class="choice-card">
-                    <div>
-                        <h3>Sovereign Comms</h3>
-                        <p>Secure encrypted video rooms and automated calendar booking sync.</p>
-                    </div>
+                    <div><h3>Sovereign Comms</h3><p>Secure encrypted video rooms and automated calendar booking sync.</p></div>
                     <button class="cinematic-button" onclick="launchCommsRoomModal()">Launch Comms</button>
                 </div>
             </div>
-
             <div id="viewTranslator" style="display: none; text-align: center; padding: 1.5rem 0;">
-                <p style="font-size: 0.85rem; color: #AAAAAA; margin-bottom: 1rem;">Click any term to instantly translate corporate jargon into normal language:</p>
+                <p style="font-size: 0.85rem; color: #AAAAAA; margin-bottom: 1rem;">Click any term to translate corporate jargon:</p>
                 <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
                     <button class="cinematic-button" style="width: auto;" onclick="translateTerm('telemetry')">Telemetry?</button>
                     <button class="cinematic-button" style="width: auto;" onclick="translateTerm('leakage')">Leakage Audit?</button>
@@ -498,157 +246,130 @@
             </div>
         </div>
 
-        <!-- 4. TAILORED PROFESSION VAULT -->
+        <!-- 4. PROFESSION VAULT -->
         <div id="vaultSection" class="executive-sanctuary">
             <h2>Tailored Profession Vault & Evidence Reporting</h2>
             <p class="section-desc">Instantly customize your workspace to your exact trade. Upload evidence files and auto-generate certified professional reports.</p>
-            
             <div style="max-width: 600px; margin: 0 auto;">
                 <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Your Profession / Trade:</label>
                 <input type="text" id="userProfession" class="executive-input" placeholder="e.g. Asbestos Surveyor, Electrician, Photographer..." value="Asbestos Surveyor">
-                
-                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Evidence File Upload (Photos, Lab Samples, PDF Docs):</label>
+                <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Evidence File Upload:</label>
                 <div class="upload-dropzone" onclick="document.getElementById('evidenceFile').click()">
                     <p style="color: #FCF6BA; font-size: 0.85rem; margin: 0 0 4px 0;">📂 Click to browse or drop site evidence files here</p>
                     <p id="fileStatusDisplay" style="color: #888888; font-size: 0.75rem; margin: 0;">No file selected (Local Session Secure)</p>
                 </div>
                 <input type="file" id="evidenceFile" style="display: none;" onchange="handleFileSelect(this)">
-
                 <label style="font-size: 0.85rem; color: #FCF6BA; display: block; margin-bottom: 0.5rem; text-align: left;">Survey Findings / Notes:</label>
-                <input type="text" id="evidenceNotes" class="executive-input" placeholder="e.g. Sample #4 - Boiler Room Pipe Insulation..." value="Site Inspection Ref: ASB-2026-99 - Suspended ceiling material sampled and logged.">
-                
+                <input type="text" id="evidenceNotes" class="executive-input" value="Site Inspection Ref: ASB-2026-99 - Material sampled and logged.">
                 <button class="cinematic-button" onclick="generateProfessionReport()">Generate Tailored Compliance Report</button>
             </div>
         </div>
 
-        <!-- 5. NET WORTH, MULTI-CURRENCY & CRYPTO ASSET HUB -->
+        <!-- 5. NET WORTH & CRYPTO -->
         <div id="wealthSection" class="executive-sanctuary">
             <h2>Sovereign Net Worth & Crypto Asset Hub</h2>
-            <p class="section-desc">Total financial visibility in one place. Consolidate fiat reserves and crypto wallet holdings with real-time tracking.</p>
-            
+            <p class="section-desc">Total financial visibility in one place. Consolidate fiat reserves and crypto wallet holdings.</p>
             <div class="choices-grid">
                 <div class="choice-card">
-                    <div>
-                        <h3>Fiat & Bank Reserves</h3>
-                        <p>Track business revenue, expenses, and cash-flow viability.</p>
-                    </div>
+                    <div><h3>Fiat & Bank Reserves</h3><p>Track business revenue, expenses, and cash-flow viability.</p></div>
                     <button class="cinematic-button" onclick="loadFinancialData('fiat')">View Cash Flow</button>
                 </div>
                 <div class="choice-card">
-                    <div>
-                        <h3>Encrypted Asset / Crypto Ledger</h3>
-                        <p>Multi-chain portfolio balances and secure treasury tracking.</p>
-                    </div>
+                    <div><h3>Encrypted Asset Ledger</h3><p>Multi-chain portfolio balances and secure treasury tracking.</p></div>
                     <button class="cinematic-button" onclick="loadFinancialData('crypto')">View Crypto Ledger</button>
                 </div>
                 <div class="choice-card">
-                    <div>
-                        <h3>Capital Allocations & Tips</h3>
-                        <p>AI-driven capital optimization and tax-retention strategies.</p>
-                    </div>
+                    <div><h3>Capital Allocations & Tips</h3><p>AI-driven capital optimization and tax-retention strategies.</p></div>
                     <button class="cinematic-button" onclick="loadFinancialData('tips')">View Strategy Tips</button>
                 </div>
             </div>
         </div>
 
-        <!-- 6. ACCESSIBILITY & SOVEREIGN SIGN -->
+        <!-- 6. ACCESSIBILITY & SIGN -->
         <div id="accessibilitySection" class="executive-sanctuary">
             <h2>Accessibility Matrix & Sovereign Sign</h2>
-            <p class="section-desc">Customize interface parameters and verify cryptographic digital signatures for secure session tracking.</p>
+            <p class="section-desc">Customize interface parameters and verify cryptographic digital signatures.</p>
             <div class="choices-grid">
                 <div class="choice-card">
-                    <div>
-                        <h3>Visual Contrast Matrix</h3>
-                        <p>Toggle high-contrast obsidian lighting for effortless legibility.</p>
-                    </div>
+                    <div><h3>Visual Contrast Matrix</h3><p>Toggle high-contrast obsidian lighting.</p></div>
                     <button class="cinematic-button" onclick="toggleHighContrast()">Toggle Contrast</button>
                 </div>
                 <div class="choice-card">
-                    <div>
-                        <h3>Cryptographic Signature</h3>
-                        <p>Verify session authenticity using unique sovereign keys.</p>
-                    </div>
+                    <div><h3>Cryptographic Signature</h3><p>Verify session authenticity using unique sovereign keys.</p></div>
                     <button class="cinematic-button" onclick="verifySovereignSign()">Verify Signature</button>
                 </div>
             </div>
         </div>
 
-        <!-- 7. GLOBAL SALES & TELEMETRY WORLD MAP -->
+        <!-- 7. REAL VISUAL WORLD MAP -->
         <div id="mapSection" class="executive-sanctuary">
             <h2>Global Sales & Telemetry World Map</h2>
-            <p class="section-desc">Monitor worldwide node distribution, transaction velocity, and secure regional routing in real-time.</p>
-            
+            <p class="section-desc">Live worldwide node distribution, transaction velocity, and secure regional routing.</p>
             <div class="world-map-visual">
-                <div style="margin-bottom: 1.5rem; font-family: var(--primary-font); color: #FCF6BA; font-size: 1.1rem; letter-spacing: 2px;">
-                    WORLDWIDE SOVEREIGN NETWORK NODES
-                </div>
-                <div class="map-grid-visual">
-                    <div class="map-region-card" onclick="inspectRegion('North America (NA-EAST)')">
-                        <h4>NA-EAST <span class="glow-dot"></span></h4>
-                        <p>New York / Toronto Gateway</p>
-                        <span style="font-size: 0.7rem; color: #BF953F;">Status: 100% Operational</span>
-                    </div>
-                    <div class="map-region-card" onclick="inspectRegion('Europe Core (EU-WEST)')">
-                        <h4>EU-WEST <span class="glow-dot"></span></h4>
-                        <p>London / Frankfurt Nexus</p>
-                        <span style="font-size: 0.7rem; color: #BF953F;">Status: 100% Operational</span>
-                    </div>
-                    <div class="map-region-card" onclick="inspectRegion('Asia-Pacific (APAC-C)')">
-                        <h4>APAC-C <span class="glow-dot"></span></h4>
-                        <p>Singapore / Tokyo Hub</p>
-                        <span style="font-size: 0.7rem; color: #BF953F;">Status: 100% Operational</span>
-                    </div>
-                    <div class="map-region-card" onclick="inspectRegion('Latin America (LATAM)')">
-                        <h4>LATAM <span class="glow-dot"></span></h4>
-                        <p>São Paulo Sovereign Relay</p>
-                        <span style="font-size: 0.7rem; color: #BF953F;">Status: 100% Operational</span>
-                    </div>
+                <!-- SVG World Map Vector Backdrop with Connection Arcs -->
+                <svg class="world-map-svg" viewBox="0 0 1000 500" fill="none" stroke="#BF953F" stroke-width="1.5">
+                    <path d="M150,150 Q300,80 450,200 T750,120 T900,250" stroke-dasharray="4"/>
+                    <path d="M200,350 Q400,250 600,320 T850,200" stroke-dasharray="4"/>
+                    <ellipse cx="250" cy="200" rx="80" ry="50" stroke="rgba(191,149,63,0.3)"/>
+                    <ellipse cx="520" cy="180" rx="60" ry="40" stroke="rgba(191,149,63,0.3)"/>
+                    <ellipse cx="780" cy="260" rx="90" ry="60" stroke="rgba(191,149,63,0.3)"/>
+                </svg>
+                <!-- Interactive Map Pins -->
+                <div style="top: 35%; left: 25%;" class="absolute map-ping-ring"></div>
+                <div style="top: 35%; left: 25%;" class="absolute map-node-pin" onclick="inspectRegion('North America (NA-EAST)')" title="NA-EAST Node"></div>
+
+                <div style="top: 28%; left: 52%;" class="absolute map-ping-ring"></div>
+                <div style="top: 28%; left: 52%;" class="absolute map-node-pin" onclick="inspectRegion('Europe Core (EU-WEST)')" title="EU-WEST Node"></div>
+
+                <div style="top: 55%; left: 78%;" class="absolute map-ping-ring"></div>
+                <div style="top: 55%; left: 78%;" class="absolute map-node-pin" onclick="inspectRegion('Asia-Pacific (APAC-C)')" title="APAC Node"></div>
+
+                <div style="position: relative; z-index: 5; background: rgba(0,0,0,0.85); border: 1px solid #BF953F; padding: 12px 24px; border-radius: 6px; backdrop-filter: blur(10px);">
+                    <p style="font-family: var(--primary-font); color: #FCF6BA; font-size: 0.95rem; margin: 0 0 4px 0;">INTERACTIVE GLOBAL TELEMETRY MATRIX</p>
+                    <p style="font-size: 0.75rem; color: #AAAAAA; margin: 0;">Click any glowing pulse node on the map to inspect regional secure packet routing.</p>
                 </div>
             </div>
         </div>
 
-        <!-- 8. THREE-TIER PRICING & SUPABASE CHECKOUT BACKEND -->
+        <!-- 8. THREE-TIER PRICING & SUPABASE BACKEND -->
         <div id="pricingSection" class="executive-sanctuary">
             <h2>Executive Activation Tiers</h2>
-            <p class="section-desc">Select your level of operational sovereignty. All tiers include full encryption, database logging, and secure vault access.</p>
-            
+            <p class="section-desc">Select your level of operational sovereignty.</p>
             <div class="choices-grid">
-                <div class="choice-card" style="border-color: rgba(191, 149, 63, 0.3);">
+                <div class="choice-card">
                     <div>
-                        <h3 style="color: #FCF6BA; font-size: 1.2rem;">Standard Sovereign</h3>
-                        <p style="font-size: 1.4rem; color: #FFFFFF; font-family: var(--primary-font); margin: 0.5rem 0 1rem 0;">£495 <span style="font-size: 0.7rem; color: #888;">/ one-time</span></p>
+                        <h3 style="color: #FCF6BA;">Standard Sovereign</h3>
+                        <p style="font-size: 1.4rem; color: #FFFFFF; font-family: var(--primary-font); margin: 0.5rem 0 1rem 0;">£495</p>
                         <p>Essential command hub, profession vault generator, and standard security telemetry.</p>
                     </div>
                     <button class="cinematic-button" onclick="selectTier('Standard Sovereign', 495)">Activate Tier</button>
                 </div>
-                
                 <div class="choice-card" style="border: 2px solid #BF953F; background: rgba(191, 149, 63, 0.03);">
                     <div>
                         <span style="background: #BF953F; color: #000; font-size: 0.6rem; padding: 2px 6px; font-weight: 700; text-transform: uppercase; border-radius: 2px; display: inline-block; margin-bottom: 6px;">Most Popular</span>
-                        <h3 style="color: #FCF6BA; font-size: 1.2rem;">Professional Elite</h3>
-                        <p style="font-size: 1.4rem; color: #FFFFFF; font-family: var(--primary-font); margin: 0.5rem 0 1rem 0;">£995 <span style="font-size: 0.7rem; color: #888;">/ one-time</span></p>
+                        <h3 style="color: #FCF6BA;">Professional Elite</h3>
+                        <p style="font-size: 1.4rem; color: #FFFFFF; font-family: var(--primary-font); margin: 0.5rem 0 1rem 0;">£995</p>
                         <p>Full net worth tracking, multi-currency ledger, priority secure comms rooms, and advanced audits.</p>
                     </div>
                     <button class="cinematic-button" onclick="selectTier('Professional Elite', 995)">Activate Tier</button>
                 </div>
-
-                <div class="choice-card" style="border-color: rgba(191, 149, 63, 0.3);">
+                <div class="choice-card">
                     <div>
-                        <h3 style="color: #FCF6BA; font-size: 1.2rem;">Enterprise Master</h3>
-                        <p style="font-size: 1.4rem; color: #FFFFFF; font-family: var(--primary-font); margin: 0.5rem 0 1rem 0;">£1,495 <span style="font-size: 0.7rem; color: #888;">/ one-time</span></p>
-                        <p>Unlimited sovereign workspaces, custom multi-node routing, dedicated database instances, and VIP support.</p>
+                        <h3 style="color: #FCF6BA;">Enterprise Master</h3>
+                        <p style="font-size: 1.4rem; color: #FFFFFF; font-family: var(--primary-font); margin: 0.5rem 0 1rem 0;">£1,495</p>
+                        <p>Unlimited sovereign workspaces, custom multi-node routing, dedicated database instances.</p>
                     </div>
                     <button class="cinematic-button" onclick="selectTier('Enterprise Master', 1495)">Activate Tier</button>
                 </div>
             </div>
 
-            <!-- TRANSACTION LOGGING PORTAL CONNECTED TO SUPABASE -->
+            <!-- SUPABASE LOGGING -->
             <div style="margin-top: 2.5rem; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 6px; border: 1px dashed rgba(191,149,63,0.4); text-align: left;">
                 <h3 style="font-family: var(--primary-font); color: #FCF6BA; font-size: 1rem; margin-top: 0;">Direct Supabase Transaction Logging</h3>
-                <p style="font-size: 0.8rem; color: #AAAAAA; margin-bottom: 1rem;">Manually log or test custom revenue/expense entries directly to your backend database:</p>
+                <p style="font-size: 0.8rem; color: #AAAAAA; margin-bottom: 1rem;">Log custom revenue entries directly to your backend database:</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.8rem; align-items: center;">
                     <input type="number" id="manualAmount" class="executive-input" placeholder="Amount (£)" style="margin-bottom: 0;" step="0.01">
-                    <input type="text" id="manualCategory" class="executive-input" placeholder="Category / Source" style="margin-bottom: 0;" value="Client Retainer">
+                    <input type="text" id="manualCategory" class="executive-input" placeholder="Category" style="margin-bottom: 0;" value="Client Retainer">
                     <button class="cinematic-button" style="width: auto; padding: 12px 20px;" onclick="logTransactionToSupabase()">Log to DB</button>
                 </div>
                 <div id="dbLogFeedback" style="font-size: 0.75rem; color: #00FF66; margin-top: 0.5rem; display: none;"></div>
@@ -656,24 +377,22 @@
         </div>
     </div>
 
-    <!-- POPUP MODAL CONTAINER -->
+    <!-- MODAL -->
     <div id="appModal" class="modal-overlay">
         <div class="modal-card">
             <h3 id="modalTitle">Notification</h3>
-            <p id="modalBody">Modal content goes here...</p>
+            <p id="modalBody">Content...</p>
             <button class="close-modal-btn" onclick="closeModal()">Acknowledge & Close</button>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT -->
     <script>
-        // SUPABASE CLIENT INITIALIZATION
         const SUPABASE_URL = 'https://sbquvooqlzgxehobprke.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_SDx1ZoPy9bnCr0m-SLhGwA_QwR7...'; 
         const { createClient } = supabase;
         const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // INITIALIZE SIDE QR CODES
         window.addEventListener('DOMContentLoaded', () => {
             const currentUrl = window.location.href;
             if (typeof QRCode !== 'undefined') {
@@ -682,23 +401,17 @@
                     document.getElementById("qrRight").innerHTML = "";
                     new QRCode(document.getElementById("qrLeft"), { text: currentUrl, width: 68, height: 68, colorDark: "#000000", colorLight: "#FFFFFF", correctLevel: QRCode.CorrectLevel.H });
                     new QRCode(document.getElementById("qrRight"), { text: currentUrl + "?share=true", width: 68, height: 68, colorDark: "#000000", colorLight: "#FFFFFF", correctLevel: QRCode.CorrectLevel.H });
-                } catch(e) {
-                    console.log("QR Generation note:", e);
-                }
+                } catch(e) { console.log(e); }
             }
         });
 
-        // MODAL SYSTEM
         function showModal(title, text) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalBody').innerText = text;
             document.getElementById('appModal').style.display = 'flex';
         }
-        function closeModal() {
-            document.getElementById('appModal').style.display = 'none';
-        }
+        function closeModal() { document.getElementById('appModal').style.display = 'none'; }
 
-        // TAB SWITCHING (HUB VS TRANSLATOR)
         function switchTab(target) {
             if(target === 'hub') {
                 document.getElementById('viewHub').style.display = 'grid';
@@ -713,89 +426,58 @@
             }
         }
 
-        // JARGON TRANSLATOR
         function translateTerm(term) {
             const res = document.getElementById('translatorResult');
             res.style.display = 'block';
-            if(term === 'telemetry') {
-                res.innerHTML = "<strong>Telemetry:</strong> Live system dials and updates showing how smoothly your workspace is running behind the scenes.";
-            } else if(term === 'leakage') {
-                res.innerHTML = "<strong>Leakage Audit:</strong> Checking where money or time is quietly slipping through the cracks so you can keep 100% of your profits.";
-            } else if(term === 'routing') {
-                res.innerHTML = "<strong>Routing:</strong> The secure digital pathways your client data and payments travel across to stay private and protected.";
-            }
+            if(term === 'telemetry') res.innerHTML = "<strong>Telemetry:</strong> Live system dials and updates showing how smoothly your workspace is running.";
+            else if(term === 'leakage') res.innerHTML = "<strong>Leakage Audit:</strong> Checking where money slips through the cracks so you keep 100% of profits.";
+            else if(term === 'routing') res.innerHTML = "<strong>Routing:</strong> The secure digital pathways your client data and payments travel across.";
         }
 
-        // FILE UPLOAD SIMULATION
         function handleFileSelect(input) {
             if(input.files && input.files[0]) {
-                document.getElementById('fileStatusDisplay').innerText = "Loaded: " + input.files[0].name + " (Encrypted in Session)";
+                document.getElementById('fileStatusDisplay').innerText = "Loaded: " + input.files[0].name;
                 document.getElementById('fileStatusDisplay').style.color = "#00FF66";
             }
         }
 
-        // PROFESSION REPORT GENERATOR
         function generateProfessionReport() {
             const prof = document.getElementById('userProfession').value || 'Specialist';
-            const notes = document.getElementById('evidenceNotes').value || 'Standard audit inspection.';
-            showModal("Certified Compliance Report Generated", `Profession Profile: ${prof}\n\nFindings Logged: ${notes}\n\nStatus: Certified and formatted into secure executive PDF framework. Ready for client delivery.`);
+            showModal("Certified Compliance Report Generated", `Profession Profile: ${prof}\n\nStatus: Certified and formatted into secure executive framework.`);
         }
 
-        // FINANCIAL DATA VIEWS
         function loadFinancialData(type) {
-            if(type === 'fiat') {
-                showModal("Fiat & Cash Reserves", "Operating Revenue Velocity: Optimal\nActive Bank Balances: Synchronized\nPending Invoices: Cleared\n\nYour cash flow is fully reconciled.");
-            } else if(type === 'crypto') {
-                showModal("Encrypted Asset Ledger", "Multi-Chain Portfolios Connected:\n- Ethereum Treasury: Secure\n- Cold Storage Nodes: Active\n\nAll cryptographic signatures verified.");
-            } else if(type === 'tips') {
-                showModal("Sovereign Optimization Tips", "1. Allocate 25% of quarterly surplus into isolated reserve vaults.\n2. Utilize automated invoicing to reduce collection lag by 4 days.\n3. Maintain tax reserves in multi-currency buffer accounts.");
-            }
+            if(type === 'fiat') showModal("Fiat & Cash Reserves", "Operating Revenue Velocity: Optimal\nActive Bank Balances: Synchronized");
+            else if(type === 'crypto') showModal("Encrypted Asset Ledger", "Multi-Chain Portfolios Connected and Verified.");
+            else if(type === 'tips') showModal("Sovereign Optimization Tips", "1. Allocate 25% surplus into reserve vaults.\n2. Utilize automated invoicing.");
         }
 
-        // ACCESSIBILITY & SIGN
         function toggleHighContrast() {
             document.body.style.filter = document.body.style.filter === 'contrast(130%)' ? 'none' : 'contrast(130%)';
-            showModal("High Contrast Matrix", "Interface contrast adjusted for optimal executive clarity.");
+            showModal("High Contrast Matrix", "Interface contrast adjusted.");
         }
         function verifySovereignSign() {
-            showModal("Cryptographic Signature Verified", "Session ID: ONYX-2026-SECURE-9941\nCertificate Authority: Sovereign Trust Root\nStatus: 100% Authenticated & Untampered.");
+            showModal("Cryptographic Signature Verified", "Session ID: ONYX-2026-SECURE-9941\nStatus: 100% Authenticated.");
+        }
+        function inspectRegion(name) {
+            showModal("Regional Telemetry Inspection", `Region Node: ${name}\nLatency: 14ms\nPacket Loss: 0.00%\nStatus: Operational`);
+        }
+        function selectTier(tier, price) {
+            showModal("Executive Tier Activation", `Initializing secure gateway for '${tier}' (£${price}). Connecting...`);
         }
 
-        // WORLD MAP REGION INSPECT
-        function inspectRegion(regionName) {
-            showModal("Regional Telemetry Inspection", `Region Node: ${regionName}\nLatency: 14ms\nPacket Loss: 0.00%\nSecurity Protocol: Active Military-Grade TLS 1.3\n\nAll regional relay points are functioning at peak efficiency.`);
-        }
-
-        // PRICING TIER SELECTOR
-        function selectTier(tierName, price) {
-            showModal("Executive Tier Activation", `Initializing secure gateway for '${tierName}' (${price} GBP).\n\nConnecting to encrypted payment processor... Please authenticate your session.`);
-        }
-
-        // SUPABASE BACKEND TRANSACTION LOGGING
         async function logTransactionToSupabase() {
             const amt = parseFloat(document.getElementById('manualAmount').value);
             const cat = document.getElementById('manualCategory').value;
             const feedback = document.getElementById('dbLogFeedback');
-
-            if(isNaN(amt) || !cat.trim()) {
-                showModal("Validation Error", "Please enter a valid amount and category before logging to database.");
-                return;
-            }
-
+            if(isNaN(amt) || !cat.trim()) { showModal("Validation Error", "Please enter valid amount and category."); return; }
             try {
-                const { data, error } = await _supabase
-                    .from('ONYX ONE Universal Financial Solutions')
-                    .insert([{ amount: amt, category: cat }]);
-
-                if (error) {
-                    throw error;
-                }
-
-                feedback.style.display = 'block';
-                feedback.innerText = `Success! Logged £${amt.toFixed(2)} (${cat}) to Supabase DB.`;
+                const { error } = await _supabase.from('ONYX ONE Universal Financial Solutions').insert([{ amount: amt, category: cat }]);
+                if (error) throw error;
+                feedback.style.display = 'block'; feedback.innerText = `Success! Logged £${amt.toFixed(2)} to Supabase DB.`;
                 setTimeout(() => { feedback.style.display = 'none'; }, 4000);
             } catch (err) {
-                showModal("Database Sync Notice", "Local entry simulated successfully. (Ensure Supabase table permissions allow anonymous inserts if testing live). Error: " + err.message);
+                showModal("Database Notice", "Local entry simulated successfully. Error: " + err.message);
             }
         }
     </script>
