@@ -75,20 +75,40 @@
             text-align: center;
         }
 
-        /* TRANSPARENT LOGO STYLING */
+        /* PURE SHIELD LOGO GRAPHIC (WITHOUT BAKED-IN TEXT) */
         .logo-img {
-            max-width: 280px;
+            max-width: 110px;
             width: 100%;
             height: auto;
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto 1.2rem auto;
             display: block;
             filter: drop-shadow(0 10px 25px rgba(191, 149, 63, 0.4));
             transition: transform 0.4s ease;
         }
         .logo-img:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
+        /* COMMANDING HTML TYPOGRAPHY SITTING NICELY UNDERNEATH */
+        .brand-title {
+            font-family: var(--primary-font);
+            background: var(--accent-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-size: 3.2rem;
+            margin: 0 0 0.3rem 0;
+            filter: drop-shadow(0 4px 15px rgba(191, 149, 63, 0.3));
+        }
+        .brand-subtitle {
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: #D1D1D1;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
         .brand-privacy-tag {
             font-size: 0.78rem;
             letter-spacing: 2.5px;
@@ -398,9 +418,11 @@
     </nav>
 
     <div class="ecosystem-wrapper">
-        <!-- 1. TRANSPARENT PNG LOGO -->
+        <!-- 1. PURE SHIELD LOGO + HTML TEXT HEADINGS -->
         <div id="heroSection"></div>
-        <img src="logo-transparent.png" alt="Onyx One Logo" class="logo-img">
+        <img src="logo-transparent.png" alt="Onyx One Shield Crest" class="logo-img">
+        <h1 class="brand-title">Onyx One</h1>
+        <div class="brand-subtitle">Financial Solutions</div>
         <div class="brand-privacy-tag">™ ONYX ONE — Your data is encrypted, never sold, never shared. All rights reserved.</div>
 
         <!-- 2. LUXURY MANIFESTO HERO -->
@@ -699,7 +721,7 @@
 
         function analyzeProductMarket() {
             const product = document.getElementById('userProductInput').value;
-            showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended Next Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.</em>`);
+            showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended Next Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.    </em>`);
         }
 
         function openMapModal(region, revenue, trend, action) {
