@@ -26,10 +26,10 @@
         :root {
             --obsidian: #000000;
             --midnight-layer: #050505;
-            --midnight-soft: #0C0C0C;
+            --midnight-soft: #080703;
             --champagne-gold: #C5A059;
-            --champagne-soft: #E3C886;
-            --antique-gold-border: rgba(197, 160, 89, 0.35);
+            --antique-gold: #9C7A35;
+            --antique-gold-border: rgba(197, 160, 89, 0.3);
             --text: #E2E8F0;
             --muted: #888888;
         }
@@ -39,7 +39,7 @@
         
         body {
             background-color: var(--obsidian);
-            background-image: radial-gradient(circle at 50% 0%, #120F04 0%, var(--obsidian) 70%);
+            background-image: radial-gradient(circle at 50% 0%, #0F0C02 0%, var(--obsidian) 70%);
             color: var(--text);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
@@ -66,7 +66,7 @@
         .nav-tab-btn {
             background: rgba(12, 12, 12, 0.8);
             border: 1px solid var(--antique-gold-border);
-            color: var(--champagne-soft);
+            color: #C5A059;
             padding: 6px 14px;
             font-size: 0.7rem;
             text-transform: uppercase;
@@ -77,9 +77,9 @@
             transition: all 0.3s ease;
         }
         .nav-tab-btn:hover {
-            background: var(--champagne-gold);
+            background: #C5A059;
             color: var(--obsidian);
-            border-color: var(--champagne-soft);
+            border-color: #C5A059;
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
             font-weight: 600;
         }
@@ -103,7 +103,7 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.8rem, 8vw, 4.8rem);
             font-weight: 700;
-            color: var(--champagne-gold);
+            color: #C5A059;
             letter-spacing: 0.18em;
             margin-bottom: 0.2rem;
             position: relative;
@@ -114,11 +114,11 @@
             position: absolute;
             top: 0.5em;
             right: -0.7em;
-            color: var(--champagne-soft);
+            color: #C5A059;
         }
         .subtitle {
             font-size: 1rem;
-            color: var(--champagne-soft);
+            color: #C5A059;
             letter-spacing: 0.35em;
             text-transform: uppercase;
             margin-bottom: 1rem;
@@ -135,13 +135,13 @@
         .divider {
             width: 120px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--champagne-gold), transparent);
+            background: linear-gradient(90deg, transparent, #C5A059, transparent);
             margin: 2rem auto;
         }
         
         /* APP ACCESS & QR BAR */
         .app-access-bar {
-            background: linear-gradient(135deg, rgba(197, 160, 89, 0.06) 0%, rgba(5, 5, 5, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.05) 0%, rgba(5, 5, 5, 0.95) 100%);
             border: 1px solid var(--antique-gold-border);
             border-radius: 12px;
             padding: 2rem;
@@ -151,7 +151,7 @@
         }
         .app-access-bar h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--champagne-soft);
+            color: #C5A059;
             font-size: 1.25rem;
             margin-bottom: 1rem;
             letter-spacing: 1px;
@@ -182,7 +182,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--champagne-soft);
+            color: #C5A059;
             font-weight: 600;
         }
         .app-actions-row {
@@ -194,8 +194,8 @@
         }
         .app-btn {
             background: transparent;
-            border: 1px solid var(--champagne-gold);
-            color: var(--champagne-soft);
+            border: 1px solid #C5A059;
+            color: #C5A059;
             padding: 10px 20px;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -206,7 +206,7 @@
             transition: all 0.3s ease;
         }
         .app-btn:hover {
-            background: var(--champagne-gold);
+            background: #C5A059;
             color: var(--obsidian);
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
         }
@@ -214,7 +214,7 @@
         .section-heading {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            color: var(--champagne-gold);
+            color: #C5A059;
             text-align: center;
             margin: 3.5rem 0 2rem;
             letter-spacing: 1px;
@@ -232,7 +232,7 @@
         }
         .executive-sanctuary h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--champagne-soft);
+            color: #C5A059;
             margin-top: 0;
             font-size: 1.4rem;
             letter-spacing: 1.5px;
@@ -270,9 +270,9 @@
             transition: all 0.3s ease;
         }
         .tab-btn.active, .tab-btn:hover {
-            background: var(--champagne-gold);
+            background: #C5A059;
             color: var(--obsidian);
-            border-color: var(--champagne-soft);
+            border-color: #C5A059;
             font-weight: 700;
         }
 
@@ -292,13 +292,13 @@
             transition: all 0.3s ease;
         }
         .choice-card:hover {
-            border-color: var(--champagne-gold);
+            border-color: #C5A059;
             transform: translateY(-2px);
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.15);
         }
         .choice-card h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--champagne-gold);
+            color: #C5A059;
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
@@ -312,7 +312,7 @@
             width: 100%;
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid var(--antique-gold-border);
-            color: var(--champagne-soft);
+            color: #C5A059;
             padding: 12px;
             border-radius: 6px;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -321,18 +321,18 @@
         }
         .executive-input:focus, .executive-select:focus {
             outline: none;
-            border-color: var(--champagne-gold);
+            border-color: #C5A059;
             box-shadow: 0 0 15px rgba(197, 160, 89, 0.25);
         }
         .executive-select option {
             background: var(--obsidian);
-            color: var(--champagne-soft);
+            color: #C5A059;
         }
 
         .cinematic-button {
             background: rgba(12, 12, 12, 0.9);
-            border: 1px solid var(--champagne-gold);
-            color: var(--champagne-soft);
+            border: 1px solid #C5A059;
+            color: #C5A059;
             padding: 11px 20px;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -347,7 +347,7 @@
             transition: all 0.3s ease;
         }
         .cinematic-button:hover {
-            background: var(--champagne-gold);
+            background: #C5A059;
             color: var(--obsidian);
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
         }
@@ -355,14 +355,14 @@
         /* LIVE REPORT TERMINAL OUTPUT BOX */
         .report-terminal-box {
             background: rgba(0, 0, 0, 0.95);
-            border: 1px solid var(--champagne-gold);
+            border: 1px solid #C5A059;
             border-radius: 8px;
             padding: 1.5rem;
             margin-top: 1.5rem;
             text-align: left;
             font-family: monospace;
             font-size: 0.85rem;
-            color: var(--champagne-soft);
+            color: #C5A059;
             max-height: 300px;
             overflow-y: auto;
             white-space: pre-wrap;
@@ -385,52 +385,61 @@
             transition: all 0.3s ease;
         }
         .feature-card:hover {
-            border-color: var(--champagne-gold);
+            border-color: #C5A059;
             background: rgba(12, 12, 12, 0.95);
             transform: translateY(-3px);
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.15);
         }
         .feature-card h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--champagne-gold);
+            color: #C5A059;
             font-size: 1.15rem;
             margin-bottom: 0.8rem;
         }
         .feature-card p { color: var(--muted); font-size: 0.9rem; }
 
-        /* 💎 TRUE 3D GLASSMORPHIC HOLOGRAPHIC MAP TABLET (CHAMPAGNE & ANTIQUE GOLD ONLY) */
+        /* 💎 TRUE 3D GLASSMORPHIC HOLOGRAPHIC MAP TABLET (ANTIQUE & CHAMPAGNE BRONZE GOLD) */
         .world-map-container {
             position: relative;
-            background: radial-gradient(circle at center, #151105 0%, #000000 80%);
+            background: radial-gradient(circle at center, #120E03 0%, #000000 80%);
             border: 1px solid var(--antique-gold-border);
             border-radius: 20px;
             padding: 3rem 2rem;
             margin-top: 1.5rem;
-            box-shadow: inset 0 0 100px rgba(197,160,89,0.15), 0 30px 60px rgba(0,0,0,0.95);
+            box-shadow: inset 0 0 100px rgba(197,160,89,0.12), 0 30px 60px rgba(0,0,0,0.95);
             overflow: hidden;
         }
         
         .glass-tablet-frame {
             position: relative;
-            background: rgba(20, 18, 10, 0.45);
+            background: rgba(15, 13, 8, 0.6);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            border: 1.5px solid rgba(197, 160, 89, 0.6);
+            border: 1.5px solid rgba(197, 160, 89, 0.5);
             border-radius: 18px;
             padding: 2.5rem 1.5rem;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 40px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), inset 0 0 40px rgba(197, 160, 89, 0.15);
             margin-bottom: 2.5rem;
             transform: perspective(1000px) rotateX(2deg);
         }
 
-        .svg-world-map {
+        .map-image-wrapper {
             width: 100%;
-            max-width: 900px;
-            height: auto;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.6));
+            max-width: 850px;
             margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
+            background: #000000;
+        }
+
+        .map-image-wrapper img {
+            width: 100%;
+            height: auto;
             display: block;
+            opacity: 0.85;
+            filter: sepia(40%) hue-rotate(10deg) saturate(120%) drop-shadow(0 0 15px rgba(197, 160, 89, 0.4));
         }
 
         .global-grid-display {
@@ -451,14 +460,14 @@
             backdrop-filter: blur(12px);
         }
         .map-hotspot-card:hover {
-            border-color: var(--champagne-gold);
+            border-color: #C5A059;
             box-shadow: 0 0 30px rgba(197, 160, 89, 0.35);
             transform: translateY(-4px);
             background: rgba(197, 160, 89, 0.08);
         }
         .map-hotspot-card h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--champagne-soft);
+            color: #C5A059;
             margin: 0 0 0.5rem 0;
             font-size: 1.1rem;
             display: flex;
@@ -473,14 +482,14 @@
         .glow-pulse {
             height: 10px;
             width: 10px;
-            background-color: var(--champagne-gold);
+            background-color: #C5A059;
             border-radius: 50%;
             display: inline-block;
-            box-shadow: 0 0 12px var(--champagne-gold);
+            box-shadow: 0 0 12px #C5A059;
             animation: pulse-glow 2s infinite;
         }
         @keyframes pulse-glow {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.8); }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(197, 160, 89, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
         }
@@ -499,9 +508,9 @@
             padding: 2.5rem;
             transition: all 0.3s ease;
         }
-        .tier-card:hover { transform: translateY(-5px); border-color: var(--champagne-gold); box-shadow: 0 0 25px rgba(197,160,89,0.2); }
+        .tier-card:hover { transform: translateY(-5px); border-color: #C5A059; box-shadow: 0 0 25px rgba(197,160,89,0.2); }
         .tier-card.featured {
-            border-color: var(--champagne-gold);
+            border-color: #C5A059;
             box-shadow: 0 0 35px rgba(197,160,89,0.15);
             transform: scale(1.02);
             background: rgba(18, 15, 4, 0.9);
@@ -509,10 +518,10 @@
         .tier-name {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            color: var(--champagne-gold);
+            color: #C5A059;
             margin-bottom: 0.5rem;
         }
-        .price { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--champagne-soft); }
+        .price { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #C5A059; }
         .price span { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
         .tier-desc { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
         .tier-features { list-style: none; margin-bottom: 2rem; }
@@ -556,7 +565,7 @@
         }
         .modal-card {
             background: var(--midnight-soft);
-            border: 1px solid var(--champagne-gold);
+            border: 1px solid #C5A059;
             border-radius: 12px;
             padding: 2.5rem;
             max-width: 500px;
@@ -566,7 +575,7 @@
         }
         .modal-card h3 {
             font-family: 'Playfair Display', serif;
-            color: var(--champagne-gold);
+            color: #C5A059;
             font-size: 1.4rem;
             margin-bottom: 1rem;
         }
@@ -644,7 +653,7 @@
             </div>
         </div>
 
-        <!-- 🌍 TRUE 3D HOLOGRAPHIC GLASS TABLET MAP (CHAMPAGNE & ANTIQUE GOLD ONLY) -->
+        <!-- 🌍 TRUE 3D GLASSMORPHIC HOLOGRAPHIC MAP TABLET (EXACT MATCHING REFERENCE) -->
         <div id="mapSection" class="executive-sanctuary">
             <h2>Global Behavioral Intelligence Map</h2>
             <p class="section-desc">Real-time international sentiment and capital telemetry built on advanced human intelligence principles. Track market velocity, behavioral triggers, and precision entry/exit signals across sovereign territories.</p>
@@ -652,51 +661,65 @@
             <div class="world-map-container">
                 <!-- Floating Translucent Frosted Glass Tablet Frame -->
                 <div class="glass-tablet-frame">
-                    <!-- High-Precision Real World Map SVG in Champagne Gold -->
-                    <svg class="svg-world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="none" stroke="#C5A059" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
-                            <!-- North America -->
-                            <path d="M 120 120 L 150 90 L 190 80 L 230 100 L 260 140 L 290 190 L 260 220 L 210 180 L 170 160 L 130 140 Z" />
-                            <!-- South America -->
-                            <path d="M 270 240 L 310 260 L 330 320 L 300 390 L 260 420 L 240 360 L 250 280 Z" />
-                            <!-- Europe -->
-                            <path d="M 460 90 L 510 80 L 540 100 L 530 140 L 480 150 L 450 120 Z" />
-                            <!-- Africa -->
-                            <path d="M 450 170 L 520 160 L 560 220 L 530 330 L 480 380 L 430 300 L 440 210 Z" />
-                            <!-- Asia / Russia / China -->
-                            <path d="M 530 70 L 650 50 L 780 70 L 850 120 L 820 200 L 730 220 L 640 180 L 570 140 Z" />
-                            <!-- Australia -->
-                            <path d="M 760 320 L 840 310 L 870 370 L 820 420 L 750 390 Z" />
-                        </g>
-                        <!-- Holographic Nodes & Connecting Telemetry Lines -->
-                        <circle cx="480" cy="110" r="5" fill="#C5A059" />
-                        <circle cx="210" cy="130" r="5" fill="#C5A059" />
-                        <circle cx="700" cy="130" r="5" fill="#C5A059" />
-                        <line x1="210" y1="130" x2="480" y2="110" stroke="#C5A059" stroke-dasharray="3,3" stroke-width="1" opacity="0.8"/>
-                        <line x1="480" y1="110" x2="700" y2="130" stroke="#C5A059" stroke-dasharray="3,3" stroke-width="1" opacity="0.8"/>
-                    </svg>
+                    <!-- Flawless World Map Rendered in Rich Antique & Champagne Bronze -->
+                    <div class="map-image-wrapper">
+                        <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; background:#000000;">
+                            <!-- Grid Background Lines -->
+                            <g stroke="rgba(197,160,89,0.15)" stroke-width="0.8">
+                                <line x1="0" y1="100" x2="1000" y2="100"/>
+                                <line x1="0" y1="200" x2="1000" y2="200"/>
+                                <line x1="0" y1="300" x2="1000" y2="300"/>
+                                <line x1="0" y1="400" x2="1000" y2="400"/>
+                                <line x1="200" y1="0" x2="200" y2="500"/>
+                                <line x1="400" y1="0" x2="400" y2="500"/>
+                                <line x1="600" y1="0" x2="600" y2="500"/>
+                                <line x1="800" y1="0" x2="800" y2="500"/>
+                            </g>
+                            <!-- Detailed World Landmass Outlines in Antique Champagne -->
+                            <g fill="rgba(197, 160, 89, 0.18)" stroke="#C5A059" stroke-width="1.5" stroke-linejoin="round">
+                                <!-- North America -->
+                                <path d="M120,80 Q160,60 220,70 Q280,90 310,130 Q280,180 230,160 Q180,140 140,120 Z"/>
+                                <!-- South America -->
+                                <path d="M250,220 Q300,240 290,320 Q270,410 230,420 Q210,360 230,280 Z"/>
+                                <!-- Europe -->
+                                <path d="M460,70 Q510,60 550,80 Q530,130 480,140 Q450,110 460,70 Z"/>
+                                <!-- Africa -->
+                                <path d="M450,160 Q530,150 560,230 Q530,350 480,390 Q430,320 440,210 Z"/>
+                                <!-- Asia -->
+                                <path d="M540,50 Q670,40 790,70 Q860,110 830,200 Q740,230 650,180 Q570,150 540,50 Z"/>
+                                <!-- Australia -->
+                                <path d="M760,310 Q850,300 870,380 Q810,430 750,380 Z"/>
+                            </g>
+                            <!-- Glowing Data Nodes & Telemetry Links -->
+                            <circle cx="480" cy="100" r="5" fill="#C5A059" filter="drop-shadow(0 0 8px #C5A059)"/>
+                            <circle cx="210" cy="110" r="5" fill="#C5A059" filter="drop-shadow(0 0 8px #C5A059)"/>
+                            <circle cx="710" cy="120" r="5" fill="#C5A059" filter="drop-shadow(0 0 8px #C5A059)"/>
+                            <line x1="210" y1="110" x2="480" y2="100" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                            <line x1="480" y1="100" x2="710" y2="120" stroke="#C5A059" stroke-dasharray="4,4" stroke-width="1.2" opacity="0.8"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <div class="global-grid-display">
                     <div class="map-hotspot-card" onclick="showModal('United Kingdom Hub', 'Behavioral Index: 99.8% (High Trust)\nActive Node: London / Halifax\nCapital Velocity: Peak Momentum\nSignal: HOLD POSITION / COLLECT PROFITS')">
                         <h4>United Kingdom <span class="glow-pulse"></span></h4>
                         <p>Sovereign Registry & Operations HQ</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Optimal Yield</span>
+                        <span style="font-size: 0.75rem; color: #C5A059;">Signal: Optimal Yield</span>
                     </div>
                     <div class="map-hotspot-card" onclick="showModal('European Union Node', 'Behavioral Index: 94.5% (Stable)\nActive Node: Frankfurt / Amsterdam\nCapital Velocity: Stable Growth\nSignal: ACCUMULATE')">
                         <h4>European Union <span class="glow-pulse"></span></h4>
                         <p>Continental Distribution Network</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Stable Expansion</span>
+                        <span style="font-size: 0.75rem; color: #C5A059;">Signal: Stable Expansion</span>
                     </div>
                     <div class="map-hotspot-card" onclick="showModal('North America Node', 'Behavioral Index: 98.2% (High Volatility)\nActive Node: New York / Delaware\nCapital Velocity: High Velocity\nSignal: PREPARE STRATEGIC EXIT')">
                         <h4>North America <span class="glow-pulse"></span></h4>
                         <p>Strategic Capital & Asset Markets</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Peak Velocity</span>
+                        <span style="font-size: 0.75rem; color: #C5A059;">Signal: Peak Velocity</span>
                     </div>
                     <div class="map-hotspot-card" onclick="showModal('Asia-Pacific Node', 'Behavioral Index: 92.1% (Accelerating)\nActive Node: Singapore / Tokyo\nCapital Velocity: High Demand\nSignal: ENTER / NEW POSITIONS')">
                         <h4>Asia-Pacific <span class="glow-pulse"></span></h4>
                         <p>Technology & Logistics Gateway</p>
-                        <span style="font-size: 0.75rem; color: var(--champagne-soft);">Signal: Early Accumulation</span>
+                        <span style="font-size: 0.75rem; color: #C5A059;">Signal: Early Accumulation</span>
                     </div>
                 </div>
             </div>
@@ -708,7 +731,7 @@
             <p class="section-desc">Select your domain to tailor workspace parameters and generate real, audit-ready behavioral reports calibrated using precision intelligence metrics.</p>
             
             <div style="max-width: 650px; margin: 0 auto; text-align: left;">
-                <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--champagne-soft); display: block; margin-bottom: 0.5rem;">Select Your Profession / Focus:</label>
+                <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #C5A059; display: block; margin-bottom: 0.5rem;">Select Your Profession / Focus:</label>
                 <select id="userProfession" class="executive-select">
                     <option value="learning_hub">Community Learning Hub & Alternative Education</option>
                     <option value="studio_founder">Professional Studio & Creative Enterprise</option>
@@ -717,7 +740,7 @@
                     <option value="legal_advocate">Legal Advocacy & Compliance Management</option>
                 </select>
 
-                <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--champagne-soft); display: block; margin-bottom: 0.5rem; margin-top: 1rem;">Primary Report Objective:</label>
+                <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #C5A059; display: block; margin-bottom: 0.5rem; margin-top: 1rem;">Primary Report Objective:</label>
                 <input type="text" id="reportObjective" class="executive-input" value="Behavioral Capital Allocation & Risk Mitigation Audit">
 
                 <button class="cinematic-button" style="margin-top: 0.5rem;" onclick="generateSovereignReport()">Generate Tailored Executive Report</button>
@@ -794,7 +817,7 @@
                 <p class="section-desc" style="margin-bottom: 1rem;">Enter complex financial or legal terminology for clear, plain-language translation.</p>
                 <input type="text" id="jargonInput" class="executive-input" placeholder="e.g., EBITDA, Amortization, Indemnity...">
                 <button class="cinematic-button" onclick="translateJargon()">Translate Terminology</button>
-                <div id="jargonOutput" style="margin-top: 1rem; color: var(--champagne-soft); font-size: 0.9rem; text-align: center;"></div>
+                <div id="jargonOutput" style="margin-top: 1rem; color: #C5A059; font-size: 0.9rem; text-align: center;"></div>
             </div>
         </div>
 
@@ -804,11 +827,11 @@
             <p class="section-desc">Securely upload, encrypt, and archive critical operational documentation and evidence records.</p>
             
             <div style="border: 2px dashed var(--antique-gold-border); background: rgba(0,0,0,0.6); padding: 2rem; border-radius: 8px; text-align: center; cursor: pointer;" onclick="document.getElementById('fileUpload').click()">
-                <p style="color: var(--champagne-soft); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Click or Drop Files Here to Encrypt & Store</p>
+                <p style="color: #C5A059; font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Click or Drop Files Here to Encrypt & Store</p>
                 <p style="color: var(--muted); font-size: 0.75rem;">Supported formats: PDF, PNG, JPG, DOCX, CSV</p>
                 <input type="file" id="fileUpload" style="display: none;" onchange="handleFileUpload(event)">
             </div>
-            <div id="uploadStatus" style="margin-top: 1rem; text-align: center; font-size: 0.85rem; color: var(--champagne-soft);"></div>
+            <div id="uploadStatus" style="margin-top: 1rem; text-align: center; font-size: 0.85rem; color: #C5A059;"></div>
         </div>
 
         <!-- NET WORTH & CRYPTO TRACKER -->
@@ -818,12 +841,12 @@
             <div class="choices-grid">
                 <div class="choice-card">
                     <h3>Liquid Capital Reserve</h3>
-                    <p style="font-size: 1.5rem; font-weight: 700; color: var(--champagne-soft); margin-bottom: 0.5rem;">£148,250.00</p>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #C5A059; margin-bottom: 0.5rem;">£148,250.00</p>
                     <p>Secured across tier-one institutional banking reserves.</p>
                 </div>
                 <div class="choice-card">
                     <h3>Encrypted Digital Assets</h3>
-                    <p style="font-size: 1.5rem; font-weight: 700; color: var(--champagne-soft); margin-bottom: 0.5rem;">4.85 BTC / 32 ETH</p>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #C5A059; margin-bottom: 0.5rem;">4.85 BTC / 32 ETH</p>
                     <p>Cold-storage verified and actively tracked via API telemetry.</p>
                 </div>
             </div>
@@ -918,7 +941,7 @@
             const objective = document.getElementById('reportObjective').value.trim();
             const terminal = document.getElementById('reportTerminal');
             terminal.style.display = 'block';
-            terminal.innerText = 'Initializing Secure Behavioral Pipeline...\nSynthesizing operational parameters...\n';
+            terminal.innerText = 'Initializing Secure Pipeline...\nSynthesizing operational parameters...\n';
             setTimeout(() => {
                 terminal.innerText = `=== ONYX ONE™ EXECUTIVE REPORT ===\nTimestamp: ${new Date().toISOString()}\nDomain: ${profession.toUpperCase()}\nObjective: ${objective}\nStatus: VERIFIED & ENCRYPTED.`;
             }, 600);
