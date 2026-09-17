@@ -5,19 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONYX ONE™ — Global Behavioral Intelligence & Sovereign Solutions</title>
     
-    <!-- ⛔ PROTECTION - NOT TO BE REMOVED -->
     <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow, noarchive">
-    <meta name="GPTBot" content="noindex, nofollow, noai, noimageai">
-    <meta name="Google-Extended" content="noai">
-    <meta name="ClaudeBot" content="noai">
-    <meta name="ai-robots" content="noai, noimageai">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- STRIPE & SUPABASE & QR CODE LIBRARIES -->
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -90,14 +83,6 @@
         }
         
         .logo-container { margin-bottom: 1.5rem; }
-        .logo-img { 
-            max-width: 200px; 
-            width: 100%;
-            height: auto; 
-            filter: drop-shadow(0 15px 35px rgba(197, 160, 89, 0.3));
-            transition: transform 0.4s ease;
-        }
-        .logo-img:hover { transform: scale(1.04); }
         
         h1 {
             font-family: 'Playfair Display', serif;
@@ -314,13 +299,13 @@
             box-shadow: inset 0 0 20px rgba(197, 160, 89, 0.1);
         }
 
-        /* 💎 REAL HOLOGRAPHIC 3D GLASS WORLD MAP TABLET (MATCHING REFERENCE) */
+        /* 💎 FIXED RESPONSIVE HOLOGRAPHIC 3D GLASS WORLD MAP TABLET */
         .world-map-container {
             position: relative;
             background: radial-gradient(circle at center, #0B132B 0%, #000000 85%);
             border: 1.5px solid rgba(0, 212, 255, 0.4);
             border-radius: 20px;
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             margin-top: 1.5rem;
             box-shadow: inset 0 0 120px rgba(0, 212, 255, 0.15), 0 30px 60px rgba(0,0,0,0.95);
             overflow: hidden;
@@ -333,24 +318,29 @@
             -webkit-backdrop-filter: blur(16px);
             border: 2px solid rgba(0, 212, 255, 0.6);
             border-radius: 16px;
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 212, 255, 0.25);
-            margin-bottom: 2.5rem;
-            transform: perspective(1200px) rotateX(4deg);
+            margin-bottom: 2rem;
         }
 
         .map-hud-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem 1rem 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-family: monospace;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: #00d4ff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        @media(min-width: 768px) {
+            .map-hud-header {
+                grid-template-columns: repeat(4, 1fr);
+                font-size: 0.75rem;
+            }
         }
 
         .map-image-wrapper {
@@ -365,7 +355,6 @@
             position: relative;
         }
 
-        /* SVG Holographic Vector World Map matching the reference layout */
         .holo-map-svg {
             width: 100%;
             height: auto;
@@ -376,17 +365,18 @@
         .map-hud-footer {
             display: flex;
             justify-content: center;
-            gap: 1.5px;
+            gap: 0.5rem;
+            flex-wrap: wrap;
             margin-top: 1.5rem;
         }
         .map-hud-btn {
             background: rgba(0, 212, 255, 0.1);
             border: 1px solid rgba(0, 212, 255, 0.4);
             color: #00d4ff;
-            padding: 6px 18px;
-            font-size: 0.7rem;
+            padding: 6px 14px;
+            font-size: 0.65rem;
             font-family: monospace;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -518,7 +508,7 @@
 </head>
 <body>
 
-    <!-- STICKY NAVIGATION (FULLY WIRED) -->
+    <!-- STICKY NAVIGATION -->
     <nav class="sticky-nav">
         <a href="#home" class="nav-tab-btn">Home</a>
         <a href="#access-app" class="nav-tab-btn">Access & App</a>
@@ -555,7 +545,7 @@
             </div>
         </section>
 
-        <!-- GLOBAL MAP SECTION (MATCHING REFERENCE IMAGE 3D HOLOGRAPHIC GLASS TABLET) -->
+        <!-- GLOBAL MAP SECTION -->
         <h2 id="global-map" class="section-heading">Global Map & Network Grid</h2>
         <div class="world-map-container">
             <div class="glass-tablet-frame">
@@ -566,7 +556,14 @@
                     <span>LAND AREA: 44.5M KM²</span>
                 </div>
                 <div class="map-image-wrapper">
-                    <!-- Real SVG Holographic World Map matching the reference layout -->
                     <svg class="holo-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="
+                            <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.9"/>
+                                <stop offset="50%" stop-color="#0080ff" stop-opacity="0.6"/>
+                                <stop offset="100%" stop-color="#C5A059" stop-opacity="0.8"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,100 H1000 M0,200 H1000 M0,300 H1000 M0,400 H1000 M200,0 V500 M400,0 V500 M600,0 V500 M800,0 V500" stroke="rgba(0,212,255,0.1)" stroke-width="1"/>
+                        <path d="M520,80 Q650,70 780,90 Q850,120 890,180 Q830,220 750,200 Q620,180 550,150 Z" fill="url(#mapGrad)" opacity="0.85"/>
+                        <pa
