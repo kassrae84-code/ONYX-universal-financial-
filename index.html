@@ -75,18 +75,40 @@
             text-align: center;
         }
 
-        /* PURE SHIELD LOGO GRAPHIC (WITHOUT BAKED-IN TEXT) */
-        .logo-img {
-            max-width: 110px;
-            width: 100%;
-            height: auto;
+        /* PURE VECTOR EMBOSSED/DEBOSED SHIELD EMBLEM (BUILT RIGHT IN) */
+        .sovereign-shield-emblem {
+            width: 110px;
+            height: 110px;
             margin: 0 auto 1.2rem auto;
-            display: block;
-            filter: drop-shadow(0 10px 25px rgba(191, 149, 63, 0.4));
-            transition: transform 0.4s ease;
+            background: linear-gradient(135deg, #141414 0%, #050505 100%);
+            border: 2px solid #BF953F;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 
+                inset 4px 4px 10px rgba(0, 0, 0, 0.9), 
+                inset -4px -4px 10px rgba(191, 149, 63, 0.25),
+                0 10px 30px rgba(191, 149, 63, 0.3);
+            transition: all 0.4s ease;
         }
-        .logo-img:hover {
+        .sovereign-shield-emblem:hover {
             transform: scale(1.05);
+            box-shadow: 
+                inset 2px 2px 5px rgba(0, 0, 0, 0.9), 
+                inset -2px -2px 5px rgba(252, 246, 186, 0.4),
+                0 0 35px rgba(191, 149, 63, 0.6);
+        }
+        .shield-arrow-icon {
+            width: 50px;
+            height: 50px;
+            fill: none;
+            stroke: url(#goldGradient);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
         }
 
         /* COMMANDING HTML TYPOGRAPHY SITTING NICELY UNDERNEATH */
@@ -406,6 +428,17 @@
 </head>
 <body>
 
+    <!-- SVG GRADIENT DEFINITION FOR THE SHIELD ARROW ICON -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#BF953F" />
+        <stop offset="25%" stop-color="#FCF6BA" />
+        <stop offset="50%" stop-color="#B38728" />
+        <stop offset="75%" stop-color="#FBF5B7" />
+        <stop offset="100%" stop-color="#AA771C" />
+      </linearGradient>
+    </svg>
+
     <!-- STICKY QUICK NAVIGATION TABS -->
     <nav class="sticky-nav">
         <a href="#heroSection" class="nav-tab-btn">Home</a>
@@ -418,14 +451,21 @@
     </nav>
 
     <div class="ecosystem-wrapper">
-        <!-- 1. PURE SHIELD LOGO + HTML TEXT HEADINGS -->
+        <!-- 1. PURE EMBOSSED/DEBOSED SHIELD LOGO + HTML TEXT HEADINGS -->
         <div id="heroSection"></div>
-        <img src="logo-transparent.png" alt="Onyx One Shield Crest" class="logo-img">
+        
+        <div class="sovereign-shield-emblem" title="Onyx One Sovereign Crest">
+            <svg class="shield-arrow-icon" viewBox="0 0 24 24">
+                <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"></path>
+                <path d="M12 8l4 4-4 4M8 12h8" stroke-width="2"></path>
+            </svg>
+        </div>
+
         <h1 class="brand-title">Onyx One</h1>
         <div class="brand-subtitle">Financial Solutions</div>
         <div class="brand-privacy-tag">™ ONYX ONE — Your data is encrypted, never sold, never shared. All rights reserved.</div>
 
-        <!-- 2. LUXURY MANIFESTO HERO -->
+        <!-- 2. LUXURY HERO MANIFESTO -->
         <div class="luxury-hero-box">
             <h2>Transcend the Chaos. Command Your Empire.</h2>
             <p>
@@ -721,7 +761,7 @@
 
         function analyzeProductMarket() {
             const product = document.getElementById('userProductInput').value;
-            showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended Next Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.    </em>`);
+            showModal(`Global Telemetry Analysis: ${product}`, `🎯 <strong>Product Match Analysis Complete:</strong><br><br>• Primary Target Market Identified: <strong>North American Channel & Western Europe</strong><br>• Projected Conversion Rate: 84.5% High Intent<br>• Recommended Next Expansion Node: <em>Scandinavia & DACH Region (Germany/Switzerland)</em><br><br><em>Status: Telemetry engine has successfully mapped optimal sales routes for your product.</em>`);
         }
 
         function openMapModal(region, revenue, trend, action) {
