@@ -1,569 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-[#050505] text-[#e6d5b8] font-sans scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE™ — Global Behavioral Intelligence & Sovereign Solutions</title>
-    
-    <meta name="robots" content="index, follow">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    
-    <style>
-        :root {
-            --obsidian: #000000;
-            --midnight-layer: #050505;
-            --midnight-soft: #080703;
-            --champagne-gold: #C5A059;
-            --antique-gold: #9C7A35;
-            --antique-gold-border: rgba(197, 160, 89, 0.3);
-            --text: #E2E8F0;
-            --muted: #888888;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            background-color: var(--obsidian);
-            background-image: radial-gradient(circle at 50% 0%, #0F0C02 0%, var(--obsidian) 70%);
-            color: var(--text);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        
-        /* STICKY NAVIGATION */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--antique-gold-border);
-            padding: 0.8rem 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-        .nav-tab-btn {
-            background: rgba(12, 12, 12, 0.8);
-            border: 1px solid var(--antique-gold-border);
-            color: #C5A059;
-            padding: 6px 14px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .nav-tab-btn:hover {
-            background: #C5A059;
-            color: var(--obsidian);
-            border-color: #C5A059;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
-            font-weight: 600;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Onyx One - Executive Operating System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fonts */
+    h1, h2, h3, h4, h5 { font-family: 'Cinzel', serif; }
+    body, p, span, input, button, label { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        header {
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-        }
-        
-        .logo-container { margin-bottom: 1.5rem; }
-        
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 8vw, 4.8rem);
-            font-weight: 700;
-            color: #C5A059;
-            letter-spacing: 0.18em;
-            margin-bottom: 0.2rem;
-            position: relative;
-            display: inline-block;
-        }
-        .tm {
-            font-size: 0.28em;
-            position: absolute;
-            top: 0.5em;
-            right: -0.7em;
-            color: #C5A059;
-        }
-        .subtitle {
-            font-size: 1rem;
-            color: #C5A059;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .tagline {
-            font-size: 1.1rem;
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
-        .divider {
-            width: 120px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #C5A059, transparent);
-            margin: 2rem auto;
-        }
-        
-        /* APP ACCESS & QR BAR */
-        .app-access-bar {
-            background: linear-gradient(135deg, rgba(197, 160, 89, 0.05) 0%, rgba(5, 5, 5, 0.95) 100%);
-            border: 1px solid var(--antique-gold-border);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-        }
-        .app-access-bar h3 {
-            font-family: 'Playfair Display', serif;
-            color: #C5A059;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-        .qr-display-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 1.5rem 0;
-        }
-        .qr-card {
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--antique-gold-border);
-            padding: 1rem;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .qr-box {
-            background: #FFFFFF;
-            padding: 8px;
-            border-radius: 4px;
-            margin-bottom: 0.6rem;
-        }
-        .qr-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #C5A059;
-            font-weight: 600;
-        }
+    /* Scrollbar for dark mode */
+    body::-webkit-scrollbar {
+      width: 8px;
+    }
+    body::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    body::-webkit-scrollbar-thumb {
+      background-color: #d4af37;
+      border-radius: 10px;
+    }
 
-        .section-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: #C5A059;
-            text-align: center;
-            margin: 3.5rem 0 2rem;
-            letter-spacing: 1px;
-        }
-        
-        /* EXECUTIVE SANCTUARY CONTAINERS */
-        .executive-sanctuary {
-            background: rgba(12, 12, 12, 0.85);
-            border: 1px solid var(--antique-gold-border);
-            backdrop-filter: blur(15px);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
-        }
-        .executive-sanctuary h2 {
-            font-family: 'Playfair Display', serif;
-            color: #C5A059;
-            margin-top: 0;
-            font-size: 1.4rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-        .section-desc {
-            color: var(--muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto 1.8rem auto;
-            text-align: center;
-        }
-        
-        .choices-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .choice-card {
-            background: rgba(5, 5, 5, 0.8);
-            border: 1px solid rgba(197, 160, 89, 0.15);
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-        .choice-card:hover {
-            border-color: #C5A059;
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.15);
-        }
-        .choice-card h3 {
-            font-family: 'Playfair Display', serif;
-            color: #C5A059;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .choice-card p {
-            font-size: 0.88rem;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-        }
-        
-        .executive-input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid var(--antique-gold-border);
-            color: #C5A059;
-            padding: 12px;
-            border-radius: 6px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .executive-input:focus {
-            outline: none;
-            border-color: #C5A059;
-            box-shadow: 0 0 15px rgba(197, 160, 89, 0.25);
-        }
-
-        .cinematic-button {
-            background: rgba(12, 12, 12, 0.9);
-            border: 1px solid #C5A059;
-            color: #C5A059;
-            padding: 11px 20px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .cinematic-button:hover {
-            background: #C5A059;
-            color: var(--obsidian);
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
-        }
-
-        /* LIVE REPORT TERMINAL OUTPUT BOX */
-        .report-terminal-box {
-            background: rgba(0, 0, 0, 0.95);
-            border: 1px solid #C5A059;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            text-align: left;
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #C5A059;
-            max-height: 300px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            display: none;
-            box-shadow: inset 0 0 20px rgba(197, 160, 89, 0.1);
-        }
-
-        /* 💎 FIXED RESPONSIVE HOLOGRAPHIC 3D GLASS WORLD MAP TABLET */
-        .world-map-container {
-            position: relative;
-            background: radial-gradient(circle at center, #0B132B 0%, #000000 85%);
-            border: 1.5px solid rgba(0, 212, 255, 0.4);
-            border-radius: 20px;
-            padding: 2rem 1.5rem;
-            margin-top: 1.5rem;
-            box-shadow: inset 0 0 120px rgba(0, 212, 255, 0.15), 0 30px 60px rgba(0,0,0,0.95);
-            overflow: hidden;
-        }
-        
-        .glass-tablet-frame {
-            position: relative;
-            background: rgba(5, 12, 24, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid rgba(0, 212, 255, 0.6);
-            border-radius: 16px;
-            padding: 1.5rem 1rem;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0, 212, 255, 0.25);
-            margin-bottom: 2rem;
-        }
-
-        .map-hud-header {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            margin-bottom: 1rem;
-            font-family: monospace;
-            font-size: 0.65rem;
-            color: #00d4ff;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-        @media(min-width: 768px) {
-            .map-hud-header {
-                grid-template-columns: repeat(4, 1fr);
-                font-size: 0.75rem;
-            }
-        }
-
-        .map-image-wrapper {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.5);
-            box-shadow: 0 0 35px rgba(0, 212, 255, 0.3);
-            background: #020617;
-            position: relative;
-        }
-
-        .holo-map-svg {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.6));
-        }
-
-        .map-hud-footer {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        .map-hud-btn {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.4);
-            color: #00d4ff;
-            padding: 6px 14px;
-            font-size: 0.65rem;
-            font-family: monospace;
-            letter-spacing: 1.5px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .map-hud-btn:hover {
-            background: #00d4ff;
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
-        }
-
-        .global-grid-display {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-        .map-hotspot-card {
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid var(--antique-gold-border);
-            border-radius: 10px;
-            padding: 1.8rem;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(12px);
-        }
-        .map-hotspot-card:hover {
-            border-color: #C5A059;
-            box-shadow: 0 0 30px rgba(197, 160, 89, 0.35);
-            transform: translateY(-4px);
-            background: rgba(197, 160, 89, 0.08);
-        }
-        .map-hotspot-card h4 {
-            font-family: 'Playfair Display', serif;
-            color: #C5A059;
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .map-hotspot-card p {
-            font-size: 0.85rem;
-            color: var(--muted);
-            margin: 0 0 1rem 0;
-        }
-        .glow-pulse {
-            height: 10px;
-            width: 10px;
-            background-color: #00d4ff;
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 12px #00d4ff;
-            animation: pulse-glow 2s infinite;
-        }
-        @keyframes pulse-glow {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(0, 212, 255, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
-        }
-
-        /* TIERS & PRICING */
-        .tiers {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .tier-card {
-            background: rgba(12, 12, 12, 0.85);
-            border: 1px solid var(--antique-gold-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-        }
-        .tier-card:hover { transform: translateY(-5px); border-color: #C5A059; box-shadow: 0 0 25px rgba(197,160,89,0.2); }
-        .tier-card.featured {
-            border-color: #C5A059;
-            box-shadow: 0 0 35px rgba(197,160,89,0.15);
-            transform: scale(1.02);
-            background: rgba(18, 15, 4, 0.9);
-        }
-        .tier-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: #C5A059;
-            margin-bottom: 0.5rem;
-        }
-        .price { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #C5A059; }
-        .price span { font-size: 0.9rem; color: var(--muted); font-weight: 400; }
-        .tier-desc { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
-        .tier-features { list-style: none; margin-bottom: 2rem; }
-        .tier-features li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.95rem;
-            color: var(--text);
-        }
-        .tier-features li:last-child { border: none; }
-        .cta-btn {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(90deg, #C5A059, #9C7A35);
-            color: #000000;
-            font-weight: 700;
-            border-radius: 10px;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .cta-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(197,160,89,0.4); }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--antique-gold-border);
-            margin-top: 4rem;
-        }
-    </style>
+    /* Glowing nodes */
+    .glow-node {
+      position: absolute;
+      background: #d4af37;
+      box-shadow: 0 0 8px 2px #d4af37;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      border: 2px solid #e6d5b8;
+    }
+    .glow-node:hover, .glow-node.active {
+      box-shadow: 0 0 16px 4px #e6d5b8;
+      border-color: #f5f1de;
+    }
+    /* Popup style */
+    .popup {
+      background: #1a1a1add;
+      color: #e6d5b8;
+      padding: 1rem;
+      border: 1px solid #d4af37;
+      border-radius: 8px;
+      position: absolute;
+      z-index: 20;
+      max-width: 260px;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px #d4af37aa;
+      backdrop-filter: blur(6px);
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col text-[#e6d5b8] bg-[#050505]">
 
-    <!-- STICKY NAVIGATION -->
-    <nav class="sticky-nav">
-        <a href="#home" class="nav-tab-btn">Home</a>
-        <a href="#access-app" class="nav-tab-btn">Access & App</a>
-        <a href="#global-map" class="nav-tab-btn">Global Map</a>
-        <a href="#report-engine" class="nav-tab-btn">Report Engine</a>
-        <a href="#command-hub" class="nav-tab-btn">Command Hub</a>
-        <a href="#profession-vault" class="nav-tab-btn">Profession Vault</a>
-        <a href="#net-worth" class="nav-tab-btn">Net Worth & Crypto</a>
-        <a href="#tiers" class="nav-tab-btn">Tiers & Checkout</a>
-    </nav>
+  <!-- Header & Navigation -->
+  <header class="flex items-center justify-between px-6 py-3 border-b border-[#4a411d] bg-[#0a0a0acc]">
+    <div class="flex items-center space-x-3">
+      <img src="public/assets/logo.transparent" alt="Onyx One Logo" class="h-10 w-10 object-contain"/>
+      <h1 class="text-2xl font-semibold tracking-wide text-[#d4af37] select-none">Onyx One</h1>
+    </div>
+    <nav class="flex space-x-8 text-sm font-medium tracking-wide text-[#e6d5b8ee]">
+      <a href="#financials" class="hover:text-[#d4af37] transition">Financials</a>
+      <a href="#sales-trends" class="hover:text-[#d4af37] transition">Live Sales</a>
+      <a href="#admin-suite" class="hover:text-[#d4af37] transition">Admin</a>
+      <a href="#leak-finder" class="hover:text-[#d4af37] transition">Money Leak</a>
+      <a href="#communications" class="hover:text-[#d4af37] transition">Comms</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <!-- Session Indicator -->
+      <div class="flex items-center space-x-2 text-[#e6d5b8cc]">
+        <span class="w-3 h-3 rounded-full bg-[#d4af37] animate-pulse"></span>
+        <span class="text-xs select-none">Secure Session</span>
+      </div>
+    </div>
+  </header>
 
-    <!-- HEADER / HOME SECTION -->
-    <header id="home">
-        <div class="logo-container">
-            <div style="font-family: 'Playfair Display'; color: #C5A059; font-size: 1.6rem; letter-spacing: 3px; font-weight: 700;">[ONYX ONE]</div>
-        </div>
-        <h1>ONYX ONE<span class="tm">™</span></h1>
-        <div class="subtitle">Global Behavioral Intelligence & Sovereign Solutions</div>
-        <p class="tagline">Advanced operational capability and elite ecosystem management for sovereign entities.</p>
-        <div class="divider"></div>
-    </header>
+  <!-- Main Content Area -->
+  <main class="flex-grow overflow-auto p-6 max-w-[1280px] mx-auto space-y-12">
 
-    <div class="container">
+    <!-- Financials Module -->
+    <section id="financials" class="bg-[#101010ee] rounded-xl p-6 shadow-lg border border-[#3a2f08]">
+      <h2 class="text-xl font-semibold mb-4 text-[#e6d5b8]">Global Asset Allocation & Revenue Streams</h2>
 
-        <!-- ACCESS & APP SECTION -->
-        <section id="access-app" class="app-access-bar">
-            <h3>Secure Ecosystem Access & Mobile Integration</h3>
-            <p class="section-desc" style="margin-bottom: 1rem;">Scan via secure telemetry or deploy directly to your terminal device.</p>
-            <div class="qr-display-grid">
-                <div class="qr-card">
-                    <div id="qrcode-container" class="qr-box"></div>
-                    <span class="qr-label">Direct Node Link</span>
-                </div>
-            </div>
-        </section>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div class="bg-[#1b1b1b] rounded-lg p-4 border border-[#54491f]">
+          <h3 class="font-serif text-lg text-[#d4af37] mb-2">Monthly Recurring Revenue (MRR)</h3>
+          <p class="text-4xl font-semibold text-[#e6d5b8]">£128,450</p>
+          <p class="text-sm text-[#bfae85] mt-1">+7.4% from last month</p>
+        </div>
+        <div class="bg-[#1b1b1b] rounded-lg p-4 border border-[#54491f]">
+          <h3 class="font-serif text-lg text-[#d4af37] mb-2">Capital Distribution</h3>
+          <p class="text-4xl font-semibold text-[#e6d5b8]">£3.2M</p>
+          <p class="text-sm text-[#bfae85] mt-1">Diversified across 4 sectors</p>
+        </div>
+        <div class="bg-[#1b1b1b] rounded-lg p-4 border border-[#54491f]">
+          <h3 class="font-serif text-lg text-[#d4af37] mb-2">Sales Performance</h3>
+          <p class="text-4xl font-semibold text-[#e6d5b8]">+12.3%</p>
+          <p class="text-sm text-[#bfae85] mt-1">Quarterly growth</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- GLOBAL MAP SECTION -->
-        <h2 id="global-map" class="section-heading">Global Map & Network Grid</h2>
-        <div class="world-map-container">
-            <div class="glass-tablet-frame">
-                <div class="map-hud-header">
-                    <span>AREA: GEOGRAPHIC INTERFACE</span>
-                    <span>POPULATION: 4.7B+</span>
-                    <span>COUNTRIES: 48</span>
-                    <span>LAND AREA: 44.5M KM²</span>
-                </div>
-                <div class="map-image-wrapper">
-                    <svg class="holo-map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.9"/>
-                                <stop offset="50%" stop-color="#0080ff" stop-opacity="0.6"/>
-                                <stop offset="100%" stop-color="#C5A059" stop-opacity="0.8"/>
-                            </linearGradient>
-                        </defs>
-                        <path d="M0,100 H1000 M0,200 H1000 M0,300 H1000 M0,400 H1000 M200,0 V500 M400,0 V500 M600,0 V500 M800,0 V500" stroke="rgba(0,212,255,0.1)" stroke-width="1"/>
-                        <path d="M520,80 Q650,70 780,90 Q850,120 890,180 Q830,220 750,200 Q620,180 550,150 Z" fill="url(#mapGrad)" opacity="0.85"/>
-                        <pa
+    <!-- Live Sales & Niche Trend Finder -->
+    <section id="sales-trends" class="bg-[#101010ee] rounded-xl p-6 shadow-lg border border-[#3a2f08]">
+      <h2 class="text-xl font-semibold mb-4 text-[#e6d5b8]">Live Sales & Niche Trend Finder</h2>
+      <div class="flex flex-col md:flex-row gap-8">
+        <div class="md:w-1/3">
+          <label for="product-category" class="block mb-2 font-medium text-[#d4af37]">Enter Product Category</label>
+          <input type="text" id="product-category" aria-label="Product Category Input" placeholder="e.g. Smart Home Tech" class="w-full rounded-md bg-[#1a1a1a] border border-[#d4af37] p-3 text-[#e6d5b8] placeholder-[#a08345]" />
+          <button id="scan-trends" class="mt-4 w-full py-3 bg-[#d4af37] text-[#050505] font-semibold rounded-md hover:bg-[#b8922a] transition">Scan Trends</button>
+        </div>
+        <div class="md:w-2/3 relative bg-[#181818] rounded-lg p-4 border border-[#846d24] min-h-[220px]">
+          <h3 class="font-serif text-lg mb-2 text-[#d4af37]">Regional Market Surges</h3>
+          <ul id="trend-results" class="space-y-3 text-[#e6d5b8]">
+            <li class="italic text-sm text-[#b9a86e]">Type and scan to see live data...</li>
+          </ul>
+        </div>
+      </div>
+      <!-- World Map with Nodes -->
+      <div class="relative mt-12 max-w-full h-72 sm:h-96 rounded-lg overflow-hidden border border-[#d4af37]">
+        <img src="public/assets/map.bg.png" alt="World Map" class="w-full h-full object-cover select-none" />
+        <!-- Glowing coordinate nodes -->
+        <button class="glow-node" data-city="Geneva" style="top: 44%; left: 42%;" aria-label="Geneva region node"></button>
+        <button class="glow-node" data-city="London" style="top: 39%; left: 37%;" aria-label="London region node"></button>
+        <button class="glow-node" data-city="Tokyo" style="top: 47%; left: 82%;" aria-label="Tokyo region node"></button>
+        <button class="glow-node" data-city="Singapore" style="top: 64%; left: 78%;" aria-label="Singapore region node"></button>
+
+        <div id="map-popup" class="popup hidden"></div>
+      </div>
+    </section>
+
+    <!-- Admin & Sunday Saver Suite -->
+    <section id="admin-suite" class="bg-[#101010ee] rounded-xl p-6 shadow-lg border border-[#3a2f08]">
+      <h2 class="text-xl font-semibold mb-4 text-[#e6d5b8]">Admin & Sunday Saver Suite</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Pending Client Invoices -->
+        <div class="bg-[#1b1b1b] p-4 rounded-lg border border-[#54491f]">
+          <h3 class="font-serif text-lg text-[#d4af37] mb-3">Pending Client Invoices</h3>
+          <ul class="space-y-2 text-[#e6d5b8] text-sm max-h-48 overflow-y-auto">
+            <li>Invoice #1023 - £2,400 - Due 2026-09-25</li>
+            <li>Invoice #1024 - £5,800 - Due 2026-09-27</li>
+            <li>Invoice #1025 - £1,250 - Due 2026-09-28</li>
+            <li>Invoice #1026 - £3,300 - Due 2026-09-29</li>
+          </ul>
+        </div>
+
+        <!-- One-Click Follow-Up Dispatcher -->
+        <div class="bg-[#1b1b1b] p-6 rounded-lg border border-[#54491f] flex flex-col justify-center items-center space-y-4">
+          <h3 class="font-serif text-lg text-[#d4af37]">Follow-Up Dispatcher</h3>
+          <button id="follow-up-btn" class="w-full py-3 bg-[#d4af37] text-[#050505] font-semibold rounded-md hover:bg-[#b8922a] transition">
+            Send Generic Follow-Up
+          </button>
+          <button id="payment-chaser-btn" class="w-full py-3 bg-[#a67c1a] text-[#050505] font-semibold rounded-md hover:bg-[#8a6814] transition">
+            Automated Payment Chaser
+          </button>
+        </div>
+
+        <!-- Placeholder for additional admin utilities if needed -->
+        <div class="bg-[#1b1b1b] p-4 rounded-lg border border-[#54491f] text-[#87815c] flex flex-col justify-center items-center">
+          <p class="italic">Additional Admin Utilities Coming Soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Money Leak & Subscription Finder -->
+    <section id="leak-finder" class="bg-[#101010ee] rounded-xl p-6 shadow-lg border border-[#3a2f08]">
+      <h2 class="text-xl font-semibold mb-6 text-[#e6d5b8]">Money Leak & Subscription Finder</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="bg-[#1b1b1b] rounded-lg p-5 border border-[#634f0a] shadow-lg">
+          <h3 class="font-serif text-lg mb-2 text-[#d4af37]">Recurring SaaS</h3>
+          <p class="text-sm text-[#e6d5b8] mb-4">Zoom Pro - £45/month</p>
+          <p class="text-xs text-[#bfb580] italic">Active - Keeps growing unnoticed</p>
+        </div>
+        <div class="bg-[#1b1b1b] rounded-lg p-5 border border-[#634f0a] shadow-lg">
+          <h3 class="font-serif text-lg mb-2 text-[#d4af37]">Cloud Services</h3>
+          <p class="text-sm text-[#e6d5b8] mb-4">AWS Backup - £120/month</p>
+          <p class="text-xs text-[#bfb580] italic">Potential leak risk</p>
+        </div>
+        <div class="bg-[#1b1b1b] rounded-lg p-5 border border-[#634f0a] shadow-lg">
+          <h3 class="font-serif text-lg mb-2 text-[#d4af37]">Miscellaneous</h3>
+          <p class="text-sm text-[#e6d5b8] mb-4">Old CRM License - £35/month</p>
+          <p class="text-xs text-[#bfb580] italic">Consider review/cancel</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Communications & Secure Meeting Vault -->
+    <section id="communications" class="bg-[#101010ee] rounded-xl p-6 shadow-lg border border-[#3a2f08]">
+      <h2 class="text-xl font-semibold mb-4 text-[#e6d5b8]">Communications & Secure Meeting Vault</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Message Feed -->
+        <div class="bg-[#1b1b1b] rounded-lg p-4 border border-[#54491f] max-h-80 overflow-y-auto">
+          <h3 class="font-serif text-lg text-[#d4af37] mb-3">Message Feed</h3>
+          <ul class="space-y-2 text-[#e6d5b8] text-sm" id="message-feed">
+            <li><strong>Emily:</strong> Scheduled next week’s board meeting.</li>
+            <li><strong>Marcus:</strong> Updated sales deck uploaded.</li>
+            <li><strong>Jade:</strong> Subscription audit report ready.</li>
+          </ul>
+          <textarea id="message-input" aria-label="Type a message" placeholder="Type new message..." rows="3" class="mt-3 w-full p-3 rounded-md bg-[#101010] border border-[#d4af37] text-[#e6d5b8] resize-none"></textarea>
+          <button id="send-message-btn" class="mt-2 w-full py-2 bg-[#d4af37] text-[#050505] font-semibold rounded-md hover:bg-[#b8922a] transition">Send Message</button>
+        </div>
+
+        <!-- Secure Meeting Room -->
+        <div class="bg-[#1b1b1b] rounded-lg p-4 border border-[#54491f] flex flex-col">
+          <h3 class="font-serif text-lg text-[#d4af37] mb-3">Secure Meeting Vault</h3>
+          <div class="flex-grow bg-[#101010] rounded-md p-3 mb-4 text-[#bfb580] italic overflow-auto max-h-56">
+            <p>[Placeholder for Speech-to-Text Transcriptions]</p>
+            <p>[SL-AI Translation Feed Display]</p>
+          </div>
+          <button id="start-meeting-btn" class="py-2 bg-[#a67c1a] text-[#050505] font-semibold rounded-md hover:bg-[#8a6814] transition">
+            Start Secure Meeting
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-4 text-[#7f744c] text-xs select-none border-t border-[#3f3920]">
+    &copy; 2026 Onyx One. All Rights Reserved.
+  </footer>
+
+  <!-- JavaScript for interactions -->
+  <script>
+    // World Map popup logic
+    const nodes = document.querySelectorAll('.glow-node');
+    const popup = document.getElementById('map-popup');
+    let activeNode = null;
+
+    const cityData = {
+      Geneva: {
+        title: "Geneva Sales Hub",
+        content: "Sales Surge: +14% | Top Trending: Luxury Watches, Finance Software"
+      },
+      London: {
+        title: "London Market",
+        content: "Sales Surge: +9% | Top Trending: FinTech, Green Energy Products"
+      },
+      Tokyo: {
+        title: "Tokyo Operations",
+        content: "Sales Surge: +12% | Top Trending: Consumer Electronics, Robotics"
+      },
+      Singapore: {
+        title: "Singapore Regional Office",
+        content: "Sales Surge: +15% | Top Trending: Cloud Services, E-commerce"
+      }
+    };
+
+    nodes.forEach(node => {
+      node.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const city = node.getAttribute('data-city');
+        if (activeNode === node) {
+          popup.classList.add('hidden');
+          node.classList.remove('active');
+          activeNode = null;
+          return;
+        }
+        activeNode && activeNode.classList.remove('active');
+        node.classList.add('active');
+        activeNode = node;
+
+        popup.innerHTML = `<strong>${cityData[city].title}</strong><p>${cityData[city].content}</p>`;
+        popup.style.top = (node.offsetTop - popup.offsetHeight - 10) + 'px';
+        popup.style.left = (node.offsetLeft + 20) + 'px';
+        popup.classList.remove('hidden');
+      });
+    });
+
+    // Close popup on outside click
+    document.body.addEventListener('click', () => {
+      popup.classList.add('hidden');
+      activeNode && activeNode.classList.remove('active');
+      activeNode = null;
+    });
+
+    // Live Sales Scanner
+    const scanBtn = document.getElementById('scan-trends');
+    const trendList = document.getElementById('trend-results');
+    scanBtn.addEventListener('click', () => {
+      const query = document.getElementById('product-category').value.trim();
+      if (!query) {
+        trendList.innerHTML = `<li class="text-[#b94a3f] italic">Please enter a product category to scan.</li>`;
+        return;
+      }
+      // Simulated dynamic trend results
+      trendList.innerHTML = '';
+      const simulatedResults = [
+        { region: 'Europe', surge: '+15%', niche: `${query} Smart Devices` },
+        { region: 'Asia-Pacific', surge: '+20%', niche: `${query} AI Solutions` },
+        { region: 'North America', surge: '+10%', niche: `${query} Subscription Services` }
+      ];
+      simulatedResults.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="text-[#d4af37] font-semibold">${item.region}:</span> Surge ${item.surge} in <span class="italic">${item.niche}</span>`;
+        trendList.appendChild(li);
+      });
+    });
+
+    // Admin Panel Buttons
+    document.getElementById('follow-up-btn').addEventListener('click', () => {
+      alert('Generic follow-up emails dispatched to pending invoice clients.');
+    });
+    document.getElementById('payment-chaser-btn').addEventListener('click', () => {
+      alert('Automated payment chaser initiated to reduce weekend paperwork.');
+    });
+
+    // Communications
+    const sendBtn = document.getElementById('send-message-btn');
+    const messageInput = document.getElementById('message-input');
+    const messageFeed = document.getElementById('message-feed');
+
+    sendBtn.addEventListener('click', () => {
+      const text = messageInput.value.trim();
+      if (!text) return;
+      const newMessage = document.createElement('li');
+      newMessage.innerHTML = `<strong>You:</strong> ${text}`;
+      newMessage.classList.add('text-[#e6d5b8]');
+      messageFeed.appendChild(newMessage);
+      messageInput.value = '';
+      messageFeed.scrollTop = messageFeed.scrollHeight;
+    });
+
+    // Secure Meeting placeholder action
+    document.getElementById('start-meeting-btn').addEventListener('click', () => {
+      alert('Secure meeting started. Speech-to-text and SL-AI features will activate.');
+    });
+  </script>
+
+</body>
+</html>
