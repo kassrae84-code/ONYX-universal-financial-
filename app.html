@@ -35,7 +35,6 @@
             position: relative;
         }
 
-        /* Interactive Particle Background Canvas */
         #particleCanvas {
             position: fixed;
             top: 0;
@@ -155,7 +154,6 @@
             display: grid;
         }
 
-        /* Holographic Glassmorphic Panels with Energy Pulse */
         .panel {
             background: linear-gradient(135deg, rgba(22, 22, 22, 0.88) 0%, rgba(10, 10, 10, 0.96) 100%);
             border: 1px solid var(--border-glass);
@@ -244,7 +242,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.7);
         }
 
-        /* 3D Interactive Canvas Wire Globe Container */
         .wire-globe-container {
             background: radial-gradient(circle at center, rgba(20, 20, 20, 0.95) 0%, rgba(2, 2, 2, 0.99) 100%);
             border: 1px solid var(--border-glass);
@@ -283,7 +280,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            cursor: pointer;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
         }
@@ -323,7 +319,6 @@
             padding: 16px;
             border: 1px solid var(--border-glass);
             border-radius: 10px;
-            cursor: pointer;
             box-shadow: 0 6px 18px rgba(0,0,0,0.4);
             transition: all 0.3s ease;
         }
@@ -345,7 +340,6 @@
             color: var(--text-muted);
         }
 
-        /* View Toggle Bar (3D Glassmorphic vs Flat & Report Generator) */
         .view-control-bar {
             display: flex;
             justify-content: space-between;
@@ -442,7 +436,6 @@
 </head>
 <body>
 
-    <!-- Interactive Particle Background Canvas -->
     <canvas id="particleCanvas"></canvas>
 
     <header>
@@ -474,7 +467,7 @@
     </header>
 
     <main>
-        <!-- TAB 1: Global Map & Cinematic Wire Globe Graph -->
+        <!-- TAB 1 -->
         <div id="mapTab" class="section-view active-view">
             <section class="panel">
                 <div class="view-control-bar">
@@ -489,10 +482,10 @@
                 <p class="panel-subheader">Interactive regional node tracking & sales telemetry</p>
                 <div class="map-container" id="mapContainerBox">
                     <img src="7740.png" alt="Onyx Sovereign Map" class="map-image" id="mapImageEl">
-                    <div class="interactive-node" style="top: 38%; left: 32%;" onclick="openModal('UK HQ Telemetry', 'UK regional node active. Revenue velocity +12% week-on-week. 20% HMRC reserve automatically sequestered.')"></div>
-                    <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="openModal('US Sales Spike', 'High-volume node cluster detected in North America. Trend radar active, early-bird alert dispatched.')"></div>
-                    <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="openModal('Emerging Market Node', 'New international node verified. Secure payment channels engaged.')"></div>
-                    <div id="telemetryBox" class="node-telemetry">Click any glowing node to inspect telemetry</div>
+                    <div class="interactive-node" style="top: 38%; left: 32%;"></div>
+                    <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;"></div>
+                    <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;"></div>
+                    <div id="telemetryBox" class="node-telemetry">Active Node Network Synced</div>
                 </div>
             </section>
 
@@ -507,7 +500,7 @@
                 </div>
                 <h2 class="panel-header">Cinematic Canvas Wire Globe Analytics</h2>
                 <p class="panel-subheader">Real-time multi-region meridian mesh and currency flow</p>
-                <div class="wire-globe-container" id="globeContainerBox" onclick="openModal('Wire Globe Matrix', 'Interactive HTML5 canvas wire globe active. Multi-node intercontinental exchange tracking enabled.')">
+                <div class="wire-globe-container" id="globeContainerBox">
                     <canvas id="wireGlobeCanvas" width="240" height="240"></canvas>
                     <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent); letter-spacing: 1.5px; text-shadow: 0 0 10px var(--champagne-gold);">
                         ● MESH ROTATION: 360° ACTIVE
@@ -516,27 +509,27 @@
             </section>
         </div>
 
-        <!-- TAB 2: Live Translators & Zoom-Style Meetings -->
+        <!-- TAB 2 -->
         <div id="translationTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Real-Time Multi-Channel Translators & Meetings</h2>
                 <p class="panel-subheader">Zoom-style secure video streams, BSL interpreter & live voice translation</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="playSound(); openModal('Secure Multi-Channel Video Meeting', 'Zoom-style encrypted video feed active. Zero latency, built-in real-time transcription and participant telemetry.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Encrypted Multi-Channel Video Meeting Room</div>
                             <div class="item-sub">Secure video conference feed with live participant sync</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Launch Room</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Ready</span>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Real-Time BSL Interpreter', 'Visual British Sign Language interpretation layer fully operational for video streams and meetings.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Real-Time British Sign Language (BSL) Interpreter</div>
                             <div class="item-sub">Visual interpretation layer for live meetings & video feeds</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">Active</span>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Global Voice Translator', 'Multilingual instant stream conversion active for international partner calls.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Global Word-for-Word Voice Translator</div>
                             <div class="item-sub">Instant multilingual stream conversion for international calls</div>
@@ -557,7 +550,7 @@
             </section>
         </div>
 
-        <!-- TAB 3: HMRC & Crypto Books -->
+        <!-- TAB 3 -->
         <div id="hmrcTab" class="section-view">
             <section class="panel">
                 <div class="view-control-bar">
@@ -567,22 +560,22 @@
                 <h2 class="panel-header">HMRC Tax & Multi-Asset Crypto Books</h2>
                 <p class="panel-subheader">Unified fiat bank sync, Stripe ledgers & crypto wallet tracking</p>
                 <div class="financial-grid">
-                    <div class="metric-card" onclick="playSound(); openModal('HMRC Tax Reserve Ledger', 'Every incoming payment automatically sequesters 20% into an isolated HMRC tax reserve vault, ensuring complete compliance without manual effort.')">
+                    <div class="metric-card">
                         <span class="metric-title">HMRC Reserve (20%)</span>
                         <div class="metric-value" id="liveCounter1">£1,420.00</div>
                         <span class="item-sub">Automatically Isolated</span>
                     </div>
-                    <div class="metric-card" onclick="playSound(); openModal('Crypto Asset Portfolio', 'Unified Web3 wallet & exchange sync. Real-time valuation for Bitcoin, Ethereum, and stablecoin holdings.')">
+                    <div class="metric-card">
                         <span class="metric-title">Crypto Assets (BTC/ETH)</span>
                         <div class="metric-value" id="liveCounter2">£12,850.00</div>
                         <span class="item-sub">Multi-Chain Synced</span>
                     </div>
-                    <div class="metric-card" onclick="playSound(); openModal('Active Revenue Ledger', 'Real-time synchronization with Stripe processing and connected business bank accounts.')">
+                    <div class="metric-card">
                         <span class="metric-title">Fiat Bank & Stripe Sync</span>
                         <div class="metric-value">£7,100.00</div>
                         <span class="item-sub">All Accounts Linked</span>
                     </div>
-                    <div class="metric-card" onclick="playSound(); openModal('Verified Receipts Audit', 'Optical Character Recognition (OCR) active. Vendors, amounts, and tax categories extracted instantly.')">
+                    <div class="metric-card">
                         <span class="metric-title">Verified Receipts</span>
                         <div class="metric-value">48 Logged</div>
                         <span class="item-sub">OCR Categorized</span>
@@ -601,28 +594,28 @@
             </section>
         </div>
 
-        <!-- TAB 4: Professional Reports & CV Assessor -->
+        <!-- TAB 4 -->
         <div id="reportsTab" class="section-view">
             <div style="display: flex; flex-direction: column; gap: 25px; grid-column: span 2;">
                 <section class="panel">
                     <h2 class="panel-header">Profession-Specific Reports</h2>
                     <p class="panel-subheader">Tailored executive analytics by discipline</p>
                     <div class="item-stack">
-                        <div class="item-row" onclick="playSound(); openModal('Project Manager Report', 'Milestone tracking, resource allocation velocity, and critical path risk analysis generated for complex project delivery.')">
+                        <div class="item-row">
                             <div>
                                 <div class="item-title">Project Manager Performance Ledger</div>
                                 <div class="item-sub">Milestone tracking, resource allocation & risk velocity</div>
                             </div>
                             <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
                         </div>
-                        <div class="item-row" onclick="playSound(); openModal('Commercial Photographer Report', 'Shoot asset valuation, licensing tracking, and studio overhead cost analysis.')">
+                        <div class="item-row">
                             <div>
                                 <div class="item-title">Commercial Photographer Dossier</div>
                                 <div class="item-sub">Shoot asset valuation, licensing tracking & studio costs</div>
                             </div>
                             <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
                         </div>
-                        <div class="item-row" onclick="playSound(); openModal('Creative Director Report', 'Brand platform equity, client deliverable timelines, and aesthetic roadmap synchronization.')">
+                        <div class="item-row">
                             <div>
                                 <div class="item-title">Creative Director & Brand Studio Report</div>
                                 <div class="item-sub">Brand platform equity, client deliverables & roadmap</div>
@@ -632,7 +625,6 @@
                     </div>
                 </section>
 
-                <!-- Executive CV Assessor & Competency Screener -->
                 <section class="panel">
                     <h2 class="panel-header">Executive CV Assessor & Competency Screener</h2>
                     <p class="panel-subheader">Automated competence filtering to eliminate unqualified applicant noise</p>
@@ -642,25 +634,25 @@
                             <span style="font-size: 1.8rem; color: var(--champagne-gold);">📄</span>
                             <div class="item-title">Drop Candidate CV / Application Here</div>
                             <div class="item-sub">Instant AI competency scoring & red-flag detection</div>
-                            <button class="modal-close" style="margin-top: 10px;" onclick="playSound(); openModal('CV Screening Active', 'Applicant profile scanned. Competency threshold met: 88%. Technical competence verified. Zero fluff detected.')">Run Screener</button>
+                            <button class="report-btn" style="margin-top: 10px;" onclick="generateReport('CV Screener Batch')">Run Screener</button>
                         </div>
 
                         <div class="item-stack">
-                            <div class="item-row" onclick="playSound(); openModal('Hard Skill Verification', 'Cross-referenced against verified output metrics and demonstrable project execution history.')">
+                            <div class="item-row">
                                 <div>
                                     <div class="item-title">Hard Skill & Proof Verification</div>
                                     <div class="item-sub">Filters out inflated claims & generic buzzwords</div>
                                 </div>
                                 <span style="color: var(--champagne-gold); font-size: 0.8rem;">Passed</span>
                             </div>
-                            <div class="item-row" onclick="playSound(); openModal('Behavioral Competency Test', 'Evaluates baseline logic, problem-solving speed, and operational stress response.')">
+                            <div class="item-row">
                                 <div>
                                     <div class="item-title">Automated Competency Test Score</div>
                                     <div class="item-sub">Minimum threshold required before human review</div>
                                 </div>
                                 <span style="color: var(--champagne-gold); font-size: 0.8rem;">92 / 100</span>
                             </div>
-                            <div class="item-row" onclick="playSound(); openModal('Noise Elimination Filter', 'Automatically discards low-effort applications and mass submissions.')">
+                            <div class="item-row">
                                 <div>
                                     <div class="item-title">Noise Elimination Filter</div>
                                     <div class="item-sub">100% automated rejection of non-compliant CVs</div>
@@ -673,20 +665,20 @@
             </div>
         </div>
 
-        <!-- TAB 5: Marketing & Sales -->
+        <!-- TAB 5 -->
         <div id="templatesTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Marketing & Sales Templates</h2>
                 <p class="panel-subheader">Pre-engineered frameworks for client acquisition & outreach</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="playSound(); openModal('Client Acquisition Sequence', 'Frictionless high-ticket pitch framework designed for immediate enterprise client onboarding.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">High-Ticket Client Acquisition Sequence</div>
                             <div class="item-sub">Frictionless pitch framework for enterprise onboarding</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy</span>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Soft-Chasing Invoice Sequence', 'Polite, executive follow-up cadence that secures payments while protecting client relationships.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Soft-Chasing Unpaid Invoice Sequence</div>
                             <div class="item-sub">Polite, executive follow-up cadence that protects relationships</div>
@@ -708,20 +700,20 @@
             </section>
         </div>
 
-        <!-- TAB 6: Smart Meeting Notes & Encrypted Memos -->
+        <!-- TAB 6 -->
         <div id="notesTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Smart Meeting Notes & Encrypted Memos</h2>
                 <p class="panel-subheader">Encrypted internal memos, AI transcription & action items</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="playSound(); openModal('Internal Encrypted Memo Dispatch', 'Secure internal multi-channel messaging active. Send encrypted memos directly across team nodes.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Dispatch Encrypted Internal Memo</div>
                             <div class="item-sub">Secure multi-channel internal communication channel</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">New Memo</span>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Executive Strategy Vault', 'Halifax Hub strategy session transcript. 4 action items automatically assigned and synced.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Executive Strategy Session // Halifax Hub</div>
                             <div class="item-sub">Logged Today // 4 Action Items Assigned</div>
@@ -742,27 +734,27 @@
             </section>
         </div>
 
-        <!-- TAB 7: Pricing Tiers -->
+        <!-- TAB 7 -->
         <div id="pricingTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Commercial Pricing Tiers</h2>
                 <p class="panel-subheader">Structured access levels for the Onyx ecosystem</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="playSound(); openModal('Tier 1: Growth', '£19.99/mo: Essential Tax Reserve, HMRC OCR, and Client Vaults.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Tier 1: Growth</div>
                             <div class="item-sub">Essential Tax Reserve & Client Vaults</div>
                         </div>
                         <div style="color: var(--cream-accent);">£19.99 / mo</div>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Tier 2: Executive', '£49.99/mo: Full Global Map, Trend Radar, and Professional Reports.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Tier 2: Executive</div>
                             <div class="item-sub">Full Global Map & Trend Radar</div>
                         </div>
                         <div style="color: var(--cream-accent);">£49.99 / mo</div>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Tier 3: Sovereign', '£79.99/mo: Complete Multi-Hub Access, CV Assessor, and Advanced Tools.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Tier 3: Sovereign</div>
                             <div class="item-sub">Complete Multi-Hub Access & Advanced Tools</div>
@@ -788,20 +780,20 @@
             </section>
         </div>
 
-        <!-- TAB 8: Client Dossiers -->
+        <!-- TAB 8 -->
         <div id="dossierTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Elite Client Dossiers</h2>
                 <p class="panel-subheader">Secure vaults, skill reports & communication archives</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="playSound(); openModal('Global Strategic Partner A', 'Encrypted vault active. Contracts, deliverables, and performance history synchronized.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Global Strategic Partner A</div>
                             <div class="item-sub">Encrypted Vault // Active</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
                     </div>
-                    <div class="item-row" onclick="playSound(); openModal('Regional Node B', 'Encrypted vault syncing. Multi-region telemetry and tax records linked.')">
+                    <div class="item-row">
                         <div>
                             <div class="item-title">Regional Node B</div>
                             <div class="item-sub">Encrypted Vault // Syncing</div>
@@ -828,16 +820,7 @@
         </div>
     </main>
 
-    <!-- Modal Popup Overlay -->
-    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <div id="modalTitle" class="modal-header">Title</div>
-            <div id="modalDesc" class="modal-body">Description</div>
-            <button class="modal-close" onclick="closeModal()">Close Vault</button>
-        </div>
-    </div>
-
-    <!-- Legal & Trademark Modal -->
+    <!-- Legal & Trademark Modal (Kept for professional trademark notice) -->
     <div id="legalModalOverlay" class="modal-overlay" onclick="closeLegalModal()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">Trademark & Intellectual Property Notice</div>
@@ -853,26 +836,16 @@
         </div>
     </div>
 
-    <script>
-        // Interactive Sci-Fi Audio Feedback (Subtle Web Audio API Sci-Fi Hum/Blip)
-        function playSound() {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(580, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
-                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } catch(e) {}
-        }
+    <!-- General Report Modal -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div id="modalTitle" class="modal-header">Title</div>
+            <div id="modalDesc" class="modal-body">Description</div>
+            <button class="modal-close" onclick="closeModal()">Close Report</button>
+        </div>
+    </div>
 
-        // Interactive Particle Starfield Background Canvas
+    <script>
         const pCanvas = document.getElementById('particleCanvas');
         const pCtx = pCanvas.getContext('2d');
         let particles = [];
@@ -915,7 +888,6 @@
         }
         drawParticles();
 
-        // Interactive 3D Canvas Wire Globe Animation
         const canvas = document.getElementById('wireGlobeCanvas');
         const ctx = canvas.getContext('2d');
         let angle = 0;
@@ -926,7 +898,6 @@
             const cy = canvas.height / 2;
             const radius = 95;
 
-            // Outer Atmospheric Glow
             let outerGlow = ctx.createRadialGradient(cx, cy, radius * 0.6, cx, cy, radius * 1.15);
             outerGlow.addColorStop(0, 'rgba(212, 175, 55, 0.25)');
             outerGlow.addColorStop(1, 'rgba(212, 175, 55, 0)');
@@ -935,7 +906,6 @@
             ctx.fillStyle = outerGlow;
             ctx.fill();
 
-            // Rotating Meridian Rings
             for (let i = 0; i < 4; i++) {
                 let rotAngle = angle + (i * Math.PI / 4);
                 ctx.beginPath();
@@ -945,7 +915,6 @@
                 ctx.stroke();
             }
 
-            // Latitude Parallels
             for (let lat = -2; lat <= 2; lat++) {
                 let yOffset = lat * 28;
                 let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
@@ -956,7 +925,6 @@
                 ctx.stroke();
             }
 
-            // Glowing Plasma Core Center
             let gradient = ctx.createRadialGradient(cx, cy, 2, cx, cy, 25);
             gradient.addColorStop(0, '#ffffff');
             gradient.addColorStop(0.5, '#FDF6E2');
@@ -971,19 +939,7 @@
         }
         drawWireGlobe();
 
-        // Live Ticking Numbers Simulation
-        setInterval(() => {
-            const el1 = document.getElementById('liveCounter1');
-            const el2 = document.getElementById('liveCounter2');
-            if (el1 && Math.random() > 0.6) {
-                el1.style.textShadow = '0 0 10px var(--champagne-gold)';
-                setTimeout(() => el1.style.textShadow = 'none', 400);
-            }
-        }, 3000);
-
-        // View Toggles (Holographic 3D vs Flat Clean) & Report Generator
         function toggleView(target, mode) {
-            playSound();
             if (target === 'map') {
                 document.getElementById('map3dBtn').classList.toggle('active', mode === '3d');
                 document.getElementById('mapFlatBtn').classList.toggle('active', mode === 'flat');
@@ -1008,12 +964,12 @@
         }
 
         function generateReport(title) {
-            playSound();
-            openModal('Executive Report Generated // ' + title, 'Live telemetry, financial reserves, and telemetry logs compiled successfully. Encrypted report payload prepared for secure export.');
+            document.getElementById('modalTitle').innerText = 'Executive Report // ' + title;
+            document.getElementById('modalDesc').innerText = 'Live telemetry, financial reserves, and data nodes successfully compiled. Encrypted report payload prepared for secure export.';
+            document.getElementById('modalOverlay').style.display = 'flex';
         }
 
         function switchTab(tabId, btn) {
-            playSound();
             document.querySelectorAll('.section-view').forEach(view => {
                 view.classList.remove('active-view');
             });
@@ -1024,25 +980,15 @@
             btn.classList.add('active');
         }
 
-        function openModal(title, desc) {
-            playSound();
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDesc').innerText = desc;
-            document.getElementById('modalOverlay').style.display = 'flex';
-        }
-
         function closeModal() {
-            playSound();
             document.getElementById('modalOverlay').style.display = 'none';
         }
 
         function openLegalModal() {
-            playSound();
             document.getElementById('legalModalOverlay').style.display = 'flex';
         }
 
         function closeLegalModal() {
-            playSound();
             document.getElementById('legalModalOverlay').style.display = 'none';
         }
     </script>
