@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE - Executive Sovereign Operating System</title>
+    <title>ONYX ONE // Sovereign Intelligence Portal</title>
     <style>
         * {
             margin: 0;
@@ -17,6 +17,10 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            transition: opacity 1.2s ease-in-out;
+        }
+        body.dissolve {
+            opacity: 0;
         }
         .portal-link {
             display: flex;
@@ -31,19 +35,30 @@
             max-height: 100vh;
             object-fit: contain;
             cursor: pointer;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+            transition: transform 0.5s ease;
         }
         .landing-image:hover {
-            transform: scale(1.01);
+            transform: scale(1.008);
         }
     </style>
 </head>
 <body>
 
-    <a href="app.html" class="portal-link">
-        <img src="7653.png" alt="Onyx One Sovereign Intelligence" class="landing-image">
+    <a href="app.html" class="portal-link" onclick="triggerDissolve(event)">
+        <!-- Make sure your image filename matches what you uploaded to GitHub (e.g., onyx-ne-map.jpg or 7630.png) -->
+        <img src="onyx-ne-map.jpg" alt="Onyx One Global Intelligence" class="landing-image">
     </a>
+
+    <script>
+        function triggerDissolve(e) {
+            e.preventDefault();
+            document.body.classList.add('dissolve');
+            setTimeout(() => {
+                window.location.href = 'app.html';
+            }, 1200);
+        }
+    </script>
 
 </body>
 </html>
