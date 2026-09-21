@@ -491,19 +491,19 @@
 
             <section class="panel">
                 <div class="view-control-bar">
-                    <span style="font-size: 0.75rem; color: var(--cream-accent); letter-spacing: 1px;">WIRE MESH ANALYTICS</span>
+                    <span style="font-size: 0.75rem; color: var(--cream-accent); letter-spacing: 1px;">PLASMA SPHERE ANALYTICS</span>
                     <div style="display: flex; gap: 8px;">
                         <button class="view-btn active" id="globe3dBtn" onclick="toggleView('globe', '3d')">Holographic 3D</button>
                         <button class="view-btn" id="globeFlatBtn" onclick="toggleView('globe', 'flat')">Flat Clean</button>
-                        <button class="report-btn" onclick="generateReport('Wire Globe Analytics')">Generate Report</button>
+                        <button class="report-btn" onclick="generateReport('Plasma Globe Analytics')">Generate Report</button>
                     </div>
                 </div>
-                <h2 class="panel-header">Cinematic Canvas Wire Globe Analytics</h2>
-                <p class="panel-subheader">Real-time multi-region meridian mesh and currency flow</p>
+                <h2 class="panel-header">Plasma Ball Glassmorphic Globe</h2>
+                <p class="panel-subheader">Touch globe to inspect global sales, salary benchmarks & market trends</p>
                 <div class="wire-globe-container" id="globeContainerBox">
                     <canvas id="wireGlobeCanvas" width="240" height="240"></canvas>
                     <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent); letter-spacing: 1.5px; text-shadow: 0 0 10px var(--champagne-gold);">
-                        ● MESH ROTATION: 360° ACTIVE // CHARGE NODES LIVE
+                        ● PLASMA SPHERE: TOUCH TO INSPECT GLOBAL INTEL
                     </div>
                 </div>
             </section>
@@ -841,7 +841,7 @@
         <div class="modal-box" onclick="event.stopPropagation()">
             <div id="modalTitle" class="modal-header">Title</div>
             <div id="modalDesc" class="modal-body">Description</div>
-            <button class="modal-close" onclick="closeModal()">Close Report</button>
+            <button class="modal-close" onclick="closeModal()">Close Intel HUD</button>
         </div>
     </div>
 
@@ -888,12 +888,37 @@
         }
         drawParticles();
 
-        // Upgraded Wire Globe with Active Country Nodes & Live Charge Lines
+        // Plasma-Ball Glassmorphic Globe with Touch/Cursor Lightning & Data Popup
         const canvas = document.getElementById('wireGlobeCanvas');
         const ctx = canvas.getContext('2d');
         let angle = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+        let isHovered = false;
 
-        // Pre-defined country node positions on sphere coordinates (lat, lon)
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+            isHovered = true;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isHovered = false;
+        });
+
+        canvas.addEventListener('click', () => {
+            // Touch / Click trigger for Global Intelligence Glass Popup
+            openModal(
+                'Plasma Globe Global Intel HUD',
+                '🌐 GLOBAL SALES & MARKET INTELLIGENCE:\n\n' +
+                '• Top Performing Regions: UK (HQ Velocity +18%), North America (US Tech & Design Hubs), UAE (Executive Vaults).\n' +
+                '• Wealth & Commodity Tracking: Gold Spot Index (+1.4%), Sovereign Multi-Asset Crypto Reserves Synced.\n' +
+                '• Niche Benchmark & Salary Index: International creative director, architectural, & builder salary scales mapped across 14 sovereign territories.\n' +
+                '• Product Trend Suggestions: High-demand digital brand assets, automated tax-compliant SaaS modules, and modular asset scaling.'
+            );
+        });
+
         const countryNodes = [
             { name: "UK HQ", lat: 0.9, lon: 0.0 },
             { name: "US Node", lat: 0.7, lon: -1.2 },
@@ -903,19 +928,33 @@
             { name: "Sydney Node", lat: -0.6, lon: 2.6 }
         ];
 
-        function drawWireGlobe() {
+        function drawPlasmaGlobe() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
             const radius = 95;
 
-            // Outer Atmospheric Glow
-            let outerGlow = ctx.createRadialGradient(cx, cy, radius * 0.6, cx, cy, radius * 1.15);
-            outerGlow.addColorStop(0, 'rgba(212, 175, 55, 0.25)');
-            outerGlow.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            // Transparent See-Through Glass Sphere Gradient
+            let glassGrad = ctx.createRadialGradient(cx - 30, cy - 30, 5, cx, cy, radius);
+            glassGrad.addColorStop(0, 'rgba(253, 246, 226, 0.15)');
+            glassGrad.addColorStop(0.5, 'rgba(20, 20, 20, 0.85)');
+            glassGrad.addColorStop(1, 'rgba(3, 3, 3, 0.98)');
+            
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+            ctx.fillStyle = glassGrad;
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.65)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Glass Surface Highlight Rim
+            let rimGrad = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius * 1.15);
+            rimGrad.addColorStop(0, 'rgba(212, 175, 55, 0.35)');
+            rimGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
             ctx.beginPath();
             ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2);
-            ctx.fillStyle = outerGlow;
+            ctx.fillStyle = rimGrad;
             ctx.fill();
 
             // Rotating Meridian Rings (Wire Mesh)
@@ -923,8 +962,8 @@
                 let rotAngle = angle + (i * Math.PI / 4);
                 ctx.beginPath();
                 ctx.ellipse(cx, cy, radius * Math.abs(Math.cos(rotAngle)), radius, 0, 0, Math.PI * 2);
-                ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.45)' : 'rgba(253, 246, 226, 0.25)';
-                ctx.lineWidth = 1.2;
+                ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.4)' : 'rgba(253, 246, 226, 0.22)';
+                ctx.lineWidth = 1;
                 ctx.stroke();
             }
 
@@ -934,63 +973,88 @@
                 let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
                 ctx.beginPath();
                 ctx.ellipse(cx, cy + yOffset, latRadius, latRadius * 0.25, 0, 0, Math.PI * 2);
-                ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
-                ctx.lineWidth = 0.9;
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+                ctx.lineWidth = 0.8;
                 ctx.stroke();
             }
 
-            // Render Active Country Nodes & Charging Lines across the spinning sphere
+            // Interactive Plasma Lightning Tendrils inside the Glass Ball
             let projectedNodes = countryNodes.map(node => {
                 let currentLon = node.lon + angle;
                 let x = cx + radius * Math.cos(node.lat) * Math.sin(currentLon);
                 let y = cy - radius * Math.sin(node.lat);
-                let visible = Math.cos(currentLon) > -0.2; // Only show nodes on front/visible side
+                let visible = Math.cos(currentLon) > -0.2;
                 return { x, y, visible, name: node.name };
             });
 
-            // Draw glowing charge transfer lines between visible country nodes
-            for (let i = 0; i < projectedNodes.length; i++) {
-                for (let j = i + 1; j < projectedNodes.length; j++) {
-                    if (projectedNodes[i].visible && projectedNodes[j].visible) {
-                        ctx.beginPath();
-                        ctx.moveTo(projectedNodes[i].x, projectedNodes[i].y);
-                        ctx.lineTo(projectedNodes[j].x, projectedNodes[j].y);
-                        ctx.strokeStyle = 'rgba(253, 246, 226, 0.35)';
-                        ctx.lineWidth = 0.8;
-                        ctx.setLineDash([3, 3]); // Electric charging pulse line style
-                        ctx.stroke();
-                        ctx.setLineDash([]);
-                    }
-                }
-            }
+            // Center Plasma Core
+            let coreX = cx + Math.sin(angle * 2) * 8;
+            let coreY = cy + Math.cos(angle * 1.5) * 6;
 
-            // Draw country node points with pulse rings
+            // Draw jagged plasma arcs from core to visible nodes
             projectedNodes.forEach(node => {
                 if (node.visible) {
                     ctx.beginPath();
-                    ctx.arc(node.x, node.y, 3.5, 0, Math.PI * 2);
-                    ctx.fillStyle = '#FDF6E2';
-                    ctx.shadowColor = '#D4AF37';
-                    ctx.shadowBlur = 10;
-                    ctx.fill();
-                    ctx.shadowBlur = 0; // reset
+                    ctx.moveTo(coreX, coreY);
+                    // Add jagged electric plasma look
+                    let midX = (coreX + node.x) / 2 + (Math.random() - 0.5) * 15;
+                    let midY = (coreY + node.y) / 2 + (Math.random() - 0.5) * 15;
+                    ctx.lineTo(midX, midY);
+                    ctx.lineTo(node.x, node.y);
+                    ctx.strokeStyle = 'rgba(253, 246, 226, 0.65)';
+                    ctx.lineWidth = 1.2;
+                    ctx.stroke();
                 }
             });
 
-            // Glowing Plasma Core Center
-            let gradient = ctx.createRadialGradient(cx, cy, 2, cx, cy, 25);
-            gradient.addColorStop(0, '#ffffff');
-            gradient.addColorStop(0.5, '#FDF6E2');
-            gradient.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            // If mouse/touch is over globe, draw lightning arc straight to cursor (Plasma Ball effect!)
+            if (isHovered) {
+                let dx = mouseX - cx;
+                let dy = mouseY - cy;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < radius) {
+                    ctx.beginPath();
+                    ctx.moveTo(coreX, coreY);
+                    let mx = (coreX + mouseX) / 2 + (Math.random() - 0.5) * 20;
+                    let my = (coreY + mouseY) / 2 + (Math.random() - 0.5) * 20;
+                    ctx.lineTo(mx, my);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.shadowColor = '#D4AF37';
+                    ctx.shadowBlur = 15;
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            // Draw glowing node points on glass surface
+            projectedNodes.forEach(node => {
+                if (node.visible) {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FDF6E2';
+                    ctx.shadowColor = '#D4AF37';
+                    ctx.shadowBlur = 12;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            });
+
+            // Pulsing Plasma Energy Core Center
+            let grad = ctx.createRadialGradient(coreX, coreY, 2, coreX, coreY, 22);
+            grad.addColorStop(0, '#ffffff');
+            grad.addColorStop(0.5, '#FDF6E2');
+            grad.addColorStop(1, 'rgba(212, 175, 55, 0)');
             ctx.beginPath();
-            ctx.arc(cx, cy, 25, 0, Math.PI * 2);
-            ctx.fillStyle = gradient;
+            ctx.arc(coreX, coreY, 22, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
             ctx.fill();
 
             angle += 0.012;
-            requestAnimationFrame(drawWireGlobe);
+            requestAnimationFrame(drawPlasmaGlobe);
         }
-        drawWireGlobe();
+        drawPlasmaGlobe();
 
         function toggleView(target, mode) {
             if (target === 'map') {
@@ -1017,9 +1081,7 @@
         }
 
         function generateReport(title) {
-            document.getElementById('modalTitle').innerText = 'Executive Report // ' + title;
-            document.getElementById('modalDesc').innerText = 'Live telemetry, financial reserves, and data nodes successfully compiled. Encrypted report payload prepared for secure export.';
-            document.getElementById('modalOverlay').style.display = 'flex';
+            openModal('Executive Report // ' + title, 'Live telemetry, financial reserves, and data nodes successfully compiled. Encrypted report payload prepared for secure export.');
         }
 
         function switchTab(tabId, btn) {
@@ -1031,6 +1093,12 @@
             });
             document.getElementById(tabId).classList.add('active-view');
             btn.classList.add('active');
+        }
+
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc.replace(/\n/g, '<br>');
+            document.getElementById('modalOverlay').style.display = 'flex';
         }
 
         function closeModal() {
