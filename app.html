@@ -7,14 +7,14 @@
     <style>
         :root {
             --onyx-abyss: #050505;
-            --onyx-glass: rgba(18, 18, 18, 0.92);
+            --onyx-glass: rgba(18, 18, 18, 0.94);
             --champagne-gold: #D4AF37;
             --cream-accent: #FDF6E2;
             --champagne-muted: #c5a059;
-            --gold-glow: rgba(212, 175, 55, 0.25);
-            --border-glass: rgba(212, 175, 55, 0.22);
+            --gold-glow: rgba(212, 175, 55, 0.35);
+            --border-glass: rgba(212, 175, 55, 0.3);
             --text-main: #FDF6E2;
-            --text-muted: #999999;
+            --text-muted: #aaaaaa;
         }
 
         * {
@@ -31,6 +31,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.07) 0%, transparent 60%);
         }
 
         header {
@@ -41,7 +42,8 @@
             flex-direction: column;
             background: var(--onyx-glass);
             border-bottom: 1px solid var(--border-glass);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
         .header-top {
@@ -62,6 +64,7 @@
             width: 38px;
             height: 38px;
             object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
         }
 
         .brand-title {
@@ -113,7 +116,7 @@
             width: 100%;
             height: 2px;
             background-color: var(--champagne-gold);
-            box-shadow: 0 0 10px var(--champagne-gold);
+            box-shadow: 0 0 12px var(--champagne-gold);
         }
 
         main {
@@ -136,15 +139,21 @@
         }
 
         .panel {
-            background-color: var(--onyx-glass);
+            background: linear-gradient(135deg, rgba(25, 25, 25, 0.85) 0%, rgba(12, 12, 12, 0.95) 100%);
             border: 1px solid var(--border-glass);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 25px;
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .panel:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 20px rgba(212, 175, 55, 0.15);
         }
 
         .panel-header {
@@ -166,13 +175,14 @@
             flex: 1;
             position: relative;
             border: 1px solid var(--border-glass);
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
             min-height: 380px;
             background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.9);
         }
 
         .map-image {
@@ -180,6 +190,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0.95;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
         }
 
         .interactive-node {
@@ -201,53 +212,81 @@
             background: rgba(10, 10, 10, 0.95);
             border: 1px solid var(--border-glass);
             padding: 8px 16px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.75rem;
             color: var(--cream-accent);
             white-space: nowrap;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* Glassmorphic Global Graphs */
-        .glass-graph-container {
-            background: rgba(255, 255, 255, 0.015);
+        /* Cinematic Wire Globe Graph */
+        .wire-globe-container {
+            background: rgba(10, 10, 10, 0.6);
             border: 1px solid var(--border-glass);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            flex: 1;
-        }
-
-        .graph-bars {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            height: 160px;
-            padding-top: 20px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .graph-bar-col {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             flex: 1;
+            position: relative;
+            min-height: 320px;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.08);
         }
 
-        .graph-bar {
-            width: 24px;
-            background: linear-gradient(180deg, var(--champagne-gold), rgba(212, 175, 55, 0.2));
-            border-radius: 4px 4px 0 0;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-            transition: height 0.5s ease;
+        .wire-globe {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px dashed rgba(212, 175, 55, 0.4);
+            position: relative;
+            animation: rotateGlobe 20s linear infinite;
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.2), inset 0 0 30px rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .graph-label {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
+        .wire-globe::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(253, 246, 226, 0.25);
+            transform: rotate(45deg);
+        }
+
+        .wire-globe::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            transform: rotate(-45deg);
+        }
+
+        .globe-core {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--cream-accent) 0%, var(--champagne-gold) 70%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--champagne-gold), 0 0 60px var(--gold-glow);
+            animation: pulseCore 3s infinite ease-in-out;
+        }
+
+        @keyframes rotateGlobe {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseCore {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 40px var(--champagne-gold), 0 0 80px var(--gold-glow); }
+            100% { transform: scale(0.9); opacity: 0.8; }
         }
 
         .financial-grid {
@@ -258,19 +297,22 @@
         }
 
         .metric-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid var(--border-glass);
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            transition: border-color 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
         }
 
         .metric-card:hover {
             border-color: var(--champagne-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.2);
         }
 
         .metric-title {
@@ -298,16 +340,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            padding: 16px;
             border: 1px solid var(--border-glass);
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: border-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
         }
 
         .item-row:hover {
             border-color: var(--champagne-gold);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 12px rgba(212, 175, 55, 0.15);
         }
 
         .item-title {
@@ -324,8 +369,8 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(12px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -333,20 +378,20 @@
         }
 
         .modal-box {
-            background: #121212;
+            background: linear-gradient(135deg, #181818 0%, #0d0d0d 100%);
             border: 1px solid var(--champagne-gold);
-            padding: 30px;
-            border-radius: 10px;
-            width: 500px;
+            padding: 35px;
+            border-radius: 12px;
+            width: 520px;
             max-width: 90%;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(212, 175, 55, 0.25);
             color: var(--cream-accent);
         }
 
         .modal-header {
             font-size: 1.1rem;
             color: var(--champagne-gold);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -354,20 +399,26 @@
         .modal-body {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
 
         .modal-close {
-            background: var(--champagne-gold);
+            background: linear-gradient(135deg, var(--champagne-gold), #b38f26);
             color: #050505;
             border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
+            padding: 10px 24px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.02);
         }
 
         @keyframes pulse {
@@ -392,14 +443,14 @@
                     <div class="cockpit-title">Sovereign Decision-Making Cockpit</div>
                 </div>
             </div>
-            <div style="font-size: 0.78rem; color: var(--cream-accent); background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border: 1px solid var(--border-glass); border-radius: 4px;">
+            <div style="font-size: 0.78rem; color: var(--cream-accent); background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border: 1px solid var(--border-glass); border-radius: 6px; box-shadow: inset 0 1px 2px rgba(255,255,255,0.1);">
                 ● SOVEREIGN VAULT SECURED
             </div>
         </div>
         <nav class="sticky-nav">
-            <button class="nav-tab active" onclick="switchTab('mapTab', this)">Global Map & Graphs</button>
+            <button class="nav-tab active" onclick="switchTab('mapTab', this)">Global Map & Wire Globe</button>
             <button class="nav-tab" onclick="switchTab('translationTab', this)">Live Translators & Zoom Calls</button>
-            <button class="nav-tab" onclick="switchTab('hmrcTab', this)">HMRC Books</button>
+            <button class="nav-tab" onclick="switchTab('hmrcTab', this)">HMRC & Crypto Books</button>
             <button class="nav-tab" onclick="switchTab('reportsTab', this)">Professional Reports & CV Assessor</button>
             <button class="nav-tab" onclick="switchTab('templatesTab', this)">Marketing & Sales</button>
             <button class="nav-tab" onclick="switchTab('notesTab', this)">Smart Meeting Notes & Memos</button>
@@ -409,7 +460,7 @@
     </header>
 
     <main>
-        <!-- TAB 1: Global Map & Glassmorphic Graphs -->
+        <!-- TAB 1: Global Map & Cinematic Wire Globe Graph -->
         <div id="mapTab" class="section-view active-view">
             <section class="panel">
                 <h2 class="panel-header">Global Intelligence Map</h2>
@@ -424,23 +475,17 @@
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Glassmorphic Global Analytics</h2>
-                <p class="panel-subheader">Real-time multi-region revenue and vitality flow</p>
-                <div class="glass-graph-container">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-size: 0.8rem; color: var(--cream-accent);">Regional Velocity Curve</span>
-                        <span style="font-size: 0.75rem; color: var(--champagne-gold);">Live Stream</span>
+                <h2 class="panel-header">Cinematic Wire Globe Analytics</h2>
+                <p class="panel-subheader">Real-time multi-region vitality and global currency flow</p>
+                <div class="wire-globe-container" onclick="openModal('Wire Globe Telemetry Matrix', 'Cinematic wire-frame node tracking active. Intercontinental cashflow and crypto exchange nodes synchronizing in real-time.')">
+                    <div class="wire-globe">
+                        <div class="globe-core"></div>
                     </div>
-                    <div class="graph-bars">
-                        <div class="graph-bar-col"><div class="graph-bar" style="height: 60%;"></div><span class="graph-label">UK</span></div>
-                        <div class="graph-bar-col"><div class="graph-bar" style="height: 85%;"></div><span class="graph-label">US</span></div>
-                        <div class="graph-bar-col"><div class="graph-bar" style="height: 45%;"></div><span class="graph-label">EU</span></div>
-                        <div class="graph-bar-col"><div class="graph-bar" style="height: 70%;"></div><span class="graph-label">AP</span></div>
-                        <div class="graph-bar-col"><div class="graph-bar" style="height: 95%;"></div><span class="graph-label">GLOBAL</span></div>
+                    <div style="margin-top: 20px; text-align: center; font-size: 0.8rem; color: var(--cream-accent); letter-spacing: 1px;">
+                        GLOBAL NETWORK ROTATION: ONLINE
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
-                        <span>Sync Efficiency: 98.4%</span>
-                        <span style="color: var(--champagne-gold);">Secure Channel Active</span>
+                    <div style="font-size: 0.7rem; color: var(--champagne-muted); margin-top: 4px;">
+                        Click globe for intercontinental packet stream
                     </div>
                 </div>
             </section>
@@ -479,7 +524,7 @@
             <section class="panel">
                 <h2 class="panel-header">Communication Stream Input</h2>
                 <p class="panel-subheader">Process live audio or text through the translation engine</p>
-                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); background: rgba(255,255,255,0.01);">
                     <span style="font-size: 1.5rem; color: var(--champagne-gold);">💬</span>
                     <span style="font-size: 0.85rem; color: var(--cream-accent);">Paste text or speech transcript to translate</span>
                     <span style="font-size: 0.7rem;">Translates language and aligns meaning instantly</span>
@@ -487,31 +532,31 @@
             </section>
         </div>
 
-        <!-- TAB 3: HMRC Books -->
+        <!-- TAB 3: HMRC & Crypto Books -->
         <div id="hmrcTab" class="section-view">
             <section class="panel">
-                <h2 class="panel-header">HMRC Tax & Financial Books</h2>
-                <p class="panel-subheader">Automated 20% tax reserve & receipt ledger</p>
+                <h2 class="panel-header">HMRC Tax & Multi-Asset Crypto Books</h2>
+                <p class="panel-subheader">Unified fiat bank sync, Stripe ledgers & crypto wallet tracking</p>
                 <div class="financial-grid">
                     <div class="metric-card" onclick="openModal('HMRC Tax Reserve Ledger', 'Every incoming payment automatically sequesters 20% into an isolated HMRC tax reserve vault, ensuring complete compliance without manual effort.')">
                         <span class="metric-title">HMRC Reserve (20%)</span>
                         <div class="metric-value">£1,420.00</div>
                         <span class="item-sub">Automatically Isolated</span>
                     </div>
-                    <div class="metric-card" onclick="openModal('Active Revenue Ledger', 'Real-time synchronization with Stripe processing. All active billing streams and customer checkouts logged.')">
-                        <span class="metric-title">Active Revenue Ledger</span>
+                    <div class="metric-card" onclick="openModal('Crypto Asset Portfolio', 'Unified Web3 wallet & exchange sync. Real-time valuation for Bitcoin, Ethereum, and stablecoin holdings.')">
+                        <span class="metric-title">Crypto Assets (BTC/ETH)</span>
+                        <div class="metric-value">£12,850.00</div>
+                        <span class="item-sub">Multi-Chain Synced</span>
+                    </div>
+                    <div class="metric-card" onclick="openModal('Active Revenue Ledger', 'Real-time synchronization with Stripe processing and connected business bank accounts.')">
+                        <span class="metric-title">Fiat Bank & Stripe Sync</span>
                         <div class="metric-value">£7,100.00</div>
-                        <span class="item-sub">Real-Time Stripe Sync</span>
+                        <span class="item-sub">All Accounts Linked</span>
                     </div>
                     <div class="metric-card" onclick="openModal('Verified Receipts Audit', 'Optical Character Recognition (OCR) active. Vendors, amounts, and tax categories extracted instantly.')">
                         <span class="metric-title">Verified Receipts</span>
                         <div class="metric-value">48 Logged</div>
                         <span class="item-sub">OCR Categorized</span>
-                    </div>
-                    <div class="metric-card" onclick="openModal('Subscription Leak Auditor', 'Scans connected accounts to flag hidden software subscriptions draining funds.')">
-                        <span class="metric-title">Subscription Leaks</span>
-                        <div class="metric-value">0 Found</div>
-                        <span class="item-sub">Audited Today</span>
                     </div>
                 </div>
             </section>
@@ -519,7 +564,7 @@
             <section class="panel">
                 <h2 class="panel-header">Evidence & Receipt Vault</h2>
                 <p class="panel-subheader">Drag & drop receipts for instant HMRC tax compliance</p>
-                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); background: rgba(255,255,255,0.01);">
                     <span style="font-size: 1.5rem; color: var(--champagne-gold);">📁</span>
                     <span style="font-size: 0.85rem; color: var(--cream-accent);">Drop invoice or receipt evidence here</span>
                     <span style="font-size: 0.7rem;">Auto-tagged to Supabase & HMRC Ledgers</span>
@@ -564,7 +609,7 @@
                     <p class="panel-subheader">Automated competence filtering to eliminate unqualified applicant noise</p>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
-                        <div style="border: 1px dashed var(--border-glass); border-radius: 6px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center;">
+                        <div style="border: 1px dashed var(--border-glass); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; background: rgba(255,255,255,0.01);">
                             <span style="font-size: 1.8rem; color: var(--champagne-gold);">📄</span>
                             <div class="item-title">Drop Candidate CV / Application Here</div>
                             <div class="item-sub">Instant AI competency scoring & red-flag detection</div>
@@ -633,7 +678,7 @@
                 <h2 class="panel-header">Template Customizer</h2>
                 <p class="panel-subheader">Instant tone adjustment (Professional / Plain English)</p>
                 <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
-                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 8px;">
                         <div class="item-title" style="margin-bottom: 5px;">Active Tone: Champagne & Cream Standard</div>
                         <div class="item-sub">Zero corporate jargon. Pure clarity and sovereign control.</div>
                     </div>
@@ -667,7 +712,7 @@
             <section class="panel">
                 <h2 class="panel-header">Live Smart Capture</h2>
                 <p class="panel-subheader">Paste audio transcript or notes for instant summarization</p>
-                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); background: rgba(255,255,255,0.01);">
                     <span style="font-size: 1.5rem; color: var(--champagne-gold);">🎙️</span>
                     <span style="font-size: 0.85rem; color: var(--cream-accent);">Drop meeting transcript or recording here</span>
                     <span style="font-size: 0.7rem;">Extracts commitments & tasks instantly</span>
@@ -681,41 +726,41 @@
                 <h2 class="panel-header">Commercial Pricing Tiers</h2>
                 <p class="panel-subheader">Structured access levels for the Onyx ecosystem</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="openModal('Tier 1: Sovereign Starter', '£49/mo: Includes Basic Tax Reserve, HMRC OCR, and Client Vaults.')">
+                    <div class="item-row" onclick="openModal('Tier 1: Growth', '£19.99/mo: Essential Tax Reserve, HMRC OCR, and Client Vaults.')">
                         <div>
-                            <div class="item-title">Tier 1: Sovereign Starter</div>
-                            <div class="item-sub">Basic Tax Reserve & Client Vaults</div>
+                            <div class="item-title">Tier 1: Growth</div>
+                            <div class="item-sub">Essential Tax Reserve & Client Vaults</div>
                         </div>
-                        <div style="color: var(--cream-accent);">£49 / mo</div>
+                        <div style="color: var(--cream-accent);">£19.99 / mo</div>
                     </div>
-                    <div class="item-row" onclick="openModal('Tier 2: Executive Command', '£149/mo: Includes Full Global Map, Trend Radar, and Professional Reports.')">
+                    <div class="item-row" onclick="openModal('Tier 2: Executive', '£49.99/mo: Full Global Map, Trend Radar, and Professional Reports.')">
                         <div>
-                            <div class="item-title">Tier 2: Executive Command</div>
+                            <div class="item-title">Tier 2: Executive</div>
                             <div class="item-sub">Full Global Map & Trend Radar</div>
                         </div>
-                        <div style="color: var(--cream-accent);">£149 / mo</div>
+                        <div style="color: var(--cream-accent);">£49.99 / mo</div>
                     </div>
-                    <div class="item-row" onclick="openModal('Tier 3: True North Enterprise', '£299/mo: Complete Multi-Hub, Community Access, and Enterprise Controls.')">
+                    <div class="item-row" onclick="openModal('Tier 3: Sovereign', '£79.99/mo: Complete Multi-Hub Access, CV Assessor, and Advanced Tools.')">
                         <div>
-                            <div class="item-title">Tier 3: True North Enterprise</div>
-                            <div class="item-sub">Complete Multi-Hub & Community Access</div>
+                            <div class="item-title">Tier 3: Sovereign</div>
+                            <div class="item-sub">Complete Multi-Hub Access & Advanced Tools</div>
                         </div>
-                        <div style="color: var(--cream-accent);">£299 / mo</div>
+                        <div style="color: var(--cream-accent);">£79.99 / mo</div>
                     </div>
                 </div>
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Community & Hub Alignment</h2>
-                <p class="panel-subheader">True North & Koa Collective frameworks</p>
+                <h2 class="panel-header">True North & Community Alignment</h2>
+                <p class="panel-subheader">Youth empowerment and emotional resilience initiatives</p>
                 <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
-                    <div class="item-row">
-                        <span class="item-title">The Koa Collective Educational Toolkit</span>
-                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Synced</span>
-                    </div>
                     <div class="item-row">
                         <span class="item-title">True North Halifax Community Hub</span>
                         <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-title">The Koa Collective Educational Toolkit</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Synced</span>
                     </div>
                 </div>
             </section>
