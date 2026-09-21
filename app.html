@@ -5,7 +5,993 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONYX ONE // Sovereign Decision-Making Cockpit</title>
     <style>
+        :root <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYX ONE // Sovereign Decision-Making Cockpit</title>
+    <style>
         :root {
+            --onyx-abyss: #030303;
+            --onyx-glass: rgba(15, 15, 15, 0.95);
+            --champagne-gold: #D4AF37;
+            --cream-accent: #FDF6E2;
+            --champagne-muted: #c5a059;
+            --gold-glow: rgba(212, 175, 55, 0.5);
+            --border-glass: rgba(212, 175, 55, 0.35);
+            --text-main: #FDF6E2;
+            --text-muted: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--onyx-abyss);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.1) 0%, rgba(5,5,5,0.98) 70%);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            background: var(--onyx-glass);
+            border-bottom: 1px solid var(--border-glass);
+            backdrop-filter: blur(24px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+        }
+
+        .brand-title {
+            font-size: 1.15rem;
+            letter-spacing: 3.5px;
+            color: var(--cream-accent);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .cockpit-title {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--champagne-gold);
+            text-transform: uppercase;
+        }
+
+        /* Top Controls: Business vs Plain English Toggle */
+        .top-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toggle-btn-group {
+            display: flex;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mode-toggle.active {
+            background: var(--champagne-gold);
+            color: #030303;
+            font-weight: 600;
+        }
+
+        .sticky-nav {
+            display: flex;
+            gap: 18px;
+            padding: 0 40px;
+            background: rgba(8, 8, 8, 0.96);
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 14px 0;
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            color: var(--cream-accent);
+        }
+
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--champagne-gold);
+            box-shadow: 0 0 12px var(--champagne-gold);
+        }
+
+        main {
+            flex: 1;
+            padding: 30px 40px;
+            max-width: 1700px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-view {
+            display: none;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .section-view.active-view {
+            display: grid;
+        }
+
+        /* Deep Cinematic Glassmorphism */
+        .panel {
+            background: linear-gradient(145deg, rgba(22, 22, 22, 0.88) 0%, rgba(8, 8, 8, 0.96) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .panel:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.95), 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .panel-header {
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            color: var(--cream-accent);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .panel-subheader {
+            font-size: 0.75rem;
+            color: var(--champagne-muted);
+            margin-bottom: 15px;
+        }
+
+        .map-container {
+            flex: 1;
+            position: relative;
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            overflow: hidden;
+            min-height: 380px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.95), 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .interactive-node {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--cream-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 25px var(--champagne-gold), 0 0 50px var(--gold-glow);
+            cursor: pointer;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .node-telemetry {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.96);
+            border: 1px solid var(--border-glass);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--cream-accent);
+            white-space: nowrap;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+        }
+
+        /* 3D Cinematic Canvas Wire Globe Container */
+        .wire-globe-container {
+            background: radial-gradient(circle at center, rgba(25, 25, 25, 0.95) 0%, rgba(2, 2, 2, 0.99) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            position: relative;
+            min-height: 380px;
+            overflow: hidden;
+            box-shadow: inset 0 0 60px rgba(212, 175, 55, 0.18), 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        #wireGlobeCanvas {
+            width: 260px;
+            height: 260px;
+            cursor: pointer;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+        }
+
+        /* Interactive Board-Busting Game Overlay (Mini arcade widget) */
+        .arcade-widget {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid var(--champagne-gold);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+        }
+
+        .arcade-btn {
+            background: linear-gradient(135deg, var(--champagne-gold), #b38f26);
+            color: #030303;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .arcade-btn:hover { transform: scale(1.03); }
+
+        /* Audio Waveform Equalizer Bars */
+        .waveform-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            height: 45px;
+            margin: 15px 0;
+        }
+
+        .wave-bar {
+            width: 7px;
+            background: var(--champagne-gold);
+            border-radius: 3px;
+            animation: bounceWave 1.2s infinite ease-in-out alternate;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.5s; }
+        .wave-bar:nth-child(6) { animation-delay: 0.3s; }
+
+        @keyframes bounceWave {
+            0% { height: 10px; opacity: 0.4; }
+            100% { height: 40px; opacity: 1; box-shadow: 0 0 12px var(--champagne-gold); }
+        }
+
+        .financial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            border-color: var(--champagne-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .metric-title {
+            font-size: 0.75rem;
+            color: var(--champagne-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 1.45rem;
+            color: var(--cream-accent);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .item-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            padding: 16px;
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .item-row:hover {
+            border-color: var(--champagne-gold);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .item-title {
+            font-size: 0.85rem;
+            color: var(--cream-accent);
+            font-weight: 600;
+        }
+
+        .item-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 3, 3, 0.9);
+            backdrop-filter: blur(14px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-box {
+            background: linear-gradient(135deg, #1c1c1c 0%, #080808 100%);
+            border: 1px solid var(--champagne-gold);
+            padding: 35px;
+            border-radius: 14px;
+            width: 540px;
+            max-width: 90%;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.95), 0 0 40px rgba(212, 175, 55, 0.3);
+            color: var(--cream-accent);
+        }
+
+        .modal-header {
+            font-size: 1.15rem;
+            color: var(--champagne-gold);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .modal-body {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            background: linear-gradient(135deg, var(--champagne-gold), #b38f26);
+            color: #030303;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 18px rgba(212, 175, 55, 0.35);
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover { transform: scale(1.02); }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 35px var(--champagne-gold); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @media(max-width: 1200px) {
+            .section-view { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="brand-container">
+                <img src="7653.png" alt="Onyx One Logo" class="brand-logo">
+                <div>
+                    <div class="brand-title">Onyx One</div>
+                    <div class="cockpit-title">Sovereign Decision-Making Cockpit</div>
+                </div>
+            </div>
+            
+            <div class="top-controls">
+                <!-- Business vs Plain English Mode Toggle -->
+                <div class="toggle-btn-group">
+                    <button class="mode-toggle active" id="bizModeBtn" onclick="setLanguageMode('business')">Business</button>
+                    <button class="mode-toggle" id="plainModeBtn" onclick="setLanguageMode('plain')">Plain English</button>
+                </div>
+                <div style="font-size: 0.78rem; color: var(--cream-accent); background: rgba(212, 175, 55, 0.08); padding: 6px 14px; border: 1px solid var(--border-glass); border-radius: 6px; box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);">
+                    ● SECURE VAULT
+                </div>
+            </div>
+        </div>
+        <nav class="sticky-nav">
+            <button class="nav-tab active" onclick="switchTab('mapTab', this)">Global Map & Globe</button>
+            <button class="nav-tab" onclick="switchTab('translationTab', this)">Live Listener & Translator</button>
+            <button class="nav-tab" onclick="switchTab('hmrcTab', this)">HMRC & Crypto Books</button>
+            <button class="nav-tab" onclick="switchTab('reportsTab', this)">Professional Reports & Screener</button>
+            <button class="nav-tab" onclick="switchTab('templatesTab', this)">Marketing & Sales</button>
+            <button class="nav-tab" onclick="switchTab('notesTab', this)">Smart Meeting Notes & Memos</button>
+            <button class="nav-tab" onclick="switchTab('pricingTab', this)">Pricing Tiers</button>
+            <button class="nav-tab" onclick="switchTab('dossierTab', this)">Client Vaults</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- TAB 1: Global Map & Cinematic Wire Globe with Board-Busting Arcade Widget -->
+        <div id="mapTab" class="section-view active-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Global Intelligence Map" data-plain="World Map & Activity Tracker">Global Intelligence Map</h2>
+                <p class="panel-subheader" data-biz="Interactive regional node tracking & sales telemetry" data-plain="See where your customers are and track your sales live">Interactive regional node tracking & sales telemetry</p>
+                <div class="map-container">
+                    <img src="7740.png" alt="Onyx Sovereign Map" class="map-image">
+                    <div class="interactive-node" style="top: 38%; left: 32%;" onclick="openModal('UK HQ Telemetry', 'UK regional node active. Revenue velocity +12% week-on-week. 20% HMRC reserve automatically sequestered.')"></div>
+                    <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="openModal('US Sales Spike', 'High-volume node cluster detected in North America. Trend radar active, early-bird alert dispatched.')"></div>
+                    <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="openModal('Emerging Market Node', 'New international node verified. Secure payment channels engaged.')"></div>
+                    <div id="telemetryBox" class="node-telemetry">Click any glowing node to inspect telemetry</div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Cinematic Canvas Wire Globe" data-plain="Live 3D Rotating Globe">Cinematic Canvas Wire Globe</h2>
+                <p class="panel-subheader" data-biz="Real-time multi-region meridian mesh and currency flow" data-plain="Visualizing your intercontinental currency streams">Real-time multi-region meridian mesh and currency flow</p>
+                
+                <div class="wire-globe-container" onclick="openModal('Wire Globe Matrix', 'Interactive HTML5 canvas wire globe active. Multi-node intercontinental exchange tracking enabled.')">
+                    <canvas id="wireGlobeCanvas" width="240" height="240"></canvas>
+                    <div style="margin-top: 10px; text-align: center; font-size: 0.75rem; color: var(--cream-accent); letter-spacing: 1.5px; text-shadow: 0 0 10px var(--champagne-gold);">
+                        ● MESH ROTATION: 360° ACTIVE
+                    </div>
+                </div>
+
+                <!-- Interactive Board-Busting Minigame Widget -->
+                <div class="arcade-widget">
+                    <div style="font-size: 0.8rem; color: var(--cream-accent); font-weight: 600;" data-biz="Bottleneck Crusher Arcade" data-plain="Mini Game: Smash the Blocks">Bottleneck Crusher Arcade</div>
+                    <div style="font-size: 0.7rem; color: var(--text-muted);" data-biz="Clear operational blockages to clear energy" data-plain="Tap to smash through work blocks and win points">Clear operational blockages to clear energy</div>
+                    <button class="arcade-btn" onclick="openModal('Arcade Round Cleared!', 'Fantastic! Bottleneck smashed. Energy and focus restored to 100%.')">Play Block Buster</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2: Live Listener & Translator -->
+        <div id="translationTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Live Audio Listener & Real-Time Translator" data-plain="Live Voice Translator & Recorder">Live Audio Listener & Real-Time Translator</h2>
+                <p class="panel-subheader" data-biz="Active microphone stream, live speech recorder & instant translation" data-plain="Listens to meetings and translates languages on the fly">Active microphone stream, live speech recorder & instant translation</p>
+                <div class="item-stack">
+                    <div class="item-row" onclick="openModal('Active Microphone Stream', 'Microphone stream engaged. Listening to active audio feed and translating speech into real-time text output.')">
+                        <div>
+                            <div class="item-title" data-biz="Active Audio Listener & Recorder" data-plain="Live Voice Recorder & Listener">Active Audio Listener & Recorder</div>
+                            <div class="item-sub" data-biz="Listens to live meeting audio and records speech streams" data-plain="Records conversations and saves audio notes">Listens to live meeting audio and records speech streams</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">● RECORDING</span>
+                    </div>
+                    <div class="item-row" onclick="openModal('Real-Time BSL Interpreter', 'Visual British Sign Language interpretation layer actively mirroring live speech streams.')">
+                        <div>
+                            <div class="item-title" data-biz="Real-Time British Sign Language (BSL) Interpreter" data-plain="Sign Language (BSL) Live Mirror">Real-Time British Sign Language (BSL) Interpreter</div>
+                            <div class="item-sub" data-biz="Visual interpretation layer for live meetings & video feeds" data-plain="Shows sign language visuals for live meetings">Visual interpretation layer for live meetings & video feeds</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Active</span>
+                    </div>
+                    <div class="item-row" onclick="openModal('Global Word-for-Word Translator', 'Instant multilingual stream conversion active for international partner calls and live speech.')">
+                        <div>
+                            <div class="item-title" data-biz="Global Word-for-Word Voice Translator" data-plain="Multi-Language Voice Translator">Global Word-for-Word Voice Translator</div>
+                            <div class="item-sub" data-biz="Instant multilingual stream conversion for spoken audio" data-plain="Translates foreign words instantly">Instant multilingual stream conversion for spoken audio</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Syncing</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Live Spoken Transcript & Equalizer" data-plain="Live Speech Notes & Audio Wave">Live Spoken Transcript & Equalizer</h2>
+                <p class="panel-subheader" data-biz="Real-time translated text and active audio waveform" data-plain="See your speech turned into text live">Real-time translated text and active audio waveform</p>
+                <div style="flex: 1; border: 1px solid var(--border-glass); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(0,0,0,0.5);">
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--cream-accent); line-height: 1.6; margin-bottom: 15px;">
+                            <span style="color: var(--champagne-gold);">[Live Audio Stream]:</span> Listening for incoming speech or meeting feed... Transcribing and translating in real-time.
+                        </div>
+                        <div class="waveform-container">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                    </div>
+                    <button class="modal-close" style="align-self: flex-start;" onclick="openModal('Audio Log Saved', 'Current listening stream and translated transcript successfully saved to meeting vault.')">Save Transcript</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 3: HMRC & Crypto Books -->
+        <div id="hmrcTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="HMRC Tax & Multi-Asset Crypto Books" data-plain="Tax Vault & Crypto Wallets">HMRC Tax & Multi-Asset Crypto Books</h2>
+                <p class="panel-subheader" data-biz="Unified fiat bank sync, Stripe ledgers & crypto wallet tracking" data-plain="Tracks your bank accounts, Stripe earnings, and crypto in one place">Unified fiat bank sync, Stripe ledgers & crypto wallet tracking</p>
+                <div class="financial-grid">
+                    <div class="metric-card" onclick="openModal('HMRC Tax Reserve Ledger', 'Every incoming payment automatically sequesters 20% into an isolated HMRC tax reserve vault, ensuring complete compliance without manual effort.')">
+                        <span class="metric-title" data-biz="HMRC Reserve (20%)" data-plain="Tax Savings (20%)">HMRC Reserve (20%)</span>
+                        <div class="metric-value">£1,420.00</div>
+                        <span class="item-sub" data-biz="Automatically Isolated" data-plain="Saved Automatically">Automatically Isolated</span>
+                    </div>
+                    <div class="metric-card" onclick="openModal('Crypto Asset Portfolio', 'Unified Web3 wallet & exchange sync. Real-time valuation for Bitcoin, Ethereum, and stablecoin holdings.')">
+                        <span class="metric-title" data-biz="Crypto Asset Portfolio" data-plain="Crypto Holdings">Crypto Assets (BTC/ETH)</span>
+                        <div class="metric-value">£12,850.00</div>
+                        <span class="item-sub" data-biz="Multi-Chain Synced" data-plain="Updated Live">Multi-Chain Synced</span>
+                    </div>
+                    <div class="metric-card" onclick="openModal('Active Revenue Ledger', 'Real-time synchronization with Stripe processing and connected business bank accounts.')">
+                        <span class="metric-title" data-biz="Fiat Bank & Stripe Sync" data-plain="Bank & Card Sales">Fiat Bank & Stripe Sync</span>
+                        <div class="metric-value">£7,100.00</div>
+                        <span class="item-sub" data-biz="All Accounts Linked" data-plain="All Connected">All Accounts Linked</span>
+                    </div>
+                    <div class="metric-card" onclick="openModal('Verified Receipts Audit', 'Optical Character Recognition (OCR) active. Vendors, amounts, and tax categories extracted instantly.')">
+                        <span class="metric-title" data-biz="Verified Receipts Audit" data-plain="Scanned Receipts">Verified Receipts</span>
+                        <div class="metric-value">48 Logged</div>
+                        <span class="item-sub" data-biz="OCR Categorized" data-plain="Auto-Sorted">OCR Categorized</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Evidence & Receipt Vault" data-plain="Receipt Drop Box">Evidence & Receipt Vault</h2>
+                <p class="panel-subheader" data-biz="Drag & drop receipts for instant HMRC tax compliance" data-plain="Drop your receipts here for easy tax filing">Drag & drop receipts for instant HMRC tax compliance</p>
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); background: rgba(255,255,255,0.01);">
+                    <span style="font-size: 1.5rem; color: var(--champagne-gold);">📁</span>
+                    <span style="font-size: 0.85rem; color: var(--cream-accent);" data-biz="Drop invoice or receipt evidence here" data-plain="Drop bills or receipts here">Drop invoice or receipt evidence here</span>
+                    <span style="font-size: 0.7rem;" data-biz="Auto-tagged to Supabase & HMRC Ledgers" data-plain="Saved safely for tax season">Auto-tagged to Supabase & HMRC Ledgers</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 4: Professional Reports & CV Assessor -->
+        <div id="reportsTab" class="section-view">
+            <div style="display: flex; flex-direction: column; gap: 25px; grid-column: span 2;">
+                <section class="panel">
+                    <h2 class="panel-header" data-biz="Profession-Specific Reports" data-plain="Job & Project Reports">Profession-Specific Reports</h2>
+                    <p class="panel-subheader" data-biz="Tailored executive analytics by discipline" data-plain="Custom reports for your exact line of work">Tailored executive analytics by discipline</p>
+                    <div class="item-stack">
+                        <div class="item-row" onclick="openModal('Project Manager Report', 'Milestone tracking, resource allocation velocity, and critical path risk analysis generated for complex project delivery.')">
+                            <div>
+                                <div class="item-title">Project Manager Performance Ledger</div>
+                                <div class="item-sub">Milestone tracking, resource allocation & risk velocity</div>
+                            </div>
+                            <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
+                        </div>
+                        <div class="item-row" onclick="openModal('Commercial Photographer Report', 'Shoot asset valuation, licensing tracking, and studio overhead cost analysis.')">
+                            <div>
+                                <div class="item-title">Commercial Photographer Dossier</div>
+                                <div class="item-sub">Shoot asset valuation, licensing tracking & studio costs</div>
+                            </div>
+                            <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
+                        </div>
+                        <div class="item-row" onclick="openModal('Creative Director Report', 'Brand platform equity, client deliverable timelines, and aesthetic roadmap synchronization.')">
+                            <div>
+                                <div class="item-title">Creative Director & Brand Studio Report</div>
+                                <div class="item-sub">Brand platform equity, client deliverables & roadmap</div>
+                            </div>
+                            <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Executive CV Assessor & Competency Screener -->
+                <section class="panel">
+                    <h2 class="panel-header" data-biz="Executive CV Assessor & Competency Screener" data-plain="Job Applicant & CV Checker">Executive CV Assessor & Competency Screener</h2>
+                    <p class="panel-subheader" data-biz="Automated competence filtering to filter out unqualified applicant noise" data-plain="Filters out bad job applications so you don't waste time">Automated competence filtering to filter out unqualified applicant noise</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+                        <div style="border: 1px dashed var(--border-glass); border-radius: 10px; padding: 25px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; background: rgba(255,255,255,0.01);">
+                            <span style="font-size: 1.8rem; color: var(--champagne-gold);">📄</span>
+                            <div class="item-title" data-biz="Drop Candidate CV / Application Here" data-plain="Drop Applicant CV Here">Drop Candidate CV / Application Here</div>
+                            <div class="item-sub" data-biz="Instant AI competency scoring & red-flag detection" data-plain="Instant check to see if they actually know their stuff">Instant AI competency scoring & red-flag detection</div>
+                            <button class="modal-close" style="margin-top: 10px;" onclick="openModal('CV Screening Active', 'Applicant profile scanned. Competency threshold met: 88%. Technical competence verified. Zero fluff detected.')">Run Screener</button>
+                        </div>
+
+                        <div class="item-stack">
+                            <div class="item-row" onclick="openModal('Hard Skill Verification', 'Cross-referenced against verified output metrics and demonstrable project execution history.')">
+                                <div>
+                                    <div class="item-title" data-biz="Hard Skill & Proof Verification" data-plain="Real Skills Check">Hard Skill & Proof Verification</div>
+                                    <div class="item-sub" data-biz="Filters out inflated claims & generic buzzwords" data-plain="Spots fake claims and buzzwords instantly">Filters out inflated claims & generic buzzwords</div>
+                                </div>
+                                <span style="color: var(--champagne-gold); font-size: 0.8rem;">Passed</span>
+                            </div>
+                            <div class="item-row" onclick="openModal('Behavioral Competency Test', 'Evaluates baseline logic, problem-solving speed, and operational stress response.')">
+                                <div>
+                                    <div class="item-title" data-biz="Automated Competency Test Score" data-plain="Test Score Results">Automated Competency Test Score</div>
+                                    <div class="item-sub" data-biz="Minimum threshold required before human review" data-plain="Minimum score needed to talk to you">Minimum threshold required before human review</div>
+                                </div>
+                                <span style="color: var(--champagne-gold); font-size: 0.8rem;">92 / 100</span>
+                            </div>
+                            <div class="item-row" onclick="openModal('Noise Elimination Filter', 'Automatically discards low-effort applications and mass submissions.')">
+                                <div>
+                                    <div class="item-title" data-biz="Low-Effort & Junk Filter" data-plain="Junk Application Rejecter">Low-Effort & Junk Filter</div>
+                                    <div class="item-sub" data-biz="100% automated rejection of non-compliant CVs" data-plain="Throws out lazy, copy-pasted applications automatically">100% automated rejection of non-compliant CVs</div>
+                                </div>
+                                <span style="color: var(--champagne-gold); font-size: 0.8rem;">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- TAB 5: Marketing & Sales -->
+        <div id="templatesTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Marketing & Sales Templates" data-plain="Sales & Message Templates">Marketing & Sales Templates</h2>
+                <p class="panel-subheader" data-biz="Pre-engineered frameworks for client acquisition & outreach" data-plain="Ready-to-use templates for getting clients">Pre-engineered frameworks for client acquisition & outreach</p>
+                <div class="item-stack">
+                    <div class="item-row" onclick="openModal('Client Acquisition Sequence', 'Frictionless high-ticket pitch framework designed for immediate enterprise client onboarding.')">
+                        <div>
+                            <div class="item-title">High-Ticket Client Acquisition Sequence</div>
+                            <div class="item-sub">Frictionless pitch framework for enterprise onboarding</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy</span>
+                    </div>
+                    <div class="item-row" onclick="openModal('Soft-Chasing Invoice Sequence', 'Polite, executive follow-up cadence that secures payments while protecting client relationships.')">
+                        <div>
+                            <div class="item-title">Soft-Chasing Unpaid Invoice Sequence</div>
+                            <div class="item-sub">Polite, executive follow-up cadence that protects relationships</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Template Customizer" data-plain="Tone Customizer">Template Customizer</h2>
+                <p class="panel-subheader" data-biz="Instant tone adjustment (Professional / Plain English)" data-plain="Change how formal your messages sound">Instant tone adjustment (Professional / Plain English)</p>
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 10px;">
+                        <div class="item-title" style="margin-bottom: 5px;">Active Tone: Champagne & Cream Standard</div>
+                        <div class="item-sub">Zero corporate jargon. Pure clarity and sovereign control.</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 6: Smart Meeting Notes & Encrypted Memos -->
+        <div id="notesTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Smart Meeting Notes & Encrypted Memos" data-plain="Meeting Notes & Secret Memos">Smart Meeting Notes & Encrypted Memos</h2>
+                <p class="panel-subheader" data-biz="Encrypted internal memos, AI transcription & action items" data-plain="Secure notes and team messages">Encrypted internal memos, AI transcription & action items</p>
+                <div class="item-stack">
+                    <div class="item-row" onclick="openModal('Internal Encrypted Memo Dispatch', 'Secure internal multi-channel messaging active. Send encrypted memos directly across team nodes.')">
+                        <div>
+                            <div class="item-title">Dispatch Encrypted Internal Memo</div>
+                            <div class="item-sub">Secure multi-channel internal communication channel</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">New Memo</span>
+                    </div>
+                    <div class="item-row" onclick="openModal('Executive Strategy Vault', 'Halifax Hub strategy session transcript. 4 action items automatically assigned and synced.')">
+                        <div>
+                            <div class="item-title">Executive Strategy Session // Halifax Hub</div>
+                            <div class="item-sub">Logged Today // 4 Action Items Assigned</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Live Smart Capture" data-plain="Live Voice Note Maker">Live Smart Capture</h2>
+                <p class="panel-subheader" data-biz="Paste audio transcript or notes for instant summarization" data-plain="Drop meeting notes here to pull out action items">Paste audio transcript or notes for instant summarization</p>
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); background: rgba(255,255,255,0.01);">
+                    <span style="font-size: 1.5rem; color: var(--champagne-gold);">🎙️</span>
+                    <span style="font-size: 0.85rem; color: var(--cream-accent);">Drop meeting transcript or recording here</span>
+                    <span style="font-size: 0.7rem;">Extracts commitments & tasks instantly</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 7: Pricing Tiers -->
+        <div id="pricingTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Commercial Pricing Tiers" data-plain="Subscription Plans">Commercial Pricing Tiers</h2>
+                <p class="panel-subheader" data-biz="Structured access levels for the Onyx ecosystem" data-plain="Choose the plan that fits your business scale">Structured access levels for the Onyx ecosystem</p>
+                <div class="item-stack">
+                    <div class="item-row" onclick="openModal('Tier 1: Growth', '£19.99/mo: Essential Tax Reserve, HMRC OCR, and Client Vaults.')">
+                        <div>
+                            <div class="item-title">Tier 1: Growth</div>
+                            <div class="item-sub">Essential Tax Reserve & Client Vaults</div>
+                        </div>
+                        <div style="color: var(--cream-accent);">£19.99 / mo</div>
+                    </div>
+                    <div class="item-row" onclick="openModal('Tier 2: Executive', '£49.99/mo: Full Global Map, Trend Radar, and Professional Reports.')">
+                        <div>
+                            <div class="item-title">Tier 2: Executive</div>
+                            <div class="item-sub">Full Global Map & Trend Radar</div>
+                        </div>
+                        <div style="color: var(--cream-accent);">£49.99 / mo</div>
+                    </div>
+                    <div class="item-row" onclick="openModal('Tier 3: Sovereign', '£79.99/mo: Complete Multi-Hub Access, CV Assessor, and Advanced Tools.')">
+                        <div>
+                            <div class="item-title">Tier 3: Sovereign</div>
+                            <div class="item-sub">Complete Multi-Hub Access & Advanced Tools</div>
+                        </div>
+                        <div style="color: var(--cream-accent);">£79.99 / mo</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Community & Ecosystem Alignment" data-plain="Community Initiatives">Community & Ecosystem Alignment</h2>
+                <p class="panel-subheader" data-biz="Youth empowerment and resilience initiatives" data-plain="Empowering communities and building future leaders">Youth empowerment and resilience initiatives</p>
+                <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
+                    <div class="item-row">
+                        <span class="item-title">Halifax Community Hub & Learning Space</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-title">The Koa Collective Educational Toolkit</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Synced</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 8: Client Dossiers -->
+        <div id="dossierTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Elite Client Dossiers" data-plain="Client Vaults">Elite Client Dossiers</h2>
+                <p class="panel-subheader" data-biz="Secure vaults, skill reports & communication archives" data-plain="Secure files and history for your key partners">Secure vaults, skill reports & communication archives</p>
+                <div class="item-stack">
+                    <div class="item-row" onclick="openModal('Global Strategic Partner A', 'Encrypted vault active. Contracts, deliverables, and performance history synchronized.')">
+                        <div>
+                            <div class="item-title">Global Strategic Partner A</div>
+                            <div class="item-sub">Encrypted Vault // Active</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
+                    </div>
+                    <div class="item-row" onclick="openModal('Regional Node B', 'Encrypted vault syncing. Multi-region telemetry and tax records linked.')">
+                        <div>
+                            <div class="item-title">Regional Node B</div>
+                            <div class="item-sub">Encrypted Vault // Syncing</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header" data-biz="Vault Security Matrix" data-plain="Security & Encryption">Vault Security Matrix</h2>
+                <p class="panel-subheader" data-biz="Encrypted communications & data protection" data-plain="Keeping your business data locked down">Encrypted communications & data protection</p>
+                <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
+                    <div class="item-row">
+                        <span class="item-title">End-to-End Encryption</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-title">Sovereign Data Isolation</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Secured</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal Popup Overlay -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div id="modalTitle" class="modal-header">Title</div>
+            <div id="modalDesc" class="modal-body">Description</div>
+            <button class="modal-close" onclick="closeModal()">Close Vault</button>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Canvas Wire Globe Animation with Depth Shading
+        const canvas = document.getElementById('wireGlobeCanvas');
+        const ctx = canvas.getContext('2d');
+        let angle = 0;
+
+        function drawWireGlobe() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const radius = 100;
+
+            // Outer Atmospheric Glow
+            let outerGlow = ctx.createRadialGradient(cx, cy, radius * 0.7, cx, cy, radius * 1.2);
+            outerGlow.addColorStop(0, 'rgba(212, 175, 55, 0.25)');
+            outerGlow.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius * 1.2, 0, Math.PI * 2);
+            ctx.fillStyle = outerGlow;
+            ctx.fill();
+
+            // Core Globe Sphere Shading
+            let sphereGrad = ctx.createRadialGradient(cx - 25, cy - 25, 5, cx, cy, radius);
+            sphereGrad.addColorStop(0, 'rgba(253, 246, 226, 0.18)');
+            sphereGrad.addColorStop(0.6, 'rgba(18, 18, 18, 0.9)');
+            sphereGrad.addColorStop(1, 'rgba(3, 3, 3, 0.98)');
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+            ctx.fillStyle = sphereGrad;
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.6)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Rotating Meridian Rings (3D Wireframe Effect)
+            for (let i = 0; i < 5; i++) {
+                let rotAngle = angle + (i * Math.PI / 5);
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, radius * Math.abs(Math.cos(rotAngle)), radius, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.45)' : 'rgba(253, 246, 226, 0.25)';
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+            }
+
+            // Latitude Parallels
+            for (let lat = -3; lat <= 3; lat++) {
+                let yOffset = lat * 24;
+                let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
+                ctx.beginPath();
+                ctx.ellipse(cx, cy + yOffset, latRadius, latRadius * 0.22, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+                ctx.lineWidth = 0.9;
+                ctx.stroke();
+            }
+
+            // Pulsing Plasma Core Center
+            let coreGrad = ctx.createRadialGradient(cx, cy, 2, cx, cy, 22);
+            coreGrad.addColorStop(0, '#ffffff');
+            coreGrad.addColorStop(0.4, '#FDF6E2');
+            coreGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            ctx.beginPath();
+            ctx.arc(cx, cy, 22, 0, Math.PI * 2);
+            ctx.fillStyle = coreGrad;
+            ctx.fill();
+
+            angle += 0.012;
+            requestAnimationFrame(drawWireGlobe);
+        }
+        drawWireGlobe();
+
+        // Business vs Plain English Mode Toggle
+        function setLanguageMode(mode) {
+            const bizBtn = document.getElementById('bizModeBtn');
+            const plainBtn = document.getElementById('plainModeBtn');
+            
+            if (mode === 'business') {
+                bizBtn.classList.add('active');
+                plainBtn.classList.remove('active');
+            } else {
+                plainBtn.classList.add('active');
+                bizBtn.classList.remove('active');
+            }
+
+            document.querySelectorAll('[data-biz]').forEach(el => {
+                el.innerText = mode === 'business' ? el.getAttribute('data-biz') : el.getAttribute('data-plain');
+            });
+        }
+
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.section-view').forEach(view => {
+                view.classList.remove('active-view');
+            });
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active-view');
+            btn.classList.add('active');
+        }
+
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
             --onyx-abyss: #050505;
             --onyx-glass: rgba(18, 18, 18, 0.94);
             --champagne-gold: #D4AF37;
