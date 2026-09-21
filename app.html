@@ -7,7 +7,7 @@
     <style>
         :root {
             --onyx-abyss: #050505;
-            --onyx-glass: rgba(18, 18, 18, 0.88);
+            --onyx-glass: rgba(18, 18, 18, 0.92);
             --champagne-gold: #D4AF37;
             --cream-accent: #FDF6E2;
             --champagne-muted: #c5a059;
@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Sticky Executive Header & Navigation Tabs */
         header {
             position: sticky;
             top: 0;
@@ -80,7 +79,6 @@
             text-transform: uppercase;
         }
 
-        /* Sticky Navigation Bar */
         .sticky-nav {
             display: flex;
             gap: 20px;
@@ -118,7 +116,6 @@
             box-shadow: 0 0 10px var(--champagne-gold);
         }
 
-        /* Main Workspace */
         main {
             flex: 1;
             padding: 30px 40px;
@@ -165,7 +162,6 @@
             margin-bottom: 15px;
         }
 
-        /* Map Container referencing 7740.png */
         .map-container {
             flex: 1;
             position: relative;
@@ -257,6 +253,12 @@
             padding: 15px;
             border: 1px solid var(--border-glass);
             border-radius: 6px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .item-row:hover {
+            border-color: var(--champagne-gold);
         }
 
         .item-title {
@@ -268,6 +270,56 @@
         .item-sub {
             font-size: 0.75rem;
             color: var(--text-muted);
+        }
+
+        /* Modal Popups */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-box {
+            background: #121212;
+            border: 1px solid var(--champagne-gold);
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+            max-width: 90%;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            color: var(--cream-accent);
+        }
+
+        .modal-header {
+            font-size: 1.1rem;
+            color: var(--champagne-gold);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .modal-body {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal-close {
+            background: var(--champagne-gold);
+            color: #050505;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         @keyframes pulse {
@@ -283,7 +335,6 @@
 </head>
 <body>
 
-    <!-- Sticky Executive Header -->
     <header>
         <div class="header-top">
             <div class="brand-container">
@@ -310,16 +361,16 @@
     </header>
 
     <main>
-        <!-- TAB 1: Global Intelligence Map (7740.png) & Core Vitality -->
+        <!-- TAB 1: Global Map -->
         <div id="mapTab" class="section-view active-view">
             <section class="panel">
                 <h2 class="panel-header">Global Intelligence Map</h2>
                 <p class="panel-subheader">Interactive regional node tracking & sales telemetry</p>
                 <div class="map-container">
                     <img src="7740.png" alt="Onyx Sovereign Map" class="map-image">
-                    <div class="interactive-node" style="top: 38%; left: 32%;" onclick="updateTelemetry('UK HQ: Revenue +12% Active')"></div>
-                    <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="updateTelemetry('US Sales Spike Detected')"></div>
-                    <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="updateTelemetry('Emerging Market Node Live')"></div>
+                    <div class="interactive-node" style="top: 38%; left: 32%;" onclick="openModal('UK HQ Telemetry', 'UK regional node active. Revenue velocity +12% week-on-week. 20% HMRC reserve automatically sequestered.')"></div>
+                    <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="openModal('US Sales Spike', 'High-volume node cluster detected in North America. Trend radar active, early-bird alert dispatched.')"></div>
+                    <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="openModal('Emerging Market Node', 'New international node verified. Secure payment channels and multi-language translation engaged.')"></div>
                     <div id="telemetryBox" class="node-telemetry">Click any glowing node to inspect telemetry</div>
                 </div>
             </section>
@@ -336,32 +387,32 @@
             </section>
         </div>
 
-        <!-- TAB 2: Live Translators, Love Mode & Real-Time BSL -->
+        <!-- TAB 2: Live & Love Translators -->
         <div id="translationTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Real-Time Communication & Love Translators</h2>
                 <p class="panel-subheader">Emotional intelligence, relational tuning & multi-language translation</p>
                 <div class="item-stack">
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Love & Relational Tone Translator', 'Active mode: Translates high-stress business communications into supportive, high-empathy language, protecting personal energy and relationships.')">
                         <div>
                             <div class="item-title">Love & Relational Tone Translator</div>
-                            <div class="item-sub">Translates high-stress executive feedback into warm, supportive communication</div>
+                            <div class="item-sub">Translates high-stress feedback into warm, supportive communication</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Active Mode</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Real-Time BSL Interpreter', 'Visual British Sign Language interpretation layer fully operational for video streams, meetings, and client onboarding.')">
                         <div>
                             <div class="item-title">Real-Time British Sign Language (BSL) Interpreter</div>
                             <div class="item-sub">Visual interpretation layer for live meetings & video feeds</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Operational</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Global Voice Translator', 'Multilingual instant stream conversion active for international partner calls and cross-border client chats.')">
                         <div>
                             <div class="item-title">Global Word-for-Word Voice Translator</div>
-                            <div class="item-sub">Instant multilingual stream conversion for international partner calls</div>
+                            <div class="item-sub">Instant multilingual stream conversion for international calls</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Standby</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open</span>
                     </div>
                 </div>
             </section>
@@ -377,28 +428,28 @@
             </section>
         </div>
 
-        <!-- TAB 3: HMRC Books & Evidence -->
+        <!-- TAB 3: HMRC Books -->
         <div id="hmrcTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">HMRC Tax & Financial Books</h2>
                 <p class="panel-subheader">Automated 20% tax reserve & receipt ledger</p>
                 <div class="financial-grid">
-                    <div class="metric-card">
+                    <div class="metric-card" onclick="openModal('HMRC Tax Reserve Ledger', 'Every incoming payment automatically sequesters 20% into an isolated HMRC tax reserve vault, ensuring complete compliance without manual effort.')">
                         <span class="metric-title">HMRC Reserve (20%)</span>
                         <div class="metric-value">£1,420.00</div>
                         <span class="item-sub">Automatically Isolated</span>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card" onclick="openModal('Active Revenue Ledger', 'Real-time synchronization with Stripe processing. All active billing streams and customer checkouts logged.')">
                         <span class="metric-title">Active Revenue Ledger</span>
                         <div class="metric-value">£7,100.00</div>
                         <span class="item-sub">Real-Time Stripe Sync</span>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card" onclick="openModal('Verified Receipts Audit', 'Optical Character Recognition (OCR) active. Vendors, amounts, and tax categories extracted instantly.')">
                         <span class="metric-title">Verified Receipts</span>
                         <div class="metric-value">48 Logged</div>
                         <span class="item-sub">OCR Categorized</span>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-card" onclick="openModal('Subscription Leak Auditor', 'Scans connected accounts to flag hidden software subscriptions draining funds.')">
                         <span class="metric-title">Subscription Leaks</span>
                         <div class="metric-value">0 Found</div>
                         <span class="item-sub">Audited Today</span>
@@ -423,26 +474,26 @@
                 <h2 class="panel-header">Profession-Specific Reports</h2>
                 <p class="panel-subheader">Tailored executive analytics by discipline</p>
                 <div class="item-stack">
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Project Manager Report', 'Milestone tracking, resource allocation velocity, and critical path risk analysis generated for complex project delivery.')">
                         <div>
                             <div class="item-title">Project Manager Performance Ledger</div>
                             <div class="item-sub">Milestone tracking, resource allocation & risk velocity</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Generate Report</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Commercial Photographer Report', 'Shoot asset valuation, licensing tracking, and studio overhead cost analysis.')">
                         <div>
                             <div class="item-title">Commercial Photographer Dossier</div>
                             <div class="item-sub">Shoot asset valuation, licensing tracking & studio costs</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Generate Report</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Creative Director Report', 'Brand platform equity, client deliverable timelines, and aesthetic roadmap synchronization.')">
                         <div>
                             <div class="item-title">Creative Director & Brand Studio Report</div>
                             <div class="item-sub">Brand platform equity, client deliverables & roadmap</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Generate Report</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View</span>
                     </div>
                 </div>
             </section>
@@ -463,32 +514,32 @@
             </section>
         </div>
 
-        <!-- TAB 5: Marketing & Sales Templates -->
+        <!-- TAB 5: Marketing & Sales -->
         <div id="templatesTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Marketing & Sales Templates</h2>
                 <p class="panel-subheader">Pre-engineered frameworks for client acquisition & outreach</p>
                 <div class="item-stack">
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Client Acquisition Sequence', 'Frictionless high-ticket pitch framework designed for immediate enterprise client onboarding.')">
                         <div>
                             <div class="item-title">High-Ticket Client Acquisition Sequence</div>
                             <div class="item-sub">Frictionless pitch framework for enterprise onboarding</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy Template</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Soft-Chasing Invoice Sequence', 'Polite, executive follow-up cadence that secures payments while protecting client relationships.')">
                         <div>
                             <div class="item-title">Soft-Chasing Unpaid Invoice Sequence</div>
                             <div class="item-sub">Polite, executive follow-up cadence that protects relationships</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy Template</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('True North Manifesto', 'Emotional resilience and youth empowerment community messaging framework.')">
                         <div>
                             <div class="item-title">True North Community Launch Manifesto</div>
                             <div class="item-sub">Emotional resilience and youth empowerment messaging</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy Template</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy</span>
                     </div>
                 </div>
             </section>
@@ -511,19 +562,19 @@
                 <h2 class="panel-header">Smart Meeting Notes & Vault</h2>
                 <p class="panel-subheader">Encrypted AI transcription, action items & micro-expression logs</p>
                 <div class="item-stack">
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Executive Strategy Vault', 'Halifax Hub strategy session transcript. 4 action items automatically assigned and synced to calendar.')">
                         <div>
                             <div class="item-title">Executive Strategy Session // Halifax Hub</div>
                             <div class="item-sub">Logged Today // 4 Action Items Assigned</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open Vault</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Client Alignment Vault', 'Global node alignment sync. Encrypted audio transcript and sentiment analysis stored.')">
                         <div>
                             <div class="item-title">Client Alignment Sync // Global Node</div>
                             <div class="item-sub">Encrypted Audio & Transcript Synced</div>
                         </div>
-                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open Vault</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open</span>
                     </div>
                 </div>
             </section>
@@ -539,27 +590,27 @@
             </section>
         </div>
 
-        <!-- TAB 7: Pricing Tiers & Hubs -->
+        <!-- TAB 7: Pricing Tiers -->
         <div id="pricingTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Commercial Pricing Tiers</h2>
                 <p class="panel-subheader">Structured access levels for the Onyx ecosystem</p>
                 <div class="item-stack">
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Tier 1: Sovereign Starter', '£49/mo: Includes Basic Tax Reserve, HMRC OCR, and Client Vaults.')">
                         <div>
                             <div class="item-title">Tier 1: Sovereign Starter</div>
                             <div class="item-sub">Basic Tax Reserve & Client Vaults</div>
                         </div>
                         <div style="color: var(--cream-accent);">£49 / mo</div>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Tier 2: Executive Command', '£149/mo: Includes Full Global Map, Trend Radar, and Professional Reports.')">
                         <div>
                             <div class="item-title">Tier 2: Executive Command</div>
                             <div class="item-sub">Full Global Map & Trend Radar</div>
                         </div>
                         <div style="color: var(--cream-accent);">£149 / mo</div>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Tier 3: True North Enterprise', '£299/mo: Complete Multi-Hub, Community Access, and BSL Translation Layers.')">
                         <div>
                             <div class="item-title">Tier 3: True North Enterprise</div>
                             <div class="item-sub">Complete Multi-Hub & Community Access</div>
@@ -591,14 +642,14 @@
                 <h2 class="panel-header">Elite Client Dossiers</h2>
                 <p class="panel-subheader">Secure vaults, skill reports & communication archives</p>
                 <div class="item-stack">
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Global Strategic Partner A', 'Encrypted vault active. Contracts, deliverables, and performance history synchronized.')">
                         <div>
                             <div class="item-title">Global Strategic Partner A</div>
                             <div class="item-sub">Encrypted Vault // Active</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
                     </div>
-                    <div class="item-row">
+                    <div class="item-row" onclick="openModal('Regional Node B', 'Encrypted vault syncing. Multi-region telemetry and tax records linked.')">
                         <div>
                             <div class="item-title">Regional Node B</div>
                             <div class="item-sub">Encrypted Vault // Syncing</div>
@@ -625,6 +676,15 @@
         </div>
     </main>
 
+    <!-- Modal Popup Overlay -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div id="modalTitle" class="modal-header">Title</div>
+            <div id="modalDesc" class="modal-body">Description</div>
+            <button class="modal-close" onclick="closeModal()">Close Vault</button>
+        </div>
+    </div>
+
     <script>
         function updateTelemetry(message) {
             const box = document.getElementById('telemetryBox');
@@ -644,6 +704,16 @@
             });
             document.getElementById(tabId).classList.add('active-view');
             btn.classList.add('active');
+        }
+
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
         }
     </script>
 </body>
