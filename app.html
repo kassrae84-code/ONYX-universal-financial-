@@ -7,13 +7,14 @@
     <style>
         :root {
             --onyx-abyss: #050505;
-            --onyx-glass: rgba(15, 15, 15, 0.85);
+            --onyx-glass: rgba(18, 18, 18, 0.88);
             --champagne-gold: #D4AF37;
-            --champagne-muted: #aa8c2c;
-            --gold-glow: rgba(212, 175, 55, 0.4);
-            --border-glass: rgba(212, 175, 55, 0.3);
-            --text-main: #E0E0E0;
-            --text-muted: #888888;
+            --cream-accent: #FDF6E2;
+            --champagne-muted: #c5a059;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --border-glass: rgba(212, 175, 55, 0.22);
+            --text-main: #FDF6E2;
+            --text-muted: #999999;
         }
 
         * {
@@ -67,7 +68,7 @@
         .brand-title {
             font-size: 1.1rem;
             letter-spacing: 3px;
-            color: var(--champagne-gold);
+            color: var(--cream-accent);
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -75,33 +76,35 @@
         .cockpit-title {
             font-size: 0.75rem;
             letter-spacing: 2px;
-            color: var(--text-muted);
+            color: var(--champagne-gold);
             text-transform: uppercase;
         }
 
         /* Sticky Navigation Bar */
         .sticky-nav {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             padding: 0 40px;
             background: rgba(10, 10, 10, 0.95);
+            overflow-x: auto;
         }
 
         .nav-tab {
             background: none;
             border: none;
             color: var(--text-muted);
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             padding: 14px 0;
             cursor: pointer;
             position: relative;
+            white-space: nowrap;
             transition: color 0.3s ease;
         }
 
         .nav-tab:hover, .nav-tab.active {
-            color: var(--champagne-gold);
+            color: var(--cream-accent);
         }
 
         .nav-tab.active::after {
@@ -115,13 +118,10 @@
             box-shadow: 0 0 10px var(--champagne-gold);
         }
 
-        /* Main Cockpit Workspace */
+        /* Main Workspace */
         main {
             flex: 1;
             padding: 30px 40px;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 25px;
             max-width: 1700px;
             margin: 0 auto;
             width: 100%;
@@ -153,7 +153,7 @@
         .panel-header {
             font-size: 0.95rem;
             letter-spacing: 2px;
-            color: var(--champagne-gold);
+            color: var(--cream-accent);
             text-transform: uppercase;
             margin-bottom: 6px;
             font-weight: 600;
@@ -161,11 +161,11 @@
 
         .panel-subheader {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--champagne-muted);
             margin-bottom: 15px;
         }
 
-        /* Interactive Map Container with 7740.png */
+        /* Map Container */
         .map-container {
             flex: 1;
             position: relative;
@@ -190,7 +190,7 @@
             position: absolute;
             width: 14px;
             height: 14px;
-            background-color: var(--champagne-gold);
+            background-color: var(--cream-accent);
             border-radius: 50%;
             box-shadow: 0 0 20px var(--champagne-gold), 0 0 40px var(--gold-glow);
             cursor: pointer;
@@ -202,16 +202,16 @@
             bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.92);
-            border: 1px solid var(--champagne-gold);
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid var(--border-glass);
             padding: 8px 16px;
             border-radius: 4px;
             font-size: 0.75rem;
-            color: var(--champagne-gold);
+            color: var(--cream-accent);
             white-space: nowrap;
         }
 
-        /* Financial & Tax Engine Grid */
+        /* Financial & HMRC Grid */
         .financial-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -231,27 +231,26 @@
 
         .metric-title {
             font-size: 0.75rem;
-            color: var(--text-muted);
+            color: var(--champagne-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .metric-value {
-            font-size: 1.5rem;
-            color: var(--champagne-gold);
+            font-size: 1.4rem;
+            color: var(--cream-accent);
             font-weight: 600;
             margin-top: 10px;
         }
 
-        /* Pricing Tiers & Client Hubs */
-        .tier-stack, .client-stack {
+        .item-stack {
             display: flex;
             flex-direction: column;
             gap: 12px;
             flex: 1;
         }
 
-        .tier-row, .client-row {
+        .item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -261,15 +260,15 @@
             border-radius: 6px;
         }
 
-        .tier-name {
+        .item-title {
             font-size: 0.85rem;
-            color: var(--text-main);
+            color: var(--cream-accent);
             font-weight: 600;
         }
 
-        .tier-price {
-            font-size: 0.85rem;
-            color: var(--champagne-gold);
+        .item-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
         }
 
         @keyframes pulse {
@@ -279,44 +278,46 @@
         }
 
         @media(max-width: 1200px) {
-            main, .section-view { grid-template-columns: 1fr; }
+            .section-view { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Executive Navigation Header -->
+    <!-- Sticky Executive Header -->
     <header>
         <div class="header-top">
             <div class="brand-container">
-                <img src="7653.png" alt="Onyx One Logo" class="brand-logo">
+                <img src="7630.png" alt="Onyx One Logo" class="brand-logo">
                 <div>
                     <div class="brand-title">Onyx One</div>
                     <div class="cockpit-title">Sovereign Decision-Making Cockpit</div>
                 </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div style="font-size: 0.8rem; color: var(--champagne-gold); background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border: 1px solid var(--border-glass); border-radius: 4px;">
-                    ● SECURE VAULT ACTIVE
-                </div>
+            <div style="font-size: 0.78rem; color: var(--cream-accent); background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border: 1px solid var(--border-glass); border-radius: 4px;">
+                ● SOVEREIGN VAULT SECURED
             </div>
         </div>
         <nav class="sticky-nav">
-            <button class="nav-tab active" onclick="switchTab('mapTab', this)">Global Intelligence Map</button>
-            <button class="nav-tab" onclick="switchTab('financeTab', this)">Sovereign Tax & Finance</button>
-            <button class="nav-tab" onclick="switchTab('pricingTab', this)">Pricing Tiers & Hubs</button>
-            <button class="nav-tab" onclick="switchTab('dossierTab', this)">Client Dossiers & BSL</button>
+            <button class="nav-tab active" onclick="switchTab('mapTab', this)">Global Map</button>
+            <button class="nav-tab" onclick="switchTab('translationTab', this)">Live & Love Translators</button>
+            <button class="nav-tab" onclick="switchTab('hmrcTab', this)">HMRC Books</button>
+            <button class="nav-tab" onclick="switchTab('reportsTab', this)">Professional Reports</button>
+            <button class="nav-tab" onclick="switchTab('templatesTab', this)">Marketing & Sales</button>
+            <button class="nav-tab" onclick="switchTab('notesTab', this)">Smart Meeting Notes</button>
+            <button class="nav-tab" onclick="switchTab('pricingTab', this)">Pricing Tiers</button>
+            <button class="nav-tab" onclick="switchTab('dossierTab', this)">Client Vaults</button>
         </nav>
     </header>
 
     <main>
-        <!-- TAB 1: Global Intelligence Map & Core Vitality -->
+        <!-- TAB 1: Global Map & Vitality -->
         <div id="mapTab" class="section-view active-view">
             <section class="panel">
                 <h2 class="panel-header">Global Intelligence Map</h2>
                 <p class="panel-subheader">Interactive regional node tracking & sales telemetry</p>
                 <div class="map-container">
-                    <img src="7740.png" alt="Onyx Sovereign Map" class="map-image">
+                    <img src="7630.png" alt="Onyx Sovereign Map" class="map-image">
                     <div class="interactive-node" style="top: 38%; left: 32%;" onclick="updateTelemetry('UK HQ: Revenue +12% Active')"></div>
                     <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="updateTelemetry('US Sales Spike Detected')"></div>
                     <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="updateTelemetry('Emerging Market Node Live')"></div>
@@ -328,117 +329,280 @@
                 <h2 class="panel-header">Core Vitality Index</h2>
                 <p class="panel-subheader">Sovereign business & personal health synchronization</p>
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 20px;">
-                    <div style="width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(var(--champagne-gold) 0% 75%, #1a1a1a 75% 100%); display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(var(--champagne-gold) 0% 78%, #1a1a1a 78% 100%); display: flex; align-items: center; justify-content: center;">
                         <div style="width: 105px; height: 105px; background: var(--onyx-glass); border-radius: 50%;"></div>
                     </div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted);">Sync Status: 75% Optimal Flow</div>
+                    <div style="font-size: 0.8rem; color: var(--champagne-muted);">Sync Status: 78% Optimal Flow</div>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 2: Sovereign Tax & Finance Engine -->
-        <div id="financeTab" class="section-view">
+        <!-- TAB 2: Live Translators, Love Mode & Real-Time BSL -->
+        <div id="translationTab" class="section-view">
             <section class="panel">
-                <h2 class="panel-header">Sovereign Tax & Stripe Engine</h2>
-                <p class="panel-subheader">Automated HMRC 20% reserve & live invoice tracking</p>
+                <h2 class="panel-header">Real-Time Communication & Love Translators</h2>
+                <p class="panel-subheader">Emotional intelligence, relational tuning & multi-language translation</p>
+                <div class="item-stack">
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Love & Relational Tone Translator</div>
+                            <div class="item-sub">Translates high-stress executive feedback into warm, supportive communication</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Active Mode</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Real-Time British Sign Language (BSL) Interpreter</div>
+                            <div class="item-sub">Visual interpretation layer for live meetings & video feeds</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Operational</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Global Word-for-Word Voice Translator</div>
+                            <div class="item-sub">Instant multilingual stream conversion for international partner calls</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Standby</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Communication Stream Input</h2>
+                <p class="panel-subheader">Process live audio or text through the empathy and language filter</p>
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
+                    <span style="font-size: 1.5rem; color: var(--champagne-gold);">💬</span>
+                    <span style="font-size: 0.85rem; color: var(--cream-accent);">Paste text or speech transcript to translate</span>
+                    <span style="font-size: 0.7rem;">Filters tone, translates language, and aligns meaning</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 3: HMRC Books & Evidence -->
+        <div id="hmrcTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">HMRC Tax & Financial Books</h2>
+                <p class="panel-subheader">Automated 20% tax reserve & receipt ledger</p>
                 <div class="financial-grid">
                     <div class="metric-card">
-                        <span class="metric-title">HMRC Tax Reserve (20%)</span>
+                        <span class="metric-title">HMRC Reserve (20%)</span>
                         <div class="metric-value">£1,420.00</div>
-                        <span style="font-size: 0.7rem; color: var(--text-muted);">Isolated Automatically</span>
+                        <span class="item-sub">Automatically Isolated</span>
                     </div>
                     <div class="metric-card">
-                        <span class="metric-title">Active Stripe Revenue</span>
+                        <span class="metric-title">Active Revenue Ledger</span>
                         <div class="metric-value">£7,100.00</div>
-                        <span style="font-size: 0.7rem; color: var(--text-muted);">Real-Time Sync Active</span>
+                        <span class="item-sub">Real-Time Stripe Sync</span>
                     </div>
                     <div class="metric-card">
-                        <span class="metric-title">Pending Invoices</span>
-                        <div class="metric-value">3 Active</div>
-                        <span style="font-size: 0.7rem; color: var(--text-muted);">Soft-Chasing Sequence On</span>
+                        <span class="metric-title">Verified Receipts</span>
+                        <div class="metric-value">48 Logged</div>
+                        <span class="item-sub">OCR Categorized</span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-title">Subscription Leaks</span>
                         <div class="metric-value">0 Found</div>
-                        <span style="font-size: 0.7rem; color: var(--text-muted);">Audited 2h ago</span>
+                        <span class="item-sub">Audited Today</span>
                     </div>
                 </div>
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Intelligent Receipt OCR</h2>
-                <p class="panel-subheader">Automated vendor & tax category extraction</p>
+                <h2 class="panel-header">Evidence & Receipt Vault</h2>
+                <p class="panel-subheader">Drag & drop receipts for instant HMRC tax compliance</p>
                 <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
                     <span style="font-size: 1.5rem; color: var(--champagne-gold);">📁</span>
-                    <span style="font-size: 0.85rem;">Drag & drop receipts or invoices here</span>
-                    <span style="font-size: 0.7rem;">Instant Supabase & HMRC Categorization</span>
+                    <span style="font-size: 0.85rem; color: var(--cream-accent);">Drop invoice or receipt evidence here</span>
+                    <span style="font-size: 0.7rem;">Auto-tagged to Supabase & HMRC Ledgers</span>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 3: Pricing Tiers & Community Hubs -->
+        <!-- TAB 4: Professional Reports -->
+        <div id="reportsTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">Profession-Specific Reports</h2>
+                <p class="panel-subheader">Tailored executive analytics by discipline</p>
+                <div class="item-stack">
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Project Manager Performance Ledger</div>
+                            <div class="item-sub">Milestone tracking, resource allocation & risk velocity</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Generate Report</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Commercial Photographer Dossier</div>
+                            <div class="item-sub">Shoot asset valuation, licensing tracking & studio costs</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Generate Report</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Creative Director & Brand Studio Report</div>
+                            <div class="item-sub">Brand platform equity, client deliverables & roadmap</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Generate Report</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Custom Analytics Matrix</h2>
+                <p class="panel-subheader">Multi-variable evaluation parameters</p>
+                <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
+                    <div class="item-row">
+                        <span class="item-title">Operational Efficiency Index</span>
+                        <span style="color: var(--cream-accent); font-size: 0.8rem;">94.2% Optimized</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-title">Resource Synchronization</span>
+                        <span style="color: var(--cream-accent); font-size: 0.8rem;">Stable</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 5: Marketing & Sales Templates -->
+        <div id="templatesTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">Marketing & Sales Templates</h2>
+                <p class="panel-subheader">Pre-engineered frameworks for client acquisition & outreach</p>
+                <div class="item-stack">
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">High-Ticket Client Acquisition Sequence</div>
+                            <div class="item-sub">Frictionless pitch framework for enterprise onboarding</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy Template</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Soft-Chasing Unpaid Invoice Sequence</div>
+                            <div class="item-sub">Polite, executive follow-up cadence that protects relationships</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy Template</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">True North Community Launch Manifesto</div>
+                            <div class="item-sub">Emotional resilience and youth empowerment messaging</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Deploy Template</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Template Customizer</h2>
+                <p class="panel-subheader">Instant tone adjustment (Professional / Plain English)</p>
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+                    <div style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
+                        <div class="item-title" style="margin-bottom: 5px;">Active Tone: Champagne & Cream Standard</div>
+                        <div class="item-sub">Zero corporate jargon. Pure clarity and sovereign control.</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 6: Smart Meeting Notes -->
+        <div id="notesTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">Smart Meeting Notes & Vault</h2>
+                <p class="panel-subheader">Encrypted AI transcription, action items & micro-expression logs</p>
+                <div class="item-stack">
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Executive Strategy Session // Halifax Hub</div>
+                            <div class="item-sub">Logged Today // 4 Action Items Assigned</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open Vault</span>
+                    </div>
+                    <div class="item-row">
+                        <div>
+                            <div class="item-title">Client Alignment Sync // Global Node</div>
+                            <div class="item-sub">Encrypted Audio & Transcript Synced</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">Open Vault</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Live Smart Capture</h2>
+                <p class="panel-subheader">Paste audio transcript or notes for instant summarization</p>
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
+                    <span style="font-size: 1.5rem; color: var(--champagne-gold);">🎙️</span>
+                    <span style="font-size: 0.85rem; color: var(--cream-accent);">Drop meeting transcript or recording here</span>
+                    <span style="font-size: 0.7rem;">Extracts commitments & tasks instantly</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 7: Pricing Tiers & Hubs -->
         <div id="pricingTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Commercial Pricing Tiers</h2>
                 <p class="panel-subheader">Structured access levels for the Onyx ecosystem</p>
-                <div class="tier-stack">
-                    <div class="tier-row">
+                <div class="item-stack">
+                    <div class="item-row">
                         <div>
-                            <div class="tier-name">Tier 1: Sovereign Starter</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Basic Tax Reserve & Client Vaults</div>
+                            <div class="item-title">Tier 1: Sovereign Starter</div>
+                            <div class="item-sub">Basic Tax Reserve & Client Vaults</div>
                         </div>
-                        <div class="tier-price">£49 / mo</div>
+                        <div style="color: var(--cream-accent);">£49 / mo</div>
                     </div>
-                    <div class="tier-row">
+                    <div class="item-row">
                         <div>
-                            <div class="tier-name">Tier 2: Executive Command</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Full Global Map & Trend Radar</div>
+                            <div class="item-title">Tier 2: Executive Command</div>
+                            <div class="item-sub">Full Global Map & Trend Radar</div>
                         </div>
-                        <div class="tier-price">£149 / mo</div>
+                        <div style="color: var(--cream-accent);">£149 / mo</div>
                     </div>
-                    <div class="tier-row">
+                    <div class="item-row">
                         <div>
-                            <div class="tier-name">Tier 3: True North Enterprise</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Complete Multi-Hub & Community Access</div>
+                            <div class="item-title">Tier 3: True North Enterprise</div>
+                            <div class="item-sub">Complete Multi-Hub & Community Access</div>
                         </div>
-                        <div class="tier-price">£299 / mo</div>
+                        <div style="color: var(--cream-accent);">£299 / mo</div>
                     </div>
                 </div>
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Community & Hub Integration</h2>
-                <p class="panel-subheader">True North & Koa Collective alignment matrices</p>
+                <h2 class="panel-header">Community & Hub Alignment</h2>
+                <p class="panel-subheader">True North & Koa Collective frameworks</p>
                 <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
-                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
-                        <span style="font-size: 0.85rem;">The Koa Collective Educational Toolkit</span>
+                    <div class="item-row">
+                        <span class="item-title">The Koa Collective Educational Toolkit</span>
                         <span style="color: var(--champagne-gold); font-size: 0.75rem;">Synced</span>
                     </div>
-                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
-                        <span style="font-size: 0.85rem;">True North Halifax Community Hub</span>
+                    <div class="item-row">
+                        <span class="item-title">True North Halifax Community Hub</span>
                         <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- TAB 4: Client Dossiers & BSL Layer -->
+        <!-- TAB 8: Client Dossiers -->
         <div id="dossierTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Elite Client Dossiers</h2>
-                <p class="panel-subheader">Secure vaults, skill reports & communications</p>
-                <div class="client-stack">
-                    <div class="client-row">
+                <p class="panel-subheader">Secure vaults, skill reports & communication archives</p>
+                <div class="item-stack">
+                    <div class="item-row">
                         <div>
-                            <div class="tier-name">Global Strategic Partner A</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Encrypted Vault // Active</div>
+                            <div class="item-title">Global Strategic Partner A</div>
+                            <div class="item-sub">Encrypted Vault // Active</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
                     </div>
-                    <div class="client-row">
+                    <div class="item-row">
                         <div>
-                            <div class="tier-name">Regional Node B</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Encrypted Vault // Syncing</div>
+                            <div class="item-title">Regional Node B</div>
+                            <div class="item-sub">Encrypted Vault // Syncing</div>
                         </div>
                         <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
                     </div>
@@ -446,16 +610,16 @@
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Accessibility & Translation Layer</h2>
-                <p class="panel-subheader">British Sign Language (BSL) & real-time global translation</p>
+                <h2 class="panel-header">Vault Security Matrix</h2>
+                <p class="panel-subheader">Encrypted communications & data protection</p>
                 <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
-                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
-                        <span style="font-size: 0.85rem;">BSL Interpretation Layer</span>
-                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Operational</span>
-                    </div>
-                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
-                        <span style="font-size: 0.85rem;">Live Word-for-Word Translation</span>
+                    <div class="item-row">
+                        <span class="item-title">End-to-End Encryption</span>
                         <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-title">Sovereign Data Isolation</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Secured</span>
                     </div>
                 </div>
             </section>
@@ -473,15 +637,12 @@
         }
 
         function switchTab(tabId, btn) {
-            // Hide all tabs
             document.querySelectorAll('.section-view').forEach(view => {
                 view.classList.remove('active-view');
             });
-            // Remove active class from buttons
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            // Show selected tab and highlight button
             document.getElementById(tabId).classList.add('active-view');
             btn.classList.add('active');
         }
