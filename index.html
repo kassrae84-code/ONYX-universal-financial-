@@ -5,60 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONYX ONE // Sovereign Intelligence Portal</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
+            margin: 0;
             background-color: #050505;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            transition: opacity 1.2s ease-in-out;
+            transition: opacity 1s ease;
         }
-        body.dissolve {
-            opacity: 0;
-        }
-        .portal-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-        }
-        .landing-image {
-            max-width: 100%;
-            max-height: 100vh;
-            object-fit: contain;
-            cursor: pointer;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
-            transition: transform 0.5s ease;
-        }
-        .landing-image:hover {
-            transform: scale(1.008);
-        }
+        body.dissolve { opacity: 0; }
+        .portal-link { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; text-decoration: none; }
+        img { max-width: 100%; max-height: 100vh; object-fit: contain; cursor: pointer; }
     </style>
 </head>
 <body>
-
-    <a href="app.html" class="portal-link" onclick="triggerDissolve(event)">
-        <!-- Pointing directly to your verified 7630.png map image -->
-        <img src="7630.png" alt="Onyx One Global Intelligence" class="landing-image">
+    <a href="app.html" class="portal-link" onclick="fade(event)">
+        <img src="7653.png" alt="Onyx One Logo">
     </a>
-
     <script>
-        function triggerDissolve(e) {
+        function fade(e) {
             e.preventDefault();
             document.body.classList.add('dissolve');
-            setTimeout(() => {
-                window.location.href = 'app.html';
-            }, 1200);
+            setTimeout(() => { window.location.href = 'app.html'; }, 1000);
         }
     </script>
-
 </body>
 </html>
