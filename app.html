@@ -32,14 +32,24 @@
             overflow-x: hidden;
         }
 
-        /* Executive Header */
+        /* Sticky Executive Header & Navigation Tabs */
         header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            background: var(--onyx-glass);
+            border-bottom: 1px solid var(--border-glass);
+            backdrop-filter: blur(16px);
+        }
+
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background: var(--onyx-glass);
-            border-bottom: 1px solid var(--border-glass);
+            padding: 15px 40px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .brand-container {
@@ -49,8 +59,8 @@
         }
 
         .brand-logo {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             object-fit: contain;
         }
 
@@ -63,43 +73,69 @@
         }
 
         .cockpit-title {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             color: var(--text-muted);
             text-transform: uppercase;
         }
 
-        .system-status {
+        /* Sticky Navigation Bar */
+        .sticky-nav {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.85rem;
+            gap: 30px;
+            padding: 0 40px;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .nav-tab {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 14px 0;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
             color: var(--champagne-gold);
-            background: rgba(212, 175, 55, 0.08);
-            padding: 8px 16px;
-            border: 1px solid var(--border-glass);
-            border-radius: 4px;
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
             background-color: var(--champagne-gold);
-            border-radius: 50%;
             box-shadow: 0 0 10px var(--champagne-gold);
-            animation: pulse 2s infinite;
         }
 
-        /* Main Cockpit Grid */
+        /* Main Cockpit Workspace */
         main {
             flex: 1;
             padding: 30px 40px;
             display: grid;
-            grid-template-columns: 1fr 1.3fr 1fr;
+            grid-template-columns: 1.4fr 1fr;
             gap: 25px;
             max-width: 1700px;
             margin: 0 auto;
             width: 100%;
+        }
+
+        .section-view {
+            display: none;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .section-view.active-view {
+            display: grid;
         }
 
         .panel {
@@ -111,6 +147,7 @@
             flex-direction: column;
             position: relative;
             box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            backdrop-filter: blur(12px);
         }
 
         .panel-header {
@@ -128,14 +165,14 @@
             margin-bottom: 15px;
         }
 
-        /* Global Intelligence Map Image Container */
+        /* Interactive Map Container with 7740.png */
         .map-container {
             flex: 1;
             position: relative;
             border: 1px solid var(--border-glass);
             border-radius: 6px;
             overflow: hidden;
-            min-height: 260px;
+            min-height: 380px;
             background: #000;
             display: flex;
             align-items: center;
@@ -146,7 +183,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .interactive-node {
@@ -162,72 +199,76 @@
 
         .node-telemetry {
             position: absolute;
-            bottom: 12px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(10, 10, 10, 0.92);
             border: 1px solid var(--champagne-gold);
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 4px;
             font-size: 0.75rem;
             color: var(--champagne-gold);
             white-space: nowrap;
         }
 
-        /* Core Vitality Index */
-        .vitality-content {
+        /* Financial & Tax Engine Grid */
+        .financial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            border-radius: 6px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-            gap: 20px;
+            justify-content: space-between;
         }
 
-        .chart-ring {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: conic-gradient(var(--champagne-gold) 0% 70%, var(--champagne-muted) 70% 90%, #1a1a1a 90% 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        .metric-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .chart-core {
-            width: 110px;
-            height: 110px;
-            background-color: var(--onyx-glass);
-            border-radius: 50%;
+        .metric-value {
+            font-size: 1.5rem;
+            color: var(--champagne-gold);
+            font-weight: 600;
+            margin-top: 10px;
         }
 
-        /* Strategic Alignment Map */
-        .alignment-stack {
+        /* Pricing Tiers & Client Hubs */
+        .tier-stack, .client-stack {
             display: flex;
             flex-direction: column;
             gap: 12px;
             flex: 1;
-            justify-content: space-around;
         }
 
-        .align-row {
+        .tier-row, .client-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: rgba(255, 255, 255, 0.02);
-            padding: 12px 15px;
+            padding: 15px;
             border: 1px solid var(--border-glass);
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
-        .align-label {
+        .tier-name {
             font-size: 0.85rem;
             color: var(--text-main);
+            font-weight: 600;
         }
 
-        .align-status {
-            font-size: 0.75rem;
+        .tier-price {
+            font-size: 0.85rem;
             color: var(--champagne-gold);
         }
 
@@ -238,79 +279,187 @@
         }
 
         @media(max-width: 1200px) {
-            main { grid-template-columns: 1fr; }
+            main, .section-view { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sticky Executive Navigation Header -->
     <header>
-        <div class="brand-container">
-            <img src="7653.png" alt="Onyx One Logo" class="brand-logo">
-            <div>
-                <div class="brand-title">Onyx One</div>
-                <div class="cockpit-title">Sovereign Decision-Making Cockpit</div>
+        <div class="header-top">
+            <div class="brand-container">
+                <img src="7653.png" alt="Onyx One Logo" class="brand-logo">
+                <div>
+                    <div class="brand-title">Onyx One</div>
+                    <div class="cockpit-title">Sovereign Decision-Making Cockpit</div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="font-size: 0.8rem; color: var(--champagne-gold); background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border: 1px solid var(--border-glass); border-radius: 4px;">
+                    ● SECURE VAULT ACTIVE
+                </div>
             </div>
         </div>
-        <div class="system-status">
-            <div class="status-dot"></div>
-            <span>FLAIR / PROFESSIONAL ACTIVE</span>
-        </div>
+        <nav class="sticky-nav">
+            <button class="nav-tab active" onclick="switchTab('mapTab', this)">Global Intelligence Map</button>
+            <button class="nav-tab" onclick="switchTab('financeTab', this)">Sovereign Tax & Finance</button>
+            <button class="nav-tab" onclick="switchTab('pricingTab', this)">Pricing Tiers & Hubs</button>
+            <button class="nav-tab" onclick="switchTab('dossierTab', this)">Client Dossiers & BSL</button>
+        </nav>
     </header>
 
     <main>
-        <!-- Panel 1: Global Intelligence Map with Uploaded Asset -->
-        <section class="panel">
-            <h2 class="panel-header">Global Intelligence Map</h2>
-            <p class="panel-subheader">Live regional node tracking & sales telemetry</p>
-            <div class="map-container">
-                <!-- Using your actual uploaded high-end map asset -->
-                <img src="7740.png" alt="Onyx Sovereign Map" class="map-image">
-                <div class="interactive-node" style="top: 38%; left: 32%;" onclick="updateTelemetry('UK HQ: Revenue +12% Active')"></div>
-                <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="updateTelemetry('US Sales Spike Detected')"></div>
-                <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="updateTelemetry('Emerging Market Node Live')"></div>
-                <div id="telemetryBox" class="node-telemetry">Click any glowing node to inspect telemetry</div>
-            </div>
-        </section>
+        <!-- TAB 1: Global Intelligence Map & Core Vitality -->
+        <div id="mapTab" class="section-view active-view">
+            <section class="panel">
+                <h2 class="panel-header">Global Intelligence Map</h2>
+                <p class="panel-subheader">Interactive regional node tracking & sales telemetry</p>
+                <div class="map-container">
+                    <img src="7740.png" alt="Onyx Sovereign Map" class="map-image">
+                    <div class="interactive-node" style="top: 38%; left: 32%;" onclick="updateTelemetry('UK HQ: Revenue +12% Active')"></div>
+                    <div class="interactive-node" style="top: 42%; left: 70%; animation-delay: 0.5s;" onclick="updateTelemetry('US Sales Spike Detected')"></div>
+                    <div class="interactive-node" style="top: 55%; left: 52%; animation-delay: 1s;" onclick="updateTelemetry('Emerging Market Node Live')"></div>
+                    <div id="telemetryBox" class="node-telemetry">Click any glowing node to inspect telemetry</div>
+                </div>
+            </section>
 
-        <!-- Panel 2: Core Vitality Index -->
-        <section class="panel">
-            <h2 class="panel-header">Core Vitality Index</h2>
-            <p class="panel-subheader">Sovereign business and personal health synchronization</p>
-            <div class="vitality-content">
-                <div class="chart-ring">
-                    <div class="chart-core"></div>
+            <section class="panel">
+                <h2 class="panel-header">Core Vitality Index</h2>
+                <p class="panel-subheader">Sovereign business & personal health synchronization</p>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 20px;">
+                    <div style="width: 150px; height: 150px; border-radius: 50%; background: conic-gradient(var(--champagne-gold) 0% 75%, #1a1a1a 75% 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 105px; height: 105px; background: var(--onyx-glass); border-radius: 50%;"></div>
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Sync Status: 75% Optimal Flow</div>
                 </div>
-                <div style="display: flex; gap: 20px; font-size: 0.8rem; color: var(--text-muted);">
-                    <span>● Brand Execution</span>
-                    <span>● Potential Health</span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Panel 3: Strategic Alignment Map -->
-        <section class="panel">
-            <h2 class="panel-header">Strategic Alignment Map</h2>
-            <p class="panel-subheader">Multidimensional target trajectory matrices</p>
-            <div class="alignment-stack">
-                <div class="align-row">
-                    <span class="align-label">Business Goals</span>
-                    <span class="align-status">Optimized</span>
+        <!-- TAB 2: Sovereign Tax & Finance Engine -->
+        <div id="financeTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">Sovereign Tax & Stripe Engine</h2>
+                <p class="panel-subheader">Automated HMRC 20% reserve & live invoice tracking</p>
+                <div class="financial-grid">
+                    <div class="metric-card">
+                        <span class="metric-title">HMRC Tax Reserve (20%)</span>
+                        <div class="metric-value">£1,420.00</div>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Isolated Automatically</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Active Stripe Revenue</span>
+                        <div class="metric-value">£7,100.00</div>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Real-Time Sync Active</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Pending Invoices</span>
+                        <div class="metric-value">3 Active</div>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Soft-Chasing Sequence On</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Subscription Leaks</span>
+                        <div class="metric-value">0 Found</div>
+                        <span style="font-size: 0.7rem; color: var(--text-muted);">Audited 2h ago</span>
+                    </div>
                 </div>
-                <div class="align-row">
-                    <span class="align-label">Key Execution Vectors</span>
-                    <span class="align-status">Active</span>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Intelligent Receipt OCR</h2>
+                <p class="panel-subheader">Automated vendor & tax category extraction</p>
+                <div style="flex: 1; border: 1px dashed var(--border-glass); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted);">
+                    <span style="font-size: 1.5rem; color: var(--champagne-gold);">📁</span>
+                    <span style="font-size: 0.85rem;">Drag & drop receipts or invoices here</span>
+                    <span style="font-size: 0.7rem;">Instant Supabase & HMRC Categorization</span>
                 </div>
-                <div class="align-row">
-                    <span class="align-label">Resource Allocation</span>
-                    <span class="align-status">Stable</span>
+            </section>
+        </div>
+
+        <!-- TAB 3: Pricing Tiers & Community Hubs -->
+        <div id="pricingTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">Commercial Pricing Tiers</h2>
+                <p class="panel-subheader">Structured access levels for the Onyx ecosystem</p>
+                <div class="tier-stack">
+                    <div class="tier-row">
+                        <div>
+                            <div class="tier-name">Tier 1: Sovereign Starter</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Basic Tax Reserve & Client Vaults</div>
+                        </div>
+                        <div class="tier-price">£49 / mo</div>
+                    </div>
+                    <div class="tier-row">
+                        <div>
+                            <div class="tier-name">Tier 2: Executive Command</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Full Global Map & Trend Radar</div>
+                        </div>
+                        <div class="tier-price">£149 / mo</div>
+                    </div>
+                    <div class="tier-row">
+                        <div>
+                            <div class="tier-name">Tier 3: True North Enterprise</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Complete Multi-Hub & Community Access</div>
+                        </div>
+                        <div class="tier-price">£299 / mo</div>
+                    </div>
                 </div>
-                <div class="align-row">
-                    <span class="align-label">Daily Operations</span>
-                    <span class="align-status">Synced</span>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Community & Hub Integration</h2>
+                <p class="panel-subheader">True North & Koa Collective alignment matrices</p>
+                <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
+                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
+                        <span style="font-size: 0.85rem;">The Koa Collective Educational Toolkit</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Synced</span>
+                    </div>
+                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
+                        <span style="font-size: 0.85rem;">True North Halifax Community Hub</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+
+        <!-- TAB 4: Client Dossiers & BSL Layer -->
+        <div id="dossierTab" class="section-view">
+            <section class="panel">
+                <h2 class="panel-header">Elite Client Dossiers</h2>
+                <p class="panel-subheader">Secure vaults, skill reports & communications</p>
+                <div class="client-stack">
+                    <div class="client-row">
+                        <div>
+                            <div class="tier-name">Global Strategic Partner A</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Encrypted Vault // Active</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
+                    </div>
+                    <div class="client-row">
+                        <div>
+                            <div class="tier-name">Regional Node B</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Encrypted Vault // Syncing</div>
+                        </div>
+                        <span style="color: var(--champagne-gold); font-size: 0.8rem;">View Dossier</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-header">Accessibility & Translation Layer</h2>
+                <p class="panel-subheader">British Sign Language (BSL) & real-time global translation</p>
+                <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center;">
+                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
+                        <span style="font-size: 0.85rem;">BSL Interpretation Layer</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Operational</span>
+                    </div>
+                    <div class="align-row" style="background: rgba(255,255,255,0.02); padding: 15px; border: 1px solid var(--border-glass); border-radius: 6px;">
+                        <span style="font-size: 0.85rem;">Live Word-for-Word Translation</span>
+                        <span style="color: var(--champagne-gold); font-size: 0.75rem;">Active</span>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
     <script>
@@ -321,6 +470,20 @@
             setTimeout(() => {
                 box.style.borderColor = 'var(--champagne-gold)';
             }, 600);
+        }
+
+        function switchTab(tabId, btn) {
+            // Hide all tabs
+            document.querySelectorAll('.section-view').forEach(view => {
+                view.classList.remove('active-view');
+            });
+            // Remove active class from buttons
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected tab and highlight button
+            document.getElementById(tabId).classList.add('active-view');
+            btn.classList.add('active');
         }
     </script>
 </body>
