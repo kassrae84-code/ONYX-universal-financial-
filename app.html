@@ -3,240 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE — Client Command Center</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>ONYX ONE // Sovereign Decision-Making Cockpit</title>
     <style>
         :root {
-            --obsidian: #050507;
-            --matte-card: #0A0B0E;
-            --matte-card-hover: #101217;
-            --gold-foil: #D4B98C;
-            --gold-bright: #F5E6BE;
-            --gold-subtle: rgba(212, 185, 140, 0.08);
-            --gold-border: rgba(212, 185, 140, 0.2);
-            --gold-border-bright: rgba(212, 185, 140, 0.55);
-            --text-main: #E2D4B7;
-            --text-dim: #8A857A;
-            --transition-luxury: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-obsidian: #0b0b0b;
+            --panel-bg: #121212;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa8c2c;
+            --border-gold: rgba(212, 175, 55, 0.25);
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--obsidian);
+            background-color: var(--bg-obsidian);
             color: var(--text-main);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 50% -10%, rgba(212, 185, 140, 0.07) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        h1, h2, h3, .brand-name {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
+        /* Header Bar */
         header {
-            background: rgba(5, 5, 7, 0.85);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--gold-border);
-            padding: 1.8rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 40px;
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--border-gold);
         }
 
-        .logo-area { display: flex; align-items: center; gap: 1.2rem; }
-        .emblem-svg {
-            width: 38px;
-            height: 38px;
-            fill: url(#goldGradient);
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
-        }
-        .brand-name { font-size: 1.25rem; color: var(--gold-foil); letter-spacing: 0.3em; }
-        .brand-tag { font-size: 0.5rem; color: var(--text-dim); letter-spacing: 0.45em; display: block; margin-top: 0.2rem; }
-
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .welcome-banner {
-            background: var(--matte-card);
-            border: 1px solid var(--gold-foil);
-            padding: 3rem;
-            margin-bottom: 4rem;
-            border-radius: 2px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px rgba(212, 185, 140, 0.08);
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
-        .welcome-banner h1 {
-            color: var(--gold-bright);
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.2em;
+
+        .brand-title {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: var(--gold-primary);
+            font-weight: 600;
+            text-transform: uppercase;
         }
-        .welcome-banner p {
-            color: var(--text-dim);
+
+        .cockpit-title {
             font-size: 0.9rem;
-            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
         }
 
-        .section-title {
-            font-size: 1.2rem;
-            color: var(--gold-bright);
-            margin-bottom: 2rem;
-            letter-spacing: 0.25em;
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.05);
+            padding: 8px 16px;
+            border: 1px solid var(--border-gold);
+            border-radius: 4px;
         }
 
-        .grid-2 {
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--gold-primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        /* Main Cockpit Grid Layout */
+        main {
+            flex: 1;
+            padding: 30px 40px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
+            grid-template-columns: 1fr 1.3fr 1fr;
+            gap: 25px;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .tool-card {
-            background: var(--matte-card);
-            border: 1px solid var(--gold-border);
-            padding: 3rem 2.5rem;
-            transition: var(--transition-luxury);
-            border-radius: 2px;
+        .panel {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
             position: relative;
-        }
-        .tool-card:hover {
-            background: var(--matte-card-hover);
-            border-color: var(--gold-border-bright);
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-        }
-        .tool-card h3 {
-            color: var(--text-main);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.2em;
-        }
-        .tool-card p {
-            color: var(--text-dim);
-            font-size: 0.84rem;
-            line-height: 1.9;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
 
-        .btn {
-            display: inline-flex;
+        .panel-header {
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .panel-subheader {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        /* Core Vitality Panel */
+        .vitality-content {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 2.2rem;
-            border: 1px solid var(--gold-border);
-            color: var(--gold-foil);
-            text-decoration: none;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: var(--transition-luxury);
-            background: var(--obsidian);
-            border-radius: 2px;
-            font-weight: 400;
-        }
-        .btn:hover {
-            background: var(--gold-subtle);
-            border-color: var(--gold-border-bright);
-            color: var(--gold-bright);
-        }
-        .btn.primary {
-            background: linear-gradient(135deg, #D4B98C 0%, #B8975E 100%);
-            color: var(--obsidian);
-            border-color: transparent;
-            font-weight: 500;
+            flex: 1;
+            gap: 20px;
         }
 
-        footer {
-            border-top: 1px solid var(--gold-border);
-            padding: 4rem 2rem;
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
+        .chart-mockup {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold-primary) 0% 65%, var(--gold-dark) 65% 85%, #222 85% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .chart-inner {
+            width: 120px;
+            height: 120px;
+            background-color: var(--panel-bg);
+            border-radius: 50%;
+        }
+
+        /* Strategic Alignment Panel */
+        .alignment-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+            justify-content: space-around;
+        }
+
+        .node-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.02);
+            padding: 12px 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+        }
+
+        .node-title {
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .node-badge {
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+        }
+
+        /* Communication Hub Panel */
+        .comm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .comm-item {
+            background: rgba(212, 175, 55, 0.03);
+            border-left: 2px solid var(--gold-primary);
+            padding: 12px;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .comm-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        @media(max-width: 1200px) {
+            main {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute;">
-    <defs>
-        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#F5E6BE" />
-            <stop offset="50%" stop-color="#D4B98C" />
-            <stop offset="100%" stop-color="#9A7B4C" />
-        </linearGradient>
-    </defs>
-</svg>
-
-<header>
-    <div class="logo-area">
-        <svg class="emblem-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <div>
-            <span class="brand-name">ONYX ONE</span>
-            <span class="brand-tag">CLIENT COMMAND CENTER</span>
+    <header>
+        <div class="brand-container">
+            <img src="7653.png" alt="Onyx One Logo" class="brand-logo">
+            <div>
+                <div class="brand-title">Onyx One</div>
+                <div class="cockpit-title">Sovereign Decision-Making Cockpit</div>
+            </div>
         </div>
-    </div>
-    <a href="index.html" class="btn">Sign Out</a>
-</header>
-
-<div class="dashboard-container">
-    <div class="welcome-banner">
-        <h1>ACCESS GRANTED</h1>
-        <p>Your secure private financial command center is initialized. All automated tools, templates, and encrypted meeting gateways are active below.</p>
-    </div>
-
-    <h2 class="section-title">Core Execution Tools</h2>
-    <div class="grid-2">
-        <div class="tool-card">
-            <h3>Automated Invoicing & Quotes</h3>
-            <p>Generate sharp, brand-aligned invoices and track payment statuses instantly without spreadsheet clutter.</p>
-            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Invoice%20Template" class="btn primary">Launch Generator</a>
+        <div class="system-status">
+            <div class="status-dot"></div>
+            <span>FLAIR / PROFESSIONAL ACTIVE</span>
         </div>
+    </header>
 
-        <div class="tool-card">
-            <h3>Leak Detection & Cost Audit</h3>
-            <p>Review overhead, identify redundant subscriptions, and calculate immediate capital recovery metrics.</p>
-            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Cost%20Audit" class="btn primary">Run Audit Protocol</a>
-        </div>
+    <main>
+        <!-- Panel 1: Core Vitality Index -->
+        <section class="panel">
+            <h2 class="panel-header">Core Vitality Index</h2>
+            <p class="panel-subheader">Sovereign business and personal health synchronization</p>
+            <div class="vitality-content">
+                <div class="chart-mockup">
+                    <div class="chart-inner"></div>
+                </div>
+                <div style="display: flex; gap: 20px; font-size: 0.8rem; color: var(--text-muted);">
+                    <span>● Brand Execution</span>
+                    <span>● Potential Health</span>
+                </div>
+            </div>
+        </section>
 
-        <div class="tool-card">
-            <h3>Email Marketing Library</h3>
-            <p>Access high-converting luxury outreach templates, sales sequences, and follow-up copy ready for deployment.</p>
-            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Marketing%20Templates" class="btn primary">Access Library</a>
-        </div>
+        <!-- Panel 2: Strategic Alignment Map -->
+        <section class="panel">
+            <h2 class="panel-header">Strategic Alignment Map</h2>
+            <p class="panel-subheader">Multidimensional asset target trajectory key alignment matrices</p>
+            <div class="alignment-grid">
+                <div class="node-row">
+                    <span class="node-title">Business Goals</span>
+                    <span class="node-badge">Optimized</span>
+                </div>
+                <div class="node-row">
+                    <span class="node-title">Key Execution Vectors</span>
+                    <span class="node-badge">Active</span>
+                </div>
+                <div class="node-row">
+                    <span class="node-title">Resource Allocation</span>
+                    <span class="node-badge">Stable</span>
+                </div>
+                <div class="node-row">
+                    <span class="node-title">Daily Operations</span>
+                    <span class="node-badge">Synced</span>
+                </div>
+            </div>
+        </section>
 
-        <div class="tool-card">
-            <h3>Secure Meeting Gateway</h3>
-            <p>Launch encrypted conference sessions with automated smart-summaries and clear action item tracking.</p>
-            <a href="mailto:support@onyxone.co.uk?subject=Request:%20Secure%20Meeting%20Link" class="btn primary">Initialize Room</a>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>© 2026 ONYX ONE FINANCIAL SOLUTIONS. SECURE CLIENT ENVIRONMENT.</p>
-</footer>
+        <!-- Panel 3: Unified Communication Hub -->
+        <section class="panel">
+            <h2 class="panel-header">Unified Communication Hub</h2>
+            <p class="panel-subheader">Secure cross-channel executive directives & node traffic</p>
+            <div class="comm-list">
+                <div class="comm-item">
+                    <div>AI Multilingual Directive dispatched to regional nodes.</div>
+                    <div class="comm-meta">Secure Channel // Node 01</div>
+                </div>
+                <div class="comm-item">
+                    <div>Global Treasury Ledger verified against HMRC parameters.</div>
+                    <div class="comm-meta">Encrypted Stream // Node 04</div>
+                </div>
+                <div class="comm-item">
+                    <div>Priority Executive Briefing compiled for review.</div>
+                    <div class="comm-meta">Direct Link // Active</div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 </body>
 </html>
