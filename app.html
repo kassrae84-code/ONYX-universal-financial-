@@ -6,13 +6,13 @@
     <title>ONYX ONE // Sovereign Decision-Making Cockpit</title>
     <style>
         :root {
-            --bg-obsidian: #0b0b0b;
-            --panel-bg: #121212;
-            --gold-primary: #d4af37;
-            --gold-light: #f3e5ab;
-            --gold-dark: #aa8c2c;
-            --border-gold: rgba(212, 175, 55, 0.25);
-            --text-main: #e0e0e0;
+            --onyx-abyss: #050505;
+            --onyx-glass: rgba(18, 18, 18, 0.75);
+            --champagne-gold: #D4AF37;
+            --champagne-muted: #aa8c2c;
+            --gold-glow: rgba(212, 175, 55, 0.35);
+            --border-glass: rgba(212, 175, 55, 0.2);
+            --text-main: #E0E0E0;
             --text-muted: #888888;
         }
 
@@ -23,23 +23,25 @@
         }
 
         body {
-            background-color: var(--bg-obsidian);
+            background: radial-gradient(circle at center, #141414 0%, var(--onyx-abyss) 100%);
             color: var(--text-main);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            backdrop-filter: blur(20px);
         }
 
-        /* Header Bar */
+        /* Executive Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: var(--panel-bg);
-            border-bottom: 1px solid var(--border-gold);
+            background: var(--onyx-glass);
+            border-bottom: 1px solid var(--border-glass);
+            backdrop-filter: blur(16px);
         }
 
         .brand-container {
@@ -49,21 +51,20 @@
         }
 
         .brand-logo {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             object-fit: contain;
         }
 
         .brand-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 3px;
-            color: var(--gold-primary);
+            color: var(--champagne-gold);
             font-weight: 600;
-            text-transform: uppercase;
         }
 
         .cockpit-title {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -73,58 +74,53 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.85rem;
-            color: var(--gold-primary);
+            font-size: 0.8rem;
+            color: var(--champagne-gold);
             background: rgba(212, 175, 55, 0.05);
             padding: 8px 16px;
-            border: 1px solid var(--border-gold);
-            border-radius: 4px;
+            border: 1px solid var(--border-glass);
+            border-radius: 6px;
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--gold-primary);
+            width: 7px;
+            height: 7px;
+            background-color: var(--champagne-gold);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--gold-primary);
+            box-shadow: 0 0 10px var(--champagne-gold);
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
-        }
-
-        /* Main Cockpit Grid Layout */
+        /* Main Glassmorphic Grid Layout */
         main {
             flex: 1;
             padding: 30px 40px;
             display: grid;
-            grid-template-columns: 1fr 1.3fr 1fr;
+            grid-template-columns: 1fr 1.4fr 1fr;
             gap: 25px;
-            max-width: 1600px;
+            max-width: 1700px;
             margin: 0 auto;
             width: 100%;
         }
 
         .panel {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-gold);
-            border-radius: 8px;
+            background: var(--onyx-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
             padding: 25px;
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(212, 175, 55, 0.03);
+            backdrop-filter: blur(12px);
         }
 
         .panel-header {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
-            color: var(--gold-primary);
+            color: var(--champagne-gold);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
@@ -132,10 +128,65 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-bottom: 20px;
-            line-height: 1.4;
         }
 
-        /* Core Vitality Panel */
+        /* Interactive Globe / Map Module */
+        .globe-container {
+            flex: 1;
+            background: radial-gradient(circle, rgba(20,20,20,0.9) 0%, rgba(5,5,5,0.95) 100%);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            position: relative;
+            min-height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .globe-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .globe-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--champagne-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--champagne-gold), 0 0 30px var(--gold-glow);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .globe-node:hover {
+            transform: scale(1.5);
+        }
+
+        .node-tooltip {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid var(--champagne-gold);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--champagne-gold);
+            white-space: nowrap;
+            pointer-events: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Core Vitality Chart */
         .vitality-content {
             display: flex;
             flex-direction: column;
@@ -145,80 +196,61 @@
             gap: 20px;
         }
 
-        .chart-mockup {
-            width: 180px;
-            height: 180px;
+        .chart-ring {
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            background: conic-gradient(var(--gold-primary) 0% 65%, var(--gold-dark) 65% 85%, #222 85% 100%);
+            background: conic-gradient(var(--champagne-gold) 0% 70%, var(--champagne-muted) 70% 90%, #1a1a1a 90% 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
         }
 
-        .chart-inner {
-            width: 120px;
-            height: 120px;
-            background-color: var(--panel-bg);
+        .chart-core {
+            width: 110px;
+            height: 110px;
+            background-color: var(--onyx-glass);
             border-radius: 50%;
         }
 
-        /* Strategic Alignment Panel */
-        .alignment-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            flex: 1;
-            justify-content: space-around;
-        }
-
-        .node-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.02);
-            padding: 12px 15px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            border-radius: 4px;
-        }
-
-        .node-title {
-            font-size: 0.85rem;
-            color: var(--text-main);
-        }
-
-        .node-badge {
-            font-size: 0.75rem;
-            color: var(--gold-primary);
-        }
-
-        /* Communication Hub Panel */
-        .comm-list {
+        /* Strategic Nodes */
+        .alignment-stack {
             display: flex;
             flex-direction: column;
             gap: 12px;
             flex: 1;
+            justify-content: space-around;
         }
 
-        .comm-item {
-            background: rgba(212, 175, 55, 0.03);
-            border-left: 2px solid var(--gold-primary);
-            padding: 12px;
+        .align-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.015);
+            padding: 12px 15px;
+            border: 1px solid var(--border-glass);
+            border-radius: 6px;
+        }
+
+        .align-label {
             font-size: 0.8rem;
-            line-height: 1.4;
+            color: var(--text-main);
         }
 
-        .comm-meta {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 4px;
+        .align-status {
+            font-size: 0.75rem;
+            color: var(--champagne-gold);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 25px var(--champagne-gold); }
+            100% { transform: scale(1); opacity: 0.8; }
         }
 
         @media(max-width: 1200px) {
-            main {
-                grid-template-columns: 1fr;
-            }
+            main { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -239,65 +271,94 @@
     </header>
 
     <main>
-        <!-- Panel 1: Core Vitality Index -->
+        <!-- Panel 1: Interactive Globe Sales Map -->
+        <section class="panel">
+            <h2 class="panel-header">Global Intelligence Map</h2>
+            <p class="panel-subheader">Interactive regional node tracking & live sales telemetry</p>
+            <div class="globe-container" id="globeBox">
+                <div class="globe-grid"></div>
+                <!-- Interactive Nodes -->
+                <div class="globe-node" style="top: 35%; left: 30%;" onclick="showNodeData('UK HQ: Revenue +12% Active')"></div>
+                <div class="globe-node" style="top: 45%; left: 65%; animation-delay: 0.5s;" onclick="showNodeData('US Sales Spike Detected')"></div>
+                <div class="globe-node" style="top: 60%; left: 50%; animation-delay: 1s;" onclick="showNodeData('Emerging Market Node Live')"></div>
+                <div id="nodeTip" class="node-tooltip">Click any glowing node to inspect sales telemetry</div>
+            </div>
+        </section>
+
+        <!-- Panel 2: Core Vitality Index -->
         <section class="panel">
             <h2 class="panel-header">Core Vitality Index</h2>
             <p class="panel-subheader">Sovereign business and personal health synchronization</p>
             <div class="vitality-content">
-                <div class="chart-mockup">
-                    <div class="chart-inner"></div>
+                <div class="chart-ring">
+                    <div class="chart-core"></div>
                 </div>
-                <div style="display: flex; gap: 20px; font-size: 0.8rem; color: var(--text-muted);">
+                <div style="display: flex; gap: 20px; font-size: 0.75rem; color: var(--text-muted);">
                     <span>● Brand Execution</span>
                     <span>● Potential Health</span>
                 </div>
             </div>
         </section>
 
-        <!-- Panel 2: Strategic Alignment Map -->
+        <!-- Panel 3: Strategic Alignment Map -->
         <section class="panel">
             <h2 class="panel-header">Strategic Alignment Map</h2>
-            <p class="panel-subheader">Multidimensional asset target trajectory key alignment matrices</p>
-            <div class="alignment-grid">
-                <div class="node-row">
-                    <span class="node-title">Business Goals</span>
-                    <span class="node-badge">Optimized</span>
+            <p class="panel-subheader">Multidimensional target trajectory matrices</p>
+            <div class="alignment-stack">
+                <div class="align-row">
+                    <span class="align-label">Business Goals</span>
+                    <span class="align-status">Optimized</span>
                 </div>
-                <div class="node-row">
-                    <span class="node-title">Key Execution Vectors</span>
-                    <span class="node-badge">Active</span>
+                <div class="align-row">
+                    <span class="align-label">Key Execution Vectors</span>
+                    <span class="align-status">Active</span>
                 </div>
-                <div class="node-row">
-                    <span class="node-title">Resource Allocation</span>
-                    <span class="node-badge">Stable</span>
+                <div class="align-row">
+                    <span class="align-label">Resource Allocation</span>
+                    <span class="align-status">Stable</span>
                 </div>
-                <div class="node-row">
-                    <span class="node-title">Daily Operations</span>
-                    <span class="node-badge">Synced</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Panel 3: Unified Communication Hub -->
-        <section class="panel">
-            <h2 class="panel-header">Unified Communication Hub</h2>
-            <p class="panel-subheader">Secure cross-channel executive directives & node traffic</p>
-            <div class="comm-list">
-                <div class="comm-item">
-                    <div>AI Multilingual Directive dispatched to regional nodes.</div>
-                    <div class="comm-meta">Secure Channel // Node 01</div>
-                </div>
-                <div class="comm-item">
-                    <div>Global Treasury Ledger verified against HMRC parameters.</div>
-                    <div class="comm-meta">Encrypted Stream // Node 04</div>
-                </div>
-                <div class="comm-item">
-                    <div>Priority Executive Briefing compiled for review.</div>
-                    <div class="comm-meta">Direct Link // Active</div>
+                <div class="align-row">
+                    <span class="align-label">Daily Operations</span>
+                    <span class="align-status">Synced</span>
                 </div>
             </div>
         </section>
     </main>
 
+    <script>
+        function showNodeData(message) {
+            const tip = document.getElementById('nodeTip');
+            tip.innerText = message;
+            tip.style.borderColor = '#ffffff';
+            setTimeout(() => {
+                tip.style.borderColor = 'var(--champagne-gold)';
+            }, 500);
+        }
+
+        // Interactive dragging/touch responsiveness for the globe container
+        const globe = document.getElementById('globeBox');
+        let isDragging = false;
+        let startX, startY;
+
+        globe.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            globe.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            globe.style.cursor = 'grab';
+        });
+
+        globe.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            // Subtle shift illusion to simulate interactive globe movement
+            globe.style.backgroundPosition = `${dx * 0.2}px ${dy * 0.2}px`;
+        });
+    </script>
 </body>
 </html>
