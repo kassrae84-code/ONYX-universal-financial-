@@ -219,12 +219,12 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* Truly Cinematic Glowing Wire Globe Graph */
+        /* Real Canvas Wire Globe Container */
         .wire-globe-container {
-            background: radial-gradient(circle at center, rgba(25, 25, 25, 0.9) 0%, rgba(5, 5, 5, 0.98) 100%);
+            background: radial-gradient(circle at center, rgba(20, 20, 20, 0.95) 0%, rgba(3, 3, 3, 0.99) 100%);
             border: 1px solid var(--border-glass);
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -233,90 +233,41 @@
             position: relative;
             min-height: 350px;
             overflow: hidden;
-            box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.12), 0 10px 30px rgba(0,0,0,0.6);
+            box-shadow: inset 0 0 50px rgba(212, 175, 55, 0.15), 0 10px 30px rgba(0,0,0,0.6);
         }
 
-        .wire-globe {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: relative;
-            background: radial-gradient(circle at 35% 35%, rgba(212, 175, 55, 0.2) 0%, rgba(5, 5, 5, 0.95) 75%);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.35), inset 0 0 35px rgba(212, 175, 55, 0.3);
+        #wireGlobeCanvas {
+            width: 240px;
+            height: 240px;
+            cursor: pointer;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+        }
+
+        /* Audio Waveform Equalizer Bars */
+        .waveform-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(212, 175, 55, 0.5);
+            align-items: flex-end;
+            gap: 4px;
+            height: 40px;
+            margin: 15px 0;
         }
 
-        /* Meridian Latitude/Longitude Rings */
-        .globe-ring-1 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1px dashed rgba(253, 246, 226, 0.5);
-            animation: spinGlobeSlow 18s linear infinite;
+        .wave-bar {
+            width: 6px;
+            background: var(--champagne-gold);
+            border-radius: 3px;
+            animation: bounceWave 1.2s infinite ease-in-out alternate;
         }
 
-        .globe-ring-2 {
-            position: absolute;
-            width: 80%;
-            height: 100%;
-            border-radius: 50%;
-            border: 1px solid rgba(212, 175, 55, 0.6);
-            animation: spinGlobeFast 12s linear infinite reverse;
-        }
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.5s; }
+        .wave-bar:nth-child(6) { animation-delay: 0.3s; }
 
-        .globe-ring-3 {
-            position: absolute;
-            width: 100%;
-            height: 80%;
-            border-radius: 50%;
-            border: 1px dotted rgba(212, 175, 55, 0.7);
-            animation: spinGlobeSlow 15s linear infinite;
-        }
-
-        .globe-core {
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle, #ffffff 0%, var(--cream-accent) 40%, var(--champagne-gold) 80%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 35px #ffffff, 0 0 70px var(--champagne-gold), 0 0 110px var(--gold-glow);
-            animation: pulseCore 2.5s infinite ease-in-out;
-            z-index: 2;
-        }
-
-        /* Glowing Orbiting Node */
-        .orbit-node {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #ffffff, 0 0 25px var(--champagne-gold);
-            animation: orbitPath 6s linear infinite;
-        }
-
-        @keyframes spinGlobeSlow {
-            0% { transform: rotate(0deg) rotateX(20deg); }
-            100% { transform: rotate(360deg) rotateX(20deg); }
-        }
-
-        @keyframes spinGlobeFast {
-            0% { transform: rotate(0deg) rotateY(30deg); }
-            100% { transform: rotate(360deg) rotateY(30deg); }
-        }
-
-        @keyframes pulseCore {
-            0% { transform: scale(0.9); opacity: 0.85; }
-            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 50px #ffffff, 0 0 90px var(--champagne-gold), 0 0 140px var(--gold-glow); }
-            100% { transform: scale(0.9); opacity: 0.85; }
-        }
-
-        @keyframes orbitPath {
-            0% { transform: rotate(0deg) translateX(105px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(105px) rotate(-360deg); }
+        @keyframes bounceWave {
+            0% { height: 8px; opacity: 0.4; }
+            100% { height: 35px; opacity: 1; box-shadow: 0 0 10px var(--champagne-gold); }
         }
 
         .financial-grid {
@@ -505,21 +456,12 @@
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Cinematic Wire Globe Analytics</h2>
-                <p class="panel-subheader">Real-time multi-region vitality and global currency flow</p>
-                <div class="wire-globe-container" onclick="openModal('Wire Globe Telemetry Matrix', 'Cinematic glowing wire-frame node tracking active. Intercontinental cashflow and crypto exchange nodes synchronizing in real-time.')">
-                    <div class="wire-globe">
-                        <div class="globe-ring-1"></div>
-                        <div class="globe-ring-2"></div>
-                        <div class="globe-ring-3"></div>
-                        <div class="globe-core"></div>
-                        <div class="orbit-node"></div>
-                    </div>
-                    <div style="margin-top: 25px; text-align: center; font-size: 0.8rem; color: var(--cream-accent); letter-spacing: 1.5px; text-shadow: 0 0 10px var(--champagne-gold);">
-                        ● LIVE CINEMATIC MESH: ONLINE
-                    </div>
-                    <div style="font-size: 0.7rem; color: var(--champagne-muted); margin-top: 4px;">
-                        Click glowing core for intercontinental packet stream
+                <h2 class="panel-header">Cinematic Canvas Wire Globe Analytics</h2>
+                <p class="panel-subheader">Real-time multi-region meridian mesh and currency flow</p>
+                <div class="wire-globe-container" onclick="openModal('Wire Globe Matrix', 'Interactive HTML5 canvas wire globe active. Multi-node intercontinental exchange tracking enabled.')">
+                    <canvas id="wireGlobeCanvas" width="240" height="240"></canvas>
+                    <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent); letter-spacing: 1.5px; text-shadow: 0 0 10px var(--champagne-gold);">
+                        ● MESH ROTATION: 360° ACTIVE
                     </div>
                 </div>
             </section>
@@ -529,9 +471,9 @@
         <div id="translationTab" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Live Audio Listener & Real-Time Translator</h2>
-                <p class="panel-subheader">Active voice recording stream, instant multi-language & BSL translation</p>
+                <p class="panel-subheader">Active microphone stream, live speech recorder & instant translation</p>
                 <div class="item-stack">
-                    <div class="item-row" onclick="openModal('Live Audio Listening Stream Active', 'Microphone stream engaged. Listening to active audio feed and translating speech into real-time text output.')">
+                    <div class="item-row" onclick="openModal('Active Microphone Stream', 'Microphone stream engaged. Listening to active audio feed and translating speech into real-time text output.')">
                         <div>
                             <div class="item-title">Active Audio Listener & Recorder</div>
                             <div class="item-sub">Listens to live meeting audio and records speech streams</div>
@@ -556,13 +498,23 @@
             </section>
 
             <section class="panel">
-                <h2 class="panel-header">Live Spoken Transcript & Output</h2>
-                <p class="panel-subheader">Real-time translated text from active listening stream</p>
+                <h2 class="panel-header">Live Spoken Transcript & Equalizer</h2>
+                <p class="panel-subheader">Real-time translated text and active audio waveform</p>
                 <div style="flex: 1; border: 1px solid var(--border-glass); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(0,0,0,0.5);">
-                    <div style="font-size: 0.85rem; color: var(--cream-accent); line-height: 1.6;">
-                        <span style="color: var(--champagne-gold);">[Live Audio Stream]:</span> Listening for incoming speech or meeting feed... Transcribing and translating in real-time.
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--cream-accent); line-height: 1.6; margin-bottom: 15px;">
+                            <span style="color: var(--champagne-gold);">[Live Audio Stream]:</span> Listening for incoming speech or meeting feed... Transcribing and translating in real-time.
+                        </div>
+                        <div class="waveform-container">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
                     </div>
-                    <button class="modal-close" style="align-self: flex-start; margin-top: 15px;" onclick="openModal('Audio Log Saved', 'Current listening stream and translated transcript successfully saved to meeting vault.')">Save Transcript</button>
+                    <button class="modal-close" style="align-self: flex-start;" onclick="openModal('Audio Log Saved', 'Current listening stream and translated transcript successfully saved to meeting vault.')">Save Transcript</button>
                 </div>
             </section>
         </div>
@@ -851,6 +803,62 @@
     </div>
 
     <script>
+        // Interactive Canvas Wire Globe Animation
+        const canvas = document.getElementById('wireGlobeCanvas');
+        const ctx = canvas.getContext('2d');
+        let angle = 0;
+
+        function drawWireGlobe() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const radius = 95;
+
+            // Outer Glow Sphere
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.04)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.45)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            // Rotating Meridian Rings
+            for (let i = 0; i < 4; i++) {
+                let rotAngle = angle + (i * Math.PI / 4);
+                ctx.beginPath();
+                ctx.ellipse(cx, cy, radius * Math.abs(Math.cos(rotAngle)), radius, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.3)' : 'rgba(253, 246, 226, 0.2)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+
+            // Latitude Parallels
+            for (let lat = -2; lat <= 2; lat++) {
+                let yOffset = lat * 28;
+                let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
+                ctx.beginPath();
+                ctx.ellipse(cx, cy + yOffset, latRadius, latRadius * 0.25, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+            }
+
+            // Glowing Core Center
+            let gradient = ctx.createRadialGradient(cx, cy, 2, cx, cy, 25);
+            gradient.addColorStop(0, '#ffffff');
+            gradient.addColorStop(0.5, '#FDF6E2');
+            gradient.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            ctx.beginPath();
+            ctx.arc(cx, cy, 25, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            angle += 0.015;
+            requestAnimationFrame(drawWireGlobe);
+        }
+        drawWireGlobe();
+
         function updateTelemetry(message) {
             const box = document.getElementById('telemetryBox');
             box.innerText = message;
