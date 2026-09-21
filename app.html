@@ -503,7 +503,7 @@
                 <div class="wire-globe-container" id="globeContainerBox">
                     <canvas id="wireGlobeCanvas" width="240" height="240"></canvas>
                     <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent); letter-spacing: 1.5px; text-shadow: 0 0 10px var(--champagne-gold);">
-                        ● MESH ROTATION: 360° ACTIVE
+                        ● MESH ROTATION: 360° ACTIVE // CHARGE NODES LIVE
                     </div>
                 </div>
             </section>
@@ -820,7 +820,7 @@
         </div>
     </main>
 
-    <!-- Legal & Trademark Modal (Kept for professional trademark notice) -->
+    <!-- Legal & Trademark Modal -->
     <div id="legalModalOverlay" class="modal-overlay" onclick="closeLegalModal()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">Trademark & Intellectual Property Notice</div>
@@ -888,9 +888,20 @@
         }
         drawParticles();
 
+        // Upgraded Wire Globe with Active Country Nodes & Live Charge Lines
         const canvas = document.getElementById('wireGlobeCanvas');
         const ctx = canvas.getContext('2d');
         let angle = 0;
+
+        // Pre-defined country node positions on sphere coordinates (lat, lon)
+        const countryNodes = [
+            { name: "UK HQ", lat: 0.9, lon: 0.0 },
+            { name: "US Node", lat: 0.7, lon: -1.2 },
+            { name: "Tokyo Hub", lat: 0.6, lon: 2.4 },
+            { name: "Singapore Node", lat: 0.2, lon: 1.8 },
+            { name: "Dubai Hub", lat: 0.4, lon: 0.9 },
+            { name: "Sydney Node", lat: -0.6, lon: 2.6 }
+        ];
 
         function drawWireGlobe() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -898,6 +909,7 @@
             const cy = canvas.height / 2;
             const radius = 95;
 
+            // Outer Atmospheric Glow
             let outerGlow = ctx.createRadialGradient(cx, cy, radius * 0.6, cx, cy, radius * 1.15);
             outerGlow.addColorStop(0, 'rgba(212, 175, 55, 0.25)');
             outerGlow.addColorStop(1, 'rgba(212, 175, 55, 0)');
@@ -906,6 +918,7 @@
             ctx.fillStyle = outerGlow;
             ctx.fill();
 
+            // Rotating Meridian Rings (Wire Mesh)
             for (let i = 0; i < 4; i++) {
                 let rotAngle = angle + (i * Math.PI / 4);
                 ctx.beginPath();
@@ -915,6 +928,7 @@
                 ctx.stroke();
             }
 
+            // Latitude Parallels
             for (let lat = -2; lat <= 2; lat++) {
                 let yOffset = lat * 28;
                 let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
@@ -925,6 +939,45 @@
                 ctx.stroke();
             }
 
+            // Render Active Country Nodes & Charging Lines across the spinning sphere
+            let projectedNodes = countryNodes.map(node => {
+                let currentLon = node.lon + angle;
+                let x = cx + radius * Math.cos(node.lat) * Math.sin(currentLon);
+                let y = cy - radius * Math.sin(node.lat);
+                let visible = Math.cos(currentLon) > -0.2; // Only show nodes on front/visible side
+                return { x, y, visible, name: node.name };
+            });
+
+            // Draw glowing charge transfer lines between visible country nodes
+            for (let i = 0; i < projectedNodes.length; i++) {
+                for (let j = i + 1; j < projectedNodes.length; j++) {
+                    if (projectedNodes[i].visible && projectedNodes[j].visible) {
+                        ctx.beginPath();
+                        ctx.moveTo(projectedNodes[i].x, projectedNodes[i].y);
+                        ctx.lineTo(projectedNodes[j].x, projectedNodes[j].y);
+                        ctx.strokeStyle = 'rgba(253, 246, 226, 0.35)';
+                        ctx.lineWidth = 0.8;
+                        ctx.setLineDash([3, 3]); // Electric charging pulse line style
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                    }
+                }
+            }
+
+            // Draw country node points with pulse rings
+            projectedNodes.forEach(node => {
+                if (node.visible) {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, 3.5, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FDF6E2';
+                    ctx.shadowColor = '#D4AF37';
+                    ctx.shadowBlur = 10;
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // reset
+                }
+            });
+
+            // Glowing Plasma Core Center
             let gradient = ctx.createRadialGradient(cx, cy, 2, cx, cy, 25);
             gradient.addColorStop(0, '#ffffff');
             gradient.addColorStop(0.5, '#FDF6E2');
@@ -934,7 +987,7 @@
             ctx.fillStyle = gradient;
             ctx.fill();
 
-            angle += 0.015;
+            angle += 0.012;
             requestAnimationFrame(drawWireGlobe);
         }
         drawWireGlobe();
