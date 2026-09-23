@@ -98,7 +98,7 @@
             text-transform: uppercase;
         }
 
-        /* Luxury Glassmorphic Navigation Bar matching the Mobile Mockup Grid */
+        /* Exactly 8 Luxury Navigation Rooms Grid */
         .luxury-nav-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -136,9 +136,17 @@
             gap: 15px;
         }
 
-        .nav-card-icon {
-            font-size: 1.2rem;
-            color: var(--champagne-gold);
+        .nav-card-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--champagne-muted);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--champagne-gold);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-card:hover .nav-card-dot, .nav-card.active .nav-card-dot {
+            background-color: var(--champagne-gold);
         }
 
         .nav-card-title {
@@ -409,163 +417,130 @@
             </div>
             <div style="display: flex; gap: 15px; align-items: center;">
                 <div style="font-size: 0.78rem; color: var(--cream-accent); background: rgba(212, 175, 55, 0.08); padding: 6px 14px; border: 1px solid var(--border-glass); border-radius: 6px;">
-                    ● SOVEREIGN VAULT SECURED
+                    ● SOVEREIGN VAULT SECURED // ONYX COIN ACTIVE
                 </div>
             </div>
         </div>
 
-        <!-- Luxury Navigation Card Grid Matching Mobile & Desktop Mockups -->
+        <!-- Exactly 8 Luxury Navigation Rooms Grid -->
         <nav class="luxury-nav-grid">
-            <div class="nav-card active" onclick="switchTab('mapTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">👑</span>
-                    <span class="nav-card-title">Home & Global Map</span>
-                </div>
+            <div class="nav-card active" onclick="switchTab('room1', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">1. Home & Global Map</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('translationTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">⚡</span>
-                    <span class="nav-card-title">Intelligence / Translators</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room2', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">2. Intelligence & Translators</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('hmrcTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">💎</span>
-                    <span class="nav-card-title">Sovereign AI & Books</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room3', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">3. Sovereign AI & Books</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('reportsTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">🗺️</span>
-                    <span class="nav-card-title">Trade Routes & CV Screener</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room4', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">4. Trade Routes & CV Screener</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('templatesTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">🛡️</span>
-                    <span class="nav-card-title">Military Assets & Marketing</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room5', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">5. Market & Growth</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('notesTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">🌐</span>
-                    <span class="nav-card-title">Diplomatic Pulse & Memos</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room6', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">6. Diplomatic Pulse & Memos</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('pricingTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">📁</span>
-                    <span class="nav-card-title">Resource Vault & Tiers</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room7', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">7. Resource Vault & Tiers</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
-            <div class="nav-card" onclick="switchTab('communityTab', this)">
-                <div class="nav-card-left">
-                    <span class="nav-card-icon">⚙️</span>
-                    <span class="nav-card-title">Command Center & Brand</span>
-                </div>
+            <div class="nav-card" onclick="switchTab('room8', this)">
+                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">8. Command Center & Brand</span></div>
                 <span class="nav-card-arrow">›</span>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- ROOM 1: Global Map & Plasma Globe -->
-        <div id="mapTab" class="section-view active-view">
+        <!-- ROOM 1: Home & Global Map -->
+        <div id="room1" class="section-view active-view">
             <section class="panel">
-                <h2 class="panel-header">Global Intelligence Map</h2>
-                <p class="panel-subheader">Interactive regional node tracking & sales telemetry</p>
-                <div class="map-container">
-                    <img src="7740.png" alt="Onyx Sovereign Map" class="map-image">
-                </div>
+                <h2 class="panel-header">Global Intelligence Map & Sales Tracking</h2>
+                <p class="panel-subheader">Exact product sale locations, competitor intelligence & emerging trend radar</p>
+                <div class="map-container"><img src="7740.png" alt="Onyx Sovereign Map" class="map-image"></div>
             </section>
-
             <section class="panel">
-                <h2 class="panel-header">Plasma Ball Glassmorphic Globe</h2>
-                <p class="panel-subheader">Touch globe to inspect global sales & market trends</p>
+                <h2 class="panel-header">Plasma Ball Glassmorphic Globe (Webby Effect)</h2>
+                <p class="panel-subheader">Inspect global sales telemetry, market exit signals & competitor benchmarking</p>
                 <div class="wire-globe-container">
                     <canvas id="wireGlobeCanvas" width="240" height="240"></canvas>
-                    <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent);">
-                        ● PLASMA SPHERE: TOUCH TO INSPECT INTEL
-                    </div>
+                    <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent);">● PLASMA SPHERE: TOUCH TO INSPECT SALES & TRENDS</div>
                 </div>
             </section>
         </div>
 
         <!-- ROOM 2: Intelligence & Translators -->
-        <div id="translationTab" class="section-view">
+        <div id="room2" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Real-Time Multi-Channel Translator</h2>
                 <p class="panel-subheader">Input speech or text transcript for instant sovereign translation</p>
                 <textarea id="translationInput" rows="4" placeholder="Enter text stream here..."></textarea>
                 <button class="action-btn" onclick="executeTranslation()">Execute Translation</button>
-                <div id="translationOutput" style="margin-top: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 6px; font-size: 0.85rem; color: var(--cream-accent); min-height: 50px;">
-                    Translated output stream will appear here...
-                </div>
+                <div id="translationOutput" style="margin-top: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 6px; font-size: 0.85rem; color: var(--cream-accent); min-height: 50px;">Translated output stream will appear here...</div>
             </section>
             <section class="panel">
                 <h2 class="panel-header">Secure Meeting & BSL Channel</h2>
-                <div class="item-stack">
-                    <div class="item-row">
-                        <div><div class="item-title">Encrypted Video Channel #1</div><div class="item-sub">Status: Connected</div></div>
-                        <span style="color: #4ade80; font-size: 0.8rem;">● Live</span>
-                    </div>
-                </div>
+                <div class="item-stack"><div class="item-row"><div><div class="item-title">Encrypted Video Channel #1</div><div class="item-sub">Status: Connected</div></div><span style="color: #4ade80; font-size: 0.8rem;">● Live</span></div></div>
             </section>
         </div>
 
-        <!-- ROOM 3: Sovereign AI & HMRC Books -->
-        <div id="hmrcTab" class="section-view">
+        <!-- ROOM 3: Sovereign AI & Books -->
+        <div id="room3" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">HMRC Tax & Multi-Asset Reserve Isolation</h2>
                 <p class="panel-subheader">Enter invoice amount to calculate and isolate your 20% HMRC reserve</p>
                 <input type="text" id="invoiceAmountInput" placeholder="Enter invoice amount (e.g. 5000)">
                 <button class="action-btn" onclick="calculateHMRCReserve()">Calculate & Isolate Tax</button>
                 <div id="hmrcResultBox" style="margin-top: 15px; font-size: 0.9rem; color: var(--cream-accent);"></div>
-                
                 <div class="financial-grid" style="margin-top: 20px;">
                     <div class="metric-card"><span class="metric-title">HMRC Reserve (20%)</span><div class="metric-value" id="liveCounter1">£1,420.00</div></div>
-                    <div class="metric-card"><span class="metric-title">Crypto Assets Synced</span><div class="metric-value" id="liveCounter2">£12,850.00</div></div>
+                    <div class="metric-card"><span class="metric-title">Onyx Coin & Crypto Sync</span><div class="metric-value" id="liveCounter2">£12,850.00</div></div>
                 </div>
             </section>
-            <section class="panel">
-                <h2 class="panel-header">Evidence & Receipt Vault</h2>
-                <div class="item-stack"><div class="item-row"><span class="item-title">OCR Auto-Categorization</span><span style="color: var(--champagne-gold);">Active</span></div></div>
-            </section>
+            <section class="panel"><h2 class="panel-header">Evidence & Receipt Vault</h2><div class="item-stack"><div class="item-row"><span class="item-title">OCR Auto-Categorization</span><span style="color: var(--champagne-gold);">Active</span></div></div></section>
         </div>
 
         <!-- ROOM 4: Trade Routes & CV Screener -->
-        <div id="reportsTab" class="section-view">
+        <div id="room4" class="section-view">
             <section class="panel" style="grid-column: span 2;">
                 <h2 class="panel-header">Executive CV Assessor & Competency Screener</h2>
                 <p class="panel-subheader">Paste applicant text to run automated hard-skill verification</p>
                 <textarea id="cvInput" rows="5" placeholder="Paste applicant resume or cover letter text here..."></textarea>
                 <button class="action-btn" onclick="runCVScreener()">Run Competency Screener</button>
-                <div id="cvOutputResult" style="margin-top: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 6px; font-size: 0.85rem; color: var(--cream-accent);">
-                    Screening results and competency scores will display here...
-                </div>
+                <div id="cvOutputResult" style="margin-top: 15px; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 6px; font-size: 0.85rem; color: var(--cream-accent);">Screening results and competency scores will display here...</div>
             </section>
         </div>
 
-        <!-- ROOM 5: Military Assets & Marketing -->
-        <div id="templatesTab" class="section-view">
+        <!-- ROOM 5: Market & Growth (Includes Affiliate Friend Sign-Up Engine) -->
+        <div id="room5" class="section-view">
             <section class="panel">
-                <h2 class="panel-header">Marketing & Sales Templates</h2>
+                <h2 class="panel-header">Affiliate & Friend Referral Network</h2>
+                <p class="panel-subheader">Track automated sign-ups, friend rewards, and community growth</p>
+                <input type="text" id="affiliateEmailInput" placeholder="Enter friend or referral email...">
+                <button class="action-btn" onclick="registerAffiliateReferral()">Register Friend Sign-Up</button>
+                <div id="affiliateResultBox" style="margin-top: 12px; font-size: 0.85rem; color: var(--cream-accent);"></div>
+            </section>
+            <section class="panel">
+                <h2 class="panel-header">Marketing & Sales Sequences</h2>
                 <div class="item-stack">
-                    <div class="item-row"><div class="item-title">High-Ticket Client Acquisition Sequence</div><button class="action-btn" style="margin-top:0;" onclick="openModal('Template Deployed', 'Sequence copied to clipboard.')">Deploy</button></div>
+                    <div class="item-row">
+                        <div class="item-title">High-Ticket Client Acquisition Sequence</div>
+                        <button class="action-btn" style="margin-top:0;" onclick="openModal('Template Deployed', 'Sequence copied to clipboard.')">Deploy</button>
+                    </div>
                 </div>
             </section>
-            <section class="panel"><h2 class="panel-header">Template Customizer</h2><p class="panel-subheader">Active Tone: Champagne & Cream Standard</p></section>
         </div>
 
         <!-- ROOM 6: Diplomatic Pulse & Memos -->
-        <div id="notesTab" class="section-view">
+        <div id="room6" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Dispatch Encrypted Internal Memo</h2>
                 <input type="text" id="memoTitleInput" placeholder="Memo Subject...">
@@ -576,30 +551,27 @@
             <section class="panel">
                 <h2 class="panel-header">Active Memos Vault</h2>
                 <div class="item-stack" id="memoVaultList">
-                    <div class="item-row"><div><div class="item-title">Executive Strategy Session // Halifax Hub</div><div class="item-sub">Logged Today // 4 Action Items Assigned</div></div></div>
+                    <div class="item-row"><div><div class="item-title">Executive Strategy Session // Sovereign Hub</div><div class="item-sub">Logged Today // 4 Action Items Assigned</div></div></div>
                 </div>
             </section>
         </div>
 
-        <!-- ROOM 7: Resource Vault & Pricing -->
-        <div id="pricingTab" class="section-view">
+        <!-- ROOM 7: Resource Vault & Tiers -->
+        <div id="room7" class="section-view">
             <section class="panel"><h2 class="panel-header">Commercial Pricing Tiers</h2><div class="item-stack"><div class="item-row"><div>Tier 3: Sovereign Ecosystem</div><div style="color: var(--cream-accent);">£79.99 / mo</div></div></div></section>
-            <section class="panel"><h2 class="panel-header">Community Alignment</h2><div class="item-row"><span>Halifax Community Hub & Learning Space</span><span style="color: var(--champagne-gold);">Active</span></div></section>
+            <section class="panel"><h2 class="panel-header">Ecosystem Alignment</h2><div class="item-row"><span>Onyx One Core Vault & Onyx Coin Matrix</span><span style="color: var(--champagne-gold);">Active</span></div></section>
         </div>
 
-        <!-- ROOM 8: Command Center & Brand Ecosystem -->
-        <div id="communityTab" class="section-view">
+        <!-- ROOM 8: Command Center & Brand -->
+        <div id="room8" class="section-view">
             <section class="panel">
-                <h2 class="panel-header">Community Initiatives & Brand Ecosystem</h2>
+                <h2 class="panel-header">Sovereign Ecosystem & Invoicing Safeguards</h2>
                 <div class="item-stack">
-                    <div class="item-row"><div>Your True North & Anstika Framework</div><span style="color: var(--champagne-gold);">Active</span></div>
-                    <div class="item-row"><div>The Koa Collective Educational Hub</div><span style="color: var(--champagne-gold);">Synced</span></div>
+                    <div class="item-row"><div>Automated Invoice Chasing & Leakage Prevention</div><span style="color: var(--champagne-gold);">Active</span></div>
+                    <div class="item-row"><div>Onyx Coin Multi-Asset Ledger Synchronization</div><span style="color: var(--champagne-gold);">Synced</span></div>
                 </div>
             </section>
-            <section class="panel">
-                <h2 class="panel-header">Ecosystem Manager</h2>
-                <button class="action-btn" onclick="openModal('Ecosystem Synced', 'All regional node manifests and Koa Collective toolkits successfully synchronized.')">Sync All Nodes</button>
-            </section>
+            <section class="panel"><h2 class="panel-header">Command Center Manager</h2><button class="action-btn" onclick="openModal('Command Center Synced', 'All regional node manifests, banking connections, and leakage prevention guardrails successfully synchronized.')">Sync All Nodes</button></section>
         </div>
     </main>
 
@@ -636,7 +608,7 @@
         }
         drawParticles();
 
-        // 3D GLASSMORPHIC PLASMA SPHERE WITH ROTATING COUNTRY NODES
+        // 3D GLASSMORPHIC PLASMA SPHERE WITH WEBBY LIGHTNING EFFECT
         const canvas = document.getElementById('wireGlobeCanvas');
         const ctx = canvas.getContext('2d');
         let angle = 0;
@@ -652,7 +624,7 @@
         });
         canvas.addEventListener('mouseleave', () => { isHovered = false; });
         canvas.addEventListener('click', () => {
-            openModal('Plasma Globe Global Intel HUD', '🌐 GLOBAL SALES & MARKET INTELLIGENCE:\n\n• Top Performing Regions: UK (HQ Velocity +18%), North America (US Tech & Design Hubs), UAE (Executive Vaults).\n• Wealth & Commodity Tracking: Gold Spot Index (+1.4%), Sovereign Multi-Asset Crypto Reserves Synced.');
+            openModal('Sales Telemetry & Trend Radar', 'GLOBAL SALES & COMPETITIVE INTELLIGENCE:\n\n• Top Selling Regions: UK (HQ Velocity +18%), North America, UAE Executive Vaults.\n• Emerging Trend Radar: High-demand sovereign asset scaling detected. Market Exit Signal: Optimal holding window active.');
         });
 
         const countryNodes = [
@@ -671,20 +643,35 @@
             const radius = 95;
 
             let glassGrad = ctx.createRadialGradient(cx - 30, cy - 30, 5, cx, cy, radius);
-            glassGrad.addColorStop(0, 'rgba(253, 246, 226, 0.15)');
-            glassGrad.addColorStop(0.5, 'rgba(20, 20, 20, 0.85)');
-            glassGrad.addColorStop(1, 'rgba(3, 3, 3, 0.98)');
+            glassGrad.addColorStop(0, 'rgba(253, 246, 226, 0.2)');
+            glassGrad.addColorStop(0.5, 'rgba(20, 20, 20, 0.88)');
+            glassGrad.addColorStop(1, 'rgba(3, 3, 3, 0.99)');
             
             ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2);
             ctx.fillStyle = glassGrad; ctx.fill();
-            ctx.strokeStyle = 'rgba(212, 175, 55, 0.65)'; ctx.lineWidth = 2; ctx.stroke();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.75)'; ctx.lineWidth = 2; ctx.stroke();
 
-            for (let i = 0; i < 4; i++) {
-                let rotAngle = angle + (i * Math.PI / 4);
+            let rimGrad = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius * 1.15);
+            rimGrad.addColorStop(0, 'rgba(212, 175, 55, 0.4)');
+            rimGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            ctx.beginPath(); ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2);
+            ctx.fillStyle = rimGrad; ctx.fill();
+
+            for (let i = 0; i < 5; i++) {
+                let rotAngle = angle + (i * Math.PI / 5);
                 ctx.beginPath();
                 ctx.ellipse(cx, cy, radius * Math.abs(Math.cos(rotAngle)), radius, 0, 0, Math.PI * 2);
-                ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.4)' : 'rgba(253, 246, 226, 0.22)';
+                ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.45)' : 'rgba(253, 246, 226, 0.25)';
                 ctx.lineWidth = 1; ctx.stroke();
+            }
+
+            for (let lat = -2; lat <= 2; lat++) {
+                let yOffset = lat * 28;
+                let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
+                ctx.beginPath();
+                ctx.ellipse(cx, cy + yOffset, latRadius, latRadius * 0.25, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+                ctx.lineWidth = 0.8; ctx.stroke();
             }
 
             let projectedNodes = countryNodes.map(node => {
@@ -695,32 +682,59 @@
                 return { x, y, visible, name: node.name };
             });
 
-            let coreX = cx + Math.sin(angle * 2) * 8;
-            let coreY = cy + Math.cos(angle * 1.5) * 6;
+            let coreX = cx + Math.sin(angle * 2.5) * 10;
+            let coreY = cy + Math.cos(angle * 2) * 8;
 
             projectedNodes.forEach(node => {
                 if (node.visible) {
                     ctx.beginPath(); ctx.moveTo(coreX, coreY);
-                    ctx.lineTo((coreX + node.x) / 2 + (Math.random() - 0.5) * 15, (coreY + node.y) / 2 + (Math.random() - 0.5) * 15);
+                    let segs = 3;
+                    for(let s=1; s<segs; s++) {
+                        let t = s / segs;
+                        let nx = coreX + (node.x - coreX) * t + (Math.random() - 0.5) * 18;
+                        let ny = coreY + (node.y - coreY) * t + (Math.random() - 0.5) * 18;
+                        ctx.lineTo(nx, ny);
+                    }
                     ctx.lineTo(node.x, node.y);
-                    ctx.strokeStyle = 'rgba(253, 246, 226, 0.65)'; ctx.lineWidth = 1.2; ctx.stroke();
+                    ctx.strokeStyle = 'rgba(253, 246, 226, 0.75)'; ctx.lineWidth = 1.4; ctx.stroke();
                 }
             });
 
+            if (isHovered) {
+                let dx = mouseX - cx;
+                let dy = mouseY - cy;
+                if (Math.sqrt(dx * dx + dy * dy) < radius) {
+                    ctx.beginPath(); ctx.moveTo(coreX, coreY);
+                    ctx.lineTo((coreX + mouseX)/2 + (Math.random()-0.5)*25, (coreY + mouseY)/2 + (Math.random()-0.5)*25);
+                    ctx.lineTo(mouseX, mouseY);
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.shadowColor = '#D4AF37'; ctx.shadowBlur = 18;
+                    ctx.lineWidth = 2.2; ctx.stroke();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
             projectedNodes.forEach(node => {
                 if (node.visible) {
-                    ctx.beginPath(); ctx.arc(node.x, node.y, 4, 0, Math.PI * 2);
-                    ctx.fillStyle = '#FDF6E2'; ctx.shadowColor = '#D4AF37'; ctx.shadowBlur = 12;
+                    ctx.beginPath(); ctx.arc(node.x, node.y, 4.5, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FDF6E2'; ctx.shadowColor = '#D4AF37'; ctx.shadowBlur = 14;
                     ctx.fill(); ctx.shadowBlur = 0;
                 }
             });
+
+            let coreGrad = ctx.createRadialGradient(coreX, coreY, 2, coreX, coreY, 26);
+            coreGrad.addColorStop(0, '#ffffff');
+            coreGrad.addColorStop(0.4, '#FDF6E2');
+            coreGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+            ctx.beginPath(); ctx.arc(coreX, coreY, 26, 0, Math.PI * 2);
+            ctx.fillStyle = coreGrad; ctx.fill();
 
             angle += 0.012;
             requestAnimationFrame(drawPlasmaGlobe);
         }
         drawPlasmaGlobe();
 
-        // Functional Button Handlers
+        // Functional Handlers
         function executeTranslation() {
             const txt = document.getElementById('translationInput').value;
             const out = document.getElementById('translationOutput');
@@ -736,6 +750,14 @@
             const tax = (num * 0.20).toFixed(2);
             resBox.innerText = `Successfully isolated 20% HMRC Tax Reserve: £${tax} (Gross: £${num})`;
             document.getElementById('liveCounter1').innerText = `£${tax}`;
+        }
+
+        function registerAffiliateReferral() {
+            const email = document.getElementById('affiliateEmailInput').value;
+            const box = document.getElementById('affiliateResultBox');
+            if(!email.trim()) { box.innerText = "Please enter a valid referral email."; return; }
+            box.innerText = `Referral registered for ${email}. Friend sign-up reward logged to ledger!`;
+            document.getElementById('affiliateEmailInput').value = '';
         }
 
         function runCVScreener() {
