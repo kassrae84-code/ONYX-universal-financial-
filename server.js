@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Functional API endpoint for ledger synchronization and calculations
+// Functional API backend for real-time HMRC calculations and sovereign synchronization
 app.post('/api/sync-ledger', (req, res) => {
     try {
         const { amount, type } = req.body;
