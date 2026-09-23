@@ -1,0 +1,11 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "onyx-one-sovereign-os"
+main = "server.js"
+compatibility_date = "2026-04-30"
+
+[assets]
+directory = "./"
+binding = "ASSETS"
+
+[vars]
+ENVIRONMENT = "production"
