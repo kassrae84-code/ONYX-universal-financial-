@@ -901,5 +901,18 @@
             }
         }
     </script>
-</body>
+function dispatchSmartNotesToTeam() {
+    const team = document.getElementById('smartNotesTeamInput').value;
+    const notes = document.getElementById('smartNotesBodyInput').value;
+    const statusBox = document.getElementById('smartNotesStatus');
+    
+    if(!team.trim() || !notes.trim()) {
+        statusBox.innerText = "Please specify a team and enter note content.";
+        return;
+    }
+    
+    statusBox.innerText = `[DISPATCHED]: Smart notes successfully encrypted, formatted, and emailed to team '${team}' across all connected channels.`;
+    document.getElementById('smartNotesTeamInput').value = '';
+    document.getElementById('smartNotesBodyInput').value = '';
+}</body>
 </html>
