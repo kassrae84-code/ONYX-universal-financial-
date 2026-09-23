@@ -3,33 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONYX ONE // Sovereign Intelligence Portal</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: #050505;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            transition: opacity 1s ease;
-        }
-        body.dissolve { opacity: 0; }
-        .portal-link { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; text-decoration: none; }
-        img { max-width: 100%; max-height: 100vh; object-fit: contain; cursor: pointer; }
-    </style>
+    <title>Onyx One | Sovereign Command Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="app.html" class="portal-link" onclick="fade(event)">
-        <img src="7653.png" alt="Onyx One Logo">
-    </a>
-    <script>
-        function fade(e) {
-            e.preventDefault();
-            document.body.classList.add('dissolve');
-            setTimeout(() => { window.location.href = 'app.html'; }, 1000);
-        }
-    </script>
+    <div class="onyx-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>ONYX ONE</h2>
+                <span class="status-badge">SECURE // ACTIVE</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">Global Globe Scanner</a>
+                <a href="#">Universal Ledger & Crypto</a>
+                <a href="#">Encrypted Memos & Email</a>
+                <a href="#">Native Meeting Rooms</a>
+                <a href="#">Sunday Admin & Invoices</a>
+                <a href="#">Tax & Bookkeeping Vault</a>
+                <a href="#">Evidence Vaults</a>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard View -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Command Telemetry</h1>
+                <div class="user-meta">
+                    <span class="secure-id">ID: RINA-RAE-01</span>
+                    <div class="pulse-dot"></div>
+                </div>
+            </header>
+
+            <section class="dashboard-grid">
+                <!-- Market Globe Scanner Module -->
+                <div class="card globe-card">
+                    <h3>Global Market Intelligence</h3>
+                    <p class="card-desc">Real-time demand and yield sweep across active nodes.</p>
+                    <div class="globe-preview">
+                        <div class="wireframe-sphere"></div>
+                        <span class="globe-status">SCANNING ACTIVE SECTORS...</span>
+                    </div>
+                </div>
+
+                <!-- Ledger & Crypto Module -->
+                <div class="card ledger-card">
+                    <h3>Unified Ledger & Crypto</h3>
+                    <div class="metric-row">
+                        <span>Fiat Reserves:</span>
+                        <span class="val">£0.00 (Protected)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Onyx Coin Economy:</span>
+                        <span class="val cyan">Active</span>
+                    </div>
+                </div>
+
+                <!-- Encrypted Communication -->
+                <div class="card comms-card">
+                    <h3>Encrypted Memos & Vaults</h3>
+                    <p class="card-desc">End-to-end zero-knowledge record storage.</p>
+                    <button class="action-btn">Open Secure Log</button>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
