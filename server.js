@@ -26,7 +26,7 @@ app.post('/api/sync-ledger', (req, res) => {
     } catch (error) {
         res.status(500).json({ status: 'error', message: error.message });
     }
-});
+}); 
 
 // Start the server
 app.listen(PORT, () => {
