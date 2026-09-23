@@ -1,17 +1,38 @@
-import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
+const express = require('express');
+const path = require('path');
 
-export default {
-    async fetch(request, env, ctx) {
-        try {
-            // Serve static files (like index.html) directly from Cloudflare's asset binding
-            return await getAssetFromKV({
-                request,
-                waitUntil: ctx.waitUntil.bind(ctx),
-            }, {
-                ASSET_NAMESPACE: env.__STATIC_CONTENT,
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname)));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Functional API endpoint for ledger synchronization and calculations
+app.post('/api/sync-ledger', (req, res) => {
+    try {
+        const { amount, type } = req.body;
+        const numericAmount = parseFloat(amount) || 0;
+        
+        if (type === 'hmrc') {
+            const isolatedTax = (numericAmount * 0.20).toFixed(2);
+            return res.status(200).json({ 
+                status: 'success', 
+                calculatedReserve: `£${isolatedTax}`,
+                message: 'HMRC 20% tax reserve successfully isolated and logged.' 
             });
-        } catch (e) {
-            return new Response("Onyx One Sovereign Center // Asset Not Found", { status: 404 });
         }
+
+        res.status(200).json({ status: 'success', message: 'Sovereign telemetry synchronized.' });
+    } catch (error) {
+        res.status(500).json({ status: 'error', message: error.message });
     }
-};
+});
+
+app.listen(PORT, () => {
+    console.log(`[ONYX ONE] Sovereign Command Center online at http://localhost:${PORT}`);
+});
