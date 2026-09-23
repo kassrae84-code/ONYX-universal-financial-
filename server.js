@@ -1,56 +1,34 @@
-require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const { createClient } = require('@supabase/supabase-js');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const path = require('path');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware for parsing JSON and handling static files
 app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
-// ONYX ONE: ANTI-SCRAPE SHIELD
-const blockedBots = [
-    'GPTBot', 'ClaudeBot', 'Bytespider', 'CCBot', 
-    'Meta-ExternalAgent', 'Applebot-Extended', 'Google-Extended'
-];
+// Serve static frontend files from the current directory
+app.use(express.static(path.join(__dirname)));
 
-app.use((req, res, next) => {
-    const userAgent = req.get('User-Agent') || '';
-    const isBot = blockedBots.some(bot => userAgent.includes(bot));
-    
-    if (isBot) {
-        console.log(`[SECURITY] Blocked scraping attempt from: ${userAgent}`);
-        return res.status(403).json({ error: 'Access Denied. Sovereign IP Protected.' });
-    }
-    next();
+// Base route to serve the command center cockpit
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// SYSTEM LOCK: Initialize Supabase Vault
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
-
-app.post('/api/finance/invoice/process', async (req, res) => {
+// API Endpoint placeholder for Supabase / Webhook sync
+app.post('/api/sync-ledger', (req, res) => {
     try {
-        const { clientId, amount, description } = req.body;
-        const hmrcReserve = amount * 0.20;
-        
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: amount * 100,
-            currency: 'gbp',
-            metadata: { clientId, hmrcReserve, type: 'elite_invoice' }
-        });
-
-        await supabase.from('financial_ledger').insert([
-            { client_id: clientId, gross_revenue: amount, hmrc_tax_reserve: hmrcReserve }
-        ]);
-
-        res.json({ success: true, clientSecret: paymentIntent.client_secret, hmrcReserve });
+        const payload = req.body;
+        // Placeholder for handling multi-account & crypto ledger ingestion
+        console.log('Incoming sync payload received:', payload);
+        res.status(200).json({ status: 'success', message: 'Ledger telemetry synchronized.' });
     } catch (error) {
-        res.status(500).json({ error: 'Financial routing error. Vault secured.' });
+        res.status(500).json({ status: 'error', message: error.message });
     }
 });
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`[ONYX ONE] Sovereign Engine Online - Port ${PORT}`));
+// Start the server
+app.listen(PORT, () => {
+    console.log(`[ONYX ONE] Sovereign Command Center online and running at http://localhost:${PORT}`);
+});
