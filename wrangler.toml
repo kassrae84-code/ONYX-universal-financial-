@@ -3,9 +3,8 @@ name = "onyx-one-sovereign-os"
 main = "server.js"
 compatibility_date = "2026-04-30"
 
-[assets]
-directory = "./"
-binding = "ASSETS"
+[site]
+bucket = "./"
 
 [vars]
 ENVIRONMENT = "production"
