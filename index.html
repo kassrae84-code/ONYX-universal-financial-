@@ -66,51 +66,50 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
+            padding: 18px 40px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.12);
         }
 
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 15px;
         }
 
         .brand-logo {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             object-fit: contain;
-            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
         }
 
         .brand-title {
-            font-size: 1.35rem;
-            letter-spacing: 5px;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
             color: var(--cream-accent);
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
         }
 
         .cockpit-title {
             font-size: 0.75rem;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             color: var(--champagne-gold);
             text-transform: uppercase;
-            margin-top: 3px;
         }
 
         .header-badges {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
 
         .badge-pill {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             letter-spacing: 1px;
             color: var(--cream-accent);
             background: rgba(212, 175, 55, 0.08);
-            padding: 8px 16px;
+            padding: 6px 14px;
             border: 1px solid var(--border-glass);
             border-radius: 6px;
             text-transform: uppercase;
@@ -123,73 +122,58 @@
             background: rgba(212, 175, 55, 0.15);
         }
 
-        /* EXACT 8 ROOMS NAVIGATION GRID STYLING */
-        .luxury-nav-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            padding: 30px 50px;
-            max-width: 1500px;
-            margin: 0 auto;
-            width: 100%;
+        /* STICKY TOP NAVIGATION TABS (8 ROOMS) */
+        .sticky-tabs-container {
+            display: flex;
+            gap: 10px;
+            padding: 14px 40px;
+            overflow-x: auto;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: var(--champagne-gold) var(--onyx-abyss);
         }
 
-        .nav-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        .sticky-tab {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid var(--border-glass);
-            border-radius: 12px;
-            padding: 22px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-card:hover, .nav-card.active {
-            border-color: var(--champagne-gold);
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(20, 20, 20, 0.92) 100%);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 25px rgba(212, 175, 55, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .nav-card-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .nav-card-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--champagne-muted);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--champagne-gold);
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-card:hover .nav-card-dot, .nav-card.active .nav-card-dot {
-            background-color: var(--champagne-gold);
-        }
-
-        .nav-card-title {
-            font-size: 0.9rem;
-            letter-spacing: 1.5px;
+            border-radius: 8px;
+            padding: 10px 18px;
             color: var(--cream-accent);
+            font-size: 0.78rem;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .nav-card-arrow {
-            color: var(--champagne-muted);
-            font-size: 1.1rem;
+        .sticky-tab .tab-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--champagne-muted);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--champagne-gold);
+        }
+
+        .sticky-tab:hover, .sticky-tab.active {
+            border-color: var(--champagne-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(20, 20, 20, 0.95) 100%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+            color: #ffffff;
+        }
+
+        .sticky-tab.active .tab-dot {
+            background-color: var(--champagne-gold);
         }
 
         main {
             flex: 1;
-            padding: 25px 50px;
+            padding: 30px 40px;
             max-width: 1550px;
             margin: 0 auto;
             width: 100%;
@@ -197,7 +181,7 @@
 
         .section-view {
             display: none;
-            grid-template-columns: 1.4fr 1fr;
+            grid-template-columns: 1.3fr 1fr;
             gap: 25px;
             width: 100%;
             animation: fadeIn 0.4s ease forwards;
@@ -216,7 +200,7 @@
             background: linear-gradient(135deg, rgba(22, 22, 22, 0.88) 0%, rgba(10, 10, 10, 0.96) 100%);
             border: 1px solid var(--border-glass);
             border-radius: 12px;
-            padding: 28px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -225,19 +209,18 @@
         }
 
         .panel-header {
-            font-size: 1rem;
+            font-size: 0.95rem;
             letter-spacing: 2px;
             color: var(--cream-accent);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
         .panel-subheader {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--champagne-muted);
-            margin-bottom: 18px;
-            letter-spacing: 0.5px;
+            margin-bottom: 15px;
         }
 
         .map-container {
@@ -246,7 +229,7 @@
             border: 1px solid var(--border-glass);
             border-radius: 10px;
             overflow: hidden;
-            min-height: 400px;
+            min-height: 420px;
             background: #000;
             display: flex;
             align-items: center;
@@ -272,15 +255,15 @@
             justify-content: center;
             flex: 1;
             position: relative;
-            min-height: 400px;
+            min-height: 420px;
             overflow: hidden;
         }
 
         #wireGlobeCanvas {
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            height: 280px;
             cursor: pointer;
-            filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.55));
+            filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.6));
         }
 
         .financial-grid {
@@ -308,7 +291,7 @@
         }
 
         .metric-value {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             color: var(--cream-accent);
             font-weight: 600;
             margin-top: 10px;
@@ -340,7 +323,6 @@
         .item-sub {
             font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 2px;
         }
 
         input[type="text"], textarea {
@@ -363,27 +345,23 @@
             background: var(--champagne-gold);
             color: #050505;
             border: none;
-            padding: 11px 22px;
+            padding: 10px 20px;
             border-radius: 6px;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.75rem;
             cursor: pointer;
-            margin-top: 12px;
+            margin-top: 10px;
             letter-spacing: 1px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
-        .action-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
+        .action-btn:hover { transform: scale(1.02); }
 
-        /* Footer disclaimer & Trademark Notice */
         footer {
             background: var(--onyx-glass);
             border-top: 1px solid var(--border-glass);
-            padding: 20px 50px;
+            padding: 18px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -397,12 +375,10 @@
         .footer-links span {
             color: var(--champagne-gold);
             cursor: pointer;
-            margin-left: 20px;
+            margin-left: 18px;
         }
 
-        .footer-links span:hover {
-            text-decoration: underline;
-        }
+        .footer-links span:hover { text-decoration: underline; }
 
         .modal-overlay {
             position: fixed;
@@ -420,10 +396,9 @@
             border: 1px solid var(--champagne-gold);
             padding: 35px;
             border-radius: 14px;
-            width: 580px;
+            width: 540px;
             max-width: 90%;
             color: var(--cream-accent);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
         }
 
         .modal-header {
@@ -432,7 +407,6 @@
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 700;
         }
 
         .modal-body {
@@ -452,16 +426,10 @@
             cursor: pointer;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        @media(max-width: 1300px) {
-            .luxury-nav-grid { grid-template-columns: repeat(2, 1fr); }
+        @media(max-width: 1200px) {
             .section-view { grid-template-columns: 1fr; }
-        }
-        @media(max-width: 768px) {
-            .luxury-nav-grid { grid-template-columns: 1fr; }
-            .header-top, footer, main { padding: 15px 20px; }
         }
     </style>
 </head>
@@ -479,8 +447,8 @@
                 </div>
             </div>
             <div class="header-badges">
-                <div class="badge-pill" onclick="openModal('Trademark & IP Legal Vault', 'ONYX ONE // SOVEREIGN DECISION-MAKING COCKPIT\n\n• Intellectual Property & Trademark Notice: All proprietary interface layouts, glassmorphic design standards, custom algorithms, and sovereign telemetry architectures are legally protected under international trademark and copyright law.\n• Unauthorized replication, reverse-engineering, or commercial duplication is strictly prohibited.')">
-                    ● Trademark & IP Vault
+                <div class="badge-pill" onclick="openModal('Trademark & IP Legal Vault', 'ONYX ONE // SOVEREIGN DECISION-MAKING COCKPIT\n\n• Intellectual Property & Trademark Notice: All proprietary interface layouts, glassmorphic design standards, custom algorithms, and sovereign telemetry architectures are legally protected under international trademark and copyright law.\n• Unauthorized replication or commercial duplication is strictly prohibited.')">
+                    ● Trademark Vault
                 </div>
                 <div class="badge-pill" onclick="openModal('Sovereign Vault Status', 'SUPABASE // CLOUDFLARE // GITHUB DEPLOYMENT PIPELINE:\n\n• Database State: Supabase secure connection synchronized.\n• Edge Routing: Cloudflare Workers & Pages routing active.\n• Repository Status: GitHub CI/CD pipeline locked and deployed successfully.')">
                     ● Sovereign Vault Secured
@@ -488,45 +456,37 @@
             </div>
         </div>
 
-        <!-- EXACT 8 ROOMS NAVIGATION GRID -->
-        <nav class="luxury-nav-grid">
-            <div class="nav-card active" onclick="switchTab('room1', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">1. Home & Global Map</span></div>
-                <span class="nav-card-arrow">›</span>
+        <!-- STICKY TOP NAVIGATION TABS (THE EXACT 8 ROOMS) -->
+        <nav class="sticky-tabs-container">
+            <div class="sticky-tab active" onclick="switchTab('room1', this)">
+                <div class="tab-dot"></div><span>1. Home & Global Map</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room2', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">2. Intelligence & Translators</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room2', this)">
+                <div class="tab-dot"></div><span>2. Intelligence & Translators</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room3', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">3. Sovereign AI & Books</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room3', this)">
+                <div class="tab-dot"></div><span>3. Sovereign AI & Books</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room4', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">4. Trade Routes & CV Screener</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room4', this)">
+                <div class="tab-dot"></div><span>4. Trade Routes & CV Screener</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room5', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">5. Market & Growth</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room5', this)">
+                <div class="tab-dot"></div><span>5. Market & Growth</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room6', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">6. Diplomatic Pulse & Memos</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room6', this)">
+                <div class="tab-dot"></div><span>6. Diplomatic Pulse & Memos</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room7', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">7. Resource Vault & Tiers</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room7', this)">
+                <div class="tab-dot"></div><span>7. Resource Vault & Tiers</span>
             </div>
-            <div class="nav-card" onclick="switchTab('room8', this)">
-                <div class="nav-card-left"><div class="nav-card-dot"></div><span class="nav-card-title">8. Command Center & Brand</span></div>
-                <span class="nav-card-arrow">›</span>
+            <div class="sticky-tab" onclick="switchTab('room8', this)">
+                <div class="tab-dot"></div><span>8. Command Center & Brand</span>
             </div>
         </nav>
     </header>
 
     <main>
-        <!-- ROOM 1: Home & Global Map -->
+        <!-- ROOM 1: Home & Global Map (MAIN FOCUS WITH GLOBE & MAP) -->
         <div id="room1" class="section-view active-view">
             <section class="panel">
                 <h2 class="panel-header">Global Intelligence Map & Sales Tracking</h2>
@@ -537,7 +497,7 @@
                 <h2 class="panel-header">Plasma Ball Glassmorphic Globe (Webby Effect)</h2>
                 <p class="panel-subheader">Inspect global sales telemetry, market exit signals & competitor benchmarking</p>
                 <div class="wire-globe-container">
-                    <canvas id="wireGlobeCanvas" width="260" height="260"></canvas>
+                    <canvas id="wireGlobeCanvas" width="280" height="280"></canvas>
                     <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent);">● PLASMA SPHERE: TOUCH TO INSPECT SALES & TRENDS</div>
                 </div>
             </section>
@@ -554,13 +514,7 @@
             </section>
             <section class="panel">
                 <h2 class="panel-header">Secure Meeting & BSL Channel</h2>
-                <p class="panel-subheader">Encrypted P2P executive communication streams</p>
-                <div class="item-stack">
-                    <div class="item-row">
-                        <div><div class="item-title">Encrypted Video Channel #1</div><div class="item-sub">Status: Connected to Supabase Edge</div></div>
-                        <span style="color: #4ade80; font-size: 0.8rem; font-weight:600;">● Live</span>
-                    </div>
-                </div>
+                <div class="item-stack"><div class="item-row"><div><div class="item-title">Encrypted Video Channel #1</div><div class="item-sub">Status: Connected via Supabase Edge</div></div><span style="color: #4ade80; font-size: 0.8rem;">● Live</span></div></div>
             </section>
         </div>
 
@@ -577,16 +531,7 @@
                     <div class="metric-card"><span class="metric-title">Onyx Coin & Crypto Sync</span><div class="metric-value" id="liveCounter2">£12,850.00</div></div>
                 </div>
             </section>
-            <section class="panel">
-                <h2 class="panel-header">Evidence & Receipt Vault</h2>
-                <p class="panel-subheader">OCR categorization connected to secure ledger</p>
-                <div class="item-stack">
-                    <div class="item-row">
-                        <span class="item-title">OCR Auto-Categorization</span>
-                        <span style="color: var(--champagne-gold); font-weight:600;">Active</span>
-                    </div>
-                </div>
-            </section>
+            <section class="panel"><h2 class="panel-header">Evidence & Receipt Vault</h2><div class="item-stack"><div class="item-row"><span class="item-title">OCR Auto-Categorization</span><span style="color: var(--champagne-gold);">Active</span></div></div></section>
         </div>
 
         <!-- ROOM 4: Trade Routes & CV Screener -->
@@ -611,7 +556,6 @@
             </section>
             <section class="panel">
                 <h2 class="panel-header">Marketing & Sales Sequences</h2>
-                <p class="panel-subheader">High-ticket client acquisition sequences</p>
                 <div class="item-stack">
                     <div class="item-row">
                         <div class="item-title">High-Ticket Client Acquisition Sequence</div>
@@ -633,15 +577,8 @@
             </section>
             <section class="panel">
                 <h2 class="panel-header">Active Memos & Meetings Vault</h2>
-                <p class="panel-subheader">Synchronized via Supabase storage</p>
                 <div class="item-stack" id="memoVaultList">
-                    <div class="item-row">
-                        <div>
-                            <div class="item-title">Executive Strategy Session // Sovereign Hub</div>
-                            <div class="item-sub">Logged Today // 4 Action Items Assigned</div>
-                        </div>
-                        <span style="color: var(--champagne-gold); font-size:0.75rem;">Secured</span>
-                    </div>
+                    <div class="item-row"><div><div class="item-title">Executive Strategy Session // Sovereign Hub</div><div class="item-sub">Logged Today // 4 Action Items Assigned</div></div><span style="color:var(--champagne-gold); font-size:0.75rem;">Secured</span></div>
                 </div>
             </section>
         </div>
@@ -650,26 +587,10 @@
         <div id="room7" class="section-view">
             <section class="panel">
                 <h2 class="panel-header">Commercial Pricing Tiers</h2>
-                <p class="panel-subheader">Active subscription management & recurring billing</p>
-                <div class="item-stack">
-                    <div class="item-row">
-                        <div>
-                            <div class="item-title">Tier 3: Sovereign Ecosystem</div>
-                            <div class="item-sub">Enterprise Multi-Node Access</div>
-                        </div>
-                        <div style="color: var(--cream-accent); font-weight:600;">£79.99 / mo</div>
-                    </div>
-                </div>
-                <button class="action-btn" style="margin-top: 15px;" onclick="openModal('Subscription Chaser Active', 'Automated recurring billing and card-updater sequences are running smoothly across all connected nodes.')">Run Subscription Chaser</button>
+                <div class="item-stack"><div class="item-row"><div>Tier 3: Sovereign Ecosystem</div><div style="color: var(--cream-accent);">£79.99 / mo</div></div></div>
+                <button class="action-btn" style="margin-top: 15px;" onclick="openModal('Subscription Chaser Active', 'Automated recurring billing and card-updater sequences are running smoothly.')">Run Subscription Chaser</button>
             </section>
-            <section class="panel">
-                <h2 class="panel-header">Ecosystem Alignment</h2>
-                <p class="panel-subheader">Sovereign brand matrix</p>
-                <div class="item-row">
-                    <span>Onyx One Core Vault & Onyx Coin Matrix</span>
-                    <span style="color: var(--champagne-gold); font-weight:600;">Active</span>
-                </div>
-            </section>
+            <section class="panel"><h2 class="panel-header">Ecosystem Alignment</h2><div class="item-row"><span>Onyx One Core Vault & Onyx Coin Matrix</span><span style="color: var(--champagne-gold);">Active</span></div></section>
         </div>
 
         <!-- ROOM 8: Command Center & Brand -->
@@ -685,11 +606,7 @@
                     <div class="item-row"><div>Onyx Coin Multi-Asset Ledger Synchronization</div><span style="color: var(--champagne-gold);">Synced</span></div>
                 </div>
             </section>
-            <section class="panel">
-                <h2 class="panel-header">Command Center Manager</h2>
-                <p class="panel-subheader">Deploy updates via GitHub to Cloudflare</p>
-                <button class="action-btn" onclick="openModal('Command Center Synced', 'All regional node manifests, Supabase databases, and Cloudflare edge routes successfully synchronized.')">Sync All Nodes</button>
-            </section>
+            <section class="panel"><h2 class="panel-header">Command Center Manager</h2><button class="action-btn" onclick="openModal('Command Center Synced', 'All regional node manifests, Supabase databases, and Cloudflare edge routes successfully synchronized.')">Sync All Nodes</button></section>
         </div>
     </main>
 
@@ -697,7 +614,7 @@
         <div>© 2026 ONYX ONE // Sovereign Decision-Making Cockpit. All Rights Reserved.</div>
         <div class="footer-links">
             <span onclick="openModal('Trademark Notice', 'ONYX ONE is a protected trademark. All rights reserved.')">Trademark</span>
-            <span onclick="openModal('Legal Disclaimer', 'This Sovereign Decision-Making Cockpit is provided for executive operational intelligence. Financial and tax calculations are automated via secure encrypted ledgers.')">Legal Disclaimer</span>
+            <span onclick="openModal('Legal Disclaimer', 'This Sovereign Decision-Making Cockpit is provided for executive operational intelligence.')">Legal Disclaimer</span>
         </div>
     </footer>
 
@@ -913,11 +830,11 @@
             res.innerHTML = `<strong>Competency Score: ${score} / 100</strong><br>• Hard Skill Verification: Passed<br>• Buzzword Noise Filter: 100% Clean<br>• Recommendation: Recommended for Executive Review.`;
         }
 
-        function switchTab(tabId, cardEl) {
+        function switchTab(tabId, tabEl) {
             document.querySelectorAll('.section-view').forEach(v => v.classList.remove('active-view'));
-            document.querySelectorAll('.nav-card').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.sticky-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active-view');
-            cardEl.classList.add('active');
+            tabEl.classList.add('active');
         }
 
         function openModal(title, desc) {
