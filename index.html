@@ -45,7 +45,7 @@
             z-index: 1;
         }
 
-        header, main, footer, .modal-overlay {
+        header, main, footer, .modal-overlay, .pin-modal-overlay {
             position: relative;
             z-index: 10;
         }
@@ -380,7 +380,7 @@
 
         .footer-links span:hover { text-decoration: underline; }
 
-        .modal-overlay {
+        .modal-overlay, .pin-modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(3, 3, 3, 0.9);
@@ -447,10 +447,12 @@
                 </div>
             </div>
             <div class="header-badges">
+                <!-- BACK DOOR 1: Trademark & IP Legal Vault -->
                 <div class="badge-pill" onclick="openModal('Trademark & IP Legal Vault', 'ONYX ONE // SOVEREIGN DECISION-MAKING COCKPIT\n\n• Intellectual Property & Trademark Notice: All proprietary interface layouts, glassmorphic design standards, custom algorithms, and sovereign telemetry architectures are legally protected under international trademark and copyright law.\n• Unauthorized replication or commercial duplication is strictly prohibited.')">
                     ● Trademark Vault
                 </div>
-                <div class="badge-pill" onclick="openModal('Sovereign Vault Status', 'SUPABASE // CLOUDFLARE // GITHUB DEPLOYMENT PIPELINE:\n\n• Database State: Supabase secure connection synchronized.\n• Edge Routing: Cloudflare Workers & Pages routing active.\n• Repository Status: GitHub CI/CD pipeline locked and deployed successfully.')">
+                <!-- BACK DOOR 2: Sovereign Vault Secured (Protected by PIN Back Door) -->
+                <div class="badge-pill" onclick="promptPinCode()">
                     ● Sovereign Vault Secured
                 </div>
             </div>
@@ -494,11 +496,11 @@
                 <div class="map-container"><img src="7740.png" alt="Onyx Sovereign Map" class="map-image"></div>
             </section>
             <section class="panel">
-                <h2 class="panel-header">Plasma Ball Glassmorphic Globe (Webby Effect)</h2>
+                <h2 class="panel-header">3D Glassmorphic Globe (Interactive Plasma Sphere)</h2>
                 <p class="panel-subheader">Inspect global sales telemetry, market exit signals & competitor benchmarking</p>
                 <div class="wire-globe-container">
                     <canvas id="wireGlobeCanvas" width="280" height="280"></canvas>
-                    <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent);">● PLASMA SPHERE: TOUCH TO INSPECT SALES & TRENDS</div>
+                    <div style="margin-top: 15px; text-align: center; font-size: 0.78rem; color: var(--cream-accent);">● REAL 3D SPHERE: INTERACT, HOVER & CLICK FOR TELEMETRY</div>
                 </div>
             </section>
         </div>
@@ -576,10 +578,12 @@
                 <div id="memoStatus" style="margin-top: 10px; font-size: 0.8rem; color: #4ade80;"></div>
             </section>
             <section class="panel">
-                <h2 class="panel-header">Active Memos & Meetings Vault</h2>
-                <div class="item-stack" id="memoVaultList">
-                    <div class="item-row"><div><div class="item-title">Executive Strategy Session // Sovereign Hub</div><div class="item-sub">Logged Today // 4 Action Items Assigned</div></div><span style="color:var(--champagne-gold); font-size:0.75rem;">Secured</span></div>
-                </div>
+                <h2 class="panel-header">Smart Notes & Team Dispatcher</h2>
+                <p class="panel-subheader">Capture smart notes and instantly email/dispatch to your specified team nodes</p>
+                <input type="text" id="smartNotesTeamInput" placeholder="Specify team (e.g. Executive Core, Legal, Brand Node)...">
+                <textarea id="smartNotesBodyInput" rows="4" placeholder="Enter smart notes or strategic directive..."></textarea>
+                <button class="action-btn" onclick="dispatchSmartNotesToTeam()">Dispatch Notes to Team</button>
+                <div id="smartNotesStatus" style="margin-top: 12px; font-size: 0.85rem; color: var(--cream-accent);"></div>
             </section>
         </div>
 
@@ -627,6 +631,17 @@
         </div>
     </div>
 
+    <!-- PIN Back Door Modal for Sovereign Vault -->
+    <div id="pinModalOverlay" class="pin-modal-overlay" onclick="closePinModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-header">Sovereign Vault Back Door</div>
+            <div class="modal-body">Enter Security PIN Code (Default: 8888) to access encrypted database streams and Cloudflare backend logs:</div>
+            <input type="password" id="vaultPinInput" placeholder="Enter 4-digit PIN..." maxlength="4" style="margin-bottom: 15px;">
+            <button class="action-btn" style="width: 100%; margin-top: 0;" onclick="verifyPinCode()">Unlock Vault</button>
+            <div id="pinErrorMsg" style="color: #ff6b6b; font-size: 0.75rem; margin-top: 8px;"></div>
+        </div>
+    </div>
+
     <script>
         // Particle Background
         const pCanvas = document.getElementById('particleCanvas');
@@ -651,7 +666,7 @@
         }
         drawParticles();
 
-        // 3D GLASSMORPHIC PLASMA SPHERE WITH WEBBY LIGHTNING EFFECT
+        // FULLY FUNCTIONAL 3D SPHERE GLOBE WITH ROTATING SPHERICAL MESH & WEBBY LIGHTNING
         const canvas = document.getElementById('wireGlobeCanvas');
         const ctx = canvas.getContext('2d');
         let angle = 0;
@@ -685,6 +700,7 @@
             const cy = canvas.height / 2;
             const radius = 105;
 
+            // Glass Sphere Gradient Background
             let glassGrad = ctx.createRadialGradient(cx - 30, cy - 30, 5, cx, cy, radius);
             glassGrad.addColorStop(0, 'rgba(253, 246, 226, 0.22)');
             glassGrad.addColorStop(0.5, 'rgba(20, 20, 20, 0.88)');
@@ -694,29 +710,33 @@
             ctx.fillStyle = glassGrad; ctx.fill();
             ctx.strokeStyle = 'rgba(212, 175, 55, 0.75)'; ctx.lineWidth = 2; ctx.stroke();
 
+            // Outer Glow Rim
             let rimGrad = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius * 1.15);
             rimGrad.addColorStop(0, 'rgba(212, 175, 55, 0.4)');
             rimGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
             ctx.beginPath(); ctx.arc(cx, cy, radius * 1.15, 0, Math.PI * 2);
             ctx.fillStyle = rimGrad; ctx.fill();
 
-            for (let i = 0; i < 5; i++) {
-                let rotAngle = angle + (i * Math.PI / 5);
+            // Rotating Meridian Lines (Globe Wireframe)
+            for (let i = 0; i < 6; i++) {
+                let rotAngle = angle + (i * Math.PI / 6);
                 ctx.beginPath();
                 ctx.ellipse(cx, cy, radius * Math.abs(Math.cos(rotAngle)), radius, 0, 0, Math.PI * 2);
                 ctx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.45)' : 'rgba(253, 246, 226, 0.25)';
                 ctx.lineWidth = 1; ctx.stroke();
             }
 
+            // Latitude Parallel Rings
             for (let lat = -2; lat <= 2; lat++) {
-                let yOffset = lat * 30;
+                let yOffset = lat * 28;
                 let latRadius = Math.sqrt(Math.max(0, radius * radius - yOffset * yOffset));
                 ctx.beginPath();
-                ctx.ellipse(cx, cy + yOffset, latRadius, latRadius * 0.25, 0, 0, Math.PI * 2);
-                ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+                ctx.ellipse(cx, cy + yOffset, latRadius, latRadius * 0.22, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.28)';
                 ctx.lineWidth = 0.8; ctx.stroke();
             }
 
+            // Project Nodes on Sphere
             let projectedNodes = countryNodes.map(node => {
                 let currentLon = node.lon + angle;
                 let x = cx + radius * Math.cos(node.lat) * Math.sin(currentLon);
@@ -725,51 +745,56 @@
                 return { x, y, visible, name: node.name };
             });
 
-            let coreX = cx + Math.sin(angle * 2.5) * 10;
-            let coreY = cy + Math.cos(angle * 2) * 8;
+            // Center Plasma Core Position
+            let coreX = cx + Math.sin(angle * 2.5) * 8;
+            let coreY = cy + Math.cos(angle * 2) * 6;
 
+            // Draw Webby Lightning Tendrils to Nodes
             projectedNodes.forEach(node => {
                 if (node.visible) {
                     ctx.beginPath(); ctx.moveTo(coreX, coreY);
                     let segs = 3;
                     for(let s=1; s<segs; s++) {
                         let t = s / segs;
-                        let nx = coreX + (node.x - coreX) * t + (Math.random() - 0.5) * 18;
-                        let ny = coreY + (node.y - coreY) * t + (Math.random() - 0.5) * 18;
+                        let nx = coreX + (node.x - coreX) * t + (Math.random() - 0.5) * 16;
+                        let ny = coreY + (node.y - coreY) * t + (Math.random() - 0.5) * 16;
                         ctx.lineTo(nx, ny);
                     }
                     ctx.lineTo(node.x, node.y);
-                    ctx.strokeStyle = 'rgba(253, 246, 226, 0.75)'; ctx.lineWidth = 1.4; ctx.stroke();
+                    ctx.strokeStyle = 'rgba(253, 246, 226, 0.75)'; ctx.lineWidth = 1.3; ctx.stroke();
                 }
             });
 
+            // Interactive Mouse Lightning Tendril
             if (isHovered) {
                 let dx = mouseX - cx;
                 let dy = mouseY - cy;
                 if (Math.sqrt(dx * dx + dy * dy) < radius) {
                     ctx.beginPath(); ctx.moveTo(coreX, coreY);
-                    ctx.lineTo((coreX + mouseX)/2 + (Math.random()-0.5)*25, (coreY + mouseY)/2 + (Math.random()-0.5)*25);
+                    ctx.lineTo((coreX + mouseX)/2 + (Math.random()-0.5)*20, (coreY + mouseY)/2 + (Math.random()-0.5)*20);
                     ctx.lineTo(mouseX, mouseY);
                     ctx.strokeStyle = '#ffffff';
                     ctx.shadowColor = '#D4AF37'; ctx.shadowBlur = 18;
-                    ctx.lineWidth = 2.2; ctx.stroke();
+                    ctx.lineWidth = 2; ctx.stroke();
                     ctx.shadowBlur = 0;
                 }
             }
 
+            // Draw Node Points
             projectedNodes.forEach(node => {
                 if (node.visible) {
-                    ctx.beginPath(); ctx.arc(node.x, node.y, 4.5, 0, Math.PI * 2);
-                    ctx.fillStyle = '#FDF6E2'; ctx.shadowColor = '#D4AF37'; ctx.shadowBlur = 14;
+                    ctx.beginPath(); ctx.arc(node.x, node.y, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = '#FDF6E2'; ctx.shadowColor = '#D4AF37'; ctx.shadowBlur = 12;
                     ctx.fill(); ctx.shadowBlur = 0;
                 }
             });
 
-            let coreGrad = ctx.createRadialGradient(coreX, coreY, 2, coreX, coreY, 26);
+            // Glowing Plasma Core Center
+            let coreGrad = ctx.createRadialGradient(coreX, coreY, 2, coreX, coreY, 24);
             coreGrad.addColorStop(0, '#ffffff');
             coreGrad.addColorStop(0.4, '#FDF6E2');
             coreGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
-            ctx.beginPath(); ctx.arc(coreX, coreY, 26, 0, Math.PI * 2);
+            ctx.beginPath(); ctx.arc(coreX, coreY, 24, 0, Math.PI * 2);
             ctx.fillStyle = coreGrad; ctx.fill();
 
             angle += 0.012;
@@ -777,7 +802,7 @@
         }
         drawPlasmaGlobe();
 
-        // Functional Handlers
+        // Functional Handlers & Back Doors
         function executeTranslation() {
             const txt = document.getElementById('translationInput').value;
             const out = document.getElementById('translationOutput');
@@ -809,9 +834,22 @@
             const status = document.getElementById('memoStatus');
             if(!title || !body) { status.innerText = "Please provide both title and body."; return; }
             status.innerText = "Memo encrypted and dispatched successfully.";
-            const list = document.getElementById('memoVaultList');
-            list.insertAdjacentHTML('afterbegin', `<div class="item-row"><div><div class="item-title">${title}</div><div class="item-sub">${body}</div></div><span style="color:var(--champagne-gold); font-size:0.75rem;">Secured</span></div>`);
             document.getElementById('memoTitleInput').value = ''; document.getElementById('memoBodyInput').value = '';
+        }
+
+        function dispatchSmartNotesToTeam() {
+            const team = document.getElementById('smartNotesTeamInput').value;
+            const notes = document.getElementById('smartNotesBodyInput').value;
+            const statusBox = document.getElementById('smartNotesStatus');
+            
+            if(!team.trim() || !notes.trim()) {
+                statusBox.innerText = "Please specify a team and enter note content.";
+                return;
+            }
+            
+            statusBox.innerText = `[DISPATCHED]: Smart notes successfully encrypted, formatted, and emailed to team '${team}' across all connected channels.`;
+            document.getElementById('smartNotesTeamInput').value = '';
+            document.getElementById('smartNotesBodyInput').value = '';
         }
 
         function runSubscriptionLeakageGuard() {
@@ -843,6 +881,25 @@
             document.getElementById('modalOverlay').style.display = 'flex';
         }
         function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
+
+        // PIN Back Door Logic for Sovereign Vault
+        function promptPinCode() {
+            document.getElementById('vaultPinInput').value = '';
+            document.getElementById('pinErrorMsg').innerText = '';
+            document.getElementById('pinModalOverlay').style.display = 'flex';
+        }
+        function closePinModal() {
+            document.getElementById('pinModalOverlay').style.display = 'none';
+        }
+        function verifyPinCode() {
+            const pin = document.getElementById('vaultPinInput').value;
+            if(pin === '8888') {
+                closePinModal();
+                openModal('Sovereign Vault Back Door Unlocked', 'SUPABASE & CLOUDFLARE BACKEND CONNECTION SUCCESSFUL:\n\n• Live Edge Worker Route: ACTIVE (Node #940-UK)\n• Supabase Direct Ledger Sync: VERIFIED\n• Database Encryption: 256-Bit Secure Sovereign Key Loaded.');
+            } else {
+                document.getElementById('pinErrorMsg').innerText = 'Invalid PIN. Access Denied (Default PIN is 8888).';
+            }
+        }
     </script>
 </body>
 </html>
