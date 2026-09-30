@@ -1,2 +1,1 @@
-# ONYX-universal-financial-
-ONYX-Universal Financial Solutions]Your Anti Chaos Business Sanctuary
+# ONYXONE your anti chaos business sanctuary
